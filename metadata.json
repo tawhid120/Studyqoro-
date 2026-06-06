@@ -1,0 +1,6 @@
+{
+  "name": "Study Qoro",
+  "description": "An ultra-modern, interactive exam preparation and e-learning study platform for HSC, SSC, and admission candidates. Features interactive model tests, question bank practice, an AI tutor, leaderboard, and gamified study timers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
