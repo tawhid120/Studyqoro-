@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, useRef, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, useRef, useMemo, Dispatch, SetStateAction } from "react";
 import { 
   FileText, 
   RotateCcw, 
@@ -17,22 +17,52 @@ import {
   Zap,
   Info
 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { Subject, Question, StudentStats, ExamSession } from "../types";
 import { QUESTION_BANK } from "../data";
 
 interface MockExamProps {
   stats: StudentStats;
   setStats: Dispatch<SetStateAction<StudentStats>>;
+  questions?: Question[];
 }
 
-export default function MockExam({ stats, setStats }: MockExamProps) {
+export default function MockExam({ stats, setStats, questions }: MockExamProps) {
   // Main state flags
   const [quizState, setQuizState] = useState<"setup" | "active" | "results">("setup");
   
   // Custom configurations
-  const [selectedSubject, setSelectedSubject] = useState<Subject>(Subject.PHYSICS);
+  const [selectedSubject, setSelectedSubject] = useState<string>(Subject.PHYSICS);
   const [totalQuestionsCount, setTotalQuestionsCount] = useState<number>(5);
   const [timerMinutes, setTimerMinutes] = useState<number>(5);
+
+  const dbQuestions = questions && questions.length > 0 ? questions : QUESTION_BANK;
+
+  // Extract subjects list dynamically from questions as strings
+  const availableSubjects = useMemo(() => {
+    const list = dbQuestions.map(q => q.subject as string);
+    const unique = Array.from(new Set(list));
+    // Sort according to Subject enum if possible, then any custom ones
+    const enumOrder = Object.values(Subject) as string[];
+    return unique.sort((a, b) => {
+      const idxA = enumOrder.indexOf(a);
+      const idxB = enumOrder.indexOf(b);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      return a.localeCompare(b);
+    });
+  }, [dbQuestions]);
+
+  // Adjust selectedSubject if it's not in the available lists
+  useEffect(() => {
+    const subjectsList = availableSubjects as string[];
+    if (subjectsList.length > 0 && !subjectsList.includes(selectedSubject)) {
+      setSelectedSubject(subjectsList[0]);
+    }
+  }, [availableSubjects]);
 
   // Active quiz state
   const [currentExam, setCurrentExam] = useState<ExamSession | null>(null);
@@ -46,7 +76,7 @@ export default function MockExam({ stats, setStats }: MockExamProps) {
   // Set up & shuffle questions
   const handleStartExam = () => {
     // Collect possible questions
-    const matchingQuestions = QUESTION_BANK.filter(q => q.subject === selectedSubject);
+    const matchingQuestions = dbQuestions.filter(q => (q.subject as string) === selectedSubject);
     
     if (matchingQuestions.length === 0) {
       alert("দুঃখিত, এই বিষয়ের উপর কাস্টম মক টেস্টের প্রশ্ন এখনো আপলোড করা হচ্ছে।");
@@ -59,7 +89,7 @@ export default function MockExam({ stats, setStats }: MockExamProps) {
 
     const session: ExamSession = {
       id: "exam-" + Date.now(),
-      subject: selectedSubject,
+      subject: selectedSubject as Subject,
       title: `${selectedSubject} - কাস্টম মডেল টেস্ট`,
       totalQuestions: subset.length,
       durationMinutes: timerMinutes,
@@ -169,7 +199,7 @@ export default function MockExam({ stats, setStats }: MockExamProps) {
             <div className="space-y-2">
               <label className="text-sm font-semibold text-slate-300 block">পরীক্ষার বিষয় নির্ধারণ করুন:</label>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5">
-                {Object.values(Subject).map((sub) => (
+                {availableSubjects.map((sub) => (
                   <button
                     key={sub}
                     type="button"

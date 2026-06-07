@@ -21,6 +21,10 @@ export interface Question {
   options: string[];
   correctIndex: number;
   explanation: string;
+  imageUrl?: string;
+  questionParts?: { type: "text" | "image"; content?: string; url?: string }[];
+  richOptions?: { label: string; text?: string; image_url?: string }[];
+  source?: string[];
 }
 
 export interface LeaderboardUser {

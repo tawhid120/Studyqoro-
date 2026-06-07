@@ -1,0 +1,8760 @@
+{
+  "source_url": "https://www.daricomma.com/academic/HSC%20-%20%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A7%9F%E0%A6%A8%20%E0%A7%A7%E0%A6%AE%20%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0/chapter/%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A7%A6%E0%A7%A7%E0%A6%83%20%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%87%E0%A6%9F%E0%A6%B0%E0%A7%80%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%20%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B9%E0%A6%BE%E0%A6%B0?page=1",
+  "total_questions": 247,
+  "latex_format": "inline $...$ — render with MathJax or KaTeX",
+  "note": "'answer' ফিল্ড খালি — manually পূরণ করুন। 'question_parts' একটি array: প্রতিটি item হয় {type:'text', content:'...'} অথবা {type:'image', url:'...'}। অপশনে image থাকলে 'image_url' ফিল্ড থাকবে।",
+  "questions": [
+    {
+      "id": 1,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "'পরিবহন টিস্যু' বহনকারী জীব কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulothrix"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Agaricus"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Riccia"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2019"
+      ]
+    },
+    {
+      "id": 2,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর ভাস্কুলার বান্ডল কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হ্যাড্রোসেন্ট্রিক"
+        },
+        {
+          "label": "খ.",
+          "text": "লেপ্টোসেন্ট্রিক"
+        },
+        {
+          "label": "গ.",
+          "text": "সংযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অরীয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2019"
+      ]
+    },
+    {
+      "id": 3,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটা উদ্ভিদের উন্নত বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "উদ্ভিদ হ্যাপ্লয়েড প্রকৃতির"
+        },
+        {
+          "label": "খ.",
+          "text": "রাইজয়েড বিদ্যমান"
+        },
+        {
+          "label": "গ.",
+          "text": "অধিকাংশই থ্যালয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্যাপসিউলে ভাজক টিস্যুর উপস্থিতি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2019"
+      ]
+    },
+    {
+      "id": 4,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris উদ্ভিদের কুণ্ডলিত কচিপাতাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "র‍্যামেন্টাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্রোজিয়ার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2019"
+      ]
+    },
+    {
+      "id": 5,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র পুংজননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "জুস্পোরাঞ্জিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোরাঞ্জিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2019"
+      ]
+    },
+    {
+      "id": 6,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি Pteris এর স্পোরোফাইটের প্রথম কোষ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোর"
+        },
+        {
+          "label": "খ.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "গ.",
+          "text": "উস্পোর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর মাতৃকোষ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2019"
+      ]
+    },
+    {
+      "id": 7,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি Riccia থ্যালাসে থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রাইজয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইজাইন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রাইজোম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2019"
+      ]
+    },
+    {
+      "id": 8,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর রাইজোমের শল্কপত্রকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‍্যাকিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‍্যামেন্টা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2019"
+      ]
+    },
+    {
+      "id": 9,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris-এর পাতায় অবস্থিত স্পোরাঞ্জিয়ামের গুচ্ছকে বলে—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যানুলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "এন্ডোসিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "অমরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2019"
+      ]
+    },
+    {
+      "id": 10,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled_preview_rev_1%20(2).png?alt=media&token=8c4f5727-15c9-4809-8e42-07e10f0d69fd"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে প্রদর্শিত উদ্ভিদটি নিচের কোন গোষ্ঠীতে দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "B.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "C.",
+          "text": "শৈবাল"
+        },
+        {
+          "label": "D.",
+          "text": "ছত্রাক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2019"
+      ]
+    },
+    {
+      "id": 11,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled_preview_rev_1%20(2).png?alt=media&token=b157176a-bd1c-440e-8003-e15e7576d037"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে প্রদর্শিত উদ্ভিদের ক্ষেত্রে প্রযোজ্য -"
+        },
+        {
+          "type": "text",
+          "content": "i. সহবাসী"
+        },
+        {
+          "type": "text",
+          "content": "ii. যৌন প্রজনন ঘটে"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোর অঙ্কুরিত হয়ে সৃষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2019"
+      ]
+    },
+    {
+      "id": 12,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "এইচএসসি'র শিক্ষার্থী আকবর হোসেন জীববিজ্ঞান ক্লাসে এমন একটি উদ্ভিদ নিয়ে এল' যারা ভাস্কুলার ক্রিপ্টোগ্যামস নামে পরিচিত। এদের জীবনচক্র হেটারোমরফিক।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উদ্ভিদটির সাথে নিচের কোন উদ্ভিদটির মিল আছে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulothrix sp."
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia sp."
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris sp."
+        },
+        {
+          "label": "ঘ.",
+          "text": "Cycas sp."
+        }
+      ],
+      "answer": "",
+      "source": [
+        "AB '2018"
+      ]
+    },
+    {
+      "id": 13,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "এইচএসসির শিক্ষার্থী আকবর হোসেন জীববিজ্ঞান ক্লাসে এমন একটি উদ্ভিদ নিয়ে এলো যারা ভাস্কুলার ক্রিপ্টোগ্যামস নামে পরিচিত। এদের জীবন চক্র হেটারোমরফিক।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উদ্ভিদের জীবনচক্রে—"
+        },
+        {
+          "type": "text",
+          "content": "i. ডিপ্লয়েড দশা দীর্ঘস্থায়ী"
+        },
+        {
+          "type": "text",
+          "content": "ii. লিজাধর দশা ক্ষণস্থায়ী"
+        },
+        {
+          "type": "text",
+          "content": "iii. যৌনজনন দশা রেণুধর"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "AB '2018"
+      ]
+    },
+    {
+      "id": 14,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাস-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "একলিঙ্গ"
+        },
+        {
+          "label": "গ.",
+          "text": "স্বভোজী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিন্নবাসী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2017"
+      ]
+    },
+    {
+      "id": 15,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সোরাই উৎপন্নকারী পাতাকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্যাপসিউল"
+        },
+        {
+          "label": "খ.",
+          "text": "স্টোমিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোরোফিল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যানুলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2017"
+      ]
+    },
+    {
+      "id": 16,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রথম ভাস্কুলার উদ্ভিদের রাইজোম যে বাদামী শল্কপত্র দ্বারা আবৃত থাকে তার নাম—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‌্যামেন্টাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017",
+        "SB '2017"
+      ]
+    },
+    {
+      "id": 17,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pieris (ফান) উদ্ভিদ হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সপুষ্পক"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্যামিটোফাইটিক"
+        },
+        {
+          "label": "গ.",
+          "text": "পরিবহন টিস্যুযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থ্যালয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2017"
+      ]
+    },
+    {
+      "id": 18,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একদল ছাত্র পথ চলতে চলতে মানুষের লিভার আকৃতিবিশিষ্ট ক্ষুদ্র ক্ষুদ্র উদ্ভিদ দেখতে পেল, যাদেরকে উভচর উদ্ভিদও বলা হয়।"
+        },
+        {
+          "type": "text",
+          "content": "নিম্নের কোন বৈশিষ্ট্যটি উদ্দীপকের উদ্ভিদগুলো প্রদর্শন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দেহ স্পোরোফাইটিক"
+        },
+        {
+          "label": "খ.",
+          "text": "থ্যালাস দ্ব্যাগ্র শাখাবিশিষ্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "পুংজননাঙ্গ আর্কিগোনিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভাস্কুলার টিস্যু আছে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2017"
+      ]
+    },
+    {
+      "id": 19,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের পাতার মুকুল অবস্থায় কুণ্ডলি পাকানো গঠনকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সার্সিনেট ভার্নেশন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2016"
+      ]
+    },
+    {
+      "id": 20,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিসের পরিবহণ কলাগুচ্ছ কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্লোয়েম কেন্দ্রিক"
+        },
+        {
+          "label": "খ.",
+          "text": "অরীয়"
+        },
+        {
+          "label": "গ.",
+          "text": "সংযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "জাইলেম কেন্দ্রিক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2016"
+      ]
+    },
+    {
+      "id": 21,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সোরাস তৈরি হয় কোন পদ্ধতিতে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যৌন"
+        },
+        {
+          "label": "খ.",
+          "text": "অযৌন"
+        },
+        {
+          "label": "গ.",
+          "text": "অংগজ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কৃত্রিম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2016"
+      ]
+    },
+    {
+      "id": 22,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের পুংজননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোরাঞ্জিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্যামেট্যানজিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যান্থেরিডিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2016"
+      ]
+    },
+    {
+      "id": 23,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন উদ্ভিদ মিয়োসিস ঘটে—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোর মাতৃকোষে"
+        },
+        {
+          "label": "খ.",
+          "text": "জাইগোটে"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথ্যালাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোরে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 24,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি পরিবহণ টিস্যুযুক্ত জীব?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulothrix sp."
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris sp."
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia sp."
+        },
+        {
+          "label": "ঘ.",
+          "text": "Agaricus sp."
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2016"
+      ]
+    },
+    {
+      "id": 26,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি ডিপ্লয়েড জীব?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Ulothrix"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Agaricus"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2016"
+      ]
+    },
+    {
+      "id": 27,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটার বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোরোফাইটিক"
+        },
+        {
+          "label": "খ.",
+          "text": "পরিবহন টিস্যুযুক্ত"
+        },
+        {
+          "label": "গ.",
+          "text": "পুষ্পক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভ্রূণ সৃষ্টিকারী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2016"
+      ]
+    },
+    {
+      "id": 28,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia উদ্ভিদের বৈশিষ্ট্য—"
+        },
+        {
+          "type": "text",
+          "content": "i. রাইজয়েড উপস্থিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. আর্কিগোনিয়াম বেলনাকার"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট হোমোস্পোরাস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2016"
+      ]
+    },
+    {
+      "id": 29,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাসের ক্ষেত্রে প্রযোজ্য তথ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. এটি ফার্নের গ্যামিটোফাইটিক দশা"
+        },
+        {
+          "type": "text",
+          "content": "ii. এটিতে অ্যাস্থেরিডিয়াম ও আর্কিগোনিয়াম উৎপন্ন হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. এটি স্বাধীন ও ভোজী দশা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2016"
+      ]
+    },
+    {
+      "id": 30,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাসের বৈশিষ্ট্য—"
+        },
+        {
+          "type": "text",
+          "content": "i. হৃদপিণ্ডাকার"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্পোরোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "iii. সহবাসী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2016"
+      ]
+    },
+    {
+      "id": 31,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তন্ময় ক্লাসে আসার সময় তাদের বাগানের উঁচু বৃক্ষের শাখার উপর জন্মানো, একটা ছোট উদ্ভিদ নিয়ে এসে স্যারকে দেখালেন। স্যার বললেন, এটা অপুষ্পক উদ্ভিদের মধ্যে সর্বাপেক্ষা উন্নত।"
+        },
+        {
+          "type": "text",
+          "content": "তন্ময়ের নিয়ে আসা উদ্ভিদের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulothrix"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Cycas"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2016"
+      ]
+    },
+    {
+      "id": 32,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তন্ময় ক্লাসে আসার সময় তাদের বাগানের উঁচু বৃক্ষের শাখার উপর জন্মানো, একটা ছোট উদ্ভিদ নিয়ে এসে স্যারকে দেখালেন। স্যার বললেন, এটা অপুষ্পক উদ্ভিদের মধ্যে সর্বাপেক্ষা উন্নত।"
+        },
+        {
+          "type": "text",
+          "content": "তন্ময়ের আনা উদ্ভিদটির বৈশিষ্ট্য হলো"
+        },
+        {
+          "type": "text",
+          "content": "i. দেহ মূল, কাণ্ড ও পাতায় বিভক্ত"
+        },
+        {
+          "type": "text",
+          "content": "ii. কান্ড রাইজোম জাতীয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. কচি অবস্থায় পাতা কুণ্ডলিত"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2016"
+      ]
+    },
+    {
+      "id": 33,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন গ্রুপের উদ্ভিদসমূহ উভচর?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "জিমনোস্পার্ম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলোই"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '24-25"
+      ]
+    },
+    {
+      "id": 34,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন গ্রুপের উদ্ভিদসমূহ উভচর?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "জিমনোস্পার্ম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলোই"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '24-25"
+      ]
+    },
+    {
+      "id": 35,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটির পরিবহনতন্ত্র আছে, কিন্তু ফুল হয় না?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থ্যালোফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পারমাটোফাইটা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '19-20"
+      ]
+    },
+    {
+      "id": 36,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন উদ্ভিদে স্টোমিয়াম থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Anthoceros"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Hibiscus"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '18-19"
+      ]
+    },
+    {
+      "id": 37,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "যে ধরনের উদ্ভিদে পরিবহনতন্ত্র নেই-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Bryophyta"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteridophyta"
+        },
+        {
+          "label": "গ.",
+          "text": "Gymnosperm"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Angiosperm"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '18-19"
+      ]
+    },
+    {
+      "id": 38,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রামেন্টাম কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Marchantia"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Sargassum"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '17-18",
+        "DU-A '11-12",
+        "DU-A '06-07",
+        "RU-C '17-18",
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 39,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি Riccia-র বৈশিষ্ট্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দেহ থ্যালয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "দেহ ভাস্কুলার"
+        },
+        {
+          "label": "গ.",
+          "text": "দেহ গ্যামেটোফাইট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অপুষ্পক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '15-16"
+      ]
+    },
+    {
+      "id": 40,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মস (Bryophytes) এর স্ত্রী জননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Antheridium"
+        },
+        {
+          "label": "খ.",
+          "text": "Archegonium"
+        },
+        {
+          "label": "গ.",
+          "text": "Sporangium"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Gametangium"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '19-20"
+      ]
+    },
+    {
+      "id": 41,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মস (Bryophytes) এর স্ত্রী জননাঙ্গের নাম কি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Gametangium"
+        },
+        {
+          "label": "খ.",
+          "text": "Gametangium"
+        },
+        {
+          "label": "গ.",
+          "text": "Archegonium"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Antheridium"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '19-20"
+      ]
+    },
+    {
+      "id": 42,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রোটোনেমা' নিচের কোন উদ্ভিদে পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফার্ন"
+        },
+        {
+          "label": "খ.",
+          "text": "নগ্নবীজী উদ্ভিদ"
+        },
+        {
+          "label": "গ.",
+          "text": "গুপ্তবীজী উদ্ভিদ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 43,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর প্রতিটি পত্রখণ্ডকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‍্যাকিস"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রণ্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রাইজোম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '15-16"
+      ]
+    },
+    {
+      "id": 44,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের নিষেকের জন্য কোন মাধ্যম প্রয়োজন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কঠিন"
+        },
+        {
+          "label": "খ.",
+          "text": "তরল"
+        },
+        {
+          "label": "গ.",
+          "text": "বায়বীয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্লাজমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '14-15"
+      ]
+    },
+    {
+      "id": 45,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের নিষেকের জন্য কোন মাধ্যম প্রয়োজন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "তরল"
+        },
+        {
+          "label": "খ.",
+          "text": "প্লাজমা"
+        },
+        {
+          "label": "গ.",
+          "text": "কঠিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বায়বীয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '14-15"
+      ]
+    },
+    {
+      "id": 46,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটিতে জনুক্রম ঘটে না?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্যাক্টেরিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "মস"
+        },
+        {
+          "label": "গ.",
+          "text": "মিউকর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পাইরোগাইরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '12-13"
+      ]
+    },
+    {
+      "id": 47,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বিভিন্ন বর্গের উদ্ভিদের জন্য নিম্নের কোনটি সত্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মসবর্গীয় উদ্ভিদের দেহে মূলের পরিবর্তে রাইজয়েড থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "ছত্রাকের জন্য আলোক অপরিহার্য নয়"
+        },
+        {
+          "label": "গ.",
+          "text": "সমাঙ্গবর্গ উদ্ভিদের জীবনচক্রে ভ্রূণ উৎপন্ন হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "যে সব সমাঙ্গবর্গীয় উদ্ভিদের দেহে সালোকসংশ্লেষণের বর্ণকণিকা আছে তারাই শৈবাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '11-12"
+      ]
+    },
+    {
+      "id": 48,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বিভিন্ন বর্ণের উদ্ভিদের জন্য নিম্নের কোনটি সত্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মসবর্গীয় উদ্ভিদের দেহে মূলের পরিবর্তে রাইজয়েড থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "ছত্রাকের জন্য আলো অপরিহার্য নয়"
+        },
+        {
+          "label": "গ.",
+          "text": "সমাঙ্গবর্গ উদ্ভিদের জীবনচক্রে ভ্রূণ উৎপন্ন হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "যে সব সমাঙ্গবর্গীয় উদ্ভিদের দেহে সালোকসংশ্লেষণ বর্ণকণিকা আছে, তারাই শৈবাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '11-12",
+        "Dental '08-09"
+      ]
+    },
+    {
+      "id": 51,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বিভিন্ন বর্ণের উদ্ভিদের জন্য নিম্নের কোনটি সত্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মসবর্গীয় উদ্ভিদের দেহে মূলের পরিবর্তে রাইজয়েড থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "ছত্রাকের জন্য আলো অপরিহার্য নয়"
+        },
+        {
+          "label": "গ.",
+          "text": "সমাঙ্গবর্গ উদ্ভিদের জীবনচক্রে ভ্রূণ উৎপন্ন হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "যে সব সমাঙ্গবর্গীয় উদ্ভিদের দেহে সালোকসংশ্লেষণ বর্ণকণিকা আছে, তারাই শৈবাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '11-12",
+        "Dental '08-09"
+      ]
+    },
+    {
+      "id": 52,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এরা মূল, কান্ড ও পাতায় বিভক্ত"
+        },
+        {
+          "label": "খ.",
+          "text": "এদের পরিবহনতন্ত্র নেই"
+        },
+        {
+          "label": "গ.",
+          "text": "এদের ফুল, ফল ও বীজ হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "যৌনাঙ্গ এককোষী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '04-05"
+      ]
+    },
+    {
+      "id": 53,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীবন্ত জীবাশ্ম কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Pinus"
+        },
+        {
+          "label": "খ.",
+          "text": "Cycas"
+        },
+        {
+          "label": "গ.",
+          "text": "Zamia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Podocarpus"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '21-22"
+      ]
+    },
+    {
+      "id": 54,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণের কুন্ডলিত কচি পাতাকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "র‍্যামেন্টাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্রোজিয়ার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '25-26"
+      ]
+    },
+    {
+      "id": 55,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris-এ পরিবহন কলাগুচ্ছ কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সমপার্শ্বীয়"
+        },
+        {
+          "label": "খ.",
+          "text": "সমদ্বিপার্শ্বীয়"
+        },
+        {
+          "label": "গ.",
+          "text": "হ্যাড্রোসেন্ট্রিক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অরীয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '25-26"
+      ]
+    },
+    {
+      "id": 56,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটিতে পরিবহন টিস্যু বিদ্যমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফার্ন"
+        },
+        {
+          "label": "খ.",
+          "text": "ছত্রাক"
+        },
+        {
+          "label": "গ.",
+          "text": "মস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শৈবাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 57,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia fluitans উদ্ভিদ জন্মে -"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "পুরাতন দেয়ালে"
+        },
+        {
+          "label": "B.",
+          "text": "গাছের উপরে"
+        },
+        {
+          "label": "C.",
+          "text": "মাটিতে"
+        },
+        {
+          "label": "D.",
+          "text": "জলাশয়ে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '22-23"
+      ]
+    },
+    {
+      "id": 58,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর প্রতিটি পত্রখণ্ডকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‍্যাকিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পিনা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '20-21"
+      ]
+    },
+    {
+      "id": 59,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris গ্যামেটোফাইটকে বলা হয়-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গ্যামিটোফোর"
+        },
+        {
+          "label": "খ.",
+          "text": "স্টোমিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথ্যালাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোটোনেমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '20-21"
+      ]
+    },
+    {
+      "id": 60,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইট উদ্ভিদের বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এককোষী রাইজয়েড ও এককোষী স্কেল থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "এককোষী রাইজয়েড ও বহুকোষী স্কেল থাকে"
+        },
+        {
+          "label": "গ.",
+          "text": "বহুকোষী রাইজয়েড ও এককোষী স্কেল থাকে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বহুকোষী রাইজয়েড ও বহুকোষী ফেল থাকে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '20-21"
+      ]
+    },
+    {
+      "id": 61,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন উদ্ভিদে পরিবহনতন্ত্র নেই?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "জিমনোস্পার্ম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এনজিওস্পার্ম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '20-21"
+      ]
+    },
+    {
+      "id": 62,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মস-এর পুং জননাঙ্গ হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিম্বক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '20-21"
+      ]
+    },
+    {
+      "id": 63,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ইলেটারের কাজ কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "খাদ্য তৈরি করা"
+        },
+        {
+          "label": "খ.",
+          "text": "খাদ্য সঞ্চয় করা"
+        },
+        {
+          "label": "গ.",
+          "text": "বংশবিস্তারে অংশগ্রহণ করা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর নির্গমনে সাহায্য করা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '20-21"
+      ]
+    },
+    {
+      "id": 64,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পৃথিবীতে বর্তমানে টেরিডোফাইট এর কয়টি প্রজাতি নথিভুক্ত আছে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৩৬১১-৪৬২৩"
+        },
+        {
+          "label": "খ.",
+          "text": "৪০২৩-৫০০০"
+        },
+        {
+          "label": "গ.",
+          "text": "১০৫০০-১১৫২৩"
+        },
+        {
+          "label": "ঘ.",
+          "text": "১১০২৩-১২০০০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '19-20"
+      ]
+    },
+    {
+      "id": 65,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণের কুন্ডলিত পাতাকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "খ.",
+          "text": "সারসিনেট ডার্ণেশন"
+        },
+        {
+          "label": "গ.",
+          "text": "র‍্যামেন্টাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোথেলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '19-20"
+      ]
+    },
+    {
+      "id": 66,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি পরিবেশ দূষণের সূচক হিসেবে কাজ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Agaricus"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Azolla"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MBSTU-B '19-20"
+      ]
+    },
+    {
+      "id": 67,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি পরিবেশ দূষণের সূচক হিসেবে কাজ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Agaricus"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Azolla"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MBSTU-B '19-20"
+      ]
+    },
+    {
+      "id": 68,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন উদ্ভিদে জাইলেমে ভেসেল নাই?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "আম"
+        },
+        {
+          "label": "খ.",
+          "text": "কাঁঠাল"
+        },
+        {
+          "label": "গ.",
+          "text": "সেগুন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পাইন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JUST-C '19-20"
+      ]
+    },
+    {
+      "id": 69,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাংলাদেশে প্রাকৃতিকভাবে জন্মানো নগ্নবীজী উদ্ভিদের প্রজাতি সংখ্যা কত।"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৩"
+        },
+        {
+          "label": "খ.",
+          "text": "৫"
+        },
+        {
+          "label": "গ.",
+          "text": "৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৬"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JUST-C '19-20"
+      ]
+    },
+    {
+      "id": 70,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটা এর দেহ কোন কোষ দিয়ে গঠিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্লোরেনকাইমা"
+        },
+        {
+          "label": "খ.",
+          "text": "স্কেরেনকাইমা"
+        },
+        {
+          "label": "গ.",
+          "text": "প্যারেনকাইমা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '18-19"
+      ]
+    },
+    {
+      "id": 71,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মস্‌ এর পুং জননাঙ্গ হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্তেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিম্বক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '18-19"
+      ]
+    },
+    {
+      "id": 72,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গ্যামিটোফাইটিক উদ্ভিদ হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হ্যাপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রিপ্লয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টেট্রাপ্লয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '18-19"
+      ]
+    },
+    {
+      "id": 73,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটার স্পোর হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হ্যাপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রিপ্লয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টেট্রাপ্লয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '18-19"
+      ]
+    },
+    {
+      "id": 74,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteridophyta-এর বৈশিষ্ট্য নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কাণ্ড রাইজোম জাতীয় এবং এক বর্ষজীবী"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুল, ফল হয় না"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোরোফাইট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BSMRSTU-H '18-19"
+      ]
+    },
+    {
+      "id": 75,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি ব্রায়োফাইটের উন্নত বৈশিষ্ট্য?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "উদ্ভিদ হ্যাপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "স্টোম্যাটাযুক্ত এপিডার্মিস"
+        },
+        {
+          "label": "গ.",
+          "text": "সত্যিকার মূল নেই"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এরা হোমোস্পোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BSMRSTU-H '18-19"
+      ]
+    },
+    {
+      "id": 76,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রামেন্টাম কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Marchantia"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Sargassum"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '17-18",
+        "DU-A '11-12",
+        "DU-A '06-07",
+        "RU-C '17-18",
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 77,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটা ও টেরিডোফাইটা উদ্ভিদের স্ত্রী জননাঙ্গকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথ্যালাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যানুলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BSMRSTU-H '18-19"
+      ]
+    },
+    {
+      "id": 78,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মসের স্পোর অংকুরোদগমের মাধ্যমে সৃষ্ট সবুজ ক্ষুদ্রাকার দেহকে কি বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রোথ্যালাস"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রুটিং বডি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোটোনেমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '17-18",
+        "BAU '08-09"
+      ]
+    },
+    {
+      "id": 79,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি উচ্চতর উদ্ভিদ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ঢেকিশাক"
+        },
+        {
+          "label": "খ.",
+          "text": "কলমি শাক"
+        },
+        {
+          "label": "গ.",
+          "text": "কচু শাক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পালং শাক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '17-18"
+      ]
+    },
+    {
+      "id": 80,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাংলাদেশে কত প্রজাতির Sunfern আছে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "10"
+        },
+        {
+          "label": "খ.",
+          "text": "16"
+        },
+        {
+          "label": "গ.",
+          "text": "20"
+        },
+        {
+          "label": "ঘ.",
+          "text": "26"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '17-18"
+      ]
+    },
+    {
+      "id": 81,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রকৃত সংবহন কলা বিশিষ্ট প্রাচীনতম রেণুধর উদ্ভিদ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এমব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "নগ্নবীজি উদ্ভিদ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "একবীজপত্রী উদ্ভিদ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '17-18"
+      ]
+    },
+    {
+      "id": 82,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের শুক্রাণুতে কয়টি ফ্লাজেলা তাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২ টি"
+        },
+        {
+          "label": "খ.",
+          "text": "৩ টি"
+        },
+        {
+          "label": "গ.",
+          "text": "৫ টি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৭ টি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '16-17"
+      ]
+    },
+    {
+      "id": 83,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গ্যামেটোফাইটিক উদ্ভিদের ক্ষেত্রে প্রোথালাসের নিম্নতলের স্ত্রীজনন অঙ্গকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "ইন্ডুসিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যানুলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "আর্কিগোনিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '16-17"
+      ]
+    },
+    {
+      "id": 84,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের প্রোথ্যালাস এর ক্ষেত্রে কোনটি সঠিক নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এটি সবুজ বর্ণের"
+        },
+        {
+          "label": "খ.",
+          "text": "রেণু অঙ্কুরিত হয়ে এটি হয়"
+        },
+        {
+          "label": "গ.",
+          "text": "এটি স্ত্রী জননাঙ্গ ও পুং জননাঙ্গ ধারণ করে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এটি ডিপ্লয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '16-17"
+      ]
+    },
+    {
+      "id": 85,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের কাণ্ডকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্টাইপ"
+        },
+        {
+          "label": "খ.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইবোসোম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '16-17",
+        "RU-F '09-10"
+      ]
+    },
+    {
+      "id": 86,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের কাণ্ডকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্টাইপ"
+        },
+        {
+          "label": "খ.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইবোসোম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '15-16"
+      ]
+    },
+    {
+      "id": 87,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের রাইজোম এক প্রকার শল্কপত্র দ্বারা আবৃত থাক, তাকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‍্যামেন্টাম"
+        },
+        {
+          "label": "খ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "গ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফন্ড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '15-16"
+      ]
+    },
+    {
+      "id": 88,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণ গ্যামিটোফাইট হল-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "হ্যাপ্লয়েড"
+        },
+        {
+          "label": "গ.",
+          "text": "পলিপ্লয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রিপ্লয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JnU-A '15-16"
+      ]
+    },
+    {
+      "id": 89,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন ও মসের মধ্যকার পার্থক্য হচ্ছে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্বাধীন গ্যামেটোফাইট"
+        },
+        {
+          "label": "খ.",
+          "text": "স্বাধীন স্পোরোফাইট"
+        },
+        {
+          "label": "গ.",
+          "text": "আর্কিগোনিয়ার উপস্থিতি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সঞ্চারণশীল অ্যান্থেরোজয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 90,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "লিভারওয়ার্ট-এর সবচেয়ে নিকটবর্তী সম্প্রদায় –"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শৈবাল"
+        },
+        {
+          "label": "খ.",
+          "text": "ছত্রাক"
+        },
+        {
+          "label": "গ.",
+          "text": "ফার্ন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 91,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "এককোষী রাইজোম দেখা যায় কোনটিতে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মস"
+        },
+        {
+          "label": "খ.",
+          "text": "ফার্ন"
+        },
+        {
+          "label": "গ.",
+          "text": "লাইকেন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "লিভারওয়ার্ট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 92,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাইজয়েড থাকে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "লাইকেন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলোতে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "IU-D '15-16"
+      ]
+    },
+    {
+      "id": 93,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটির সংবহনতন্ত্র নেই?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "জিমনোস্পার্ম"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যানজিওস্পার্ম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মসবর্গ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "IU-D '15-16"
+      ]
+    },
+    {
+      "id": 94,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাইজয়েড থাকে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "লাইকেন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলোতে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BRU-E '15-16"
+      ]
+    },
+    {
+      "id": 95,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটির সংবহনতন্ত্র নেই?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "জিমনোস্পার্ম"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যানজিওস্পার্ম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মসবর্গ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BRU-E '15-16"
+      ]
+    },
+    {
+      "id": 96,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটিতে কোরালয়েড মূল পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Cycas"
+        },
+        {
+          "label": "খ.",
+          "text": "Pinus"
+        },
+        {
+          "label": "গ.",
+          "text": "Hibiscus"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Ficus"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BRU-E '15-16"
+      ]
+    },
+    {
+      "id": 97,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Cycas-এর কোরালয়েড মূলে কোন শৈবাল পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Chaetophora"
+        },
+        {
+          "label": "খ.",
+          "text": "Ulothrix"
+        },
+        {
+          "label": "গ.",
+          "text": "Cladophora"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Nostoc"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BRU-E '15-16"
+      ]
+    },
+    {
+      "id": 98,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি জীবন্ত জীবাশ্ম?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Thuja"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Cycas"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Gnetum"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BRU-E '15-16"
+      ]
+    },
+    {
+      "id": 99,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ভ্রূণ সৃষ্টি হয় না কোনটিতে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সমাঙ্গ বর্গ"
+        },
+        {
+          "label": "খ.",
+          "text": "মস বৰ্গ"
+        },
+        {
+          "label": "গ.",
+          "text": "ফাৰ্ণ বৰ্গ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '14-15"
+      ]
+    },
+    {
+      "id": 100,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মসের স্ত্রী জননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থোরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডিম্বাণু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CVASU '14-15"
+      ]
+    },
+    {
+      "id": 101,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রামেন্টাম কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Marchantia"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Sargassum"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '17-18",
+        "DU-A '11-12",
+        "DU-A '06-07",
+        "RU-C '17-18",
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 102,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মসের স্পোর অংকুরোদগমের মাধ্যমে সৃষ্ট সবুজ ক্ষুদ্রাকার দেহকে কি বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রোথ্যালাস"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রুটিং বডি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোটোনেমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '17-18",
+        "BAU '08-09"
+      ]
+    },
+    {
+      "id": 103,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের কাণ্ডকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্টাইপ"
+        },
+        {
+          "label": "খ.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইবোসোম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '16-17",
+        "RU-F '09-10"
+      ]
+    },
+    {
+      "id": 104,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের পাতাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শঙ্কপত্র"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "গ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SBAU '12-13"
+      ]
+    },
+    {
+      "id": 105,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ঢেঁকী শাক কোন ধরনের উদ্ভিদ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সবজী"
+        },
+        {
+          "label": "খ.",
+          "text": "ফার্ণ"
+        },
+        {
+          "label": "গ.",
+          "text": "মস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনটাই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CVASU '12-13"
+      ]
+    },
+    {
+      "id": 106,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Club Moss বলা হয় -"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "Semibarbula"
+        },
+        {
+          "label": "B.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "C.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "D.",
+          "text": "Euglena"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '12-13"
+      ]
+    },
+    {
+      "id": 107,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "“হর্স টেইল” নামে পরিচিত কোন উদ্ভিদটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "খ.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Marchantia"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '12-13"
+      ]
+    },
+    {
+      "id": 108,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারসিনেট ভার্নেসন তৈরি হয় কোন টেরিডোফাইটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "খ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Marchanatia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Lycopodium"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '11-12"
+      ]
+    },
+    {
+      "id": 109,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Fern prothallus-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "Triploid"
+        },
+        {
+          "label": "B.",
+          "text": "Diploid"
+        },
+        {
+          "label": "C.",
+          "text": "Haploid"
+        },
+        {
+          "label": "D.",
+          "text": "Polyploid"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 110,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি ব্রায়োফাইটার শ্রেণী নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হেপাটিকা"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যানথোসিরোটি"
+        },
+        {
+          "label": "গ.",
+          "text": "ফিলিসিনি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মাসাই"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 111,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গুপ্তবীজী উদ্ভিদের এন্ডোস্পার্ম কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রিপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "হ্যাপ্লয়েড"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যাফিডিপ্লয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 112,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইট জাতীয় উদ্ভিদের পানি শোষণ অঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মূলরোম"
+        },
+        {
+          "label": "খ.",
+          "text": "চোষমূল"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইজয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "দেহ পৃষ্ঠ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '10-11"
+      ]
+    },
+    {
+      "id": 113,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রোটোনেমা কোন উদ্ভিদে পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মস"
+        },
+        {
+          "label": "খ.",
+          "text": "ফার্ন"
+        },
+        {
+          "label": "গ.",
+          "text": "শৈবাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নগ্নবীজী উদ্ভিদ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '10-11"
+      ]
+    },
+    {
+      "id": 114,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মসের স্পোর অঙ্কুরোদগমের মাধ্যমে সৃষ্ট সবুজ ক্ষুদ্রাকার দেহকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রোথ্যালাস"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রুটি বডি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোটোনেমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '08-09"
+      ]
+    },
+    {
+      "id": 115,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ঊগ্যামীর ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. সচল, ক্ষুদ্র শুক্রাণু"
+        },
+        {
+          "type": "text",
+          "content": "ii. নিশ্চল, বৃহৎ ডিম্বাণু"
+        },
+        {
+          "type": "text",
+          "content": "iii. সচল, ক্ষুদ্র ডিম্বাণু"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?i ও ii"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 116,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের শুক্রাণুতে কয়টি ফ্লাজেলা থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১টি"
+        },
+        {
+          "label": "খ.",
+          "text": "২টি"
+        },
+        {
+          "label": "গ.",
+          "text": "৩টি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৪টি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 117,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের স্ত্রীজননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোরঞ্জিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্যামিট্যানজিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যান্থেরিডিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 118,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কীসের জন্য ব্রায়োফাইটের জলীয় মাধ্যম প্রয়োজন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "আবাসস্থল"
+        },
+        {
+          "label": "খ.",
+          "text": "খাদ্য সংগ্রহ"
+        },
+        {
+          "label": "গ.",
+          "text": "নিষেক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃদ্ধি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 119,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন প্রজাতিটি জলজ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia bengalensis"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia dhakensis"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia chittagonensis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Riccia fluitans"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 120,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাংলাদেশে প্রাপ্ত Riccia এর প্রজাতি সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১০"
+        },
+        {
+          "label": "খ.",
+          "text": "২৫"
+        },
+        {
+          "label": "গ.",
+          "text": "৪৫"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২০০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 121,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "থ্যালাসের নিম্নাংশের বর্ণহীন অঞ্চলকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সালোকসংশ্লেষণকারী অঞ্চল"
+        },
+        {
+          "label": "খ.",
+          "text": "সঞ্চয়ী অঞ্চল"
+        },
+        {
+          "label": "গ.",
+          "text": "বায়ুনালি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্কেল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 122,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি পরিবেশ দূষণের সূচক হিসেবে কাজ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Agaricus"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Spirogyra"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 123,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি Riccia-র স্পোরোফাইট পর্যায়ের সূচনা করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "উস্পোর"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রোথেলাস"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গ্যামিট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 124,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্পোরোফাইট আদি প্রকৃতির এবং থ্যালাসের মধ্যে নিমজ্জিত থাকে কোন উদ্ভিদে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Semibarbula"
+        },
+        {
+          "label": "খ.",
+          "text": "Marchantia"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Funaria"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 125,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটির উদ্ভিদ দেহ স্পোরোফাইটিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ছত্রাক"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রায়োফাইট"
+        },
+        {
+          "label": "গ.",
+          "text": "শৈবাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টেরিডোফাইট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 126,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ভাস্কুলার ক্রিপ্টোগ্যামস কারা?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থ্যালোফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মাইকোফাইকোফাইটা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 127,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটির কান্ড রাইজোম জাতীয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Pteris"
+        },
+        {
+          "label": "খ.",
+          "text": "Oryza"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Cycas"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 128,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর প্রতিটি পত্রখন্ডককে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‌্যাকিস"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্রোজিয়ার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 129,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিসের পরিবহণ কলাগুচ্ছ কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "লেপ্টোসেন্ট্রিক"
+        },
+        {
+          "label": "খ.",
+          "text": "অরীয়"
+        },
+        {
+          "label": "গ.",
+          "text": "সংযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হ্যাড্রোসেন্ট্রিক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 130,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর গ্যামিটোফাইটিক পর্যায়ের প্রথম প্রতিনিধি কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গ্যামেট"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যান্থেরিডিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথেলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 131,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিডোফাইটের স্পোরোফাইট দশার প্রথম কোষ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "উস্পোর"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোর"
+        },
+        {
+          "label": "গ.",
+          "text": "শুক্রাণু"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডিম্বাণু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 132,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ক্যাপস্যুলের ভেতরে কতটি স্পোর মাতৃকোষ থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১০"
+        },
+        {
+          "label": "খ.",
+          "text": "১২"
+        },
+        {
+          "label": "গ.",
+          "text": "১৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "১৬"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 133,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সোরাস তৈরি হয় কোন পদ্ধতিতে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যৌন"
+        },
+        {
+          "label": "খ.",
+          "text": "অযৌন"
+        },
+        {
+          "label": "গ.",
+          "text": "অঙ্গজ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কৃত্রিম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 134,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি হ্যাপ্লয়েড?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোরানজিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোর মাতৃকোষ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোথেলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 135,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্পোরানজিয়াম থেকে স্পোরের বিস্তারে সাহায্য করে কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যানুলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "স্টোমিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "বৃন্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোরোজেনাস টিস্যু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 136,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রেণুধর পর্যায়ের প্রথম কোষ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডিম্বাণু"
+        },
+        {
+          "label": "খ.",
+          "text": "শুক্রাণু"
+        },
+        {
+          "label": "গ.",
+          "text": "এককোষী ভ্রুণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "জাইগোট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 137,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণের পাতাকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "খ.",
+          "text": "র‌্যামেন্টা"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 138,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি থ্যালাসকে প্রতিকূল অবস্থায় বাঁচিয়ে রাখে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থ্যালয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "শল্ক"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইজয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মধ্যশিরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 139,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণের পাতার মুকুল অবস্থায় কুণ্ডলি পাকানো গঠনকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ক্রোজিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সারসিনেট ভার্নেশন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 140,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ণের ভ্রুণ অঙ্কুরিত হয়ে কী উৎপন্ন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রেণুধর"
+        },
+        {
+          "label": "খ.",
+          "text": "লিঙ্গধর"
+        },
+        {
+          "label": "গ.",
+          "text": "রেণুমাতৃকোষ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সস্যকলা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 141,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের ডিপ্লয়েড পর্যায়ের ১ম কোষ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোর"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোর মাতৃকোষ"
+        },
+        {
+          "label": "গ.",
+          "text": "উস্পোর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 142,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের গ্যামিটোফাইট উদ্ভিদে কী ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যৌন"
+        },
+        {
+          "label": "খ.",
+          "text": "অযৌন"
+        },
+        {
+          "label": "গ.",
+          "text": "অঙ্গজ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কৃত্রিম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 143,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একটি স্পোরানজিয়াম থেকে কতটি স্পোর সৃষ্টি হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৬"
+        },
+        {
+          "label": "খ.",
+          "text": "২০"
+        },
+        {
+          "label": "গ.",
+          "text": "৩২"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৬৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 144,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন উদ্ভিদের মিয়োসিস ঘটে কোথায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোর মাতৃকোষে"
+        },
+        {
+          "label": "খ.",
+          "text": "জাইগোটে"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথেলাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোরে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 145,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন জীবনচক্রের ক্ষেত্রে সঠিক ক্রমধারা কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হ্যাপ্লয়েড স্পোর→প্রোথেলাস→উস্পোর→সোরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "হ্যাপ্লয়েড স্পোর→প্রোথেলাস→সোরাস→ উস্পোর"
+        },
+        {
+          "label": "গ.",
+          "text": "উস্পোর→প্রোথেলাস→হ্যাপ্লয়েড স্পোর→সোরাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস→প্রোথেলাস→হ্যাপ্লয়েড স্পোর→উস্পোর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 146,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইট জন্মায়-"
+        },
+        {
+          "type": "text",
+          "content": "i. ছায়াময় ভেজা আর্দ্র মাটিতে"
+        },
+        {
+          "type": "text",
+          "content": "ii. পুরাতন প্রাচীরে"
+        },
+        {
+          "type": "text",
+          "content": "iii. প্রাচীন গাছের বাকলে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 147,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইট উদ্ভিদে-"
+        },
+        {
+          "type": "text",
+          "content": "i. যৌন জনন উগ্যামাস প্রকৃতির"
+        },
+        {
+          "type": "text",
+          "content": "ii. জননাঙ্গ এককোষী"
+        },
+        {
+          "type": "text",
+          "content": "iii. জাইগোট রেণুধর পর্যায়ের প্রথম কোষ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 148,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটার আর্কিগোনিয়াম-"
+        },
+        {
+          "type": "text",
+          "content": "i. শুক্রাণু সৃষ্টি করে"
+        },
+        {
+          "type": "text",
+          "content": "ii. ডিম্বাণু সৃষ্টি করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. ফ্লাস্কের ন্যায় আকৃতি বিশিষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 149,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটার ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. পরিবহণ টিস্যু নেই"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্পোরোফাইটিক উদ্ভিদ"
+        },
+        {
+          "type": "text",
+          "content": "iii. এককোষী রাইজয়েট বিদ্যমান"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 150,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র সঞ্চয়ী অঞ্চল-"
+        },
+        {
+          "type": "text",
+          "content": "i. প্যারেনকাইমা কোষ দ্বারা গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টার্চ সঞ্চয় করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্লাইকোজেন সঞ্চয় করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 151,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. উদ্ভিদদেহ গ্যামিটোফাইট"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্কেল ও রাইজয়েট বিদ্যমান"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট ক্যাপসুলে সীমাবদ্ধ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 152,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia উদ্ভিদের বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. রাইজয়েড উপস্থিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. আর্কিগোনিয়াম ফ্ল্যাক্সের ন্যায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট হোমোস্পোরাস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 153,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia এর থ্যালাস-"
+        },
+        {
+          "type": "text",
+          "content": "i. মূল, কাণ্ড ও পাতায় বিভক্ত"
+        },
+        {
+          "type": "text",
+          "content": "ii. দ্ব্যাগ্র শাখান্বিত"
+        },
+        {
+          "type": "text",
+          "content": "iii. রাইজয়েড ও স্কেল নামক উপাঙ্গ বহন করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 154,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris উদ্ভিদ Riccia উদ্ভিদ হতে বেশি উন্নত, কারণ-"
+        },
+        {
+          "type": "text",
+          "content": "i. মূল দেহ স্পোরোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "ii. উদ্ভিদ সমাঙ্গদেহী"
+        },
+        {
+          "type": "text",
+          "content": "iii. ভাস্কুলার টিস্যু বিদ্যমান"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 155,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিডোফাইট উদ্ভিদে-"
+        },
+        {
+          "type": "text",
+          "content": "i. অঙ্গজ দেহ স্পোরোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "ii. পরিবহণতন্ত্র উপস্থিত"
+        },
+        {
+          "type": "text",
+          "content": "iii. ফ্লোয়েমে সঙ্গীকোষ থাকে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 156,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris-এর কান্ড প্রস্থচ্ছেদ করলে পাওয়া যায়-"
+        },
+        {
+          "type": "text",
+          "content": "i. এপিডার্মিস"
+        },
+        {
+          "type": "text",
+          "content": "ii. হাইগোডার্মিস"
+        },
+        {
+          "type": "text",
+          "content": "iii. কর্টেক্স"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 157,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2F1st%20paper%2C%20ch-6%2C%20mcq-42.png?alt=media&token=525de260-f946-49ba-965d-8374f9500dd0"
+        },
+        {
+          "type": "text",
+          "content": "উপরের চিত্রের ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. যৌন জনন সম্পন্ন হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্পোর হতে উৎপন্ন হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. ডিপ্লয়েড ক্রোমোসোম বিশিষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 158,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাস-"
+        },
+        {
+          "type": "text",
+          "content": "i. সহবাসী"
+        },
+        {
+          "type": "text",
+          "content": "ii. ভিন্নবাসী"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্বতন্ত্র ও স্বভোজী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 159,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের স্পোরোফাইট হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডিপ্লয়েড"
+        },
+        {
+          "type": "text",
+          "content": "ii. উস্পোর"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোর উৎপন্ন করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 160,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাসের ক্ষেত্রে প্রযোজ্য তথ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. এটি সহবাসী"
+        },
+        {
+          "type": "text",
+          "content": "ii. এটি ফার্নের গ্যামিটোফাইটিক দশা"
+        },
+        {
+          "type": "text",
+          "content": "iii. এটি স্বাধীন ও স্বভোজী দশা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 161,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথেলাসের বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. হৃৎপিন্ডাকার"
+        },
+        {
+          "type": "text",
+          "content": "ii. ভিন্নবাসী"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্যামিটোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 162,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "হুমায়ুন গ্রামের বাড়িতে বেড়াতে গেল । তাদের বাড়ির ভেজা দেয়ালে সে চক্রাকার দ্ব্যাগ্র শাখান্বিত এক ধরনের থ্যালয়েড উদ্ভিদ দেখতে পেল ।"
+        },
+        {
+          "type": "text",
+          "content": "হুমায়ুনের দেখা উদ্ভিদ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Semibarbula"
+        },
+        {
+          "label": "খ.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Pteris"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 163,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "হুমায়ুন গ্রামের বাড়িতে বেড়াতে গেল । তাদের বাড়ির ভেজা দেয়ালে সে চক্রাকার দ্ব্যাগ্র শাখান্বিত এক ধরনের থ্যালয়েড উদ্ভিদ দেখতে পেল ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উদ্ভিদের বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. প্রধান দেহ স্পোরোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "ii. বিষম পৃষ্ঠীয় শায়িত"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট ক্যাপসুলে আবদ্ধ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 164,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রওনক একাদশ শ্রেণির ছাত্র । সে একদিন তার বাড়ির পাশের পাটক্ষেতের জমিতে চক্রাকার, সবুজ, দ্ব্যাগ্র শাখান্বিত এক ধরনের থ্যালয়েড উদ্ভিদ জন্মানো দেখতে পেল ।"
+        },
+        {
+          "type": "text",
+          "content": "রওনকের সংগৃহীত নমুনাটি কোন শ্রেণির উদ্ভিদ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Hepaticopsida"
+        },
+        {
+          "label": "খ.",
+          "text": "Anthocerotopsida"
+        },
+        {
+          "label": "গ.",
+          "text": "Bryopsida"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Filicineae"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 165,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রওনক একাদশ শ্রেণির ছাত্র । সে একদিন তার বাড়ির পাশের পাটক্ষেতের জমিতে চক্রাকার, সবুজ, দ্ব্যাগ্র শাখান্বিত এক ধরনের থ্যালয়েড উদ্ভিদ জন্মানো দেখতে পেল ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদটির বৈশিষ্ট্য হলো এদের-"
+        },
+        {
+          "type": "text",
+          "content": "i. দেহ গ্যামিটোফাইটিক থ্যালাস"
+        },
+        {
+          "type": "text",
+          "content": "ii. প্রস্থচ্ছেদে সঞ্চয়ী ও সালোকসংশ্লেষী অঞ্চল দেখা যায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. রেণুধর ফুট, ক্যাপসুল ও সিটায় বিভক্ত করা যায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 166,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রফিক তাদের বাড়ির পাশের পরিত্যক্ত স্থানে শুষনি শাক বা ঢেঁকি শাক দেখতে পেল যা সবজি হিসেবে খাওয়া হয় । সে দেখল এর কান্ড ছোট, দৃঢ় ও শায়িত, রাইজোম শল্কপত্র দ্বারা আবৃত ।"
+        },
+        {
+          "type": "text",
+          "content": "রফিকের দেখা উদ্ভিদটি কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রায়োফাইটা"
+        },
+        {
+          "label": "খ.",
+          "text": "টেরিডোফাইটা"
+        },
+        {
+          "label": "গ.",
+          "text": "ক্লোরোফাইটা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রডোফাইটা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 167,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রফিক তাদের বাড়ির পাশের পরিত্যক্ত স্থানে শুষনি শাক বা ঢেঁকি শাক দেখতে পেল যা সবজি হিসেবে খাওয়া হয় । সে দেখল এর কান্ড ছোট, দৃঢ় ও শায়িত, রাইজোম শল্কপত্র দ্বারা আবৃত ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদটির বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. রাইজোম শাখান্বিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. পাতা পঙ্কল যৌগিক"
+        },
+        {
+          "type": "text",
+          "content": "iii. কান্ড রাইজোমে রূপান্তরিত"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 168,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "সায়রা পাঁকা দেয়ালে সবুজ রঙের ছোট ছোট দাগের মতো দেখল, পরে একটি শক্তিশালী অতসী কাঁচ দিয়ে সে এগুলোকে হৃৎপিন্ডাকার দেখতে পেল । শিক্ষক বিষয়টি অভিহিত হয়ে বললেন, স্পোর অঙ্কুরিত হয়ে এ ধরনের গঠন সৃষ্টি হয়েছে ।"
+        },
+        {
+          "type": "text",
+          "content": "সায়রা কী দেখতে পেয়েছিল?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "খ.",
+          "text": "র‌্যামেন্টাম"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোথেলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্রোজিয়ার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 169,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের অনুচ্ছেদটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "সায়রা পাঁকা দেয়ালে সবুজ রঙের ছোট ছোট দাগের মতো দেখল, পরে একটি শক্তিশালী অতসী কাঁচ দিয়ে সে এগুলোকে হৃৎপিন্ডাকার দেখতে পেল । শিক্ষক বিষয়টি অভিহিত হয়ে বললেন, স্পোর অঙ্কুরিত হয়ে এ ধরনের গঠন সৃষ্টি হয়েছে ।"
+        },
+        {
+          "type": "text",
+          "content": "সায়রার দেখা হৃৎপিন্ডাকার গঠনটি-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডিপ্লয়েড জনুর প্রতিনিধি"
+        },
+        {
+          "type": "text",
+          "content": "ii. লিঙ্গধর উদ্ভিদ"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্বতন্ত্র ও স্বভোজী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 170,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "মাসুদ তার বাড়ীর ইট নির্মিত পুরাতন ভগ্নপ্রাচীরে এক বিশেষ ধরনের উদ্ভিদ দেখতে পেল । উদ্ভিদটির নতুন পাতাগুলো কুণ্ডলিত এবং কাণ্ড রাইজোম জাতীয় ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে উল্লিখিত উদ্ভিদটির প্রারম্ভিক কোষ নিম্নের কোন অঙ্গ থেকে তৈরি হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোরানজিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সোরাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 171,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "মাসুদ তার বাড়ীর ইট নির্মিত পুরাতন ভগ্নপ্রাচীরে এক বিশেষ ধরনের উদ্ভিদ দেখতে পেল । উদ্ভিদটির নতুন পাতাগুলো কুণ্ডলিত এবং কাণ্ড রাইজোম জাতীয় ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদটিতে-"
+        },
+        {
+          "type": "text",
+          "content": "i. বহু ফ্লাজেলাযুক্ত শুক্রাণু উৎপন্ন হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. হেটারোমরফিক অনুক্রম দেখা যায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্যামিটোফাইট স্পোরোফাইটের ওপর নির্ভরশীল"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজিবুর স্যার"
+      ]
+    },
+    {
+      "id": 172,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন উদ্ভিদের স্পোরোফাইট থ্যালাসে নিমজ্জিত থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Semibarbula"
+        },
+        {
+          "label": "খ.",
+          "text": "Funaria"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Marchantia"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 173,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia- এর বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. দেহ গ্যামিটোফাইট ও থ্যালয়েড"
+        },
+        {
+          "type": "text",
+          "content": "ii. পরিবহণ টিস্যু আছে"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট সরল ও গ্যামিটোফাইটের উপর নির্ভরশীল"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 174,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "করিম সাহেবের বাগানের ভাঙা দেয়ালে একটি গাছ দেখতে পেলেন যার পাতাগুলো যৌগিক এবং পিনার নিম্নতলে বসন্তের গুঁটির মতো উঁচু উঁচু দেখা যাচ্ছে । এ গাছের কোনো ফুল হয় না ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের গাছটির আরো বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. ভাস্কুলার টিস্যু আছে"
+        },
+        {
+          "type": "text",
+          "content": "ii. কচি পাতা কুণ্ডলিত"
+        },
+        {
+          "type": "text",
+          "content": "iii. ফল তৈরি করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 175,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "উদ্দীপকটি পড়ে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "করিম সাহেবের বাগানের ভাঙা দেয়ালে একটি গাছ দেখতে পেলেন যার পাতাগুলো যৌগিক এবং পিনার নিম্নতলে বসন্তের গুঁটির মতো উঁচু উঁচু দেখা যাচ্ছে । এ গাছের কোনো ফুল হয় না ।"
+        },
+        {
+          "type": "text",
+          "content": "পাতার পিনার নিম্নতলে বসন্তের গুঁটির মতো বস্তুগুলো কোন ধরনের প্রজননে অংশগ্রহণ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যৌন"
+        },
+        {
+          "label": "খ.",
+          "text": "অযৌন"
+        },
+        {
+          "label": "গ.",
+          "text": "অঙ্গজ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কৃত্রিম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 176,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র শুক্রাণু-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্ল্যাজেলাবিহীন"
+        },
+        {
+          "label": "খ.",
+          "text": "দ্বিফ্ল্যাজেলাযুক্ত"
+        },
+        {
+          "label": "গ.",
+          "text": "বহুফ্ল্যাজেলাযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মাকু আকৃতি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 177,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র শল্কগুলোর ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. শুষ্ক মৌসুমে শুকিয়ে যাওয়া থেকে রক্ষা করে"
+        },
+        {
+          "type": "text",
+          "content": "ii. থ্যালাসের উপরিভাগে জন্মায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. বেশিরভাগ বহুকোষী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 178,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris-র কাণ্ড কী জাতীয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রাইজোম"
+        },
+        {
+          "label": "খ.",
+          "text": "টিউবার"
+        },
+        {
+          "label": "গ.",
+          "text": "বাল্ব"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রাইজোমর্ফ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 179,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2F1st%20paper%2C%20ch-6%2C%20mcq-4-5.png?alt=media&token=4060f56f-4057-4654-b3b0-6df8d7b040f6"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের “B” অংশের কী নাম?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "B.",
+          "text": "মেকী ইন্ডুসিয়াম"
+        },
+        {
+          "label": "C.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "D.",
+          "text": "পিনা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 180,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2F1st%20paper%2C%20ch-6%2C%20mcq-4-5.png?alt=media&token=5e37a5d7-6b42-49c3-a7ca-5fc80a338d3b"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের “A” অংশে কতটি স্পোর তৈরি হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "১৬টি"
+        },
+        {
+          "label": "B.",
+          "text": "৩২টি"
+        },
+        {
+          "label": "C.",
+          "text": "৬৪টি"
+        },
+        {
+          "label": "D.",
+          "text": "১২৮টি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 181,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একমাত্র জলজ মস কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia fluitans"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia personii"
+        },
+        {
+          "label": "গ.",
+          "text": "Riccia amelli"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Riccia discolor"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 182,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি সান ফার্ন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Equisetum"
+        },
+        {
+          "label": "গ.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Pteris"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 183,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris সম আকৃতির ও সমগুণ সম্পন্ন স্পোর উৎপন্ন করে, এরূপ বৈশিষ্ট্যকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হেটারোস্পোরিয়াস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যাস্পোরিয়াস"
+        },
+        {
+          "label": "গ.",
+          "text": "আইসোস্পোরিয়াস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হোমোস্পোরিয়াস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 184,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris (ফার্ন) উদ্ভিদ হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সপুষ্পক"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্যামিটোফাইটিক"
+        },
+        {
+          "label": "গ.",
+          "text": "পরিবহণ টিস্যুযুক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থ্যালয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 185,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris কে সানফার্ন বলার কারণ কি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এটি শীতল ছায়াযুক্ত স্থানে জন্মায়"
+        },
+        {
+          "label": "খ.",
+          "text": "এটি রৌদ্রে জন্মাতে পারে"
+        },
+        {
+          "label": "গ.",
+          "text": "এটি ইটের স্তুপে জন্মায়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এটি রৌদ্রে জন্মাতে পারে না"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 186,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন উদ্ভিদের রাইজোম যে শল্কপত্র দ্বারা আবৃত থাকে তাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‌্যামেন্টা"
+        },
+        {
+          "label": "খ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "গ.",
+          "text": "সারসিনেট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‌্যাকিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 187,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি ঢেঁকিশাক নামে পরিচিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Riccia"
+        },
+        {
+          "label": "খ.",
+          "text": "Dryopteris"
+        },
+        {
+          "label": "গ.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Pteris"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 188,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন ধরনের উদ্ভিদকে লিভারওয়ার্ট বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Hepaticae"
+        },
+        {
+          "label": "খ.",
+          "text": "Bryopsida"
+        },
+        {
+          "label": "গ.",
+          "text": "Fillicinate"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Anthocerotae"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 189,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর কুণ্ডলিত পাতার বিন্যাসকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "খ.",
+          "text": "সারসিনেট ভারনেশন"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পক্ষল যৌগিক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 190,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর পাতাকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‌্যামেন্টা"
+        },
+        {
+          "label": "খ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‌্যাকিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 191,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র থ্যালাসের ক্ষেত্রে যা প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. দ্ব্যাগ্র শাখাযুক্ত"
+        },
+        {
+          "type": "text",
+          "content": "ii. একে রোসেট বলা হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. বহুকোষী শল্ক ও এককোষী রাইজয়েডযুক্ত"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 192,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথ্যালাসের বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. হৃৎপিন্ডাকার গঠন"
+        },
+        {
+          "type": "text",
+          "content": "ii. রাইজয়েড দ্বারা মাটি হতে খনিজ পুষ্টি সংগ্রহ করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. নিচের দিকে একটি খাঁজ থাকে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 193,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকের আলোকে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "একদল ছাত্র পথ চলতে মানুষের লিভার আকৃতিবিশিষ্ট ক্ষুদ্র ক্ষুদ্র উদ্ভিদ দেখতে পেল, যাদেরকে উভচর উদ্ভিদও বলা হয় ।"
+        },
+        {
+          "type": "text",
+          "content": "নিম্নের কোন বৈশিষ্ট্যটি উদ্দীপকের উদ্ভিদগুলো প্রদর্শন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দেহ স্পোরোফাইটিক"
+        },
+        {
+          "label": "খ.",
+          "text": "থ্যালাস দ্ব্যাগ্র শাখাবিশিষ্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "পুংজননাঙ্গ আর্কিগোনিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভাস্কুলার টিস্যু আছে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 194,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকের আলোকে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "একদল ছাত্র পথ চলতে মানুষের লিভার আকৃতিবিশিষ্ট ক্ষুদ্র ক্ষুদ্র উদ্ভিদ দেখতে পেল, যাদেরকে উভচর উদ্ভিদও বলা হয় ।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উদ্ভিদটির দুটি অঞ্চলের মধ্যে কোনটি সত্য?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "আত্তীকরণ অঞ্চল ক্লোরোফিল যুক্ত"
+        },
+        {
+          "label": "খ.",
+          "text": "সঞ্চয়ী অঞ্চল স্টোমাটা যুক্ত"
+        },
+        {
+          "label": "গ.",
+          "text": "আত্তীকরণ অঞ্চলে রাইজয়েড বিদ্যমান"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সঞ্চয়ী অঞ্চলে বায়ুকুঠুরী যুক্ত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 195,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকের আলোকে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রফিক তাদের বাগানের উঁচু বৃক্ষের শাখার উপর জন্মানো একটা ছোট উদ্ভিদ নিয়ে কলেজের উদ্ভিদ বিজ্ঞানের স্যারকে দেখালেন । স্যার বললেন, এটা অপুষ্পক উদ্ভিদের মধ্যে সর্বাপেক্ষা উন্নত ।"
+        },
+        {
+          "type": "text",
+          "content": "রফিকের নিয়ে আসা উদ্ভিদের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulotrix"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Cycas"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 196,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকের আলোকে প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "রফিক তাদের বাগানের উঁচু বৃক্ষের শাখার উপর জন্মানো একটা ছোট উদ্ভিদ নিয়ে কলেজের উদ্ভিদ বিজ্ঞানের স্যারকে দেখালেন । স্যার বললেন, এটা অপুষ্পক উদ্ভিদের মধ্যে সর্বাপেক্ষা উন্নত ।"
+        },
+        {
+          "type": "text",
+          "content": "রফিকের আনা উদ্ভিদটির বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. দেহ মূল, কাণ্ড ও পাতায় বিভক্ত"
+        },
+        {
+          "type": "text",
+          "content": "ii. কাণ্ড রাইজোম জাতীয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. কচি অবস্থায় পাতা কুণ্ডলিত"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 197,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia এর দেহকে বলা হয়-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "র‌্যাকিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "গ.",
+          "text": "থ্যালাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‌্যামেন্টা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "FCC '2022"
+      ]
+    },
+    {
+      "id": 198,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন উদ্ভিদের পরিবহণতন্ত্র নেই?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Moss"
+        },
+        {
+          "label": "খ.",
+          "text": "Selaginella"
+        },
+        {
+          "label": "গ.",
+          "text": "Pteris"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Cycas"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SHS '2022"
+      ]
+    },
+    {
+      "id": 199,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটিতে অমসৃন রাইজয়েড তৈরি হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulothrix"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia"
+        },
+        {
+          "label": "গ.",
+          "text": "Agaricus"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Pteris"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "UHSC '2022"
+      ]
+    },
+    {
+      "id": 200,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "থ্যালয়েড উদ্ভিদ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. স্বভোজী"
+        },
+        {
+          "type": "text",
+          "content": "ii. পরজীবী"
+        },
+        {
+          "type": "text",
+          "content": "iii. মিথোজীবী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JCPSC '2022"
+      ]
+    },
+    {
+      "id": 201,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia এর বৈশিষ্ট্যসমূহ-"
+        },
+        {
+          "type": "text",
+          "content": "i. ইনডুসিয়াম উপস্থিত থাকে"
+        },
+        {
+          "type": "text",
+          "content": "ii. অ্যানুলাস অনুপস্থিত থাকে"
+        },
+        {
+          "type": "text",
+          "content": "iii. অ্যাগ্রোরিডিয়াম উপস্থিত থাকে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "FCC '2022"
+      ]
+    },
+    {
+      "id": 202,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-এর বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. দেহ গ্যামিটোফাইট ও থ্যালয়েড"
+        },
+        {
+          "type": "text",
+          "content": "ii. পরিবহন টিস্যু আছে"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট সরল এবং গ্যামিটোফাইটের উপর নির্ভরশীল"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DRMC '2022"
+      ]
+    },
+    {
+      "id": 203,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia এর বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. রাইজয়েড উপস্থিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. আর্কিগোনিয়াম বেলনাকার"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরোফাইট হোমোস্পোরাস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CGWCC '2022"
+      ]
+    },
+    {
+      "id": 204,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia এর সঞ্চয়ী অঞ্চলের বৈশিষ্ট্য—"
+        },
+        {
+          "type": "text",
+          "content": "i. প্যারেনকাইমা কোষ দ্বারা গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টার্চ সঞ্চয় করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. লিপিড সঞ্চয় করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BNMPC '2022"
+      ]
+    },
+    {
+      "id": 205,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিক্ষক তার ক্লাসে দুটো উদ্ভিদ দেখালেন। প্রথম উদ্ভিদটিকে লিভারওয়ার্ট বলে এবং দ্বিতীয় উদ্ভিদটিকে পাম-ফার্ন বলে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের প্রথম উদ্ভিদটির বৈজ্ঞানিক নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Pteris sp"
+        },
+        {
+          "label": "খ.",
+          "text": "Riccia sp"
+        },
+        {
+          "label": "গ.",
+          "text": "Cycas sp"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Pinus sp"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RUMC '2022"
+      ]
+    },
+    {
+      "id": 206,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিক্ষক তার ক্লাসে দুটো উদ্ভিদ দেখালেন। প্রথম উদ্ভিদটিকে লিভারওয়ার্ট বলে এবং দ্বিতীয় উদ্ভিদটিকে পাম-ফার্ন বলে।"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোন তথ্যটি উদ্দীপকের দ্বিতীয় উদ্ভিদের জন্য প্রযোজ্য?"
+        },
+        {
+          "type": "text",
+          "content": "i. এটি একটি জীবন্ত-জীবাশা"
+        },
+        {
+          "type": "text",
+          "content": "ii. দ্বি-নিষেক ঘটে না"
+        },
+        {
+          "type": "text",
+          "content": "iii. এর কোরালয়েড মূল আছে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RUMC '2022"
+      ]
+    },
+    {
+      "id": 207,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের পুংজননাঙ্গের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যান্থেরিডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোরাঞ্জিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "গ্যামেস্টেঞ্জিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "আর্কিগোনিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BBSC '2022"
+      ]
+    },
+    {
+      "id": 208,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইট জাইগোটে কোন ধরনের কোষ বিভাজন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যামাইটোসিস"
+        },
+        {
+          "label": "খ.",
+          "text": "মাইটোসিস"
+        },
+        {
+          "label": "গ.",
+          "text": "মিয়োসিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রোমাইটোসিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GBCB '2022"
+      ]
+    },
+    {
+      "id": 209,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Riccia-র শুক্রাণু"
+        },
+        {
+          "type": "text",
+          "content": "i. এক ফ্লাজেলাযুক্ত"
+        },
+        {
+          "type": "text",
+          "content": "ii. দ্বি- ফ্লাজেলাযুক্ত"
+        },
+        {
+          "type": "text",
+          "content": "iii. বহু ফ্লাজেলাযু"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i"
+        },
+        {
+          "label": "খ.",
+          "text": "ii"
+        },
+        {
+          "label": "গ.",
+          "text": "iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CCC '2022"
+      ]
+    },
+    {
+      "id": 210,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_1_preview_rev_1.png?alt=media&token=f46ee757-9482-4579-b37f-c42702b7745c"
+        },
+        {
+          "type": "text",
+          "content": "এটি কোন শ্রেণির অন্তর্ভূত উদ্ভিদ-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "Hepaticeae"
+        },
+        {
+          "label": "B.",
+          "text": "Anthocerotae"
+        },
+        {
+          "label": "C.",
+          "text": "Filicineae"
+        },
+        {
+          "label": "D.",
+          "text": "Muscineae"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GSCD '2022"
+      ]
+    },
+    {
+      "id": 211,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_1_preview_rev_1.png?alt=media&token=d151130b-4f28-46e1-8da2-d479b2193c96"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদের বৈশিষ্ট্য—"
+        },
+        {
+          "type": "text",
+          "content": "i. প্রধান দেহ স্পোরোফাইটিক"
+        },
+        {
+          "type": "text",
+          "content": "ii. থ্যালাস সবুজ, বিষমপৃষ্ঠ ও দ্ব্যাগ্র শাখাযুক্ত"
+        },
+        {
+          "type": "text",
+          "content": "iii. থ্যালাসের অঙ্কীয় দিকে বহুকোষী স্কেল থাকে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GSCD '2022"
+      ]
+    },
+    {
+      "id": 212,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রায়োফাইটের ভূণের অবস্থান কোথায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পুং জননাঙ্গের অভ্যন্তরে"
+        },
+        {
+          "label": "খ.",
+          "text": "স্ত্রী জননাঙ্গের অভ্যন্তরে"
+        },
+        {
+          "label": "গ.",
+          "text": "রাইজায়েডে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ত্রী জননাঙ্গের বাহিরে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GBCB '2022"
+      ]
+    },
+    {
+      "id": 213,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris কোন শ্রেণীর অন্তর্ভুক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Chlorophyceae"
+        },
+        {
+          "label": "খ.",
+          "text": "Ulotrichaceae"
+        },
+        {
+          "label": "গ.",
+          "text": "Basidiophyceae"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Filicineae"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "FCC '2022"
+      ]
+    },
+    {
+      "id": 214,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পরিবহন টিস্যু বহনকারী উদ্ভিদ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মস"
+        },
+        {
+          "label": "খ.",
+          "text": "ফার্ণ"
+        },
+        {
+          "label": "গ.",
+          "text": "ছত্রাক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শৈবাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RUMC '2022"
+      ]
+    },
+    {
+      "id": 215,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের পাতার মুকুল অবস্থায় কুন্ডলী পাকানো গঠনকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "ক্রোজিয়ার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সারসিনেট ভার্নেশন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BBSC '2022"
+      ]
+    },
+    {
+      "id": 216,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris পাতার স্পোরাঞ্জিয়াম গুচ্ছকে বলে–"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "বীজ"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যানুলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "র‍্যামেন্টাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RCCR '2022"
+      ]
+    },
+    {
+      "id": 217,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি Pteris উদ্ভিদের শল্কপত্র?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "পিনা"
+        },
+        {
+          "label": "গ.",
+          "text": "র‌্যামেন্টাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্টোমিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "PCC '2022"
+      ]
+    },
+    {
+      "id": 218,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি Pteris এ উপস্থিত থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পিনা"
+        },
+        {
+          "label": "খ.",
+          "text": "রোজেট"
+        },
+        {
+          "label": "গ.",
+          "text": "এপিকাল নচ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রাইজোমর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "FCC '2022"
+      ]
+    },
+    {
+      "id": 219,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি liverworts নামে পরিচিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Fungi"
+        },
+        {
+          "label": "খ.",
+          "text": "Algae"
+        },
+        {
+          "label": "গ.",
+          "text": "Anthocerotae"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Hepaticae"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ISCM '2022"
+      ]
+    },
+    {
+      "id": 220,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি বৃক্ক আকৃতির?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "প্ল্যাসেন্টা"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোরাঞ্জিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফলস ইন্ডুসিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SHS '2022"
+      ]
+    },
+    {
+      "id": 221,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সোরাই উৎপন্নকারী পাতাকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্যাপসিউল"
+        },
+        {
+          "label": "খ.",
+          "text": "স্টোমিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "স্পোরোফিল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যানুলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BNSCK '2022"
+      ]
+    },
+    {
+      "id": 222,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিডোফাইটার স্পোর-"
+        },
+        {
+          "type": "text",
+          "content": "i. হোমোস্পোরাস"
+        },
+        {
+          "type": "text",
+          "content": "ii. হেটারোস্পোরাস"
+        },
+        {
+          "type": "text",
+          "content": "iii. ফিলামেন্টাস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "গ.",
+          "text": "iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CCC '2022"
+      ]
+    },
+    {
+      "id": 223,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টেরিডোফাইটা উদ্ভিদ-"
+        },
+        {
+          "type": "text",
+          "content": "i. গ্যামেটোফাইট"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্পোরোফাইট"
+        },
+        {
+          "type": "text",
+          "content": "iii. মূল বিশিষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CCC '2022"
+      ]
+    },
+    {
+      "id": 224,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর ক্ষেত্রে তথ্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. একে পাম ফার্ন বলা হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. একে সানফার্ন বলা হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. ভাস্কুলার বান্ডল হ্যাড্রোসেন্ট্রিক"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "HGMC '2022"
+      ]
+    },
+    {
+      "id": 225,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_2_preview_rev_1.png?alt=media&token=7ff1a2b3-3c70-4bb2-a777-1d872eff65d5"
+        },
+        {
+          "type": "text",
+          "content": "চিত্রের উদ্ভিদটিতে কোন ধরনের ভাস্কুলার বান্ডল উপস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "সমপার্শ্বীয়"
+        },
+        {
+          "label": "B.",
+          "text": "সমদ্বিপাশ্বীয়"
+        },
+        {
+          "label": "C.",
+          "text": "লেপ্টোসেন্ট্রিক"
+        },
+        {
+          "label": "D.",
+          "text": "হ্যাড্রোসেন্ট্রিক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BNMPC '2022"
+      ]
+    },
+    {
+      "id": 226,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_2_preview_rev_1.png?alt=media&token=26d47eb1-5994-4f71-b295-7df122be6f02"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদটিতে প্রজনন সম্পন্ন হয় কোন পদ্ধতিতে?"
+        },
+        {
+          "type": "text",
+          "content": "i. অযৌন জনন"
+        },
+        {
+          "type": "text",
+          "content": "ii. অঙ্গজ জনন"
+        },
+        {
+          "type": "text",
+          "content": "iii. যৌন জনন"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BNMPC '2022"
+      ]
+    },
+    {
+      "id": 227,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি Pteris এর স্পোরোগোনিয়ামের অংশ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্টোমিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্রীবা"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লাসেন্টা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "উদর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CCC '2022"
+      ]
+    },
+    {
+      "id": 228,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি বাদামী রঙের এবং বৃক্কাকার?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্পোরাঞ্জিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রন্ড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রাইজয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CCC '2022"
+      ]
+    },
+    {
+      "id": 229,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Pteris এর গ্যামেটোফাইট অধ্যায়ের সূচনা কোষ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পত্রক টিস্যু"
+        },
+        {
+          "label": "খ.",
+          "text": "ইন্ডুসিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "অগ্রস্থ খাঁজ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পোর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GBCB '2022"
+      ]
+    },
+    {
+      "id": 230,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্ন প্রোথ্যালাস-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডিপ্লয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "একলিঙ্গ"
+        },
+        {
+          "label": "গ.",
+          "text": "স্বভোজী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিন্নবাসী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BNSCK '2022"
+      ]
+    },
+    {
+      "id": 231,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যান্ড্রোসাইট রূপান্তরিত হয়ে কিসে পরিণত হয়।"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডিম্বাণুতে"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পোরে"
+        },
+        {
+          "label": "গ.",
+          "text": "শুক্রাণুতে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফ্ল্যাজেলা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GBCB '2022"
+      ]
+    },
+    {
+      "id": 232,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফার্নের প্রোথ্যালাস-"
+        },
+        {
+          "type": "text",
+          "content": "i. সহবাসী"
+        },
+        {
+          "type": "text",
+          "content": "ii. ভিন্নবাসী"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্বভোজী"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MUVCD '2022"
+      ]
+    },
+    {
+      "id": 233,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুস্পষ্ট জনুক্রম দেখা যায়—"
+        },
+        {
+          "type": "text",
+          "content": "i. ফার্ন-এ"
+        },
+        {
+          "type": "text",
+          "content": "ii. ম্যালেরিয়ার জীবাণুতে"
+        },
+        {
+          "type": "text",
+          "content": "iii. আবৃতবীজী উদ্ভিদে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "HGMC '2022"
+      ]
+    },
+    {
+      "id": 234,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_3_preview_rev_1.png?alt=media&token=d36b0eaf-79c1-420c-83e4-719e6cba91ea"
+        },
+        {
+          "type": "text",
+          "content": "চিত্র 'A' হলে Pteris এর-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "অ্যাম্বেরিডিয়াম"
+        },
+        {
+          "label": "B.",
+          "text": "আর্কিগোনিয়াম"
+        },
+        {
+          "label": "C.",
+          "text": "সোরাস"
+        },
+        {
+          "label": "D.",
+          "text": "প্রোথ্যালাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RUMC '2022"
+      ]
+    },
+    {
+      "id": 235,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_4_preview_rev_1.png?alt=media&token=02ba1b55-7592-47d7-a754-4d1d1c195cb1"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উল্লিখিত উদ্ভিদটির নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ইউলোক্সি"
+        },
+        {
+          "label": "B.",
+          "text": "রিকসিয়া"
+        },
+        {
+          "label": "C.",
+          "text": "টেরিস"
+        },
+        {
+          "label": "D.",
+          "text": "সাইকাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JCPSC '2022"
+      ]
+    },
+    {
+      "id": 236,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_4_preview_rev_1.png?alt=media&token=87a923e2-e496-4a43-8e4f-d509bee13295"
+        },
+        {
+          "type": "text",
+          "content": "উদ্ভিদটির জীবনচক্রে-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডিপ্লয়েড দশা প্রকট"
+        },
+        {
+          "type": "text",
+          "content": "ii. গ্যামেটোফাইট স্বভোজী"
+        },
+        {
+          "type": "text",
+          "content": "iii. যৌন দশা স্পোরোফাইট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i,ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JCPSC '2022"
+      ]
+    },
+    {
+      "id": 237,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_5_preview_rev_1.png?alt=media&token=8929a5a0-5a40-4acc-88d4-ab02170690b4"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের ‘a’ অংশের নাম-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "স্পোরোজেনাস টিস্যু"
+        },
+        {
+          "label": "B.",
+          "text": "অমরা"
+        },
+        {
+          "label": "C.",
+          "text": "বহিঃত্বক"
+        },
+        {
+          "label": "D.",
+          "text": "কর্টেক্স"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ISCM '2022"
+      ]
+    },
+    {
+      "id": 238,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_5_preview_rev_1.png?alt=media&token=7c583346-8626-48e7-8f06-6c91d9dfecd9"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের ‘b’ অংশের বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. এটি ফলস ইন্ডুসিয়াম"
+        },
+        {
+          "type": "text",
+          "content": "ii. সেরাইকে আবৃত করে রাখে"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পোরাঞ্জিয়ামকে পুষ্টি দান করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ISCM '2022"
+      ]
+    },
+    {
+      "id": 239,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-22-2023%2017.31_5_preview_rev_1.png?alt=media&token=9f634f9b-629a-4f8a-b7c7-11391628fe28"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের C হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. স্পোরোফাইটের ১ম কোষ"
+        },
+        {
+          "type": "text",
+          "content": "ii. গ্যামিটোফাইটের ১ম কোষ"
+        },
+        {
+          "type": "text",
+          "content": "iii. এটি হ্যাপ্লয়েড"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ISCM '2022"
+      ]
+    },
+    {
+      "id": 240,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন পাটের জাতটি বাংলাদেশে প্রচলিত নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Corchorus acutangulus"
+        },
+        {
+          "label": "খ.",
+          "text": "Corchorus trilocularis"
+        },
+        {
+          "label": "গ.",
+          "text": "Corchorus depressus"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Corchorus floridus"
+        },
+        {
+          "label": "ঙ.",
+          "text": "Corchorus olitorius"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 241,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি বন সম্প্রদায়ের স্তরবিন্যাসের অন্তর্ভুক্ত নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ওভারস্টোরি স্তর"
+        },
+        {
+          "label": "খ.",
+          "text": "আন্ডারস্টোরি স্তর"
+        },
+        {
+          "label": "গ.",
+          "text": "চারাস্তর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভূ-সংলগ্ন স্তর"
+        },
+        {
+          "label": "ঙ.",
+          "text": "প্রোগ্রেসিভ স্তর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 242,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্থল ইকোসিস্টেমে খাদ্য সঞ্চয় করে রাখার মতো স্থান নিচের কোনটি নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বায়োমাস"
+        },
+        {
+          "label": "খ.",
+          "text": "লিটার"
+        },
+        {
+          "label": "গ.",
+          "text": "মাটি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্যাঁতসেঁতে নালা"
+        },
+        {
+          "label": "ঙ.",
+          "text": "মৃত জৈববস্তু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 243,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুস্থিত ইকোসিস্টেমের নিয়ামক নিচের কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বায়ুচাপ"
+        },
+        {
+          "label": "খ.",
+          "text": "আবহাওয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "জলবায়ু"
+        },
+        {
+          "label": "ঘ.",
+          "text": "তাপমাত্রা"
+        },
+        {
+          "label": "ঙ.",
+          "text": "প্রাকৃতিক দূর্যোগ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 244,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি শক্তি প্রবাহের বৈশিষ্ট্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শক্তির প্রবাহ একমুখী"
+        },
+        {
+          "label": "খ.",
+          "text": "শক্তির মূল উৎস সৌরশক্তি"
+        },
+        {
+          "label": "গ.",
+          "text": "শক্তি প্রবাহ থার্মোডাইনামিক্স এর ১ম ও ২য় সূত্র মেনে চলে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "খাদ্য শৃঙ্খলের শুরু থেকে শেষ পর্যন্ত শক্তির ক্রমব্যয় ঘটে"
+        },
+        {
+          "label": "ঙ.",
+          "text": "সৌরশক্তি সর্বপ্রথম খাদক দ্বারা আহরিত হয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 245,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "১টি বাঘ ৩০০ গ্রাম মাংস ভক্ষন করলে এর মধ্যে শতকরা কতভাগ তাপ হিসেবে পরিবেশে ফিরে যাবে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৭০ গ্রাম"
+        },
+        {
+          "label": "খ.",
+          "text": "২২০ গ্রাম"
+        },
+        {
+          "label": "গ.",
+          "text": "২৪০ গ্রাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২৫০ গ্রাম"
+        },
+        {
+          "label": "ঙ.",
+          "text": "২৭০ গ্রাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 246,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কারা মরুজ অঞ্চলের উদ্ভিদ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হাইড্রোফাইট"
+        },
+        {
+          "label": "খ.",
+          "text": "মেসোফাইট"
+        },
+        {
+          "label": "গ.",
+          "text": "জেরোফাইট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডেসার্টোফাইট"
+        },
+        {
+          "label": "ঙ.",
+          "text": "হ্যালোফাইট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 247,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মরুভূমির অধিকাংশ উদ্ভিদ কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "C2 উদ্ভিদ"
+        },
+        {
+          "label": "খ.",
+          "text": "C3 উদ্ভিদ"
+        },
+        {
+          "label": "গ.",
+          "text": "C4 উদ্ভিদ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "CAM উদ্ভিদ"
+        },
+        {
+          "label": "ঙ.",
+          "text": "ডায়াটম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 248,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পৃথিবীর সবচেয়ে বৃহত্তম বায়োম নিচের কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "জলজ বায়োম"
+        },
+        {
+          "label": "খ.",
+          "text": "তুন্দ্রা বায়োম"
+        },
+        {
+          "label": "গ.",
+          "text": "সামুদ্রিক ও লোনাপানির বায়োম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বনভূমির বায়োম"
+        },
+        {
+          "label": "ঙ.",
+          "text": "তৃণভূমির বায়োম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 249,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি ইনসিটু কনজারভেশনেড় উদাহারণ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "জাতীয় উদ্যান"
+        },
+        {
+          "label": "খ.",
+          "text": "অভয়ারণ্য"
+        },
+        {
+          "label": "গ.",
+          "text": "বায়োস্ফিয়ার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "চিড়িয়াখানা"
+        },
+        {
+          "label": "ঙ.",
+          "text": "ইকোপার্ক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    },
+    {
+      "id": 250,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি উভচর উদ্ভিদ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্ষুদিপানা"
+        },
+        {
+          "label": "খ.",
+          "text": "কলমিলতা"
+        },
+        {
+          "label": "গ.",
+          "text": "শাপলা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হাইড্রিলা"
+        },
+        {
+          "label": "ঙ.",
+          "text": "পদ্ম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "দাঁড়িকমা স্পেশাল '24-25"
+      ]
+    }
+  ]
+}

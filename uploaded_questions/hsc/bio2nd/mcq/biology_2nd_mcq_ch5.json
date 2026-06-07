@@ -1,0 +1,9088 @@
+{
+  "source_url": "https://www.daricomma.com/academic/HSC%20-%20%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A7%9F%E0%A6%A8%20%E0%A7%A7%E0%A6%AE%20%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0/chapter/%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A7%A6%E0%A7%A7%E0%A6%83%20%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%87%E0%A6%9F%E0%A6%B0%E0%A7%80%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%20%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B9%E0%A6%BE%E0%A6%B0?page=1",
+  "total_questions": 271,
+  "latex_format": "inline $...$ — render with MathJax or KaTeX",
+  "note": "'answer' ফিল্ড খালি — manually পূরণ করুন। 'question_parts' একটি array: প্রতিটি item হয় {type:'text', content:'...'} অথবা {type:'image', url:'...'}। অপশনে image থাকলে 'image_url' ফিল্ড থাকবে।",
+  "questions": [
+    {
+      "id": 1,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "$O_{2}ওCO_{2}$ পরিবহণে নিচের কোনটি জড়িত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "লিউকোসাইট"
+        },
+        {
+          "label": "খ.",
+          "text": "এরিথ্রোসাইট"
+        },
+        {
+          "label": "গ.",
+          "text": "লিম্ফোসাইট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মনোসাইট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2025"
+      ]
+    },
+    {
+      "id": 2,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন অংশে গ্যাসীয় বিনিময় ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়া $\\to$ ব্রহ্মাস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যালভিওলাস $\\to$ কৈশিক জালিকা"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কিওল $\\to$ ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রহ্মাস $\\to$ কৈশিক জালিকা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2025"
+      ]
+    },
+    {
+      "id": 3,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি নিম্ন শ্বাসনালীর সংক্রমণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সাইনুসাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ওটাইটিস মিডিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাইটিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যারিঞ্জাইটিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2025"
+      ]
+    },
+    {
+      "id": 4,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিম্নের কোনটি সারফ্যাকট্যান্ট এর কাজ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাসের চুপসে যাওয়া রোধ করে"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যালভিওলাসে গ্যাসীয় বিনিময় সহজ করে"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিটারজেন্ট এর ন্যায় কাজ করে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাসের কর্মক্ষমতা হ্রাস করে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2025"
+      ]
+    },
+    {
+      "id": 5,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসরঞ্জক এর ক্ষেত্রে প্রযোজ্য- i. হিমোগ্লোবিন $O_{2}$ পরিবহন করে ii. আয়রন ও প্রোটিনের সমন্বয়ে হিমোগ্লোবিন গঠিত iii. অক্সিজেনের সাথে হিমোগ্লোবিনের রাসায়নিক বিক্রিয়া উভমুখী নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2025"
+      ]
+    },
+    {
+      "id": 6,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন অঙ্গে ব্রঙ্কিওল বিদ্যমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "খ.",
+          "text": "হৃদপিণ্ড"
+        },
+        {
+          "label": "গ.",
+          "text": "যকৃত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফিমার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2025"
+      ]
+    },
+    {
+      "id": 7,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের স্বরযন্ত্রে ভোকাল কর্ডের সংখ্যা কতটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৩"
+        },
+        {
+          "label": "খ.",
+          "text": "৫"
+        },
+        {
+          "label": "গ.",
+          "text": "৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৯"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2025"
+      ]
+    },
+    {
+      "id": 8,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপায়ী ফুসফুসের এক্স-রে এর বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. ফিল্মটি কালো"
+        },
+        {
+          "type": "text",
+          "content": "ii. ফিলাটি সম্পূর্ণ কালো হয় না"
+        },
+        {
+          "type": "text",
+          "content": "iii. পানি জমা শনাক্ত করা যায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2025"
+      ]
+    },
+    {
+      "id": 9,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "হিমোগ্লোবিনের কোন অংশে $\\mathrm {CO_2}$ যুক্ত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "$\\mathrm {-~COOH}$"
+        },
+        {
+          "label": "খ.",
+          "text": "$\\mathrm {-~OH}$"
+        },
+        {
+          "label": "গ.",
+          "text": "$\\mathrm {-~NH_2}$"
+        },
+        {
+          "label": "ঘ.",
+          "text": "$\\mathrm {HCO_3}$"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2023"
+      ]
+    },
+    {
+      "id": 10,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসে দ্বিস্তরী প্লিউরাল পর্দার অংশ কোনগুলো?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভেস্টিবিউল ও প্যারাইটাল"
+        },
+        {
+          "label": "খ.",
+          "text": "ভিসেরাল ও লোবিউল"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কিওল লোবিউল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিসেরাল ও প্যারাইটাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2023"
+      ]
+    },
+    {
+      "id": 11,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রঙ্কাসের কোন অংশ ফুসফুসে প্রবেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "লোবিউল"
+        },
+        {
+          "label": "গ.",
+          "text": "হাইলাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যাট্রিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2023"
+      ]
+    },
+    {
+      "id": 12,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহে ট্রাকিয়ার দ্বি-বিভাজনে সৃষ্ট শাখা দুটিকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রান্তীয় ব্রঙ্কিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রাইমারি ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "সেকেন্ডারি ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টারসিয়ারি ব্রঙ্কাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2023"
+      ]
+    },
+    {
+      "id": 13,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন সাইনাসের প্রদাহের কারণে মানুষের গালে ও দাঁতে ব্যথা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "খ.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ফেনয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2023"
+      ]
+    },
+    {
+      "id": 14,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের বহিঃশ্বসনের ক্ষেত্রে কোন তথ্যটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এনজাইমের ভূমিকা আছে"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রধান উপপর্যায় ক্রেবস চক্র"
+        },
+        {
+          "label": "গ.",
+          "text": "কোষের অভ্যন্তরে সংঘটিত হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শক্তি উৎপন্ন হয় না"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2023"
+      ]
+    },
+    {
+      "id": 15,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহে মস্তিষ্কের কোন অংশে শ্বসনকেন্দ্র অবস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পনস্"
+        },
+        {
+          "label": "খ.",
+          "text": "সেরেবেলাম"
+        },
+        {
+          "label": "গ.",
+          "text": "সেরেব্রাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মধ্যমস্তিষ্ক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2023"
+      ]
+    },
+    {
+      "id": 16,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফেকট্যান্ট কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2023",
+        "ChB '2023"
+      ]
+    },
+    {
+      "id": 17,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাসের সময় অ্যালভিওলাসে $\\mathrm O_2$ এর চাপ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "40 mm Hg"
+        },
+        {
+          "label": "খ.",
+          "text": "100 mm Hg"
+        },
+        {
+          "label": "গ.",
+          "text": "104 mm Hg"
+        },
+        {
+          "label": "ঘ.",
+          "text": "120 mm Hg"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2023"
+      ]
+    },
+    {
+      "id": 18,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপানের কারণে অ্যালভিওলাস ফেটে যাওয়াকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রংকাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "এমফাইসেমা"
+        },
+        {
+          "label": "গ.",
+          "text": "ফাইব্রোসিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্লুরিসি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2023"
+      ]
+    },
+    {
+      "id": 19,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ট্যাবেকুলি কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যকৃতে"
+        },
+        {
+          "label": "খ.",
+          "text": "রক্তে"
+        },
+        {
+          "label": "গ.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃক্কে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2023"
+      ]
+    },
+    {
+      "id": 20,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন স্নায়ু হাঁচি প্রতিবর্ত ক্রিয়ার উদ্ভব ঘটায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অলফ্যাক্টরি"
+        },
+        {
+          "label": "খ.",
+          "text": "ভেগাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্যাসিয়াল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অকুলোমোটর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2023"
+      ]
+    },
+    {
+      "id": 21,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অক্সিজেন ও কার্বন ডাইঅক্সাইডের বিনিময় হয় শ্বসনতন্ত্রের কোন অংশে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "বঙ্কিওল"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2023"
+      ]
+    },
+    {
+      "id": 22,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসে শ্বসন কার্যে ভূমিকা রাখে-"
+        },
+        {
+          "type": "text",
+          "content": "i. স্কোয়ামাস এপিথেলিয়াল কোষ"
+        },
+        {
+          "type": "text",
+          "content": "ii. সেপ্টাল, কোষ"
+        },
+        {
+          "type": "text",
+          "content": "iii. কোলাজেন তন্তু"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i,ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2023"
+      ]
+    },
+    {
+      "id": 23,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসের প্রাচীর-"
+        },
+        {
+          "type": "text",
+          "content": "i. স্কোয়ামাস এপিথেলিয়াল কোষে গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. সারফেকট্যান্ট ক্ষরণ করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. সেপ্টাল কোষ সমৃদ্ধ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2023"
+      ]
+    },
+    {
+      "id": 24,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস কার্যক্রমে উত্তোলিত হয়-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডায়াফ্রাম"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টার্নাম"
+        },
+        {
+          "type": "text",
+          "content": "iii. পর্শুকার শ্যাফট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2023"
+      ]
+    },
+    {
+      "id": 26,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি লক্ষ করো এবং প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "ট্রাকিয়া $\\text { → P → Q → }$ অ্যালভিওলার নালি $→$"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের প্রবাহচিত্র মানবদেহের যে অঙ্গে দেখা যায় তার কার্যকরী এককের ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. বুদবুদ সদৃশ বায়ুথলি গ্যাস বিনিময় করে"
+        },
+        {
+          "type": "text",
+          "content": "ii. ম্যাক্রোফেজ অণুজীব ধ্বংস করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. সেপ্টাল কোষ ফসফোলিপিড নিঃসরণ করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2023"
+      ]
+    },
+    {
+      "id": 27,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের উদ্দীপকটি লক্ষ করো এবং প্রশ্নের উত্তর দাও:"
+        },
+        {
+          "type": "text",
+          "content": "ট্রাকিয়া $\\text { → P → Q → }$ অ্যালভিওলার নালি $→$"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের $\\text P$ ও $\\text Q$ নির্দেশিত অংশ কোনগুলো?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যাট্রিয়াম ও অ্যালভিওলার থলি"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যাট্রিয়াম ও অ্যালভিওলাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাস ও ব্রঙ্কিওল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলার থলি ও অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2023"
+      ]
+    },
+    {
+      "id": 28,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাস কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হৃৎপিণ্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "গ.",
+          "text": "পাকস্থলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃক্ক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2022",
+        "RB '2017",
+        "SB '2015"
+      ]
+    },
+    {
+      "id": 29,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled--depositphotos-bgremover.png?alt=media&token=b92f4815-5884-44c5-af06-e04617929119"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে 'P' চিহ্নিত অংশটির নাম?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "B.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "C.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "D.",
+          "text": "অ্যালভিওলার নালি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022",
+        "ChB '2017"
+      ]
+    },
+    {
+      "id": 30,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled--depositphotos-bgremover.png?alt=media&token=35e3c7c1-a112-4fe1-b433-168d401de0c1"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের Q চিহ্নিত অংশে—"
+        },
+        {
+          "type": "text",
+          "content": "i. স্কোয়ামাস এপিথেলিয়াম থাকে"
+        },
+        {
+          "type": "text",
+          "content": "ii. সারফেকট্যান্ট নিঃসৃত হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্যাসীয় বিনিময় ঘটে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022",
+        "ChB '2017"
+      ]
+    },
+    {
+      "id": 31,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসের ক্ষেত্রে প্রযোজ্য নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুসের গঠন ও কাজের একক"
+        },
+        {
+          "label": "খ.",
+          "text": "পালমোনারি শিরা থেকে এদের উৎপত্তি"
+        },
+        {
+          "label": "গ.",
+          "text": "এদের প্রাচীরে কোলাজেন ও স্থিতিস্থাপক তন্তু থাকে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এদের প্রাচীর চাপা ও স্কোয়ামাস এপিথেলিয়াল কোষ গঠিত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022"
+      ]
+    },
+    {
+      "id": 32,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি ফুসফুসের একক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নিউরন"
+        },
+        {
+          "label": "খ.",
+          "text": "নেফ্রন"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কিউল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2022"
+      ]
+    },
+    {
+      "id": 33,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি অ্যালভিওলাসের প্রাচীর থেকে ক্ষরণ হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্লাজমা ফ্লুইড"
+        },
+        {
+          "label": "খ.",
+          "text": "সেরাস ফ্লুইড"
+        },
+        {
+          "label": "গ.",
+          "text": "মিউসিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সারফ্যাকটেন্ট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2022"
+      ]
+    },
+    {
+      "id": 34,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কত সপ্তাহ বয়স্ক মানবভ্রূণে সর্বপ্রথম সারফ্যাকট্যান্ট ক্ষরণ শুরু হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২৩"
+        },
+        {
+          "label": "খ.",
+          "text": "২৪"
+        },
+        {
+          "label": "গ.",
+          "text": "২০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২৫"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2022"
+      ]
+    },
+    {
+      "id": 35,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন অংশে এপিগ্লটিস অবস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শ্বাসনালি"
+        },
+        {
+          "label": "খ.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "গ.",
+          "text": "গলবিল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভেস্টিবিউল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022"
+      ]
+    },
+    {
+      "id": 36,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন অংশে অলফ্যাক্টরী কোষ থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভেস্টিবিউল"
+        },
+        {
+          "label": "খ.",
+          "text": "নাসাগহ্বর"
+        },
+        {
+          "label": "গ.",
+          "text": "পশ্চাৎ নাসারন্ধ্র"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নাসাগলবিল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2022"
+      ]
+    },
+    {
+      "id": 37,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসে ডিটারজেন্টের মত ক্ষরিত রাসায়নিক পদার্থের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মিউকাস"
+        },
+        {
+          "label": "খ.",
+          "text": "সারফ্যাকট্যান্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "ডিটারজেন্ট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গ্লুটিন্যান্ট"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2022"
+      ]
+    },
+    {
+      "id": 38,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনের স্নায়বিক নিয়ন্ত্রণে কোন স্নায়ু ভূমিকা রাখে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যাবডুসেন্স"
+        },
+        {
+          "label": "খ.",
+          "text": "ইলিয়াক"
+        },
+        {
+          "label": "গ.",
+          "text": "অলফ্যাক্টরি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভ্যাগাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MSB '2022"
+      ]
+    },
+    {
+      "id": 39,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "‘ ওটাইটিস মিডিয়া কোন অঙ্গের রোগ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "চোখ"
+        },
+        {
+          "label": "খ.",
+          "text": "নাক"
+        },
+        {
+          "label": "গ.",
+          "text": "কান"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গলা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2022"
+      ]
+    },
+    {
+      "id": 40,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাইনুসাইটিস হওয়ার কারণগুলো হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. দাঁতের ইনফেকশন"
+        },
+        {
+          "type": "text",
+          "content": "ii. সিস্টিক ফাইব্রোসিস"
+        },
+        {
+          "type": "text",
+          "content": "iii. নাকের হাড় বাঁকা থাকলে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2022"
+      ]
+    },
+    {
+      "id": 41,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস বা শ্বাসগ্রহণের সময় ঘটে—"
+        },
+        {
+          "type": "text",
+          "content": "i. ডায়াফ্রাম পেশির সংকোচন"
+        },
+        {
+          "type": "text",
+          "content": "ii. ইন্টারকোস্টাল পেশির সংকোচন"
+        },
+        {
+          "type": "text",
+          "content": "iii. বক্ষগহ্বরের আয়তন বৃদ্ধি"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2022"
+      ]
+    },
+    {
+      "id": 42,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্র সংক্রান্ত রোগ-"
+        },
+        {
+          "type": "text",
+          "content": "i. নিউমোনিয়া"
+        },
+        {
+          "type": "text",
+          "content": "ii. লিউকেমিয়া"
+        },
+        {
+          "type": "text",
+          "content": "iii. এমফাইসেমা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2022"
+      ]
+    },
+    {
+      "id": 43,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস ক্রিয়ার সময়-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডায়াফ্রাম নিম্নগামী হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. ইন্টারকোস্টাল পেশি সংকুচিত হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. পর্শুকা'গুলো উপরের দিকে উত্তোলিত হয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2022"
+      ]
+    },
+    {
+      "id": 44,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনে সহায়তাকারী স্নায়ু-"
+        },
+        {
+          "type": "text",
+          "content": "i. ভেগাস"
+        },
+        {
+          "type": "text",
+          "content": "ii. ফ্রেনিক"
+        },
+        {
+          "type": "text",
+          "content": "iii. ইন্টার কোস্টাল"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2022"
+      ]
+    },
+    {
+      "id": 45,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসকেন্দ্র মস্তিষ্কের যে অংশে থাকে"
+        },
+        {
+          "type": "text",
+          "content": "i. পনস"
+        },
+        {
+          "type": "text",
+          "content": "ii. সেরেবেলাম"
+        },
+        {
+          "type": "text",
+          "content": "iii. মেডুলা অবলংগাটা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2022"
+      ]
+    },
+    {
+      "id": 46,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসনালির সংক্রমণজনিত রোগ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. সাইনুসাইটিস"
+        },
+        {
+          "type": "text",
+          "content": "ii. ল্যারিনজাইটিস"
+        },
+        {
+          "type": "text",
+          "content": "iii. ব্রঙ্কাইটিস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2022"
+      ]
+    },
+    {
+      "id": 47,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনবৃক্ষের কোন অংশ গ্যাস বিনিময়ে অংশগ্রহণ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সেকেন্ডারি ব্রঙ্কাস"
+        },
+        {
+          "label": "খ.",
+          "text": "টার্সিয়ারি ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "পার্মিনাল ব্রঙ্কিওল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলার নালি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2019"
+      ]
+    },
+    {
+      "id": 48,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "$O_{2}$ এবং $CO_{2}$ এর বিনিময় ঘটে নিম্নের কোন অংশে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "নেফ্রন"
+        },
+        {
+          "label": "গ.",
+          "text": "নিউরন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিলাই"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2019"
+      ]
+    },
+    {
+      "id": 49,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের প্রতি ১০০ মি.লি. রক্তে প্রায় কত গ্রাম হিমোগ্লোবিন থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৬"
+        },
+        {
+          "label": "খ.",
+          "text": "২০"
+        },
+        {
+          "label": "গ.",
+          "text": "২২"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2019"
+      ]
+    },
+    {
+      "id": 50,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসের বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. সারফ্যাকট্যান্ট ক্ষরণ করে"
+        },
+        {
+          "type": "text",
+          "content": "ii. আঁইশাকার কোষে গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্যাসীয় বিনিময় ঘটায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2019"
+      ]
+    },
+    {
+      "id": 51,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাইনুসাইটিসে আক্রান্ত সাইনাসগুলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. ম্যাক্সিলারি"
+        },
+        {
+          "type": "text",
+          "content": "ii. এথময়েড"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্ফেনয়েড"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2019"
+      ]
+    },
+    {
+      "id": 52,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover-1%20.png?alt=media&token=061b9d58-18b3-429a-bbd6-83d84e1f99c5"
+        },
+        {
+          "type": "text",
+          "content": "A চিহ্নিত অংশে নিচের কোনটি ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "স্থিতিশক্তিকে তাপশক্তিতে রূপান্তর"
+        },
+        {
+          "label": "B.",
+          "text": "অক্সিজেন ও কার্বন ডাইঅক্সাইডের ব্যাপন"
+        },
+        {
+          "label": "C.",
+          "text": "জারণ প্রক্রিয়ায় শক্তি উৎপাদন"
+        },
+        {
+          "label": "D.",
+          "text": "শক্তির সুষম বন্টন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2019"
+      ]
+    },
+    {
+      "id": 53,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের কার্যিক একক হলো অ্যালভিওলাস, যা অত্যন্ত পাতলা এবং চ্যাপ্টা আঁইশাকার কোষ দ্বারা গঠিত। এই কোষের ফাঁকে ফাঁকে বিশেষ এক ধরনের কোষ থাকে। এই কোষ থেকে ক্ষরিত বিশেষ একটি পদার্থ মানব ভ্রূণের স্বাধীন অস্তিত্বের অন্যতম ধারক হিসেবে বিবেচ্য।"
+        },
+        {
+          "type": "text",
+          "content": "৭. উদ্দীপকের বিশেষ পদার্থটি হলো—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সারফ্যাকট্যান্ট"
+        },
+        {
+          "label": "খ.",
+          "text": "সেরুমেন"
+        },
+        {
+          "label": "গ.",
+          "text": "ইন্টারফেরন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পাইরোজেন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2019"
+      ]
+    },
+    {
+      "id": 54,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের কার্যিক একক হলো অ্যালভিওলাস, যা অত্যন্ত পাতলা এবং চ্যাপ্টা আঁইশাকার কোষ দ্বারা গঠিত। এই কোষের ফাঁকে ফাঁকে বিশেষ এক ধরনের কোষ থাকে। এই কোষ থেকে ক্ষরিত বিশেষ একটি পদার্থ মানব ভ্রূণের স্বাধীন অস্তিত্বের অন্যতম ধারক হিসেবে বিবেচ্য।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে উল্লিখিত বিশেষ পদার্থটির কাজ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. অ্যালভিওলাসের প্রাচীরের পৃষ্ঠটান কমানো"
+        },
+        {
+          "type": "text",
+          "content": "ii. গ্যাস বিনিময়ে সাহায্য করা রোগজীবাণু ধ্বংস করা"
+        },
+        {
+          "type": "text",
+          "content": "iii. রোগজীবাণু ধ্বংস করা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2019"
+      ]
+    },
+    {
+      "id": 55,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানব ভ্রূণে কত সপ্তাহ বয়স থেকে সারফ্যাকট্যান্ট ক্ষরণ শুরু হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২১"
+        },
+        {
+          "label": "খ.",
+          "text": "২২"
+        },
+        {
+          "label": "গ.",
+          "text": "২৩"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2018"
+      ]
+    },
+    {
+      "id": 56,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন অংশে অক্সিজেন ও কার্বন ডাইঅক্সাইড বিনিময় হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2018",
+        "BB '2018",
+        "RB '2018",
+        "DiB '2018",
+        "CB '2018",
+        "ChB '2018",
+        "SB '2018"
+      ]
+    },
+    {
+      "id": 57,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover-2.png?alt=media&token=b0d3de89-a47c-480b-b6ae-91b2116d0292"
+        },
+        {
+          "type": "text",
+          "content": "‘A’ এর আয়নিক সমতা রক্ষার্থে প্লাজমা থেকে লোহিত রক্তকণিকায় প্রবেশ করে কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "$Cl^-$"
+        },
+        {
+          "label": "B.",
+          "text": "$H^+$"
+        },
+        {
+          "label": "C.",
+          "text": "$Na^+$"
+        },
+        {
+          "label": "D.",
+          "text": "$K^+$"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2018",
+        "RB '2018",
+        "DiB '2018",
+        "CB '2018",
+        "ChB '2018",
+        "SB '2018",
+        "JB '2018"
+      ]
+    },
+    {
+      "id": 58,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover-2.png?alt=media&token=6f0900c3-fcc4-4f1f-a924-86cdf3ae6194"
+        },
+        {
+          "type": "text",
+          "content": "'B' চিহ্নিত যৌগটি প্রাণিকোষে কোথায় উৎপন্ন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "গলজি বস্তু"
+        },
+        {
+          "label": "B.",
+          "text": "মাইটোকন্ড্রিয়া"
+        },
+        {
+          "label": "C.",
+          "text": "রাইবোজোম"
+        },
+        {
+          "label": "D.",
+          "text": "লাইসোজোম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2018",
+        "CB '2018",
+        "ChB '2018",
+        "SB '2018",
+        "JB '2018",
+        "BB '2018",
+        "RB '2018"
+      ]
+    },
+    {
+      "id": 76,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাস কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হৃৎপিণ্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "গ.",
+          "text": "পাকস্থলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃক্ক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2022",
+        "RB '2017",
+        "SB '2015"
+      ]
+    },
+    {
+      "id": 77,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled--depositphotos-bgremover.png?alt=media&token=b92f4815-5884-44c5-af06-e04617929119"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে 'P' চিহ্নিত অংশটির নাম?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "B.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "C.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "D.",
+          "text": "অ্যালভিওলার নালি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022",
+        "ChB '2017"
+      ]
+    },
+    {
+      "id": 78,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled--depositphotos-bgremover.png?alt=media&token=35e3c7c1-a112-4fe1-b433-168d401de0c1"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের Q চিহ্নিত অংশে—"
+        },
+        {
+          "type": "text",
+          "content": "i. স্কোয়ামাস এপিথেলিয়াম থাকে"
+        },
+        {
+          "type": "text",
+          "content": "ii. সারফেকট্যান্ট নিঃসৃত হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. গ্যাসীয় বিনিময় ঘটে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2022",
+        "ChB '2017"
+      ]
+    },
+    {
+      "id": 79,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover-2.png?alt=media&token=6f0900c3-fcc4-4f1f-a924-86cdf3ae6194"
+        },
+        {
+          "type": "text",
+          "content": "'B' চিহ্নিত যৌগটি প্রাণিকোষে কোথায় উৎপন্ন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "গলজি বস্তু"
+        },
+        {
+          "label": "B.",
+          "text": "মাইটোকন্ড্রিয়া"
+        },
+        {
+          "label": "C.",
+          "text": "রাইবোজোম"
+        },
+        {
+          "label": "D.",
+          "text": "লাইসোজোম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2018",
+        "BB '2018",
+        "JB '2018",
+        "SB '2018",
+        "ChB '2018",
+        "CB '2018",
+        "DiB '2018"
+      ]
+    },
+    {
+      "id": 80,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাম ফুসফুসে কতটি লোবিউল থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৪"
+        },
+        {
+          "label": "গ.",
+          "text": "৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2017",
+        "ChB '2016"
+      ]
+    },
+    {
+      "id": 81,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহে ডান ফুসফুসে কয়টি লোবিউল থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১০"
+        },
+        {
+          "label": "খ.",
+          "text": "৮"
+        },
+        {
+          "label": "গ.",
+          "text": "৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2017",
+        "SB '2015"
+      ]
+    },
+    {
+      "id": 82,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের সর্বমোট ধারণ ক্ষমতাকে বলে-"
+        }
+      ],
+      "options": [],
+      "answer": "",
+      "source": [
+        "JB '2017"
+      ]
+    },
+    {
+      "id": 83,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোন প্রবাহ চিত্রটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়া → ব্রঙ্কাই →ব্রঙ্কিওল → অ্যালভিওলার"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাই →ট্রাকিয়া→ব্রঙ্কিওল → অ্যালভিওলার"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া → ব্রঙ্কিওল → ব্রঙ্কাই →অ্যালভিওলার নালি→ অ্যালভিওলার থলি→অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রাকিয়া → অ্যালভিওলার থলি→ব্রঙ্কাই→ ব্রঙ্কিওল →অ্যালভিওলার নালি→অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2017",
+        "DiB '2017"
+      ]
+    },
+    {
+      "id": 84,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ডায়াফ্রামের ক্ষেত্রে কোনটি প্রয়োজ্য?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শ্বসনে এর কোনো ভূমিকা নেই"
+        },
+        {
+          "label": "খ.",
+          "text": "বক্ষ ও উদর গহ্বরকে পৃথক রাখে"
+        },
+        {
+          "label": "গ.",
+          "text": "ফ্রেনিক ধমনি রক্ত সংগ্রহ করে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সকল মেরুদণ্ডী প্রাণীতে পাওয়া যায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2017"
+      ]
+    },
+    {
+      "id": 85,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাস-"
+        },
+        {
+          "type": "text",
+          "content": "i. ফুসফুসের গঠন ও কার্যের একক"
+        },
+        {
+          "type": "text",
+          "content": "ii. প্রাচীরে কোলাজেন তন্তু থাকে"
+        },
+        {
+          "type": "text",
+          "content": "iii. জীবাণু ধ্বংস করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2017"
+      ]
+    },
+    {
+      "id": 86,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তে $CO_{2}$ এর পরিমাণ বেড়ে গেলে—"
+        },
+        {
+          "type": "text",
+          "content": "i. কেমোরিসেপ্টর উদ্দীপ্ত হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. প্রশ্বাসের হার কমে যায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. দেহের এনজাইম ও প্রোটিন ধ্বংস হয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 87,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুজন নিয়মিত ধূমপান করে। কিন্তু কয়েকদিন ধরে সে প্রায়ই অসুস্থ থাকছে।"
+        },
+        {
+          "type": "text",
+          "content": "ডাক্তারের নিকট গেলে ডাক্তার তার দেহের বিভিন্ন ধরনের সমস্যার কথা জানালেন।"
+        },
+        {
+          "type": "text",
+          "content": "তিনি আরও বললেন সুজন এখনই ধূমপান ত্যাগ না করলে ভবিষ্যতে তাকে মারাত্মক শারীরিক সমস্যার সম্মুখীন হতে হবে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের উপাদানে ফুসফুসে ক্যান্সার সৃষ্টিকারী যে বিষাক্ত পদার্থ থাকে তা হলো—"
+        },
+        {
+          "type": "text",
+          "content": "i. CO"
+        },
+        {
+          "type": "text",
+          "content": "ii. নিকোটিন"
+        },
+        {
+          "type": "text",
+          "content": "iii. টার"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 88,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুজন নিয়মিত ধূমপান করে। কিন্তু কয়েকদিন ধরে সে প্রায়ই অসুস্থ থাকছে। ডাক্তারের নিকট গেলে ডাক্তার তার দেহের বিভিন্ন ধরনের সমস্যার কথা জানালেন । তিনি আরও বললেন সুজন এখনই ধূমপান ত্যাগ না করলে ভবিষ্যতে তাকে মারাত্মক শারীরিক সমস্যার সম্মুখীন হতে হবে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপক অনুযায়ী সুজনের যে সমস্যা হতে পারে তা হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. অ্যালভিওলাই নষ্ট হওয়া"
+        },
+        {
+          "type": "text",
+          "content": "ii. ফুসফুসের অন্তঃপ্রাচীরের সিলিয়া অবশ হওয়া"
+        },
+        {
+          "type": "text",
+          "content": "iii. এক্স-রে ফিল্ম সাদাটে হওয়া"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 89,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বর্ণার বয়স ৫ বছর। তার কান ব্যাথা ও কানে পুঁজ জমেছে। ডাক্তারের শরণাপন্ন হলে তিনি বললেন, “এটি অণুজীবঘটিত রোগ তবে সংক্রামক নয়।”"
+        },
+        {
+          "type": "text",
+          "content": "বর্ণার রোগটির নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সাইনুসাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ওটিটিস মিডিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "হার্ট অ্যাটাক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থ্যালাসেমিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2017"
+      ]
+    },
+    {
+      "id": 90,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বর্ণার বয়স ৫ বছর। তার কান ব্যাথা ও কানে পুঁজ জমেছে। ডাক্তারের শরণাপন্ন হলে তিনি বললেন, “এটি অণুজীবঘটিত রোগ তবে সংক্রামক নয়।”"
+        },
+        {
+          "type": "text",
+          "content": "বর্ণার রোগটি প্রতিরোধে কী ব্যবস্থা নেয়া যেতে পারে?"
+        },
+        {
+          "type": "text",
+          "content": "i. ভ্যাকসিন নেয়া"
+        },
+        {
+          "type": "text",
+          "content": "ii. বায়ুদূষণ থেকে দূরে থাকা"
+        },
+        {
+          "type": "text",
+          "content": "iii. অ্যান্টিবায়োটিক ব্যবহার করা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2017"
+      ]
+    },
+    {
+      "id": 91,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফ্যাকট্যান্ট কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাসে"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নাসারন্ধ্রে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2016",
+        "DiB '2016",
+        "DB '2016"
+      ]
+    },
+    {
+      "id": 92,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ফুসফুসে মোট কয়টি লোব বিদ্যমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৩"
+        },
+        {
+          "label": "গ.",
+          "text": "৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৫"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 93,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোথায় সেরাস ফ্লুইড পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2016"
+      ]
+    },
+    {
+      "id": 94,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শব্দ উৎপন্ন করে—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ল্যারিংক্স"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গলবিল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2016"
+      ]
+    },
+    {
+      "id": 95,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসে বায়ু প্রবাহের সঠিক গতিপথ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ল্যারিংক্স→ ব্রঙ্কাই→ ট্রাকিয়া →অ্যালভিওলি"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া →ল্যারিংক্স→ ব্রঙ্কাই→ অ্যালভিওলি"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাই → ট্রাকিয়া→ ল্যারিংক্স → অ্যালভিওলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যারিংক্স→ ট্রাকিয়া→ ব্রঙ্কাই→ অ্যালভিওলি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 96,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানব দু'চোখের মধ্যবর্তী সাইনাসের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "গ.",
+          "text": "স্ফেনয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এথময়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2016"
+      ]
+    },
+    {
+      "id": 101,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাস কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হৃৎপিণ্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "গ.",
+          "text": "পাকস্থলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃক্ক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2022",
+        "RB '2017",
+        "SB '2015"
+      ]
+    },
+    {
+      "id": 102,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহে ডান ফুসফুসে কয়টি লোবিউল থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১০"
+        },
+        {
+          "label": "খ.",
+          "text": "৮"
+        },
+        {
+          "label": "গ.",
+          "text": "৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2017",
+        "SB '2015"
+      ]
+    },
+    {
+      "id": 103,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন সাইনাসের প্রদাহের কারণে গালে, দাঁতে ও মাথায় ব্যথা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "খ.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়ডাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ফেনয়েডাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2016"
+      ]
+    },
+    {
+      "id": 104,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন রোগে অ্যালভিওলাস ফেটে ফুসফুসে ফাঁকা জায়গার সৃষ্টি করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রঙ্কাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "এমফাইসেমা"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লোরোসি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নিউমোনিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2016"
+      ]
+    },
+    {
+      "id": 105,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফেকট্যান্ট—"
+        },
+        {
+          "type": "text",
+          "content": "i. তরলের পৃষ্ঠটান কমিয়ে দেয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. জীবাণু ধ্বংস করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. ২৩ সপ্তাহের মানব ভ্রূণে পাওয়া যায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "iii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2016"
+      ]
+    },
+    {
+      "id": 106,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-2-depositphotos-bgremover%20(1).png?alt=media&token=ce51ea0a-ffe4-4a61-967d-863211482029"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের ‘A' চিহ্নিত স্থানে বিদ্যমান তরলের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "প্লাজমা ফ্লুইড"
+        },
+        {
+          "label": "B.",
+          "text": "পেরিকার্ডিয়াল ফ্লুইড"
+        },
+        {
+          "label": "C.",
+          "text": "সেরিব্রোস্পাইনাল ফ্লুইড"
+        },
+        {
+          "label": "D.",
+          "text": "সেরাস ফ্লুইড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 107,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-2-depositphotos-bgremover%20(1).png?alt=media&token=6f87390e-232b-409b-bbc0-0e7464962d7b"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের 'B' চিহ্নিত অংশ—"
+        },
+        {
+          "type": "text",
+          "content": "i. আংটির মতো তরুণাস্থি দ্বারা গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. বায়ুহীন অবস্থায় চুপসে যায় না"
+        },
+        {
+          "type": "text",
+          "content": "iii. সিলিয়াযুক্ত অন্তঃপ্রাচীর বিশিষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 108,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটিকে মানবদেহের রবিন হুড বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গ্লুকাগন"
+        },
+        {
+          "label": "খ.",
+          "text": "ইনসুলিন"
+        },
+        {
+          "label": "গ.",
+          "text": "হিমোগ্লোবিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সিক্রেটিন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '24-25"
+      ]
+    },
+    {
+      "id": 109,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফেকটেন্ট কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাসে"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়ায়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নাসারন্ধ্রে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '24-25"
+      ]
+    },
+    {
+      "id": 110,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একজন মানুষের বাম ফুসফুসে কয়টি লোবিউল পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "13"
+        },
+        {
+          "label": "খ.",
+          "text": "6"
+        },
+        {
+          "label": "গ.",
+          "text": "7"
+        },
+        {
+          "label": "ঘ.",
+          "text": "8"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '22-23"
+      ]
+    },
+    {
+      "id": 111,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Alveolus থেকে অক্সিজেন রক্তে কিভাবে প্রবেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Osmosis"
+        },
+        {
+          "label": "খ.",
+          "text": "Respiration"
+        },
+        {
+          "label": "গ.",
+          "text": "Transpiration"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Diffusion"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '20-21"
+      ]
+    },
+    {
+      "id": 112,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুস আবৃত থাকে যে পর্দা দ্বারা তাকে বলা হয়–"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পেরিকার্ডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "পেরিঅস্ট্রিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লিউরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পেরিকন্ড্রিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '16-17",
+        "RU-A '11-12"
+      ]
+    },
+    {
+      "id": 113,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অসমোরেগুলেশান মানবদেহের কোন অঙ্গের মাধ্যমে হয়ে থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "যকৃৎ"
+        },
+        {
+          "label": "খ.",
+          "text": "অগ্ন্যাশয়"
+        },
+        {
+          "label": "গ.",
+          "text": "বৃক্ক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '15-16"
+      ]
+    },
+    {
+      "id": 114,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একজন মানুষের বাম ফুসফুসে কয়টি লোবিউল পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৩ টি"
+        },
+        {
+          "label": "খ.",
+          "text": "৬ টি"
+        },
+        {
+          "label": "গ.",
+          "text": "৭ টি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮ টি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A"
+      ]
+    },
+    {
+      "id": 115,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের আবরণকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গ্লিসন ক্যাপসুল"
+        },
+        {
+          "label": "খ.",
+          "text": "পেরিকার্ডিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ডায়াফ্রাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পিউরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '24-25"
+      ]
+    },
+    {
+      "id": 116,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "হিমোগ্লোবিনের কোন অংশে $\\mathrm{CO}_{2}$ যুক্ত হয় ?"
+        }
+      ],
+      "options": [],
+      "answer": "",
+      "source": [
+        "Medical '23-24"
+      ]
+    },
+    {
+      "id": 117,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অন্তঃশ্বসন-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কোষ ও রক্তে সংঘটিত হয়"
+        },
+        {
+          "label": "খ.",
+          "text": "নির্দিষ্ট পরিমাণ শক্তি উৎপন্ন করে"
+        },
+        {
+          "label": "গ.",
+          "text": "এনজাইম দ্বারা প্রভাবিত হয় না"
+        },
+        {
+          "label": "ঘ.",
+          "text": "একটি ভৌত রাসায়নিক প্রক্রিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '22-23"
+      ]
+    },
+    {
+      "id": 118,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Alveolus থেকে অক্সিজেন রক্তে কিভাবে প্রবেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Transpiration"
+        },
+        {
+          "label": "খ.",
+          "text": "Osmosis"
+        },
+        {
+          "label": "গ.",
+          "text": "Diffusion"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Respiration"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '20-21"
+      ]
+    },
+    {
+      "id": 119,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাসে বায়ুতে কার্বন ডাইঅক্সাইড $(CO_2)$ এর পরিমাণ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "5.2 %"
+        },
+        {
+          "label": "খ.",
+          "text": "13.7%"
+        },
+        {
+          "label": "গ.",
+          "text": "20.0 %"
+        },
+        {
+          "label": "ঘ.",
+          "text": "0.4 %"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '20-21"
+      ]
+    },
+    {
+      "id": 120,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসতন্ত্রের কোন অংশে গ্যাসীয় বিনিময় হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '19-20"
+      ]
+    },
+    {
+      "id": 121,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি মানবদেহের শ্বসনতন্ত্রের বায়ু পরিবহন অঞ্চল নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শ্বাসনালি"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রান্তীয় ব্রঙ্কিওল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলার নালি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 122,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তে CO₂ পরিবহনের মাধ্যম নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কার্বনিক এসিড"
+        },
+        {
+          "label": "খ.",
+          "text": "বাইকার্বনেট যৌগ"
+        },
+        {
+          "label": "গ.",
+          "text": "কার্বন মনোক্সাইড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কার্বামিনো যৌগ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 123,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফেকট্যান্ট কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্বরযন্ত্রে"
+        },
+        {
+          "label": "খ.",
+          "text": "শ্বাসনালিতে"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাসে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '17-18",
+        "Dental '17-18"
+      ]
+    },
+    {
+      "id": 124,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্যারান্যাসাল সাইনাস নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফ্রন্টাল সাইনাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ম্যাক্সিলারি সাইনাস"
+        },
+        {
+          "label": "গ.",
+          "text": "স্ফেনয়ডাল সাইনাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অক্সিপিটাল সাইনাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '16-17"
+      ]
+    },
+    {
+      "id": 125,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসন কেন্দ্র অবস্থিত কোথায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পন্স"
+        },
+        {
+          "label": "খ.",
+          "text": "মধ্যমস্তিষ্ক"
+        },
+        {
+          "label": "গ.",
+          "text": "সেরিবেলাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্নায়ুরজ্জু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '16-17"
+      ]
+    },
+    {
+      "id": 126,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সারফেকট্যান্ট কোথায় পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্বরযন্ত্রে"
+        },
+        {
+          "label": "খ.",
+          "text": "শ্বাসনালিতে"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাসে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '17-18",
+        "Dental '17-18"
+      ]
+    },
+    {
+      "id": 127,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কার্বন ডাইঅক্সাইড হিমোগ্লোবিনের সাথে বিক্রিয়া করে নিম্নের কোনটি তৈরি করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কার্বামাইনো হিমোগ্লোবিন"
+        },
+        {
+          "label": "খ.",
+          "text": "কার্বামাইনো প্রোটিন"
+        },
+        {
+          "label": "গ.",
+          "text": "অক্সি-হিমোগ্লোবিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মিথ হিমোগ্লোবিন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '09-10"
+      ]
+    },
+    {
+      "id": 128,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রঙ্কিয়াল নালিগুলোর কোনটি সঠিক পর্যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মুখ্য-ব্রঙ্কাই-গৌণ ব্রঙ্কাই-ব্রঙ্কিওল শ্বসন-ব্রঙ্কিওল প্রান্তীয়-ব্রঙ্কিওল- অ্যালভিওলার থলি-অ্যালভিওলি"
+        },
+        {
+          "label": "খ.",
+          "text": "মুখ্য ব্রঙ্কাই-গৌন ব্রঙ্কাই-ব্রঙ্কিওল-প্রান্তীয় ব্রঙ্কিওল-শ্বসন ব্রঙ্কিওল- অ্যালভিওলার নালি-অ্যালভিওলার থলি-অ্যালভিওলি"
+        },
+        {
+          "label": "গ.",
+          "text": "মুখ্য ব্রঙ্কাই-ব্রঙ্কিওল-গৌন ব্রঙ্কাই-শ্বসন ব্রঙ্কিওল-প্রান্তীয় ব্রঙ্কিওল- অ্যালভিওলার-অ্যালভিওলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মুখ্য ব্রঙ্কাই-ব্রঙ্কিওল-গৌন ব্রঙ্কাই-শ্বসন ব্রঙ্কিওল-প্রান্তীয় ব্রঙ্কিওল- অ্যালভিওলার নালি-অ্যালভিওলার থলি-অ্যালভিওলি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '06-07"
+      ]
+    },
+    {
+      "id": 129,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্বরতন্ত্রীর অবস্থান হচ্ছে -"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গলবিল"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া বা শ্বাসনালি"
+        },
+        {
+          "label": "গ.",
+          "text": "নাসা গহ্বর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যারিক্স"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '06-07"
+      ]
+    },
+    {
+      "id": 130,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের ক্ষেত্রে কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডান ফুসফুসটি তিনটি খণ্ডে এবং বাম ফুসফুসটি দুটি খণ্ডে বিভক্ত"
+        },
+        {
+          "label": "খ.",
+          "text": "ডান ফুসফুসটি চারটি খণ্ডে এবং বাম ফুসফুসটি তিনটি খণ্ডে বিভক্ত"
+        },
+        {
+          "label": "গ.",
+          "text": "ডান ফুসফুসটি দুটি খণ্ডে এবং বাম ফুসফুসটি তিনটি খণ্ডে বিভক্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনটি নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '03-04"
+      ]
+    },
+    {
+      "id": 131,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "আজকাল অধিক হারে শ্বাস-কষ্ট রোগের জন্য কোনটি দায়ী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "$SO_2$"
+        },
+        {
+          "label": "খ.",
+          "text": "$CO_2$"
+        },
+        {
+          "label": "গ.",
+          "text": "$NO_2$"
+        },
+        {
+          "label": "ঘ.",
+          "text": "$CaSO_2$"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '02-03"
+      ]
+    },
+    {
+      "id": 132,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের ক্যান্সারের জন্য দায়ী-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "$SiO_2$"
+        },
+        {
+          "label": "খ.",
+          "text": "$CO_2$"
+        },
+        {
+          "label": "গ.",
+          "text": "$MnO_2$"
+        },
+        {
+          "label": "ঘ.",
+          "text": "$H_2S$"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '02-03"
+      ]
+    },
+    {
+      "id": 133,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি অন্তঃশ্বসনের বৈশিষ্ট্য নয়?"
+        }
+      ],
+      "options": [],
+      "answer": "",
+      "source": [
+        "Medical '00-01"
+      ]
+    },
+    {
+      "id": 134,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি খাদ্য গিলে ফেলার সময় স্বরযন্ত্র (Larynx) এর ছিদ্র বন্ধ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "জিহ্বা"
+        },
+        {
+          "label": "খ.",
+          "text": "কোমল তালু"
+        },
+        {
+          "label": "গ.",
+          "text": "আলজিহ্বা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোয়ানি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '20-21"
+      ]
+    },
+    {
+      "id": 135,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাইনুসাইটিস রোগের প্রধান উপসর্গ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কাশি"
+        },
+        {
+          "label": "খ.",
+          "text": "বমি"
+        },
+        {
+          "label": "গ.",
+          "text": "জ্বর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মাথা ব্যথা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '18-19"
+      ]
+    },
+    {
+      "id": 136,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একজন সুস্থ পূর্ণবয়স্ক মানুষ বিশ্রামরত অবস্থায় মিনিটে কতবার শ্বসন ক্রিয়া সম্পাদন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "20-25 বার"
+        },
+        {
+          "label": "খ.",
+          "text": "14-18 বার"
+        },
+        {
+          "label": "গ.",
+          "text": "7-10 বার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "30-40 বার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '17-18"
+      ]
+    },
+    {
+      "id": 137,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Adams Apple কোথায় থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "B.",
+          "text": "শ্বাসনালি"
+        },
+        {
+          "label": "C.",
+          "text": "None"
+        },
+        {
+          "label": "D.",
+          "text": "ফুসফুস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '16-17"
+      ]
+    },
+    {
+      "id": 138,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসতন্ত্র সম্পর্কে নিম্নের কোন তথ্যটি সঠিক নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্যাপন প্রক্রিয়ায় অক্সিজেন বায়ুথলি থেকে কৈশিক নালির রক্তে প্রবেশ করে"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুসের কৈশিক নালিতে অক্সিজেন রক্তের হিমোগ্লোবিনের সাথে বিক্রিয়া করে স্থায়ী যৌগ অক্সিহিমোগ্লোবিন তৈরি করে"
+        },
+        {
+          "label": "গ.",
+          "text": "উপজিহ্বা খাদ্যদ্রব্য শ্বাসনালিতে প্রবেশে বাঁধা দান করে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রশ্বাসের সময় ফুসফুস প্রসারিত হয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '11-12",
+        "Dental '08-09"
+      ]
+    },
+    {
+      "id": 139,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি মানব দেহের শ্বসনের জন্য সঠিক নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুসের কৈশিক জালিকায় দেহ থেকে আগত রক্তে অক্সিজেনের চাপ থাকে 107 mm Hg"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্লাইকোলাইসিসের জন্য প্রয়োজনীয় এনজাইমগুলো মাইটোকন্ড্রিয়ার বাইরে সাইটোসলের মধ্যে পাওয়া যায়"
+        },
+        {
+          "label": "গ.",
+          "text": "অন্তঃশ্বসন একটি জৈব রাসায়নিক প্রক্রিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বহিঃশ্বসন প্রক্রিয়ায় শক্তি উৎপন্ন হয় না"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '06-07"
+      ]
+    },
+    {
+      "id": 140,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পূর্ণ বয়স্ক সুস্থ মানুষের বিশ্রামকালে প্রতি মিনিটে শ্বসনের হার?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "15-20 বার"
+        },
+        {
+          "label": "খ.",
+          "text": "20-24 বার"
+        },
+        {
+          "label": "গ.",
+          "text": "14-18 বার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "16-20 বার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '02-03"
+      ]
+    },
+    {
+      "id": 141,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তের মাধ্যমে বেশিরভাগ কার্বন-ডাইঅক্সাইড কোন প্রক্রিয়ায় পরিবহন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্লাজমার সাথে"
+        },
+        {
+          "label": "খ.",
+          "text": "হিমোগ্লোবিনের সাথে"
+        },
+        {
+          "label": "গ.",
+          "text": "বাইকার্বোনেট যৌগরূপে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অধঃক্ষেপরূপে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '23-24"
+      ]
+    },
+    {
+      "id": 142,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মধ্যকর্ণের সংক্রমণের জন্য দায়ী কে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Streptococcus pneumoniae"
+        },
+        {
+          "label": "খ.",
+          "text": "Vibrio mimicus"
+        },
+        {
+          "label": "গ.",
+          "text": "Staphylococcus aureus"
+        },
+        {
+          "label": "ঘ.",
+          "text": "SARS-CoV-2"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '23-24"
+      ]
+    },
+    {
+      "id": 143,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Adam's apple কোথায় থাকে ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "B.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "C.",
+          "text": "স্বরতন্ত্র"
+        },
+        {
+          "label": "D.",
+          "text": "ট্রাকিয়ায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '22-23"
+      ]
+    },
+    {
+      "id": 144,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "‍Adam’s apple কোথায় থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "অ্যালবিওলাসে"
+        },
+        {
+          "label": "B.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "C.",
+          "text": "স্বরযন্ত্রে"
+        },
+        {
+          "label": "D.",
+          "text": "ট্রাকিয়ায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A"
+      ]
+    },
+    {
+      "id": 145,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসনলিতে কোন ধরনের তরুনাস্থি থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হায়ালিন"
+        },
+        {
+          "label": "খ.",
+          "text": "শ্বেততন্ত্রময়"
+        },
+        {
+          "label": "গ.",
+          "text": "পীততন্ত্রময়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "চুনময়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "HSTU-A '24-25"
+      ]
+    },
+    {
+      "id": 146,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপানের কারণে হতে পারে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Bronchitis"
+        },
+        {
+          "label": "খ.",
+          "text": "Emphysema"
+        },
+        {
+          "label": "গ.",
+          "text": "Fibrosis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলো"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "HSTU-A '24-25"
+      ]
+    },
+    {
+      "id": 147,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসে বায়ু প্রবেশের গতিপথ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রঙ্কাই $\\to$ ট্র্যাকিয়া $\\to$ ল্যারিংক্স $\\to$ অ্যালডিওলি"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্র্যাকিয়া $\\to$ ল্যারিংক্স $\\to$ ব্রঙ্কাই $\\to$ অ্যালডিওলি"
+        },
+        {
+          "label": "গ.",
+          "text": "ল্যারিংক্স $\\to$ ব্রঙ্কাই $\\to$ ট্র্যাকিয়া $\\to$ অ্যালভিওলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যারিংক্স $\\to$ ট্র্যাকিয়া $\\to$ ব্রঙ্কাই $\\to$ অ্যালভিওলি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '24-25"
+      ]
+    },
+    {
+      "id": 148,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অধিক ধূমপানের ফলে সৃষ্ট রোগ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "টাইফয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "ডেঙ্গু"
+        },
+        {
+          "label": "গ.",
+          "text": "ডায়রিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাইটিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '24-25"
+      ]
+    },
+    {
+      "id": 149,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ট্রাকিয়াতে তরুণাস্থির সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "10-12"
+        },
+        {
+          "label": "খ.",
+          "text": "12-15"
+        },
+        {
+          "label": "গ.",
+          "text": "16-20"
+        },
+        {
+          "label": "ঘ.",
+          "text": "20-22"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 151,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ফুসফুসের গড় আয়তন কত বর্গমিটার?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "60-70"
+        },
+        {
+          "label": "খ.",
+          "text": "70-80"
+        },
+        {
+          "label": "গ.",
+          "text": "70-90"
+        },
+        {
+          "label": "ঘ.",
+          "text": "80-85"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 152,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ডান ব্রঙ্কাসটি কতভাগে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "1"
+        },
+        {
+          "label": "খ.",
+          "text": "2"
+        },
+        {
+          "label": "গ.",
+          "text": "3"
+        },
+        {
+          "label": "ঘ.",
+          "text": "4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 153,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের বাম ব্রঙ্কাসটি কতভাগে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "1"
+        },
+        {
+          "label": "খ.",
+          "text": "2"
+        },
+        {
+          "label": "গ.",
+          "text": "3"
+        },
+        {
+          "label": "ঘ.",
+          "text": "4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 154,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ডান ফুসফুসটি কতভাগে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "1"
+        },
+        {
+          "label": "খ.",
+          "text": "2"
+        },
+        {
+          "label": "গ.",
+          "text": "3"
+        },
+        {
+          "label": "ঘ.",
+          "text": "4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 155,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের বাম ফুসফুসটি কতভাগে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "1"
+        },
+        {
+          "label": "খ.",
+          "text": "2"
+        },
+        {
+          "label": "গ.",
+          "text": "3"
+        },
+        {
+          "label": "ঘ.",
+          "text": "4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 156,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পুরার দুইটি ভরের মাঝখানে কোন ফ্লুইড বিদ্যমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সেরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "সাইনোভিয়াল"
+        },
+        {
+          "label": "গ.",
+          "text": "সেরিব্রোস্পাইনাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যাক্রিমাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 157,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্লুরা দুইটি ভরের মাঝখানে কোন ফ্লুইড বিদ্যমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সেরাস"
+        },
+        {
+          "label": "খ.",
+          "text": "সাইনোভিয়াল"
+        },
+        {
+          "label": "গ.",
+          "text": "সেরিব্রোস্পাইনাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ল্যাক্রিমাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 158,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ডান ফুসফুসে লোবিউলের সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "7"
+        },
+        {
+          "label": "খ.",
+          "text": "8"
+        },
+        {
+          "label": "গ.",
+          "text": "9"
+        },
+        {
+          "label": "ঘ.",
+          "text": "10"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 159,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের বাম ফুসফুসে লোবিউলের সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "7"
+        },
+        {
+          "label": "খ.",
+          "text": "8"
+        },
+        {
+          "label": "গ.",
+          "text": "9"
+        },
+        {
+          "label": "ঘ.",
+          "text": "10"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 160,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "আসডিওলাস থেকে অক্সিজেন রক্তে কীভাবে প্রবেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অসমোসিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ডিফিউশন"
+        },
+        {
+          "label": "গ.",
+          "text": "শ্বসন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রান্সপিরেশন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 161,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ফুসফুসে অক্সিজেন প্রবেশের নির্দেশিত পথ-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাই → ব্রঙ্কাস → ট্রাকিয়া → ব্রঙ্কিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া → ব্রঙ্কাস → ব্রঙ্কিওল → অ্যালভিওলাই"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কিওল → ট্রাকিয়া → অ্যালভিওলাই → ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই সঠিক নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 162,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলার থলিতে কী থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রক্ত"
+        },
+        {
+          "label": "খ.",
+          "text": "বায়ু"
+        },
+        {
+          "label": "গ.",
+          "text": "হরমোন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এনজাইম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 163,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের কার্যকরী একক-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 164,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তে $\\mathrm{CO}_{2}$ এর শতকরা কতভাগ বাইকার্বোনেট রূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "50"
+        },
+        {
+          "label": "খ.",
+          "text": "55"
+        },
+        {
+          "label": "গ.",
+          "text": "60"
+        },
+        {
+          "label": "ঘ.",
+          "text": "70"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 165,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাতাসে CO₂-এর ঘনত্ব শতকরা কতভাগ বাড়লে শ্বাস-প্রশ্বাসের হার দ্বিগুণ হয়ে যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "0.25"
+        },
+        {
+          "label": "খ.",
+          "text": "0.5"
+        },
+        {
+          "label": "গ.",
+          "text": "0.4"
+        },
+        {
+          "label": "ঘ.",
+          "text": "0.75"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24",
+        "JU-I '23-24"
+      ]
+    },
+    {
+      "id": 166,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাতাসে $\\mathrm{O}_{2}$ এর ঘনত্ব 20 শতাংশ থেকে কতভাগে নেমে আসলে শ্বাস-প্রশ্বাসের হার দ্বিগুণ হয়ে যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "15"
+        },
+        {
+          "label": "খ.",
+          "text": "10"
+        },
+        {
+          "label": "গ.",
+          "text": "2"
+        },
+        {
+          "label": "ঘ.",
+          "text": "12"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24",
+        "JU-I '23-24"
+      ]
+    },
+    {
+      "id": 167,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতি 100 mL রক্তে কত mL O₂ ভৌত দ্রবণরূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "0.1"
+        },
+        {
+          "label": "খ.",
+          "text": "0.2"
+        },
+        {
+          "label": "গ.",
+          "text": "0.3"
+        },
+        {
+          "label": "ঘ.",
+          "text": "0.4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 168,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শতকরা কতভাগ CO₂ প্লাজমার পানির সাথে বিক্রিয়া করে H₂CO₃ গঠন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "2"
+        },
+        {
+          "label": "খ.",
+          "text": "3"
+        },
+        {
+          "label": "গ.",
+          "text": "4"
+        },
+        {
+          "label": "ঘ.",
+          "text": "5"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 169,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মোট CO₂-এর শতকরা কতভাগ কার্বামিনো যৌগরূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "25"
+        },
+        {
+          "label": "খ.",
+          "text": "27"
+        },
+        {
+          "label": "গ.",
+          "text": "30"
+        },
+        {
+          "label": "ঘ.",
+          "text": "32"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 170,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একজন পূর্ণবয়স্ক মানুষের রক্তে কত গ্রাম লৌহ থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "3"
+        },
+        {
+          "label": "খ.",
+          "text": "5"
+        },
+        {
+          "label": "গ.",
+          "text": "10"
+        },
+        {
+          "label": "ঘ.",
+          "text": "15"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 171,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "চোখের উপরের দিকে ব্যথা বা চাপ অনুভূত সাইনুসাইটিস কোন সাইনাসে পরিলক্ষিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়ডাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্কেনয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 172,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "দুই চোখের মাঝখানে ব্যথাজনিত সাইনুসাইটিস কোন সাইনাসের সাথে সংশ্লিষ্ট?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়ডাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ফেনয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 173,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "চোখের পিছনে বা মাথার চূড়ায় ব্যথাজনিত সাইনুসাইটিস কোন সাইনাসের সাথে সংশ্লিষ্ট?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়ডাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্কেনয়ডাল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 176,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ওটাইটিস মিডিয়া কীসের সংক্রমণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নাক"
+        },
+        {
+          "label": "খ.",
+          "text": "কান"
+        },
+        {
+          "label": "গ.",
+          "text": "দাঁত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "চোখ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 177,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের প্রদাহ-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "খ.",
+          "text": "এমফাইসেমা"
+        },
+        {
+          "label": "গ.",
+          "text": "ওটাইসিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাইনোসাইটিক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '23-24"
+      ]
+    },
+    {
+      "id": 178,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একটি সিগারেটের শলায় প্রায় কত ধরনের রাসায়নিক পদার্থ থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "3000"
+        },
+        {
+          "label": "খ.",
+          "text": "4000"
+        },
+        {
+          "label": "গ.",
+          "text": "5000"
+        },
+        {
+          "label": "ঘ.",
+          "text": "6000"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-I '23-24",
+        "JU-D '23-24"
+      ]
+    },
+    {
+      "id": 179,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কানের ভেতরে বা বাইরে যে কোনো অংশে সংক্রমণজনিত প্রদাহকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ওটাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "কনজাংটিভাইটিস"
+        },
+        {
+          "label": "গ.",
+          "text": "জিনজিভাইটিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থ্রাশ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24",
+        "JU-I '23-24"
+      ]
+    },
+    {
+      "id": 180,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "দাঁত ব্যথা বা গালে চাপজনিত সাইনুসাইটিস কোন ধরনের সাইনাসে পরিলক্ষিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্রন্টাল"
+        },
+        {
+          "label": "গ.",
+          "text": "এথময়ডাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ফেনয়েড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '23-24",
+        "JU-I '23-24"
+      ]
+    },
+    {
+      "id": 181,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসের ব্যাস কত মাইক্রোমিটার?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১০০-২০০"
+        },
+        {
+          "label": "খ.",
+          "text": "২০০-৩০০"
+        },
+        {
+          "label": "গ.",
+          "text": "৩০০-৪০০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৪০০-৫০০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 182,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নবজাতকের ফুসফুসে অ্যালভিওলাসের সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২০ মিলিয়ন"
+        },
+        {
+          "label": "খ.",
+          "text": "৫০০ মিলিয়ন"
+        },
+        {
+          "label": "গ.",
+          "text": "৩০০ মিলিয়ন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৭০০ মিলিয়ন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 183,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "একজন পূর্ণবয়স্ক সুস্থ মানুষের ফুসফুসে অ্যালভিওলাসের সংখ্যা কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "200 মিলিয়ন"
+        },
+        {
+          "label": "খ.",
+          "text": "300 মিলিয়ন"
+        },
+        {
+          "label": "গ.",
+          "text": "500 মিলিয়ন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "480মিলিয়ন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 184,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসের প্রাচীরে কোন কোষ থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্কোয়ামাস এপিথেলিয়াল"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যালভিওলার ম্যাক্রোফেজ"
+        },
+        {
+          "label": "গ.",
+          "text": "সেপ্টাল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবগুলো"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 185,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাসকে চুপসে যাওয়া থেকে রক্ষা করে কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্কোয়ামাস কোষ"
+        },
+        {
+          "label": "খ.",
+          "text": "সারফ্যাকট্যান্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "ইন্টারকোস্টাল পেশি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডায়াফ্রাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 186,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "৮ বছরের শিশুর ফুসফুসে অ্যালভিওলাসের সংখ্যা কত মিলিয়ন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২০"
+        },
+        {
+          "label": "খ.",
+          "text": "২০০"
+        },
+        {
+          "label": "গ.",
+          "text": "৩০০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৭০০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 187,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্লিউরা কি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুসের দ্বিস্তরী পর্দা"
+        },
+        {
+          "label": "খ.",
+          "text": "হৃৎপিণ্ডের আবরণী পর্দা"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্যবধায়ক পর্দা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 188,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানব ভ্রূণে কোন বয়স থেকে সারফেকট্যান্ট ক্ষরণ শুরু হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "21 সপ্তাহ"
+        },
+        {
+          "label": "খ.",
+          "text": "22 সপ্তাহ"
+        },
+        {
+          "label": "গ.",
+          "text": "23 সপ্তাহ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "24 সপ্তাহ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '22-23"
+      ]
+    },
+    {
+      "id": 189,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন স্থানে গ্যাসের বিনিময় হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কিওল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '22-23"
+      ]
+    },
+    {
+      "id": 190,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Adam's Apple কোথায় অবস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নাসা গহ্বর"
+        },
+        {
+          "label": "খ.",
+          "text": "ভেস্টিবিউল"
+        },
+        {
+          "label": "গ.",
+          "text": "নাসাগলবিল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্বরযন্ত্র"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '22-23"
+      ]
+    },
+    {
+      "id": 191,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টিস্যু কোষে অক্সিজেনের জোগান চাহিদার তুলনায় কম হলে তাকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যানক্সিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইপক্সিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যাপনিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডিপসনিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-A '20-21"
+      ]
+    },
+    {
+      "id": 192,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের ক্যান্সারের জন্য দায়ী কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "$\\mathrm{CO}$"
+        },
+        {
+          "label": "খ.",
+          "text": "$\\mathrm{R}_{\\mathrm{n}} \\text { (Radon) }$"
+        },
+        {
+          "label": "গ.",
+          "text": "$\\mathrm{MnO}_{2}$"
+        },
+        {
+          "label": "ঘ.",
+          "text": "$\\mathrm{H}_{2} \\mathrm{~S}$"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '20-21"
+      ]
+    },
+    {
+      "id": 193,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "চোখের ওপরে অবস্থিত সাইনাসকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ম্যাক্সিলারি সাইনাস"
+        },
+        {
+          "label": "খ.",
+          "text": "এথময়েড সাইনাস"
+        },
+        {
+          "label": "গ.",
+          "text": "স্কেনয়েড সাইনাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফ্রন্টাল সাইনাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '20-21"
+      ]
+    },
+    {
+      "id": 194,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টিস্যু কোষে অক্সিজেনের জোগান চাহিদার তুলনায় কম হলে তাকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যানক্সিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইপক্সিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যাপনিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডিপসনিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '20-21"
+      ]
+    },
+    {
+      "id": 195,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন অঙ্গে সবচেয়ে বেশি অক্সিজেন থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মস্তিষ্ক"
+        },
+        {
+          "label": "খ.",
+          "text": "হৃদপিণ্ড"
+        },
+        {
+          "label": "গ.",
+          "text": "বৃক্ক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '19-20"
+      ]
+    },
+    {
+      "id": 196,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্রে ভেস্টিবিউলের পরের অংশ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হাইলাম"
+        },
+        {
+          "label": "খ.",
+          "text": "নাসাগলবিল"
+        },
+        {
+          "label": "গ.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নাসাগহ্বর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '19-20"
+      ]
+    },
+    {
+      "id": 197,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্রে কোয়ানা কোথায় দেখতে পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নাসাগহ্বর"
+        },
+        {
+          "label": "খ.",
+          "text": "পশ্চাৎ নাসারন্ধ্র"
+        },
+        {
+          "label": "গ.",
+          "text": "নাসাগলবিল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রাকিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '19-20"
+      ]
+    },
+    {
+      "id": 201,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের স্বরযন্ত্রের সবচেয়ে বড় তরুণাস্থি কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্রিকয়েড"
+        },
+        {
+          "label": "খ.",
+          "text": "এপিগ্লটিস"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যারিটনয়েড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যাডাম'স অ্যাপল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-A '19-20"
+      ]
+    },
+    {
+      "id": 202,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনে শতকরা কতভাগ অক্সিজেন প্লাজমায় ভৌত দ্রবণরূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "0.1"
+        },
+        {
+          "label": "খ.",
+          "text": "0.2"
+        },
+        {
+          "label": "গ.",
+          "text": "2.0"
+        },
+        {
+          "label": "ঘ.",
+          "text": "10"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '19-20"
+      ]
+    },
+    {
+      "id": 203,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মধ্যকর্ণের Otitis media রোগ কোন জীবাণু দ্বারা সংক্রমন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Bacteria"
+        },
+        {
+          "label": "খ.",
+          "text": "Fungus"
+        },
+        {
+          "label": "গ.",
+          "text": "Protozoa"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Virus"
+        },
+        {
+          "label": "ঙ.",
+          "text": "a,b,d"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '19-20"
+      ]
+    },
+    {
+      "id": 204,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সেপ্টাল কোষ কোথায় দেখতে পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নাসারন্ধ্র"
+        },
+        {
+          "label": "খ.",
+          "text": "পাকস্থলী"
+        },
+        {
+          "label": "গ.",
+          "text": "নেফ্রন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 205,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্রে ভেস্টিবিউলের পরের অংশ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হাইলাম"
+        },
+        {
+          "label": "খ.",
+          "text": "নাসাগলবিল"
+        },
+        {
+          "label": "গ.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নাসাগহ্বর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 206,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসনালি বা ট্রাকিয়া কতটি তরুণাস্থি দ্বারা নির্মিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৬-২০"
+        },
+        {
+          "label": "খ.",
+          "text": "২৬-৩০"
+        },
+        {
+          "label": "গ.",
+          "text": "৩০-৩৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৩৬-৪০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20",
+        "JU-D '17-18"
+      ]
+    },
+    {
+      "id": 207,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাই কীসের অংশ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রেচনতন্ত্রের"
+        },
+        {
+          "label": "খ.",
+          "text": "শ্বাসতন্ত্রের"
+        },
+        {
+          "label": "গ.",
+          "text": "পরিপাকতন্ত্রের"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্নায়ুতন্ত্রের"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '19-20"
+      ]
+    },
+    {
+      "id": 208,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বৃক্কের অবতল অংশের ভাঁজকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্যাপসুল"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইলাম"
+        },
+        {
+          "label": "গ.",
+          "text": "পেলভিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মেডুলা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 209,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুস আবৃতকারী দ্বিস্তরী পাতলা আবরণীর নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্লুরা"
+        },
+        {
+          "label": "খ.",
+          "text": "প্যারাইটাল"
+        },
+        {
+          "label": "গ.",
+          "text": "পেরিকার্ডিয়াম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এপিকার্ডিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '18-19"
+      ]
+    },
+    {
+      "id": 210,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসনালি বা ট্রাকিয়া কতটি তরুণাস্থি দ্বারা নির্মিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৬-২০"
+        },
+        {
+          "label": "খ.",
+          "text": "২৬-৩০"
+        },
+        {
+          "label": "গ.",
+          "text": "৩০-৩৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৩৬-৪০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '18-19"
+      ]
+    },
+    {
+      "id": 211,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাসের মাধ্যমে আগত ফুসফুসে পৌছালে অ্যালভিওলাইয়ে $O_{2}$ -এর চাপ থাকে কত mmHg?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "10"
+        },
+        {
+          "label": "খ.",
+          "text": "114"
+        },
+        {
+          "label": "গ.",
+          "text": "104"
+        },
+        {
+          "label": "ঘ.",
+          "text": "1044"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '18-19"
+      ]
+    },
+    {
+      "id": 212,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্ত ও বায়ুর মধ্যে O $_2$ এবং CO $_2$ এর বিনিময় ঘটে মানবদেহের-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়াতে"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রংকিউলে"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রংকাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলিতে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '18-19",
+        "CVASU '11-12"
+      ]
+    },
+    {
+      "id": 213,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অ্যালভিওলাইগুলো যে ব্যবধায়ক পর্দার মাধ্যমে পৃথক থাকে তার নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডায়াফ্রাম"
+        },
+        {
+          "label": "খ.",
+          "text": "এপিথেলিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্র্যাবেকুলি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্ল্যুরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-A '17-18"
+      ]
+    },
+    {
+      "id": 214,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্রের কোন অংশে $O_{2}$ ও $CO_{2}$ এর বিনিময় ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্রংকাসে"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়ায়"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রংকিওলে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাসে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '17-18"
+      ]
+    },
+    {
+      "id": 215,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ট্রাকিয়ার শাখাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "গ.",
+          "text": "সাইনাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '17-18"
+      ]
+    },
+    {
+      "id": 216,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কত সপ্তাহে মানব ভ্রূণে সর্বপ্রথম সারফেকট্যান্ট ক্ষরণ শুরু হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২০"
+        },
+        {
+          "label": "খ.",
+          "text": "২৩"
+        },
+        {
+          "label": "গ.",
+          "text": "২৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২৯"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '17-18"
+      ]
+    },
+    {
+      "id": 217,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের সর্বমোট বায়ু ধারণ ক্ষমতাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভাইটাল ক্যাপাসিটি"
+        },
+        {
+          "label": "খ.",
+          "text": "টাইডাল ভলিউম"
+        },
+        {
+          "label": "গ.",
+          "text": "রেসিডুয়াল ভলিউম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পালমোনারি ভলিউম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '17-18"
+      ]
+    },
+    {
+      "id": 218,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহের কোনটি হতে সারফেকট্যান্ট নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কিওল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '17-18"
+      ]
+    },
+    {
+      "id": 219,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের ভেস্টিবিউলের কাজ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বায়ু নাসাগলবিলে প্রবেশ করানো"
+        },
+        {
+          "label": "খ.",
+          "text": "বাতাস পরিষ্কারে সহায়তা করা"
+        },
+        {
+          "label": "গ.",
+          "text": "ঘ্রাণ উদ্দীপনা গ্রহণে সহায়তা করা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শ্বাসনালিতে খাদ্যবস্তু প্রবেশে বাঁধা প্রদান করা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '17-18"
+      ]
+    },
+    {
+      "id": 220,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সিলিয়াময় ব্রঙ্কিওল পাওয়া যায়-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পাকস্থলীতে"
+        },
+        {
+          "label": "খ.",
+          "text": "যকৃতে"
+        },
+        {
+          "label": "গ.",
+          "text": "বৃক্ক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুসে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '17-18"
+      ]
+    },
+    {
+      "id": 221,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Serous fluid দেহের কোন অংশ হতে নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হৃৎপিণ্ড"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "গ.",
+          "text": "মূত্রাশয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অগ্ন্যাশয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-G '17-18"
+      ]
+    },
+    {
+      "id": 222,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোথায় কোলাজেন এবং ইলাস্টিন তন্তু পাওয়া যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্বরযন্ত্রে"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়ায়"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাসে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-F '17-18"
+      ]
+    },
+    {
+      "id": 223,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ট্রাকিয়ার শাখাকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যাভিওলাস"
+        },
+        {
+          "label": "গ.",
+          "text": "সাইনাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্রঙ্কাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '17-18"
+      ]
+    },
+    {
+      "id": 224,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ডান ফুসফুস কয়টি লোবিউলে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৩"
+        },
+        {
+          "label": "গ.",
+          "text": "১০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JKKNIU-B '17-18",
+        "IU-D '17-18"
+      ]
+    },
+    {
+      "id": 226,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুস আবৃত থাকে যে পর্দা দ্বারা তাকে বলা হয়–"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পেরিকার্ডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "পেরিঅস্ট্রিয়াম"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লিউরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পেরিকন্ড্রিয়াম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '16-17",
+        "RU-A '11-12"
+      ]
+    },
+    {
+      "id": 227,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্ত ও বায়ুর মধ্যে O $_2$ এবং CO $_2$ এর বিনিময় ঘটে মানবদেহের-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়াতে"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রংকিউলে"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রংকাসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলিতে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '18-19",
+        "CVASU '11-12"
+      ]
+    },
+    {
+      "id": 228,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ডান ফুসফুস কয়টি লোবিউলে বিভক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৩"
+        },
+        {
+          "label": "গ.",
+          "text": "১০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JKKNIU-B '17-18",
+        "IU-D '17-18"
+      ]
+    },
+    {
+      "id": 229,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ফ্রন্টাল সাইনাস কোথায় অবস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দুচোখের মাঝখানে"
+        },
+        {
+          "label": "খ.",
+          "text": "নাকের দুপাশের ম্যাক্সিলারি অঞ্চলে"
+        },
+        {
+          "label": "গ.",
+          "text": "চোখের ওপরে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গালে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '17-18"
+      ]
+    },
+    {
+      "id": 230,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "খাদ্যদ্রব্য গলাঃধকরণের সময় স্বরযন্ত্রের মুখ বন্ধ করে দেয় কে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ulva"
+        },
+        {
+          "label": "খ.",
+          "text": "Epiglottis"
+        },
+        {
+          "label": "গ.",
+          "text": "Adams Apple"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Vocal Cord"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '16-17"
+      ]
+    },
+    {
+      "id": 231,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রঙ্কিওলের অতিসূক্ষ্ম ও তরুণাস্থিবিহীন প্রান্তগুলোকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যালভিওলার থলি"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলার নালি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাই"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '16-17"
+      ]
+    },
+    {
+      "id": 232,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপায়ীর শ্বসনতন্ত্রে কোন সমস্যা দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কমসংখ্যক অ্যালভিওলাই থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "সাইনুসাইটিস দেখা যায়"
+        },
+        {
+          "label": "গ.",
+          "text": "ধমনিতে রক্ত জমাট বাঁধে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হৃৎপিণ্ডে ব্যথা অনুভূত হয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '16-17"
+      ]
+    },
+    {
+      "id": 233,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপায়ীর শ্বসনতন্ত্রে কোন সমস্যা দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কমসংখ্যক অ্যালভিওলাই থাকে"
+        },
+        {
+          "label": "খ.",
+          "text": "সাইনুসাইটিস দেখা যায়"
+        },
+        {
+          "label": "গ.",
+          "text": "ধমনিতে রক্ত জমাট বাঁধে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হৃৎপিণ্ডে ব্যথা অনুভূত হয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '16-17"
+      ]
+    },
+    {
+      "id": 234,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ওটাইটিস মিডিয়ার লক্ষণ নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রচণ্ড মাথাব্যথা"
+        },
+        {
+          "label": "খ.",
+          "text": "তীব্র জ্বর"
+        },
+        {
+          "label": "গ.",
+          "text": "ডায়রিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "দৃষ্টি প্রতিবন্ধকতা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 235,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি সাইনুসাইটিসের লক্ষণ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মাথাব্যথা"
+        },
+        {
+          "label": "খ.",
+          "text": "ঘ্রাণ শক্তিহীনতা"
+        },
+        {
+          "label": "গ.",
+          "text": "পেট ব্যথা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "দাঁতে ব্যথা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 236,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টিমপেনোস্টোমি ব্যবহৃত হয় কোন রোগের প্রতিকারের ক্ষেত্রে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সাইনুসাইটিস"
+        },
+        {
+          "label": "খ.",
+          "text": "মেনিনজাইটিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ওটাইটিস মিডিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হিমোডায়ালাইসিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 237,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্থায়িত্বের ভিত্তিতে ওটাইটিস মিডিয়া কত প্রকারের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৩"
+        },
+        {
+          "label": "গ.",
+          "text": "৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৫"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 238,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মধ্যকর্ণের সংক্রমণকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ওটিটিস মিডিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাইটিস"
+        },
+        {
+          "label": "গ.",
+          "text": "এমফাইসেমা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাইনোসাইটিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 239,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুস শরীরের যে গহ্বরে অবস্থান করে তার নাম-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পেরিটোনিয়াল গহ্বর"
+        },
+        {
+          "label": "খ.",
+          "text": "পেরিনিয়েল গহ্বর"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লিউরাল গহ্বর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পেরিকার্ডিয়াল গহ্বর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CVASU '15-16"
+      ]
+    },
+    {
+      "id": 240,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "এলভিওলাসের মধ্যে অক্সিজেনের পার্শ্বচাপ কত মিলিমিটার পারদ চাপের সমান?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "40"
+        },
+        {
+          "label": "খ.",
+          "text": "60"
+        },
+        {
+          "label": "গ.",
+          "text": "80"
+        },
+        {
+          "label": "ঘ.",
+          "text": "104"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '14-15"
+      ]
+    },
+    {
+      "id": 241,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের (Lungs) গঠন ও কার্যগত একক–"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নেফ্রন"
+        },
+        {
+          "label": "খ.",
+          "text": "নিউরন"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গ্লোমেরুলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JnU-A '13-14"
+      ]
+    },
+    {
+      "id": 242,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "এপিগ্লটিস থাকে কোনটিতে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গলবিল"
+        },
+        {
+          "label": "খ.",
+          "text": "ল্যারিংক্স"
+        },
+        {
+          "label": "গ.",
+          "text": "নাসা গহ্বর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রাকিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-F '13-14"
+      ]
+    },
+    {
+      "id": 243,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের ক্যানসারের জন্য দায়ী -"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "SiO 2"
+        },
+        {
+          "label": "খ.",
+          "text": "CO 2"
+        },
+        {
+          "label": "গ.",
+          "text": "MnO 2"
+        },
+        {
+          "label": "ঘ.",
+          "text": "H₂S"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-F '13-14"
+      ]
+    },
+    {
+      "id": 244,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধূমপান শতকরা কত ভাগ ফুসফুসীয় ক্যানসারের কারণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "80%"
+        },
+        {
+          "label": "খ.",
+          "text": "90%"
+        },
+        {
+          "label": "গ.",
+          "text": "65%"
+        },
+        {
+          "label": "ঘ.",
+          "text": "84%"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-F '13-14"
+      ]
+    },
+    {
+      "id": 245,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানব ভ্রুণে কোন বয়স থেকে সারফেকট্যান্ট ক্ষরণ শুরু হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "21 সপ্তাহ"
+        },
+        {
+          "label": "খ.",
+          "text": "22 সপ্তাহ"
+        },
+        {
+          "label": "গ.",
+          "text": "23 সপ্তাহ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "24 সপ্তাহ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C"
+      ]
+    },
+    {
+      "id": 246,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের কৈশিকজালিকায় দেহ থেকে আগত রক্তে O₂ এর চাপ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "40 mmHg"
+        },
+        {
+          "label": "খ.",
+          "text": "50 mmHg"
+        },
+        {
+          "label": "গ.",
+          "text": "60 mmHg"
+        },
+        {
+          "label": "ঘ.",
+          "text": "70 mmHg"
+        }
+      ],
+      "answer": "",
+      "source": []
+    },
+    {
+      "id": 247,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটিতে স্বর সৃষ্টিকারী ভোকাল কর্ড যুক্ত থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভেস্টিবিউল"
+        },
+        {
+          "label": "খ.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "গ.",
+          "text": "শ্বাসনালী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বায়ুনালী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 248,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Adam’s Apple দেখা যায়-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "অ্যালভিওলাসে"
+        },
+        {
+          "label": "B.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "C.",
+          "text": "স্বরযন্ত্রে"
+        },
+        {
+          "label": "D.",
+          "text": "ট্রাকিয়ায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 249,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্বরযন্ত্রের ভোকাল কর্ড কতটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৪টি"
+        },
+        {
+          "label": "খ.",
+          "text": "৫টি"
+        },
+        {
+          "label": "গ.",
+          "text": "৬টি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮টি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 250,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের ব্রঙ্কাসের প্রতিটি শাখাকে কী বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিওল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 251,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের আবরণীর দুটি স্তরের মাঝে কী থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "গ.",
+          "text": "অন্তঃপ্লুরা গহ্বর"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বায়ুকুঠুরি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 252,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের গঠন ও কাজের একক কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নেফ্রন"
+        },
+        {
+          "label": "খ.",
+          "text": "নিউরন"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গ্লোমেরুলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 253,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মধ্যচ্ছদা নিচের দিকে নেমে আসলে কী ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বক্ষ গহ্বরের ব্যাস হ্রাস পায়"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুসের মধ্যকার বায়ুচাপ বৃদ্ধি পায়"
+        },
+        {
+          "label": "গ.",
+          "text": "অরীয় পেশি সংকুচিত হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুস হতে বায়ু বের হয়ে যায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 254,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনে বক্ষগহ্বরের আয়তন পরিবর্তন সহায়ক ফ্রেনিক স্নায়ুর অবস্থান কোথায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "ফুসফুস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ডায়াফ্রাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 255,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের নিঃশ্বাস বায়ুতে কার্বন ডাইঅক্সাইডের শতকরা পরিমাণ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "০.০৪"
+        },
+        {
+          "label": "খ.",
+          "text": "৪.০"
+        },
+        {
+          "label": "গ.",
+          "text": "১৬.৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৭৯.০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 256,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহের কলাকোষে CO $_2$ এর পার্শ্বচাপ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৪০ মিলিমিটার Hg"
+        },
+        {
+          "label": "খ.",
+          "text": "৫০ মিলিমিটার Hg"
+        },
+        {
+          "label": "গ.",
+          "text": "৬০ মিলিমিটার Hg"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৭০ মিলিমিটার Hg"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 257,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "লোহিত রক্তকণিকায় হিমোগ্লোবিনের পরিমাণ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২৭%"
+        },
+        {
+          "label": "খ.",
+          "text": "৩০%"
+        },
+        {
+          "label": "গ.",
+          "text": "৩৩%"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৩৭%"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 258,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ওটিটিস মিডিয়া রোগের সংক্রমণ কোথায় ঘটে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "খ.",
+          "text": "পাকস্থলিতে"
+        },
+        {
+          "label": "গ.",
+          "text": "মধ্যকর্ণে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বৃক্কে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 259,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধমনি গাত্রে প্লাক জমার কাজ ত্বরান্বিত করে কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "স্থূলতা"
+        },
+        {
+          "label": "খ.",
+          "text": "অপর্যাপ্ত ঘুম"
+        },
+        {
+          "label": "গ.",
+          "text": "ধুমপান"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অত্যাধিক পরিশ্রম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 260,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধুমপায়ী ব্যক্তির ফুসফুসের বর্ণ কীরূপ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "লালচে"
+        },
+        {
+          "label": "খ.",
+          "text": "কালচে"
+        },
+        {
+          "label": "গ.",
+          "text": "নীলচে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাদাটে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 261,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ধুমপায়ীর ব্রঙ্কাস সংলগ্ন ফুসফুস অঞ্চলে কী রয়েছে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "লিম্ফ"
+        },
+        {
+          "label": "খ.",
+          "text": "সিস্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "কোরক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বিড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 262,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহের মধ্যচ্ছদার অরীয় পেশি সংকুচিত হলে-"
+        },
+        {
+          "type": "text",
+          "content": "i. বক্ষগহ্বরের ব্যাস বৃদ্ধি পায়"
+        },
+        {
+          "type": "text",
+          "content": "ii. ফুসফুসের বায়ুচাপ হ্রাস পায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. ফুসফুসের বায়ুচাপ বৃদ্ধি পায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 263,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস কার্যক্রমে উত্তোলিত হয়-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডায়াফ্রাম"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টার্নাম"
+        },
+        {
+          "type": "text",
+          "content": "iii. পর্শুকার শ্যাফট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 264,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ওটিটিস মিডিয়া রোগে কানের ব্যথা ও কটকটানী তীব্র হলে সেবন করা উচিত-"
+        },
+        {
+          "type": "text",
+          "content": "i. পেনিসিলিন জাতীয় ঔষধ"
+        },
+        {
+          "type": "text",
+          "content": "ii. ডাইক্লোফেনাল পটাশিয়াম"
+        },
+        {
+          "type": "text",
+          "content": "iii. প্যারাসিটামল"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 265,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রমা তার বইতে মানুষের স্বরযন্ত্রের শেষভাগে তরুণাস্থি নির্মিত ১৬ – ২০টি অর্ধবলয় পরিবেষ্টিত একটি নালি দেখতে পেল।"
+        },
+        {
+          "type": "text",
+          "content": "নালিটিতে খাদ্যবস্তু প্রবেশে বাধা দেয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভেন্টিবিউল"
+        },
+        {
+          "label": "খ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "গ.",
+          "text": "সেরাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এপিগ্লটিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 266,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রমা তার বইতে মানুষের স্বরযন্ত্রের শেষভাগে তরুণাস্থি নির্মিত ১৮ – ২০টি অর্ধবলয় পরিবেষ্টিত একটি নালি দেখতে পেল।"
+        },
+        {
+          "type": "text",
+          "content": "উক্ত নালির-"
+        },
+        {
+          "type": "text",
+          "content": "i. দ্বারা বায়ু দেহের ভেতরে প্রবেশ করে"
+        },
+        {
+          "type": "text",
+          "content": "ii. শেষ প্রান্ত চারটি ভাগে বিভক্ত হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. সিলিয়াযুক্ত লোম ফুসফুসে জীবাণু প্রবেশে বাধা সৃষ্টি করে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 267,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তে হিম ও গ্লোবিন এর অনুপাত-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১ : ২৫"
+        },
+        {
+          "label": "খ.",
+          "text": "২ : ২৫"
+        },
+        {
+          "label": "গ.",
+          "text": "১ : ২০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৩ : ২০"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 268,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি বহিঃশ্বসন এর বৈশিষ্ট্য?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এনজাইম গুরুত্বপূর্ণ ভূমিকা পালন করে"
+        },
+        {
+          "label": "খ.",
+          "text": "ফুসফুসের অভ্যন্তরে সংঘটিত হয়"
+        },
+        {
+          "label": "গ.",
+          "text": "H $_2$ O ও CO $_2$ তৈরী হয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শক্তি উৎপন্ন হয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 269,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতি ১০০ মি.লি. রক্তে কতটুকু অক্সিজেন ভৌত দ্রবণরূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "০.৩ মি.লি."
+        },
+        {
+          "label": "খ.",
+          "text": "০.১ মি.লি."
+        },
+        {
+          "label": "গ.",
+          "text": "০.৪ মি.লি."
+        },
+        {
+          "label": "ঘ.",
+          "text": "০.২ মি.লি."
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 270,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের দ্বিস্তরী আবরণের ভিতরের পর্দার নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ভিসেরাল প্লিউরা"
+        },
+        {
+          "label": "খ.",
+          "text": "ভেস্টিবিউল গ্লিউরা"
+        },
+        {
+          "label": "গ.",
+          "text": "প্যারাইটাল গ্লিউরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "লোবিওলার গ্লিউরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 271,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ওটিটিস মিডিয়া হলে দেহের তাপমাত্রা থাকে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "98℉"
+        },
+        {
+          "label": "খ.",
+          "text": "100℉"
+        },
+        {
+          "label": "গ.",
+          "text": "104℉"
+        },
+        {
+          "label": "ঘ.",
+          "text": "103℉"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 272,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি ম্যাক্সিলারি সাইনাসের লক্ষণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "চোখে ঝাপসা দেখা"
+        },
+        {
+          "label": "খ.",
+          "text": "মুখমন্ডল অনুভূতিহীন মনে হওয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "হাত ও পা অবস মনে হওয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কাজেকর্মে বিরক্তিবোধ হওয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 273,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পূর্ণবয়স্ক মানুষের সমগ্র রক্তে লৌহের পরিমাণ থাকে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৩ – ৫ গ্রাম"
+        },
+        {
+          "label": "খ.",
+          "text": "৫ – ৬ গ্রাম"
+        },
+        {
+          "label": "গ.",
+          "text": "৪ – ৬ গ্রাম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৪ – ৫ গ্রাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 274,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "দীর্ঘস্থায়ী বা ক্রনিক ওটিটিস মিডিয়ার কারণ-"
+        },
+        {
+          "type": "text",
+          "content": "i. ব্যাকটেরিয়ার সংক্রমণ"
+        },
+        {
+          "type": "text",
+          "content": "ii. ভাইরাসের সংক্রমণ"
+        },
+        {
+          "type": "text",
+          "content": "iii. ছত্রাকের সংক্রমণ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 275,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাইনুসাইটিসের ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. দীর্ঘস্থায়ী হাঁপানী সমস্যা"
+        },
+        {
+          "type": "text",
+          "content": "ii. রক্ত তঞ্চনে অধিক সময় লাগে"
+        },
+        {
+          "type": "text",
+          "content": "iii. ইউস্টেশিয়ান নালির অস্বাভাবিকতা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 276,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসক্রিয়া নিয়ন্ত্রণের জন্য যেসব ফ্যাক্টর প্রয়োজন-"
+        },
+        {
+          "type": "text",
+          "content": "i. O $_2$"
+        },
+        {
+          "type": "text",
+          "content": "ii. CO $_2$"
+        },
+        {
+          "type": "text",
+          "content": "iii. HCO $_3$"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 277,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নাসা গহ্বরের প্রাচীর থাকে-"
+        },
+        {
+          "type": "text",
+          "content": "i. অলফ্যাক্টরী কোষ"
+        },
+        {
+          "type": "text",
+          "content": "ii. অ্যালভিওলাসের সেপ্টাল কোষ"
+        },
+        {
+          "type": "text",
+          "content": "iii. সিলিয়াযুক্ত মিউকাস ক্ষরণকারী কোষ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 278,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস কার্যক্রমে উত্তোলিত হয়-"
+        },
+        {
+          "type": "text",
+          "content": "i. ডায়াফ্রাম"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টার্নাম"
+        },
+        {
+          "type": "text",
+          "content": "iii. পর্শুকার শ্যাফট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 279,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(31).png?alt=media&token=b8038022-c6fc-42fc-8075-50ba38ca25ef"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের চিত্রটি শ্বসনতন্ত্রের কোন অংশ নির্দেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "B.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "C.",
+          "text": "ব্রঙ্কিওল"
+        },
+        {
+          "label": "D.",
+          "text": "ট্রাকিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 280,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(31).png?alt=media&token=35117aef-d67a-46f4-bc71-86b31afd271b"
+        },
+        {
+          "type": "text",
+          "content": "চিত্রের ‘A’ চিহ্নিত অংশের কাজ-"
+        },
+        {
+          "type": "text",
+          "content": "i. O $_2$ গ্রহণে সহায়তা"
+        },
+        {
+          "type": "text",
+          "content": "ii. CO $_2$ ত্যাগে সহায়তা"
+        },
+        {
+          "type": "text",
+          "content": "iii. ক্ষারীয় রাসায়নিক পদার্থ ক্ষরণে সহায়তা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 281,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ট্রাকিয়া কী দিয়ে গঠিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অস্থি"
+        },
+        {
+          "label": "খ.",
+          "text": "তরুণাস্থি"
+        },
+        {
+          "label": "গ.",
+          "text": "শিরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ধমনি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 282,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানবদেহে বহিঃশ্বসন কয়টি ধাপে সম্পন্ন হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দুই"
+        },
+        {
+          "label": "খ.",
+          "text": "তিন"
+        },
+        {
+          "label": "গ.",
+          "text": "চার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পাঁচ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 283,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্লুরা নামক দুই স্তরবিশিষ্ট এক ধরনের পর্দা দ্বারা ঢাকা থাকে কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অ্যালভিওলাস"
+        },
+        {
+          "label": "খ.",
+          "text": "স্বরযন্ত্র"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফুসফুস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 284,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বায়ুথলি থেকে অক্সিজেন কোন প্রক্রিয়ায় রক্তে প্রবেশ করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অভিস্রবণ"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রস্বেদন"
+        },
+        {
+          "label": "গ.",
+          "text": "শ্বসন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ব্যাপন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 285,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অন্তঃশ্বসন প্রধানত কোষের কোথায় সংঘটিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্লাজমা মেমব্রেন"
+        },
+        {
+          "label": "খ.",
+          "text": "নিউক্লিয়াসে"
+        },
+        {
+          "label": "গ.",
+          "text": "মাইটোকন্ড্রিয়ায়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোষগহ্বরে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 286,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্রঙ্কাসের সংক্রমণকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "নিউমোনিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "হাঁপানি"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাইটিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্লুরিসি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 287,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনতন্ত্রের অঙ্গগুলো হচ্ছে-"
+        },
+        {
+          "type": "text",
+          "content": "i. নাসাপথ, নাসা গলবিল"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্বরযন্ত্র, ট্রাকিয়া"
+        },
+        {
+          "type": "text",
+          "content": "iii. ব্রঙ্কাস, ফুসফুস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 288,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(32).png?alt=media&token=c23e3c67-d115-47cc-b8c1-eb2531a69797"
+        },
+        {
+          "type": "text",
+          "content": "উপরের চিত্রটি কোন রোগের সংশ্লিষ্ট?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "নিউমোনিয়া"
+        },
+        {
+          "label": "B.",
+          "text": "হাঁপানি"
+        },
+        {
+          "label": "C.",
+          "text": "সাইনুসাইটিস"
+        },
+        {
+          "label": "D.",
+          "text": "প্লুরিসি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 289,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(32).png?alt=media&token=15196a19-9950-4141-b7a5-7aea9d9168f9"
+        },
+        {
+          "type": "text",
+          "content": "কোন জীবাণুর সংক্রমণে উপরিউক্ত রোগটি হয়ে থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ভাইরাস"
+        },
+        {
+          "label": "B.",
+          "text": "ব্যাকটেরিয়া"
+        },
+        {
+          "label": "C.",
+          "text": "ছত্রাক"
+        },
+        {
+          "label": "D.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 290,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের প্রাচীরের কোষ থেকে কী নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সেরাস ফ্লুইড"
+        },
+        {
+          "label": "খ.",
+          "text": "সারফেকট্যান্ট"
+        },
+        {
+          "label": "গ.",
+          "text": "পেরিকার্ডিয়াল তরল"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিট্রিয়াস ফ্লুইড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 291,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের সর্বমোট বায়ুধারণ ক্ষমতাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রেসিডুয়াল ভলিউম"
+        },
+        {
+          "label": "খ.",
+          "text": "ভাইটাল ক্যাপাসিটি"
+        },
+        {
+          "label": "গ.",
+          "text": "টাইডাল ভলিউম"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টাইডাল বায়ু"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 292,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বাসনালিতে কোন ধরনের তরুণাস্থি দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শীততন্তুময়"
+        },
+        {
+          "label": "খ.",
+          "text": "হায়ালিন"
+        },
+        {
+          "label": "গ.",
+          "text": "শ্বেততন্তুময়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ক্যালসিফাইড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 293,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মানুষের শ্বসনে শতকরা কত ভাগ অক্সিজেন প্লাজমায় ভৌত দ্রবণরূপে পরিবাহিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "0.1%"
+        },
+        {
+          "label": "খ.",
+          "text": "0.2%"
+        },
+        {
+          "label": "গ.",
+          "text": "2.0%"
+        },
+        {
+          "label": "ঘ.",
+          "text": "10.0%"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 294,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বাম ফুসফুসে কতটি লোবিউল থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২"
+        },
+        {
+          "label": "খ.",
+          "text": "৪"
+        },
+        {
+          "label": "গ.",
+          "text": "৬"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৮"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 295,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রক্তে CO $_2$ পরিবহণের মাধ্যম নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কার্বলিক এসিড"
+        },
+        {
+          "label": "খ.",
+          "text": "কার্বামিনো যৌগ"
+        },
+        {
+          "label": "গ.",
+          "text": "বাইকার্বনেট যৌগ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কার্বন মনোক্সাইড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 296,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনকেন্দ্র কোথায় অবস্থিত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পনস"
+        },
+        {
+          "label": "খ.",
+          "text": "স্নায়ুরজ্জু"
+        },
+        {
+          "label": "গ.",
+          "text": "মধ্যমস্তিষ্ক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সেরেবেলাম"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 297,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্বসনতন্ত্রের কোন অংশে অক্সিজেন ও কার্বন ডাই-অক্সাইড বিনিময় হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রাকিওল"
+        },
+        {
+          "label": "খ.",
+          "text": "ট্রাকিয়া"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্রঙ্কাস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালভিওলাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 298,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফুসফুসের আবরণের নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পেরিকার্ডিয়াম"
+        },
+        {
+          "label": "খ.",
+          "text": "গ্লিসন ক্যাপস্যুল"
+        },
+        {
+          "label": "গ.",
+          "text": "প্লিউরা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সারকোলেমা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 299,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রশ্বাস বায়ুর অক্সিজেনের পরিমাণ কত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৩.৭%"
+        },
+        {
+          "label": "খ.",
+          "text": "২০%"
+        },
+        {
+          "label": "গ.",
+          "text": "৫.২%"
+        },
+        {
+          "label": "ঘ.",
+          "text": "০.০৪%"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    },
+    {
+      "id": 300,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "হেরিং-ব্রয়ার প্রতিবর্ত ক্রিয়া ঘটে কোন অঙ্গে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হৃৎপিন্ডে"
+        },
+        {
+          "label": "খ.",
+          "text": "স্পাইনাল কর্ডে"
+        },
+        {
+          "label": "গ.",
+          "text": "ফুসফুসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "যকৃতে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    }
+  ]
+}

@@ -275,6 +275,7 @@ export default function App() {
               <MockExam 
                 stats={stats} 
                 setStats={setStats} 
+                questions={questions}
               />
             )}
 

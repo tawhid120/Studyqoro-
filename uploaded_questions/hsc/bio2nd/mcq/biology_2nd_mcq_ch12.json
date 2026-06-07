@@ -1,0 +1,4915 @@
+{
+  "source_url": "https://www.daricomma.com/academic/HSC%20-%20%E0%A6%B0%E0%A6%B8%E0%A6%BE%E0%A7%9F%E0%A6%A8%20%E0%A7%A7%E0%A6%AE%20%E0%A6%AA%E0%A6%A4%E0%A7%8D%E0%A6%B0/chapter/%E0%A6%85%E0%A6%A7%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A7%9F-%E0%A7%A6%E0%A7%A7%E0%A6%83%20%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%AC%E0%A6%B0%E0%A7%87%E0%A6%9F%E0%A6%B0%E0%A7%80%E0%A6%B0%20%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A6%BE%E0%A6%AA%E0%A6%A6%20%E0%A6%AC%E0%A7%8D%E0%A6%AF%E0%A6%AC%E0%A6%B9%E0%A6%BE%E0%A6%B0?page=1",
+  "total_questions": 143,
+  "latex_format": "inline $...$ — render with MathJax or KaTeX",
+  "note": "'answer' ফিল্ড খালি — manually পূরণ করুন। 'question_parts' একটি array: প্রতিটি item হয় {type:'text', content:'...'} অথবা {type:'image', url:'...'}। অপশনে image থাকলে 'image_url' ফিল্ড থাকবে।",
+  "questions": [
+    {
+      "id": 1,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "আলোর প্রতি প্রাণীর সাড়া দেয়াকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফটোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "টেলোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "নেমোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টোপোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2019",
+        "SB '2019"
+      ]
+    },
+    {
+      "id": 2,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীবের দৈহিক স্পর্শজনিত ট্যাক্সিসকে বলা হয়-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যারোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থিগমোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2019"
+      ]
+    },
+    {
+      "id": 3,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিশুর জন্মের সঙ্গে সঙ্গে স্তনপান কোন ধরনের আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "FAP"
+        },
+        {
+          "label": "খ.",
+          "text": "Reflex"
+        },
+        {
+          "label": "গ.",
+          "text": "Taxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Learning"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2019"
+      ]
+    },
+    {
+      "id": 4,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সহজাত আচরণের বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বৃদ্ধির সাথে সম্পর্কিত"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রজাতি নির্দিষ্ট নয়"
+        },
+        {
+          "label": "গ.",
+          "text": "বংশানুক্রমে একইভাবে প্রদর্শিত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অনুশীলন দ্বারা অর্জিত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2019"
+      ]
+    },
+    {
+      "id": 5,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সূর্যের প্রতি সাড়া দিয়ে পিঁপড়ার চলন নিম্নোক্ত কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ট্রোপোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "টেলোটাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "মেনোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নেমোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2019"
+      ]
+    },
+    {
+      "id": 6,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীদের ক্ষেত্রে অ্যালটুইলম হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. পরার্থপরতা"
+        },
+        {
+          "type": "text",
+          "content": "ii. অর্জিত গুণ"
+        },
+        {
+          "type": "text",
+          "content": "iii. সামাজিক বন্ধন"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2019"
+      ]
+    },
+    {
+      "id": 7,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফনোট্যাক্সিসের সঙ্গে নিম্নের কোনটি জড়িত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "আলো"
+        },
+        {
+          "label": "খ.",
+          "text": "শব্দ"
+        },
+        {
+          "label": "গ.",
+          "text": "স্রোত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অভিকর্ষ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2018"
+      ]
+    },
+    {
+      "id": 8,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ইথোলজির জনক কে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কোনর‌্যাড লরেঞ্জ"
+        },
+        {
+          "label": "খ.",
+          "text": "নিকো টিনবার্জেন"
+        },
+        {
+          "label": "গ.",
+          "text": "আই. পি. প্যাভলভ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কার্ল ভন ফ্রিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2018",
+        "SB '2018",
+        "JB '2018",
+        "BB '2018",
+        "RB '2018",
+        "DiB '2018",
+        "CB '2018"
+      ]
+    },
+    {
+      "id": 9,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জিগ-জ্যাগ নৃত্য প্রদর্শন করে কোন প্রাণী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ব্যাঙ"
+        },
+        {
+          "label": "খ.",
+          "text": "মৌমাছি"
+        },
+        {
+          "label": "গ.",
+          "text": "স্টিকলব্যাক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "টুনটুনি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2017",
+        "DiB '2017"
+      ]
+    },
+    {
+      "id": 10,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সর্বপ্রথম কোন বিজ্ঞানী মাকড়সার জাল বোনার ধাপ পর্যবেক্ষণ করেন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হ্যান্স পিটার্স"
+        },
+        {
+          "label": "খ.",
+          "text": "লরেঞ্জ"
+        },
+        {
+          "label": "গ.",
+          "text": "টিনবারজেন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্যাভলভ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 11,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অক্সিজেনের ঘনত্বের পার্থক্যের কারণে প্রাণীর সাড়া প্রদানকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "টেলোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যারোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 12,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাণী মৌমাছির দেহ থেকে কোন হরমোন নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ইস্ট্রোজেন"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রোজেস্টেরন"
+        },
+        {
+          "label": "গ.",
+          "text": "টেস্টোস্টেরন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফেরোমন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2017"
+      ]
+    },
+    {
+      "id": 13,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি শিখন আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বাবুই পাখির বাসা তৈরি"
+        },
+        {
+          "label": "খ.",
+          "text": "ময়ূরের নৃত্য পরিবেশন"
+        },
+        {
+          "label": "গ.",
+          "text": "হাঁসের ছানার মাকে অনুসরণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শীতের পাখির মাইগ্রেশন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2017"
+      ]
+    },
+    {
+      "id": 14,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "'বর্ষাকালে কার্প মাছ হালদা নদীতে ডিম ছাড়ে’- এটা কোন ধরনের ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইড্রোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফনোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2017"
+      ]
+    },
+    {
+      "id": 15,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অপত্য লালন কোন ধরনের আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সহজাত"
+        },
+        {
+          "label": "খ.",
+          "text": "সামাজিক"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রতিবর্তী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শিখন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2017"
+      ]
+    },
+    {
+      "id": 16,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কেঁচোর সবসময় ভিজা মাটির দিকে গমন কোন ধরনের ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "হাইড্রোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "জিওট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ফটোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "থার্মোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2017"
+      ]
+    },
+    {
+      "id": 17,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর সহজাত আচরণ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. মাকড়সার জাল তৈরি"
+        },
+        {
+          "type": "text",
+          "content": "ii. টুনটুনি পাখির বাসা নির্মাণ"
+        },
+        {
+          "type": "text",
+          "content": "iii. কুকুরের মুখে লালা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2017",
+        "DB '2017"
+      ]
+    },
+    {
+      "id": 26,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর সহজাত আচরণ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. মাকড়সার জাল তৈরি"
+        },
+        {
+          "type": "text",
+          "content": "ii. টুনটুনি পাখির বাসা নির্মাণ"
+        },
+        {
+          "type": "text",
+          "content": "iii. কুকুরের মুখে লালা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DiB '2017",
+        "DB '2017"
+      ]
+    },
+    {
+      "id": 27,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতিবর্ত ক্রিয়া হলো—"
+        },
+        {
+          "type": "text",
+          "content": "i. চোখের উপযোজন"
+        },
+        {
+          "type": "text",
+          "content": "ii. হাই তোলা"
+        },
+        {
+          "type": "text",
+          "content": "iii. লালাক্ষরণ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2017"
+      ]
+    },
+    {
+      "id": 28,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অন্বেষা দাদা বাড়ি বেড়াতে গিয়ে সে তার দাদুর ঘরে চড়ুই পাখিদের বাসা বাঁধতে দেখল। একই সময় সে লক্ষ করল, মা মুরগীর পিছু পিছু ছানাগুলো উঠানে ঘুরে বেড়াচ্ছে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে উল্লিখিত প্রথম ঘটনাটির প্রকৃতি হলো—"
+        },
+        {
+          "type": "text",
+          "content": "i. জিন নিয়ন্ত্রিত ও বংশগত"
+        },
+        {
+          "type": "text",
+          "content": "ii. বংশ পরম্পরায় একইভাবে আত্মপ্রকাশ"
+        },
+        {
+          "type": "text",
+          "content": "iii. শিক্ষালব্ধ জ্ঞান দ্বারা পরিচালিত নয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2017"
+      ]
+    },
+    {
+      "id": 29,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অন্বেষা দাদা বাড়ি বেড়াতে গিয়ে সে তার দাদুর ঘরে চড়ুই পাখিদের বাসা বাঁধতে দেখল। একই সময় সে লক্ষ করল, মা মুরগীর পিছু পিছু ছানাগুলো উঠানে ঘুরে বেড়াচ্ছে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের দ্বিতীয় ঘটনাটি প্রথম ঘটনাটির অনুরূপ নয় কারণ এটি—"
+        },
+        {
+          "type": "text",
+          "content": "i. এক প্রকার শিক্ষালব্ধ আচরণ"
+        },
+        {
+          "type": "text",
+          "content": "ii. তরুণ বয়সের বর্ধনশীল পর্যায়ে বেশি সংঘটিত হয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. প্রতিটি প্রজাতির জন্য সুনির্দিষ্ট"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2017"
+      ]
+    },
+    {
+      "id": 30,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্যাভলভ কোন ধরনের শিখনের পরীক্ষা করেন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সাপেক্ষণ"
+        },
+        {
+          "label": "খ.",
+          "text": "অনুকরণ"
+        },
+        {
+          "label": "গ.",
+          "text": "পরীক্ষালব্ধ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সুপ্ত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DB '2016"
+      ]
+    },
+    {
+      "id": 31,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাজকীয় জেলি তৈরি করা কোন মৌমাছির কাজ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রানী"
+        },
+        {
+          "label": "খ.",
+          "text": "ড্রোন"
+        },
+        {
+          "label": "গ.",
+          "text": "কর্মী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কর্মী ও ড্রোন উভয়ের"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CB '2016"
+      ]
+    },
+    {
+      "id": 32,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শব্দের প্রতি সাড়াদান কোন ধরনের ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফটোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ফোনোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ChB '2016"
+      ]
+    },
+    {
+      "id": 33,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মাকড়সার সিল্ক গ্রন্থি থেকে কী নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সেরাটোনিন"
+        },
+        {
+          "label": "খ.",
+          "text": "হিস্টামিন"
+        },
+        {
+          "label": "গ.",
+          "text": "স্ক্লেরোপ্রোটিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অ্যালবুমিন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2016"
+      ]
+    },
+    {
+      "id": 34,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্রাণীর দৈহিক স্পর্শজনিত ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "অ্যারোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মেনোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SB '2016"
+      ]
+    },
+    {
+      "id": 35,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতিদিন সন্ধ্যায় পাখির সঠিকভাবে ঘরে ফেরা হলো—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মেনোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "নেমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "টেলোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "জিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2016"
+      ]
+    },
+    {
+      "id": 36,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌচাকে মৌমাছির আচরণ কী ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সহজাত"
+        },
+        {
+          "label": "খ.",
+          "text": "সামাজিক"
+        },
+        {
+          "label": "গ.",
+          "text": "শিখন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রতিবর্তী"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BB '2016"
+      ]
+    },
+    {
+      "id": 37,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পরিমাণ এবং মৌমাছির পরস্পরের প্রতি সহযোগিতা যে ধরনের আচরণ—"
+        },
+        {
+          "type": "text",
+          "content": "i. সহজাত আচরণ"
+        },
+        {
+          "type": "text",
+          "content": "ii. শিখন আচরণ"
+        },
+        {
+          "type": "text",
+          "content": "iii. সামাজিক আচরণ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2016"
+      ]
+    },
+    {
+      "id": 38,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-31-2023%2016.10_preview_rev_1.png?alt=media&token=49ac139a-1ac3-4eb2-bfdc-1f95dc9305ad"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের আলোকে 'B' প্রাণীটির আচরণ কোন ধরনের?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "ট্যাক্সিস"
+        },
+        {
+          "label": "B.",
+          "text": "শিখন"
+        },
+        {
+          "label": "C.",
+          "text": "রিফ্লেক্স"
+        },
+        {
+          "label": "D.",
+          "text": "সহজাত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JB '2016"
+      ]
+    },
+    {
+      "id": 39,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FCamScanner%2001-31-2023%2016.10_preview_rev_1.png?alt=media&token=c5b6e671-c227-4908-8b53-9041cc6e3498"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের 'A' চিহ্নিত অংশের বৈশিষ্ট্য—"
+        },
+        {
+          "type": "text",
+          "content": "i. স্ক্লেরোপ্রোটিনে তৈরি"
+        },
+        {
+          "type": "text",
+          "content": "ii. স্টিলের চেয়ে ৫ গুণ শক্ত"
+        },
+        {
+          "type": "text",
+          "content": "iii. স্পিনারেটের মাধ্যমে সৃষ্টি হয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RB '2016"
+      ]
+    },
+    {
+      "id": 40,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শীতের পাখির অভিপ্রয়াণ (পরিযান) কোন ধরনের আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অভ্যাসগত"
+        },
+        {
+          "label": "খ.",
+          "text": "সহজাত"
+        },
+        {
+          "label": "গ.",
+          "text": "শিক্ষণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অনুকরণ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "DU-A '17-18"
+      ]
+    },
+    {
+      "id": 41,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সরিসৃপের যুগ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্যালিওজয়িক"
+        },
+        {
+          "label": "খ.",
+          "text": "মেসোজয়িক"
+        },
+        {
+          "label": "গ.",
+          "text": "আরকিওজয়িক"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সিনোেজয়িক"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '23-24"
+      ]
+    },
+    {
+      "id": 42,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন উদ্দীপনা অ্যানিমোট্যাক্সিসকে প্রভাবিত করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বায়ুপ্রবাহ"
+        },
+        {
+          "label": "খ.",
+          "text": "আর্দ্রতা"
+        },
+        {
+          "label": "গ.",
+          "text": "মাধ্যাকর্ষণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "তাপ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '22-23"
+      ]
+    },
+    {
+      "id": 43,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন উদ্দীপনা অ্যানিমোট্যাক্সিসকে প্রভাবিত করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বায়ুপ্রবাহ"
+        },
+        {
+          "label": "খ.",
+          "text": "আদ্রতা"
+        },
+        {
+          "label": "গ.",
+          "text": "মাধ্যাকর্ষণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "তাপ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '22-23"
+      ]
+    },
+    {
+      "id": 44,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "“ব্যাঙের শীতনিদ্রা' কোন ধরনের ট্যাক্সিসের উদাহরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ধনাত্মক থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ধনাত্মক জিওট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ঋণাত্মক থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ধনাত্মক কেমোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 45,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সহজাত প্রতিরক্ষার উদাহরণ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রজাতিগত প্রতিরক্ষা"
+        },
+        {
+          "label": "খ.",
+          "text": "গোষ্ঠীগত প্রতিরক্ষা"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্যক্তিগত প্রতিরক্ষা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সক্রিয় প্রতিরক্ষা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 46,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি প্রত্যাবর্তী প্রক্রিয়ার বৈশিষ্ট্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এটি একটি ধীর প্রক্রিয়া"
+        },
+        {
+          "label": "খ.",
+          "text": "এই প্রক্রিয়া চলাকালীন সময় অপচয় শক্তির সৃষ্টি হয় না"
+        },
+        {
+          "label": "গ.",
+          "text": "কার্যানির্বাহক বস্তু প্রাথমিক অবস্থায় ফিরে আসে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এটি একটি স্বতঃস্ফূর্ত প্রক্রিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Medical '18-19"
+      ]
+    },
+    {
+      "id": 47,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সমগোত্রীয় পাখির উদাহরণ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "চামচঠোঁটি কাদাখোচা"
+        },
+        {
+          "label": "খ.",
+          "text": "হিমালয়ান পার্টিজ"
+        },
+        {
+          "label": "গ.",
+          "text": "চড়ুই"
+        },
+        {
+          "label": "ঘ.",
+          "text": "গোল্ডেন প্লোভার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "Dental '18-19"
+      ]
+    },
+    {
+      "id": 48,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর আচরণের বিজ্ঞানকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ইকোলজি"
+        },
+        {
+          "label": "খ.",
+          "text": "ইথোলজি"
+        },
+        {
+          "label": "গ.",
+          "text": "ইথনোজুওলজি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এনিমেল বিহেভিওর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '20-21"
+      ]
+    },
+    {
+      "id": 49,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর আচরণের বিজ্ঞানকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ইকোলজি"
+        },
+        {
+          "label": "খ.",
+          "text": "ইথোলজি"
+        },
+        {
+          "label": "গ.",
+          "text": "ইথনোজুওলজি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এনিমেল বিহেভিওর"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "GST-A '20-21"
+      ]
+    },
+    {
+      "id": 50,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বায়োগ্যাসে শতকরা কতভাগ মিথেন থাকে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "60-70"
+        },
+        {
+          "label": "খ.",
+          "text": "85-90"
+        },
+        {
+          "label": "গ.",
+          "text": "20-30"
+        },
+        {
+          "label": "ঘ.",
+          "text": "300-40"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "HSTU-A '24-25"
+      ]
+    },
+    {
+      "id": 51,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌচাকের ক্ষেত্রে কোন উক্তিটি সত্য নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শ্রমিক মৌমাছিরা মধুর সন্ধানে ঘুরে বেড়ায়।"
+        },
+        {
+          "label": "খ.",
+          "text": "পুরুষ মৌমাছিদের কোন কাজ থাকে না।"
+        },
+        {
+          "label": "গ.",
+          "text": "রাণী মৌমাছি ডিম পাড়ে।"
+        },
+        {
+          "label": "ঘ.",
+          "text": "শ্রমিক মৌমাছিতে পুরুষ এবং স্ত্রী উভয়ই থাকে।"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '24-25"
+      ]
+    },
+    {
+      "id": 52,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মাকড়সার জাল তৈরিতে সিল্কগ্রন্থি কোন প্রোটিন ক্ষরিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ইমিউনোগ্লোবিউলিন"
+        },
+        {
+          "label": "খ.",
+          "text": "স্কেরোপ্রোটিন"
+        },
+        {
+          "label": "গ.",
+          "text": "প্রোটিন $P^{45}$"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ট্রিপসিন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '23-24"
+      ]
+    },
+    {
+      "id": 53,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তরল পদার্থের প্রতি সাড়া দিয়ে জীবের চলনকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Thigmotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Galvanotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Rheotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 54,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অক্সিজেনের ঘনত্বের পার্থক্যের সাথে সম্পর্কিত কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Aerotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Chemotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Rheotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 55,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীব যখন বৈদ্যুতিক ক্ষেত্রের প্রতি সাড়া দেয় তাকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Aerotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Phototaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Galvanotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Rheotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 56,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বিভিন্ন প্রাণীর লার্ভা দশায় কোনটি দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Aerotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Phototaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Galvanotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Geotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 57,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শব্দের প্রতি সাড়া দিয়ে জীবের চলনকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Aerotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Galvanotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Geotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 58,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীবের দৈহিক স্পর্শজনিত সাড়াকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Thigmotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Galvanotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Rheotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 59,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীবকোষের অন্তঃস্থ শক্তির অবস্থা বিবেচনায় সাড়া প্রদানকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Thigmotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Enetaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Energytaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 60,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মাছের উকুনে কোন ধরনের ট্যাক্সিস দেখা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Tropotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "BTelotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Menotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Klinotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '22-23"
+      ]
+    },
+    {
+      "id": 61,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ট্যাক্সিসের দিকমুখিতার ভিত্তিতে প্রাণীর আচরণ নয় কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ক্লাইনোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "মেনোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "টেলোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ইলেকট্রোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '22-23"
+      ]
+    },
+    {
+      "id": 62,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীব যখন পানি প্রবাহ বা স্রোতের প্রতি সাড়া দেয় তখন তাকে বলা হয়।"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "এনার্জিট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যারোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '22-23"
+      ]
+    },
+    {
+      "id": 63,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তরল পদার্থে প্রাণীর স্রোতজনিত ট্যাক্সিস হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "জিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-A '20-21"
+      ]
+    },
+    {
+      "id": 64,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তরল পদার্থে প্রাণীর স্রোতজনিত ট্যাক্সিস হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রিওট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "জিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-A '20-21"
+      ]
+    },
+    {
+      "id": 65,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সামাজিক আচরণ প্রদর্শনকারী প্রাণী কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বাবুই পাখি"
+        },
+        {
+          "label": "খ.",
+          "text": "কুকুর"
+        },
+        {
+          "label": "গ.",
+          "text": "ব্যাঙ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "মৌমাছি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '20-21"
+      ]
+    },
+    {
+      "id": 66,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ব্যাঙের শীতনিদ্রার উদাহরণ কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ধনাত্মক থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "ঋণাত্মক ফটোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ধনাত্মক ফটোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ঋণাত্মক থার্মোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '20-21"
+      ]
+    },
+    {
+      "id": 67,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফেরোমন ক্ষরণ করে কোন ধরনের মৌমাছি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পুরুষ"
+        },
+        {
+          "label": "খ.",
+          "text": "রানি"
+        },
+        {
+          "label": "গ.",
+          "text": "কর্মী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সবকটি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '20-21"
+      ]
+    },
+    {
+      "id": 68,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন মৌমাছি রাজকীয় জেলি তৈরি করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রানি"
+        },
+        {
+          "label": "খ.",
+          "text": "ড্রোন"
+        },
+        {
+          "label": "গ.",
+          "text": "কর্মী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কর্মী ও ড্রোন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '20-21"
+      ]
+    },
+    {
+      "id": 69,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গ্রীষ্ম নিদ্রায় যায় কোন প্রাণি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শকুন"
+        },
+        {
+          "label": "খ.",
+          "text": "সাপ"
+        },
+        {
+          "label": "গ.",
+          "text": "গিরগিটি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "চিংড়ি মাছ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '19-20"
+      ]
+    },
+    {
+      "id": 70,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রজনন ঋতুতে কার্প মাছের হালদা নদীতে আগমন কোন ধরনের আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইড্রট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "জিওট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '19-20"
+      ]
+    },
+    {
+      "id": 71,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গ্রীষ্ম নিদ্রায় যায় কোন প্রাণি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শকুন"
+        },
+        {
+          "label": "খ.",
+          "text": "সাপ"
+        },
+        {
+          "label": "গ.",
+          "text": "গিরগিটি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "চিংড়ি মাছ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ACAS '19-20"
+      ]
+    },
+    {
+      "id": 72,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রজনন ঋতুতে কার্প মাছের হালদা নদীতে আগমন কোন ধরনের আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "কেমোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "হাইড্রট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "জিওট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রিওট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '19-20"
+      ]
+    },
+    {
+      "id": 73,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "গরম ইস্ত্রিতে হাত পড়লে চট করে হাত দূরে সরে যায়- এই প্রক্রিয়াটি নিয়ন্ত্রণ করে কোন স্নায়ু?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সংবেদী"
+        },
+        {
+          "label": "খ.",
+          "text": "মিশ্র"
+        },
+        {
+          "label": "গ.",
+          "text": "চেষ্টীয়"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 74,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ফনোট্যাক্সিস এর ক্ষেত্রে প্রাণী কীসের প্রতি সাড়াদান করে চলন সম্পন্ন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "তাপ"
+        },
+        {
+          "label": "খ.",
+          "text": "ফোন"
+        },
+        {
+          "label": "গ.",
+          "text": "শব্দ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্পর্শ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CoU-A '19-20"
+      ]
+    },
+    {
+      "id": 75,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "বন্ধ্যা মৌমাছি কত দিন বয়সে মধু আহরণে বের হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "৮-১০"
+        },
+        {
+          "label": "খ.",
+          "text": "১০-১২"
+        },
+        {
+          "label": "গ.",
+          "text": "১৮-২০"
+        },
+        {
+          "label": "ঘ.",
+          "text": "২২-২৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 76,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন মৌমাছি রয়েল জেলি তৈরি করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "রানী"
+        },
+        {
+          "label": "খ.",
+          "text": "ড্রোন"
+        },
+        {
+          "label": "গ.",
+          "text": "কর্মী"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ড্রোন এবং কর্মী মৌমাছি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '19-20"
+      ]
+    },
+    {
+      "id": 77,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌমাছি কোন শ্রেণির অন্তর্ভুক্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "আর্থোপোডা"
+        },
+        {
+          "label": "খ.",
+          "text": "এপিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ইনসেক্টা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "হাইমেনোপটেরা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "MBSTU-B '19-20"
+      ]
+    },
+    {
+      "id": 78,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্রম বিভাজনের ভিত্তিতে মৌমাছিদের কয়ভাগে ভাগ করা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "2"
+        },
+        {
+          "label": "খ.",
+          "text": "3"
+        },
+        {
+          "label": "গ.",
+          "text": "4"
+        },
+        {
+          "label": "ঘ.",
+          "text": "5"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '18-19"
+      ]
+    },
+    {
+      "id": 79,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মাকড়সার জাল তৈরিতে সিল্ক গ্রন্থি থেকে কোন প্রোটিন ক্ষরিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অরীয় সোপাক"
+        },
+        {
+          "label": "খ.",
+          "text": "স্ক্লোরোপ্রোটিন"
+        },
+        {
+          "label": "গ.",
+          "text": "অ্যামিনো এসিড"
+        },
+        {
+          "label": "ঘ.",
+          "text": "লিপিড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '18-19"
+      ]
+    },
+    {
+      "id": 80,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ড্রোন মৌমাছির বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ফেরোমেন নিঃসৃত করে"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রজনন ক্ষমতা নেই"
+        },
+        {
+          "label": "গ.",
+          "text": "মধু সংগ্রহে অংশ নেয় না"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রানি মৌমাছির চেয়ে আকারে বড়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '18-19"
+      ]
+    },
+    {
+      "id": 81,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্রম বিভাজনের ভিত্তিতে মৌমাছিদের কয়ভাগে ভাগ করা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "2"
+        },
+        {
+          "label": "খ.",
+          "text": "3"
+        },
+        {
+          "label": "গ.",
+          "text": "4"
+        },
+        {
+          "label": "ঘ.",
+          "text": "5"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "KU-A '18-19"
+      ]
+    },
+    {
+      "id": 82,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্রাণীর দৈহিক স্পর্শজনিত ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "গ্রাভিট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ম্যাগনেটোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '17-18"
+      ]
+    },
+    {
+      "id": 83,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্রাণীর দৈহিক স্পর্শজনিত ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "গ্রাভিট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ম্যাগনেটোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '17-18"
+      ]
+    },
+    {
+      "id": 84,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর আচরণবিদ্যাকে বলে—"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মাইথোলজি"
+        },
+        {
+          "label": "খ.",
+          "text": "ইথোলজি"
+        },
+        {
+          "label": "গ.",
+          "text": "ম্যামালোলজি"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাইকোলজি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '17-18"
+      ]
+    },
+    {
+      "id": 85,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জৈবিক প্রয়োজনে প্রাণীর একস্থান থেকে অন্যত্র গমনকে কি বলা হয়?"
+        }
+      ],
+      "options": [],
+      "answer": "",
+      "source": [
+        "JGVC '17-18"
+      ]
+    },
+    {
+      "id": 86,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রানী মৌমাছি কিছু পুরুষ ও কর্মী নিয়ে নতুন আবাস গড়ার উদ্দেশ্যে উড়ে যাওয়াকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সোয়ার্মিং"
+        },
+        {
+          "label": "খ.",
+          "text": "ফ্যানিং"
+        },
+        {
+          "label": "গ.",
+          "text": "পরিযান"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাপেক্ষ উদ্দীপনা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JGVC '17-18"
+      ]
+    },
+    {
+      "id": 87,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "স্পর্শের প্রতি সাড়া দেয়ার প্রক্রিয়াকে কি বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Rheotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Tropotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Thigmotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '17-18"
+      ]
+    },
+    {
+      "id": 88,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্রাণীর দৈহিক স্পর্শজনিত ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "থার্মোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "থিগমোট্যাক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "গ্র্যাভিট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ম্যাগনেটোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CU-A '17-18"
+      ]
+    },
+    {
+      "id": 89,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কে সর্বপ্রথম আচরণবিদ্যায় নোবেল পুরষ্কার লাভ করেন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "ডারউইন"
+        },
+        {
+          "label": "খ.",
+          "text": "কনরাড লরেঞ্জ"
+        },
+        {
+          "label": "গ.",
+          "text": "হ্যান্স পিটার্স"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কার্ল ফন বেয়ার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-D '15-16"
+      ]
+    },
+    {
+      "id": 90,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রিফ্লেক্সকে কয় ভাগে ভাগ করা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "3"
+        },
+        {
+          "label": "খ.",
+          "text": "5"
+        },
+        {
+          "label": "গ.",
+          "text": "2"
+        },
+        {
+          "label": "ঘ.",
+          "text": "4"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '15-16"
+      ]
+    },
+    {
+      "id": 91,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Bombyx mori হলো-"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "পামরি পোকা"
+        },
+        {
+          "label": "B.",
+          "text": "গান্ধিপোকা"
+        },
+        {
+          "label": "C.",
+          "text": "রেশম পোকা"
+        },
+        {
+          "label": "D.",
+          "text": "মৌমাছি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SAU '15-16"
+      ]
+    },
+    {
+      "id": 92,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন বন্যপ্রাণীটি বাংলাদেশ থেকে বিলুপ্ত?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "গোলাপি-শিরহাস"
+        },
+        {
+          "label": "খ.",
+          "text": "লেঞ্জা হাঁস"
+        },
+        {
+          "label": "গ.",
+          "text": "বাংলা শকুন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পাপিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JU-A '14-15"
+      ]
+    },
+    {
+      "id": 93,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাজা মৌমাছির ক্রোমোজোম সংখ্যা রানী মৌমাছির ক্রোমোজোম সংখ্যার কত গুণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অর্ধেক"
+        },
+        {
+          "label": "খ.",
+          "text": "সমান"
+        },
+        {
+          "label": "গ.",
+          "text": "দ্বিগুণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "তিনগুণ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "SBAU '14-15"
+      ]
+    },
+    {
+      "id": 94,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "জীববৈচিত্র্য সংরক্ষণের প্রধান উদ্দেশ্য কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পর্যটন উন্নয়ন"
+        },
+        {
+          "label": "খ.",
+          "text": "খাদ্য উৎপাদন বৃদ্ধি"
+        },
+        {
+          "label": "গ.",
+          "text": "বিবর্তনের ভারসাম্য রক্ষা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বিবর্তনের সহায়তা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "NU '14-15"
+      ]
+    },
+    {
+      "id": 95,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ডাকবিল প্লাটিপাস কোন ভৌগোলিক অঞ্চলে বাস করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Oriental"
+        },
+        {
+          "label": "খ.",
+          "text": "Neotropical"
+        },
+        {
+          "label": "গ.",
+          "text": "Australian"
+        },
+        {
+          "label": "ঘ.",
+          "text": "African"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "NU '14-15"
+      ]
+    },
+    {
+      "id": 96,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মধু উৎপাদনের জন্য মৌমাছি পালন পদ্ধতিকে কি বলা হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পিসিকালচার"
+        },
+        {
+          "label": "খ.",
+          "text": "সেরিকালচার"
+        },
+        {
+          "label": "গ.",
+          "text": "মেরিকালচার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "এপিকালচার"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "JGVC '14-15",
+        "BAU '12-13"
+      ]
+    },
+    {
+      "id": 97,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পরিবেশ বিপর্যয় রোধে কমপক্ষে শতকরা কতভাগ অঞ্চল বনভূমি থাকা প্রয়োজন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "75 ভাগ"
+        },
+        {
+          "label": "খ.",
+          "text": "50 ভাগ"
+        },
+        {
+          "label": "গ.",
+          "text": "10 ভাগ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "25 ভাগ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "BAU '13-14"
+      ]
+    },
+    {
+      "id": 98,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পরিবেশ সাথে জীবের সম্পর্ক বিজ্ঞানের যে শাখায় আলোচনা করা হয় তাকে বলে-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Envolution"
+        },
+        {
+          "label": "খ.",
+          "text": "Ecology"
+        },
+        {
+          "label": "গ.",
+          "text": "Taxonomy"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Phyhiology"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "CVASU '13-14"
+      ]
+    },
+    {
+      "id": 99,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণিবিজ্ঞানের কোন শাখায় মাছ সম্পর্কে আলোচনা করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "protozoology"
+        },
+        {
+          "label": "খ.",
+          "text": "Entomology"
+        },
+        {
+          "label": "গ.",
+          "text": "Ichthyology"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Herphology"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "RU-C '11-12"
+      ]
+    },
+    {
+      "id": 101,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তাড়না বা লম্ফ সরবরাহ করে নিচের কোন উদ্দীপনা?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মোটিভেশন"
+        },
+        {
+          "label": "খ.",
+          "text": "রিলিজিং"
+        },
+        {
+          "label": "গ.",
+          "text": "টারমিনেটিং"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অন্তঃস্থ উদ্দীপনা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 102,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "উদ্দীপনাকে কত ভাগে করা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "দুই"
+        },
+        {
+          "label": "খ.",
+          "text": "তিন"
+        },
+        {
+          "label": "গ.",
+          "text": "চার"
+        },
+        {
+          "label": "ঘ.",
+          "text": "পাঁচ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 103,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রজনন ঋতুতে কোন জীবের স্বরথলি ফুলে যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "পুরুষ কোলা ব্যাঙ"
+        },
+        {
+          "label": "খ.",
+          "text": "স্ত্রী কোলা ব্যাঙ"
+        },
+        {
+          "label": "গ.",
+          "text": "পুরুষ সাপ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "স্ত্রী সাপ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 104,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন বিজ্ঞানী ২০১২ সালে জিন ও আচরণগত সম্পর্ক নিয়ে পরীক্ষা করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Robert Henry"
+        },
+        {
+          "label": "খ.",
+          "text": "Charles Robert Darwin"
+        },
+        {
+          "label": "গ.",
+          "text": "Robert Polomin"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Andreas Vesalius"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 105,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সহজাত আচরণের বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বৃদ্ধির সাথে সম্পর্কিত"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রজাতি নির্দিষ্ট নয়"
+        },
+        {
+          "label": "গ.",
+          "text": "বংশানুক্রমে একইভাবে প্রদর্শিত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অনুশীলন দ্বারা অর্জিত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 106,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সহজাত আচরণের সাথে নিচের কোনটির সংশ্লিষ্টতা রয়েছে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "জিন"
+        },
+        {
+          "label": "খ.",
+          "text": "অভ্যন্তরীণ উদ্দীপনা"
+        },
+        {
+          "label": "গ.",
+          "text": "বগিরাগত উদ্দীপনা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সামগ্রিক পরিবেশ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 107,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর স্মৃতিমূলক সাড়াদান কোন ধরনের ট্যাক্সিস?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মেনোট্যাক্সিস"
+        },
+        {
+          "label": "খ.",
+          "text": "টেলোট্যোক্সিস"
+        },
+        {
+          "label": "গ.",
+          "text": "ট্রোপোট্যাক্সিস"
+        },
+        {
+          "label": "ঘ.",
+          "text": "নেমোট্যাক্সিস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 108,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন গ্রন্থি থেকে মাকড়সা প্রোটিনের ফাঁদ তৈরি করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্যারোটিড"
+        },
+        {
+          "label": "খ.",
+          "text": "সিল্ক"
+        },
+        {
+          "label": "গ.",
+          "text": "সোয়েট"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সিবেসাস"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 109,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিশুর জন্ম লাভ ও তাদের স্বনির্ভর হওয়া পর্যন্ত পিতামাতা কর্তৃক পরিচর্যা নেয়াকে কী বলে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্যারেন্টাল কেয়ার"
+        },
+        {
+          "label": "খ.",
+          "text": "শিখন আচরণ"
+        },
+        {
+          "label": "গ.",
+          "text": "সামাজিক আচরণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সহযোগিতা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 110,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্যাভলভ কোন ধরনের শিখনের পরীক্ষা করেন?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সাপেক্ষণ"
+        },
+        {
+          "label": "খ.",
+          "text": "অনুকরণ"
+        },
+        {
+          "label": "গ.",
+          "text": "পরীক্ষালব্ধ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সুপ্ত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 111,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "নিম্নের কোনটি হ্যাবিচুয়েশন আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মাকড়সার জাল বোনা"
+        },
+        {
+          "label": "খ.",
+          "text": "ডিম ফুটে বের হওয়ার পর হাসের ছানা মাকে অনুসরণ করা"
+        },
+        {
+          "label": "গ.",
+          "text": "পিপড়ার খাদ্য মজুদ করা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "কারখানার শব্দময় পরিবেশে শ্রমিকদের কাজ করা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 112,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "‘অ্যালট্রুইজম’ শব্দটির প্রবর্তক কে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "August Comte"
+        },
+        {
+          "label": "খ.",
+          "text": "Watson"
+        },
+        {
+          "label": "গ.",
+          "text": "R. A. King"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Clark"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 113,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌমাছির বৈজ্ঞানিক নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Pulex irritans"
+        },
+        {
+          "label": "খ.",
+          "text": "Apis indica"
+        },
+        {
+          "label": "গ.",
+          "text": "Musca domestica"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Bombyx mori"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 126,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌমাছির বৈজ্ঞানিক নাম কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Pulex irritans"
+        },
+        {
+          "label": "খ.",
+          "text": "Apis indica"
+        },
+        {
+          "label": "গ.",
+          "text": "Musca domestica"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Bombyx mori"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 127,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রাণী মৌমাছির দেহ থেকে কোন হরমোন নিঃসৃত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "এস্ট্রোজেন"
+        },
+        {
+          "label": "খ.",
+          "text": "প্রোজেস্টেরন"
+        },
+        {
+          "label": "গ.",
+          "text": "টেস্টোস্টেরন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ফেরোমোন"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 128,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রাণীর সকল বৈশিষ্ট্য জিন নিয়ন্ত্রণ করে। যার প্রভাবে-"
+        },
+        {
+          "type": "text",
+          "content": "i. প্রাণী সাঁতার কাটতে শিখে"
+        },
+        {
+          "type": "text",
+          "content": "ii. প্রাণী প্রজনন করতে শিখে"
+        },
+        {
+          "type": "text",
+          "content": "iii. প্রাণী বাসা বানাতে শিখে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 129,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "পরিযায়ী পাখিরা বাংলাদেশে আসে-"
+        },
+        {
+          "type": "text",
+          "content": "i. বেড়ানোর জন্য"
+        },
+        {
+          "type": "text",
+          "content": "ii. খাবারের সন্ধানে"
+        },
+        {
+          "type": "text",
+          "content": "iii. তাপমাত্রার পরিবর্তনের জন্য"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 130,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতিবর্তী ক্রিয়া-"
+        },
+        {
+          "type": "text",
+          "content": "i. সুষুম্মাকান্ড দ্বারা নিয়ন্ত্রিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. মস্তিষ্ক দ্বারা নিয়ন্ত্রিত"
+        },
+        {
+          "type": "text",
+          "content": "iii. অনৈচ্ছিক আচরণ"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 131,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "FAP-এর বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. ছাঁচ সম্মত"
+        },
+        {
+          "type": "text",
+          "content": "ii. সার্বজনীনতা"
+        },
+        {
+          "type": "text",
+          "content": "iii. ব্যালিসটিকনেস"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 132,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌমাছিরা মৌচাক তৈরি করে বসবাস করে। এদের মধ্যে-"
+        },
+        {
+          "type": "text",
+          "content": "i. পুরুষ মৌমাছি প্রজনন ও রক্ষণাবেক্ষণে অংশ নেয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. রাণী মৌমাছি ডিম পাড়ে ও নেতৃত্ব দেয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. কর্মী মৌমাছিরা কেবল কর্মে অংশ নেয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 133,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুমন একদিন রাস্তা দিয়ে হাঁটছিল। হঠাৎ দেখেন একটি কুকুর তার কতকগুলো বাচ্চা নিয়ে একসাথে খেলা করছে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের প্রাণীতে কোন ধরনের আচরণ পরিলক্ষিত হয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "শিখন"
+        },
+        {
+          "label": "খ.",
+          "text": "সহজাত"
+        },
+        {
+          "label": "গ.",
+          "text": "অনুসরণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অনুকরণ"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 134,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সুমন একদিন রাস্তা দিয়ে হাঁটছিল। হঠাৎ দেখেন একটি কুকুর তার কতকগুলো বাচ্চা নিয়ে একসাথে খেলা করছে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে পরিলক্ষিত আচরণের বৈশিষ্ট্য হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. জিন দ্বারা নিয়ন্ত্রিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. বংশগত"
+        },
+        {
+          "type": "text",
+          "content": "iii. একটি প্রজন্মে সীমাবদ্ধ থাকে না"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 135,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(69).png?alt=media&token=0e9082c3-4a0f-4bec-9570-56fb08237c6c"
+        },
+        {
+          "type": "text",
+          "content": "চিত্রের প্রাণীর আচরণের ক্ষেত্রে নিচের কোনটি প্রযোজ্য?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "পূর্ব অভিজ্ঞতার প্রয়োজন হয়"
+        },
+        {
+          "label": "B.",
+          "text": "অনুশীলন করতে হয়"
+        },
+        {
+          "label": "C.",
+          "text": "শিক্ষালব্ধ জ্ঞান দ্বারা পরিচালিত"
+        },
+        {
+          "label": "D.",
+          "text": "বংশগত ও জিন নিয়ন্ত্রিত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 136,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2FUntitled-depositphotos-bgremover%20(69).png?alt=media&token=5651bc22-c8d0-44c7-add6-51ff70d26327"
+        },
+        {
+          "type": "text",
+          "content": "চিত্রের ‘B’ অংশটি-"
+        },
+        {
+          "type": "text",
+          "content": "i. রেশমি সুতা দিয়ে তৈরি"
+        },
+        {
+          "type": "text",
+          "content": "ii. ফাঁদ হিসেবে কাজ করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. অনিয়ত গঠনের"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "B.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "C.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "D.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 137,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শীতকালে সাইবেরিয়া থেকে অনেক পাখি অভিপ্রয়াণ ঘটিয়ে আমাদের দেশের বিভিন্ন জলাভূমিতে আসে। আবার মাকড়সাও নির্দিষ্ট রীতিতে সুন্দর করে জাল বুনে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে প্রাণী দুটি কিরূপ আচরণ প্রদর্শন করে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সামাজিক আচরণ"
+        },
+        {
+          "label": "খ.",
+          "text": "সহজাত আচরণ"
+        },
+        {
+          "label": "গ.",
+          "text": "শিখন আচরণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "রিফ্লেক্স"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 138,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শীতকালে সাইবেরিয়া থেকে অনেক পাখি অভিপ্রয়াণ ঘটিয়ে আমাদের দেশের বিভিন্ন জলাভূমিতে আসে। আবার মাকড়সাও নির্দিষ্ট রীতিতে সুন্দর করে জাল বুনে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকের ২য় প্রাণীর ক্ষেত্রে-"
+        },
+        {
+          "type": "text",
+          "content": "i. স্ক্লেরোপ্রোটিন দ্বারা জালের সুতা গঠিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. জাল একই ব্যাসের ইস্পাতের সুতার চেয়েও শক্ত"
+        },
+        {
+          "type": "text",
+          "content": "iii. ছেঁড়ার আগে দৈর্ঘে্যর এক-পঞ্চমাংশ পর্যন্ত প্রসারিত হয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 151,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাগর বিস্কুট খেতে খেতে তাদের কুকুরটিকে সাথে নিয়ে ফুলের বাগানে ঘুরতে গেল। সেখানে একটি গিরগিটিকে ধীরে ধীরে লাল বর্ণ ধারণ করতে দেখল। সাগর তার কুকুরকে গিরগিটিকে ধাওয়া করতে বললে কুকুরটির গিরগিটিকে ধাওয়া করে ফিরে এল। সাগর কুকুরটিকে একটি বিস্কুট খেতে দিল। সাগর কুকুরটিকে দিয়ে এই কাজটি বার বার করালো ও পরে বিস্কুট খাওয়ালো।"
+        },
+        {
+          "type": "text",
+          "content": "গিরগিটি লাল বর্ণ ধারণ কেন করেছিল?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "বাহ্যিক উদ্দীপনার প্রভাবের কারণে"
+        },
+        {
+          "label": "খ.",
+          "text": "গিরগিটিটি সাগরের রক্ত খেয়েছিল"
+        },
+        {
+          "label": "গ.",
+          "text": "লালবর্ণ গিরগিটির খুব পছন্দের"
+        },
+        {
+          "label": "ঘ.",
+          "text": "বাগানে লাল রংয়ের ফুলের প্রাধান্য ছিল"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 152,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাগর বিস্কুট খেতে খেতে তাদের কুকুরটিকে সাথে নিয়ে ফুলের বাগানে ঘুরতে গেল। সেখানে একটি গিরগিটিকে ধীরে ধীরে লাল বর্ণ ধারণ করতে দেখল। সাগর তার কুকুরকে গিরগিটিকে ধাওয়া করতে বললে কুকুরটির গিরগিটিকে ধাওয়া করে ফিরে এল। সাগর কুকুরটিকে একটি বিস্কুট খেতে দিল। সাগর কুকুরটিকে দিয়ে এই কাজটি বার বার করালো ও পরে বিস্কুট খাওয়ালো।"
+        },
+        {
+          "type": "text",
+          "content": "সাগরের বার বার করানো কাজটির ফলে-"
+        },
+        {
+          "type": "text",
+          "content": "i. এ আচরণে কুকুরটি অভ্যস্ত হয়ে পড়বে"
+        },
+        {
+          "type": "text",
+          "content": "ii. এ উদ্দীপনা কুকুরের স্নায়ুতে স্থায়ীভাবে প্রভাব ফেলবে"
+        },
+        {
+          "type": "text",
+          "content": "iii. পরবর্তীতে বিস্কুট না দিলেও কুকুরটি গিরগিটি দেখলে ধাওয়া করবে"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "ফজলুল হক স্যার"
+      ]
+    },
+    {
+      "id": 153,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শব্দের প্রতি সাড়া দেয়া-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Rheotaxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Aerotaxis"
+        },
+        {
+          "label": "গ.",
+          "text": "Phonotaxis"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Geotaxis"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 154,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতিবর্ত ক্রিয়ার বৈশিষ্ট্য কোনটি?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "জন্মগত, শিক্ষালব্ধ নয়"
+        },
+        {
+          "label": "খ.",
+          "text": "সাড়া দান করে"
+        },
+        {
+          "label": "গ.",
+          "text": "আচরণ সবসময় একই হবে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "অনুকরণজনিত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 155,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "রিলিজিং উদ্দীপনার ক্ষেত্রে কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রাণীর চলন ঘটায়"
+        },
+        {
+          "label": "খ.",
+          "text": "অভ্যন্তরীণ বা বাহ্যিক হতে পারে"
+        },
+        {
+          "label": "গ.",
+          "text": "সাধারণ উদ্দীপনা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "আচরণগত সাড়ার সমাপ্তি ঘটায়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 156,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোন ধরনের প্রতিবর্ত স্বয়ংক্রিয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "অর্জিত প্রতিবর্ত"
+        },
+        {
+          "label": "খ.",
+          "text": "ডিপ প্রতিবর্ত"
+        },
+        {
+          "label": "গ.",
+          "text": "সুপারফিসিয়াল প্রতিবর্ত"
+        },
+        {
+          "label": "ঘ.",
+          "text": "ভিসেরাল প্রতিবর্ত"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 157,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "ভরপেট না হওয়া পর্যন্ত খাওয়া, পাকস্থলি পূর্ণ হলে খাওয়া বন্ধ করা-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "প্রেরণাদায়ক উদ্দীপনা"
+        },
+        {
+          "label": "খ.",
+          "text": "সমাপ্তিকরণ উদ্দীপনা"
+        },
+        {
+          "label": "গ.",
+          "text": "নির্গমন উদ্দীপনা"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সাংকেতিক উদ্দীপনা"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 158,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "অতিজটিল ও অপরিবর্তনীয় আচরণগত প্যাটার্নের ফলশ্রুতি-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "সহজাত আচরণ"
+        },
+        {
+          "label": "খ.",
+          "text": "শিক্ষণ আচরণ"
+        },
+        {
+          "label": "গ.",
+          "text": "অনুকরণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "প্রতিবর্ত ক্রিয়া"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 159,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "টুনটুনি পাখির বাসা নির্মাণ-"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Taxis"
+        },
+        {
+          "label": "খ.",
+          "text": "Instincts"
+        },
+        {
+          "label": "গ.",
+          "text": "Migration"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Reflexes"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 160,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "FAP এর ক্ষেত্রে প্রযোজ্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. সার্বজনীনতা"
+        },
+        {
+          "type": "text",
+          "content": "ii. সৃজনশীলতা"
+        },
+        {
+          "type": "text",
+          "content": "iii. উদ্দেশ্যের একনিষ্ঠতা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 161,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শীতের পাখির পরিযানের গুরুত্ব হিসেবে বিবেচিত-"
+        },
+        {
+          "type": "text",
+          "content": "i. বিভিন্ন প্রজাতির মিলনে জিনসংযুক্তির সম্ভাবনা বেড়ে যায়"
+        },
+        {
+          "type": "text",
+          "content": "ii. জনসংখ্যা বৃদ্ধি পায়"
+        },
+        {
+          "type": "text",
+          "content": "iii. আবহাওয়ার প্রতিকূলতা থেকে রক্ষা পায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 162,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "তিনকাঁটা স্টিকলব্যাক পুরুষ মাছের বৈশিষ্ট্য?"
+        },
+        {
+          "type": "text",
+          "content": "i. শীতকালে প্রজননের জন্য প্রস্তুত হয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. পিতা ও মাতা উভয়ের ভূমিকা পালন করে"
+        },
+        {
+          "type": "text",
+          "content": "iii. ডিম না ফোঁটা পর্যন্ত ফ্যানিং কার্য চালিয়ে যায়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 163,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্যাভলোভিয়ান কন্ডিশনিং এ যে সমস্ত বিষয় অতীব গুরুত্বপূর্ণ-"
+        },
+        {
+          "type": "text",
+          "content": "i. অনপেক্ষ সাড়া"
+        },
+        {
+          "type": "text",
+          "content": "ii. সাপেক্ষ সাড়া"
+        },
+        {
+          "type": "text",
+          "content": "iii. নিরপেক্ষ উদ্দীপনা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 176,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্যাভলোভিয়ান কন্ডিশনিং এ যে সমস্ত বিষয় অতীব গুরুত্বপূর্ণ-"
+        },
+        {
+          "type": "text",
+          "content": "i. অনপেক্ষ সাড়া"
+        },
+        {
+          "type": "text",
+          "content": "ii. সাপেক্ষ সাড়া"
+        },
+        {
+          "type": "text",
+          "content": "iii. নিরপেক্ষ উদ্দীপনা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 177,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সাপেক্ষ প্রতিবর্তন-"
+        },
+        {
+          "type": "text",
+          "content": "i. এটি অর্জিত"
+        },
+        {
+          "type": "text",
+          "content": "ii. বংশানুক্রমে সঞ্চারিত হয় না"
+        },
+        {
+          "type": "text",
+          "content": "iii. মস্তিষ্কের সহায়তা একান্ত প্রয়োজন"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 178,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "মৌমাছিরা মৌচাক তৈরি করে বসবাস করে। এদের মধ্যে-"
+        },
+        {
+          "type": "text",
+          "content": "i. পুরুষ মৌমাছি প্রজনন ও রক্ষণাবেক্ষণে অংশ নেয়"
+        },
+        {
+          "type": "text",
+          "content": "ii. রাণী মৌমাছি ডিম পাড়ে ও নেতৃত্ব দেয়"
+        },
+        {
+          "type": "text",
+          "content": "iii. কর্মী মৌমাছিরা কেবল কর্মে অংশ নেয়"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 179,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিমুল দেখল কর্মী মৌমাছিগুলো কিছু তরুণ মৌমাছিকে খাওয়াচ্ছে। মৌমাছির এ আচরণ অবশ্যই কোন একটি উদ্দীপনার প্রতি সাড়াদানকে প্রমাণিত করে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে উল্লিখিত উদ্দীপনার কারণ কী?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "তরুণ মৌমাছি কর্তৃক ফেরোমন নিঃসরণ"
+        },
+        {
+          "label": "খ.",
+          "text": "তরুণ মৌমাছির অ্যান্টেনার সংস্পর্শে সৃষ্ট উদ্দীপনা"
+        },
+        {
+          "label": "গ.",
+          "text": "তরুণ মৌমাছির প্রতি আকর্ষণ"
+        },
+        {
+          "label": "ঘ.",
+          "text": "তরুণ মৌমাছির অ্যান্টেনায় রাসায়নিক পদার্থের উপস্থিতি"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 180,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শিমুল দেখল কর্মী মৌমাছিগুলো কিছু তরুণ মৌমাছিকে খাওয়াচ্ছে। মৌমাছির এ আচরণ অবশ্যই কোন একটি উদ্দীপনার প্রতি সাড়াদানকে প্রমাণিত করে।"
+        },
+        {
+          "type": "text",
+          "content": "উদ্দীপকে উল্লিখিত প্রাণীর সমাজবদ্ধতার বৈশিষ্ট্য-"
+        },
+        {
+          "type": "text",
+          "content": "i. প্রতিরক্ষা"
+        },
+        {
+          "type": "text",
+          "content": "ii. জন ও গণতান্ত্রিকতা"
+        },
+        {
+          "type": "text",
+          "content": "iii. উত্তরাধিকার নির্বাচন"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আজমল স্যার"
+      ]
+    },
+    {
+      "id": 181,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্রতিবর্তী ক্রিয়া নিয়ন্ত্রিত হয় কোন অঙ্গ দ্বারা?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "মস্তিষ্ক"
+        },
+        {
+          "label": "খ.",
+          "text": "বুদ্ধি"
+        },
+        {
+          "label": "গ.",
+          "text": "জিন"
+        },
+        {
+          "label": "ঘ.",
+          "text": "সুষুম্নাকান্ড"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 182,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "প্যাভলকে চিকিৎসাবিজ্ঞানের নোবেল পুরস্কার প্রদান করা হয় কত সালে?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৯০৪"
+        },
+        {
+          "label": "খ.",
+          "text": "১৯৪০"
+        },
+        {
+          "label": "গ.",
+          "text": "১৯৪৪"
+        },
+        {
+          "label": "ঘ.",
+          "text": "১৯১৪"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 183,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "Apis Indica এর আকৃতি প্রায় কত কি.মি.?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "১৫ কি.মি."
+        },
+        {
+          "label": "খ.",
+          "text": "৪৫ কি.মি."
+        },
+        {
+          "label": "গ.",
+          "text": "০৫ কি.মি."
+        },
+        {
+          "label": "ঘ.",
+          "text": "৩৫ কি.মি."
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 184,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "শ্রমবিভাজনের ভিত্তিতে একটি মৌচাকের মৌমাছিদেরকে কত ভাগে ভাগ করা যায়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "২ ভাগে"
+        },
+        {
+          "label": "খ.",
+          "text": "৩ ভাগে"
+        },
+        {
+          "label": "গ.",
+          "text": "৪ ভাগে"
+        },
+        {
+          "label": "ঘ.",
+          "text": "৫ ভাগে"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 185,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "সহজাত আচরণ হলো-"
+        },
+        {
+          "type": "text",
+          "content": "i. মৌমাছির মৌচাক তৈরি করা"
+        },
+        {
+          "type": "text",
+          "content": "ii. পিনের খোচা লাগলে হাত সরিয়ে ফেলা"
+        },
+        {
+          "type": "text",
+          "content": "iii. মাকড়শার জাল বোনা"
+        },
+        {
+          "type": "text",
+          "content": "নিচের কোনটি সঠিক?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "i ও ii"
+        },
+        {
+          "label": "খ.",
+          "text": "i ও iii"
+        },
+        {
+          "label": "গ.",
+          "text": "ii ও iii"
+        },
+        {
+          "label": "ঘ.",
+          "text": "i, ii ও iii"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 186,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2Fch-12%2C%20mcq-6-7.png?alt=media&token=bd0edc51-ad34-41bc-b0a1-3720801e0706"
+        },
+        {
+          "type": "text",
+          "content": "কোনটি সহজাত আচরণ নয়?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "A"
+        },
+        {
+          "label": "B.",
+          "text": "B"
+        },
+        {
+          "label": "C.",
+          "text": "C"
+        },
+        {
+          "label": "D.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 187,
+      "question_parts": [
+        {
+          "type": "image",
+          "url": "https://firebasestorage.googleapis.com/v0/b/q-bank-95803.appspot.com/o/images%2Fch-12%2C%20mcq-6-7.png?alt=media&token=81e40d2d-512e-4482-9a48-e22dcfc3db49"
+        },
+        {
+          "type": "text",
+          "content": "কোনটি সাপেক্ষীকরণ আচরণ?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A.",
+          "text": "A"
+        },
+        {
+          "label": "B.",
+          "text": "C"
+        },
+        {
+          "label": "C.",
+          "text": "B"
+        },
+        {
+          "label": "D.",
+          "text": "কোনোটিই নয়"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "হাসান স্যার"
+      ]
+    },
+    {
+      "id": 188,
+      "question_parts": [
+        {
+          "type": "text",
+          "content": "কোনটি প্রাণীর আচরণ বিদ্যা?"
+        }
+      ],
+      "options": [
+        {
+          "label": "ক.",
+          "text": "Ecology"
+        },
+        {
+          "label": "খ.",
+          "text": "Ethology"
+        },
+        {
+          "label": "গ.",
+          "text": "Ethnozoology"
+        },
+        {
+          "label": "ঘ.",
+          "text": "Animal behaviour"
+        }
+      ],
+      "answer": "",
+      "source": [
+        "আলীম স্যার"
+      ]
+    }
+  ]
+}

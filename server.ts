@@ -12,6 +12,89 @@ import fs from "fs";
 
 dotenv.config();
 
+function toBengaliDigits(numStr: string): string {
+  const digits: { [key: string]: string } = {
+    "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪",
+    "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯"
+  };
+  return numStr.split("").map(char => digits[char] || char).join("");
+}
+
+function inferFromPath(filePath: string): { subject: string; chapter: string } {
+  // Normalize path and remove base directory
+  const relative = path.relative(path.join(process.cwd(), "uploaded_questions"), filePath);
+  const parts = relative.split(path.sep).map(p => p.toLowerCase());
+  
+  let mappedSubject = "";
+  let mappedChapter = "";
+  
+  // Look for subject keywords in path parts
+  for (const part of parts) {
+    if (part.includes("phy1st") || part.includes("physics1st") || part === "phy1") {
+      mappedSubject = "পদার্থবিজ্ঞান ১ম পত্র";
+    } else if (part.includes("phy2nd") || part.includes("physics2nd") || part === "phy2") {
+      mappedSubject = "পদার্থবিজ্ঞান ২য় পত্র";
+    } else if (part === "phy" || part === "physics") {
+      mappedSubject = "পদার্থবিজ্ঞান";
+    } else if (part.includes("chem1st") || part.includes("chm1st") || part.includes("chemistry1st") || part === "chem1") {
+      mappedSubject = "রসায়ন ১ম পত্র";
+    } else if (part.includes("chem2nd") || part.includes("chm2nd") || part.includes("chemistry2nd") || part === "chem2") {
+      mappedSubject = "রসায়ন ২য় পত্র";
+    } else if (part === "chem" || part === "chemistry" || part === "chm") {
+      mappedSubject = "রসায়ন";
+    } else if (part.includes("math1st") || part.includes("mth1st") || part.includes("highermath1st") || part === "math1") {
+      mappedSubject = "উচ্চতর গণিত ১ম পত্র";
+    } else if (part.includes("math2nd") || part.includes("mth2nd") || part.includes("highermath2nd") || part === "math2") {
+      mappedSubject = "উচ্চতর গণিত ২য় পত্র";
+    } else if (part === "math" || part === "highermath" || part === "mth") {
+      mappedSubject = "উচ্চতর গণিত";
+    } else if (part.includes("bio1st") || part.includes("biology1st") || part === "bio1") {
+      mappedSubject = "জীববিজ্ঞান ১ম পত্র";
+    } else if (part.includes("bio2nd") || part.includes("biology2nd") || part === "bio2") {
+      mappedSubject = "জীববিজ্ঞান ২য় পত্র";
+    } else if (part === "bio" || part === "biology") {
+      mappedSubject = "জীববিজ্ঞান";
+    } else if (part === "ict" || part === "computer") {
+      mappedSubject = "আইসিটি";
+    } else if (part === "gk" || part === "general_knowledge" || part.includes("general")) {
+      mappedSubject = "সাধারণ জ্ঞান";
+    } else if (part === "bng" || part === "bangla" || part.includes("bangla")) {
+      mappedSubject = "বাংলা";
+    } else if (part === "eng" || part === "english") {
+      mappedSubject = "English";
+    }
+    
+    // Look for chapter keywords (e.g. ch1, ch2, chapter1, etc)
+    const chMatch = part.match(/(?:ch|chapter|chap|part|অধ্যায়|অধ্যায়)\s*(-?\d+)/i);
+    if (chMatch) {
+      const num = chMatch[1];
+      mappedChapter = `অধ্যায় ${toBengaliDigits(num)}`;
+    }
+  }
+  
+  return { subject: mappedSubject, chapter: mappedChapter };
+}
+
+function getJsonFilesRecursive(dir: string): string[] {
+  let results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
+  try {
+    const list = fs.readdirSync(dir);
+    list.forEach(file => {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat && stat.isDirectory()) {
+         results = results.concat(getJsonFilesRecursive(fullPath));
+      } else if (file.endsWith(".json")) {
+         results.push(fullPath);
+      }
+    });
+  } catch (err) {
+    console.error("Error walking directory:", err);
+  }
+  return results;
+}
+
 const apiKey = process.env.GEMINI_API_KEY;
 
 // Lazy initialization of Gemini client
@@ -253,21 +336,185 @@ async function startServer() {
   ];
 
   function loadQuestions() {
+    let baseQuestions: any[] = [];
     try {
       if (fs.existsSync(QUESTIONS_FILE)) {
         const raw = fs.readFileSync(QUESTIONS_FILE, "utf-8");
-        return JSON.parse(raw);
+        baseQuestions = JSON.parse(raw);
+      } else {
+        baseQuestions = [...INITIAL_QUESTIONS];
+        fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(baseQuestions, null, 2), "utf-8");
       }
     } catch (e) {
       console.error("Failed to read database questions:", e);
+      baseQuestions = [...INITIAL_QUESTIONS];
     }
-    // write seed initially
-    try {
-      fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(INITIAL_QUESTIONS, null, 2), "utf-8");
-    } catch (err) {
-      console.error("Failed to save seed questions:", err);
+
+    const uploadedFolder = path.join(process.cwd(), "uploaded_questions");
+    if (!fs.existsSync(uploadedFolder)) {
+      try {
+        fs.mkdirSync(uploadedFolder, { recursive: true });
+        // Create an empty fallback readme details inside it
+        fs.writeFileSync(
+          path.join(uploadedFolder, ".gitkeep"),
+          "Placeholder file for dynamic JSON questions. Upload questions inside subdirectories e.g., hsc/phy1st/ch1/quantum.json."
+        );
+      } catch (err) {
+        console.error("Failed to create uploaded_questions directory:", err);
+      }
     }
-    return INITIAL_QUESTIONS;
+
+    const uploadedFiles = getJsonFilesRecursive(uploadedFolder);
+    const uploadedQuestions: any[] = [];
+
+    uploadedFiles.forEach(file => {
+      try {
+        const content = fs.readFileSync(file, "utf-8");
+        if (!content.trim()) return;
+        const parsed = JSON.parse(content);
+        const pathInferences = inferFromPath(file);
+
+        const extractCorrectIndex = (answerText: string, optsArray: any[]): number => {
+          if (!answerText) return 0;
+          const text = answerText.toLowerCase().trim();
+          
+          // Explicit check for common Bengali option matching
+          if (text.includes("উত্তরঃখ") || text.includes("উত্তর: খ") || text.includes("উত্তর খ") || text.includes("উত্তরঃ খ") || text.includes("হল খ") || text.includes("হল **খ")) return 1;
+          if (text.includes("উত্তরঃখ") || text.includes("উত্তর:খ") || text.includes("উত্তর খ")) return 1;
+          if (text.includes("উত্তরঃগ") || text.includes("উত্তর: গ") || text.includes("উত্তর গ") || text.includes("উত্তরঃ গ") || text.includes("হল গ") || text.includes("হল **গ")) return 2;
+          if (text.includes("উত্তরঃগ") || text.includes("উত্তর:গ") || text.includes("উত্তর গ")) return 2;
+          if (text.includes("উত্তরঃঘ") || text.includes("উত্তর: ঘ") || text.includes("উত্তর ঘ") || text.includes("উত্তরঃ ঘ") || text.includes("হল ঘ") || text.includes("হল **ঘ")) return 3;
+          if (text.includes("উত্তরঃঘ") || text.includes("উত্তর:ঘ") || text.includes("উত্তর ঘ")) return 3;
+          if (text.includes("উত্তরঃক") || text.includes("উত্তর: ক") || text.includes("উত্তর ক") || text.includes("উত্তরঃ ক") || text.includes("হল ক") || text.includes("হল **ক")) return 0;
+          if (text.includes("উত্তরঃক") || text.includes("উত্তর:ক") || text.includes("উত্তর ক")) return 0;
+
+          // English equivalents
+          if (text.includes("answer: b") || text.includes("correct answer: b") || text.includes("answer is b") || text.includes("উত্তর হল b") || text.includes("উত্তর হল **b") || text.includes("উত্তর: b") || text.includes("হল **b")) return 1;
+          if (text.includes("answer: c") || text.includes("correct answer: c") || text.includes("answer is c") || text.includes("উত্তর হল c") || text.includes("উত্তর হল **c") || text.includes("উত্তর: c") || text.includes("হল **c")) return 2;
+          if (text.includes("answer: d") || text.includes("correct answer: d") || text.includes("answer is d") || text.includes("উত্তর হল d") || text.includes("উত্তর হল **d") || text.includes("উত্তর: d") || text.includes("হল **d")) return 3;
+          if (text.includes("answer: a") || text.includes("correct answer: a") || text.includes("answer is a") || text.includes("উত্তর হল a") || text.includes("উত্তর হল **a") || text.includes("উত্তর: a") || text.includes("হল **a")) return 0;
+
+          // Search for first bold letter in answers like "**খ.**" or "**b**"
+          const boldMatch = text.match(/\*\*(a|b|c|d|ক|খ|গ|ঘ)\b/i);
+          if (boldMatch) {
+            const char = boldMatch[1];
+            if (char === "a" || char === "ক") return 0;
+            if (char === "b" || char === "খ") return 1;
+            if (char === "c" || char === "গ") return 2;
+            if (char === "d" || char === "ঘ") return 3;
+          }
+
+          // Try checking options labels
+          for (let i = 0; i < optsArray.length; i++) {
+            const lbl = optsArray[i] && optsArray[i].label ? optsArray[i].label.toString().toLowerCase().trim() : "";
+            if (lbl && (text.includes(`উত্তরঃ ${lbl}`) || text.includes(`উত্তর হল ${lbl}`) || text.includes(`উত্তর: ${lbl}`) || text.includes(`হল **${lbl}`) || text.includes(`**${lbl}**`))) {
+              return i;
+            }
+          }
+
+          return 0; // Default fallback representation
+        };
+
+        const addQuestionSafely = (q: any) => {
+          if (!q || typeof q !== "object") return;
+          
+          // Fill in missing properties from file path inferences
+          if (!q.subject && pathInferences.subject) {
+            q.subject = pathInferences.subject;
+          }
+          if (!q.chapter && pathInferences.chapter) {
+            q.chapter = pathInferences.chapter;
+          }
+          
+          // Fallback to defaults if still missing
+          if (!q.subject) q.subject = "পদার্থবিজ্ঞান";
+          if (!q.chapter) q.chapter = "অধ্যায় ১";
+
+          // Parse question parts to construct fallback full question text
+          if (q.question_parts && Array.isArray(q.question_parts)) {
+            q.questionParts = q.question_parts; // preserve the rich parts
+            const partTexts = q.question_parts
+              .filter((p: any) => p && p.type === "text" && p.content)
+              .map((p: any) => p.content);
+            if (!q.questionText && partTexts.length > 0) {
+              q.questionText = partTexts.join("\n");
+            }
+            // If there's an image in parts, store it as q.imageUrl
+            const imgPart = q.question_parts.find((p: any) => p && p.type === "image" && p.url);
+            if (imgPart && !q.imageUrl) {
+              q.imageUrl = imgPart.url;
+            }
+          }
+
+          if (!q.questionText) q.questionText = "প্রশ্ন টেক্সট পাওয়া যায়নি";
+
+          // Parse Option objects to flat string list
+          if (q.options && Array.isArray(q.options)) {
+            const firstOptIsObj = q.options.length > 0 && typeof q.options[0] === "object" && q.options[0] !== null;
+            if (firstOptIsObj) {
+              q.richOptions = [...q.options]; // Save rich objects structure
+              q.options = q.options.map((opt: any) => opt.text || opt.image_url || "");
+            }
+          }
+
+          if (!q.options || !Array.isArray(q.options)) {
+            q.options = ["অপশন ১", "অপশন ২", "অপশন ৩", "অপশন ৪"];
+          }
+
+          // Extract correctIndex from answer text
+          if (typeof q.correctIndex !== "number") {
+            if (q.answer) {
+              q.correctIndex = extractCorrectIndex(q.answer, q.richOptions || []);
+            } else {
+              q.correctIndex = 0;
+            }
+          }
+
+          // Move rich answer text to explanation field if empty
+          if (q.answer && !q.explanation) {
+            q.explanation = q.answer;
+          }
+
+          if (!q.explanation) q.explanation = "কোনো ব্যাখ্যা পাওয়া যায়নি।";
+
+          // Generate stable and human-readable ID if not exists
+          if (!q.id) {
+            const cleanSub = q.subject.replace(/\s+/g, "-");
+            const cleanChap = q.chapter.replace(/\s+/g, "-");
+            q.id = `upl-${cleanSub}-${cleanChap}-${Math.floor(Math.random() * 1000000)}`;
+          }
+
+          uploadedQuestions.push(q);
+        };
+
+        if (Array.isArray(parsed)) {
+          parsed.forEach(addQuestionSafely);
+        } else if (parsed && typeof parsed === "object") {
+          if (parsed.questions && Array.isArray(parsed.questions)) {
+            parsed.questions.forEach(addQuestionSafely);
+          } else {
+            addQuestionSafely(parsed);
+          }
+        }
+      } catch (err) {
+        console.error(`Error parsing uploaded JSON file ${file}:`, err);
+      }
+    });
+
+    if (uploadedQuestions.length > 0) {
+      console.log(`Successfully parsed and loaded ${uploadedQuestions.length} dynamic questions from uploaded_questions directory.`);
+    }
+
+    // Merge them! Let's ensure no ID duplicates, prioritizing uploaded questions if IDs collide.
+    const mergedMap = new Map<string, any>();
+    baseQuestions.forEach((q: any) => {
+      if (q && q.id) mergedMap.set(q.id, q);
+    });
+    uploadedQuestions.forEach((q: any) => {
+      if (q && q.id) mergedMap.set(q.id, q);
+    });
+
+    return Array.from(mergedMap.values());
   }
 
   function writeQuestions(questionsList: any[]) {
