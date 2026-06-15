@@ -22,6 +22,9 @@ import TeacherCorner from "./components/TeacherCorner";
 import StudyMaterials from "./components/StudyMaterials";
 import { StudentStats, Question } from "./types";
 import { Sparkles, Trophy, X, ShieldAlert, BadgeCheck } from "lucide-react";
+import { auth, db, handleFirestoreError, OperationType } from "./lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 
 export default function App() {
   const [activeTab, setActiveTab ] = useState<string>("dashboard");
@@ -38,7 +41,7 @@ export default function App() {
   });
   const [questions, setQuestions] = useState<Question[]>([]);
 
-  // Default initial Guest account with full informational lists
+  // Initial Guest account
   const [stats, setStats] = useState<StudentStats>({
     name: "গেস্ট পরীক্ষার্থী (Guest Student)",
     points: 15,
@@ -49,8 +52,26 @@ export default function App() {
     totalQuestionsSolved: 0,
     plan: "Free",
     completedMilestones: [],
-    isGuest: true // Flag to restrict premium actions
+    isGuest: true
   } as any);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user && user.emailVerified) {
+        try {
+          const userDoc = await getDoc(doc(db, "students", user.uid));
+          if (userDoc.exists()) {
+            setStats({ ...userDoc.data() as StudentStats, isGuest: false, uid: user.uid });
+          }
+        } catch (error) {
+          handleFirestoreError(error, OperationType.GET, "students/" + user.uid);
+        }
+      } else {
+        setStats(prev => ({ ...prev, isGuest: true }));
+      }
+    });
+    return unsubscribe;
+  }, []);
 
   // Sync dark class to the document root
   useEffect(() => {

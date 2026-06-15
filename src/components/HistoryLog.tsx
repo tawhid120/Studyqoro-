@@ -71,118 +71,27 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
   const [selectedSubject, setSelectedSubject] = useState<string>("All");
 
   useEffect(() => {
-    // Generate some highly realistic persistent history items based on their active student level/profile
-    const mockEvents: HistoricalEvent[] = [
-      {
-        id: "ev-1",
-        type: "exam",
-        title: "পদার্থবিজ্ঞান - কাস্টম মডেল টেস্ট",
-        subtitle: "৪টি প্রশ্ন সঠিক, ৮০% সঠিকতার হার অর্জন!",
-        timestamp: "আজ, ১০:১২ AM",
-        xp: 45,
-        meta: { subject: "পদার্থবিজ্ঞান", score: 80, correct: 4, total: 5 }
-      },
-      {
-        id: "ev-2",
-        type: "prayer",
-        title: "ভোরবেলা স্টাডি সেশন সমাপ্ত",
-        subtitle: "English ও সাধারণ জ্ঞান মুখস্থ করা সম্পন্ন।",
-        timestamp: "আজ, ৫:৩০ AM",
-        xp: 15
-      },
-      {
-        id: "ev-3",
-        type: "ai",
-        title: "Study Qoro AI ডাউট ক্লিয়ার",
-        subtitle: "Right Forms of Verbs নিয়ে প্রশ্ন সমাধান আলোচনা সম্পন্ন।",
-        timestamp: "yesterday, ৮:৪৫ PM",
-        xp: 10
-      },
-      {
-        id: "ev-4",
-        type: "exam",
-        title: "ইংরেজি - কুইক এমসিকিউ প্র্যাকটিস",
-        subtitle: "৩টি প্রশ্ন সঠিক, ৬০% স্কোর ও প্র্যাকটিস সম্পন্ন।",
-        timestamp: "yesterday, ৪:২০ PM",
-        xp: 25,
-        meta: { subject: "English", score: 60, correct: 3, total: 5 }
-      },
-      {
-        id: "ev-5",
-        type: "streak",
-        title: "🔥 ৩ দিনের অধ্যাবসায় স্ট্রেইক!",
-        subtitle: "পরপর ৩ দিন সফলভাবে Study Qoro প্ল্যাটফর্মে পড়ালেখা পরিচালনা করেছ।",
-        timestamp: "২ দিন আগে",
-        xp: 50
-      },
-      {
-        id: "ev-6",
-        type: "prayer",
-        title: "সন্ধ্যা স্টাডি সেশন সমাপ্ত",
-        subtitle: "বাঙালি উপন্যাস রিভিশন ও শর্ট সাজেশন বিশ্লেষণ সম্পন্ন।",
-        timestamp: "২ দিন আগে",
-        xp: 20
-      }
-    ];
-
-    if (stats.isGuest) {
-      // Small subset for Guests representing default clean state
-      setEvents([
-        {
-          id: "ev-guest-1",
-          type: "prayer",
-          title: "ভোরবেলা স্টাডি সেশন সমাপ্ত",
-          subtitle: "স্টাডি সেশনের বোনাস এক্সপি ড্যাশবোর্ডে যোগ করা হয়েছে।",
-          timestamp: "আজ, ভোর ৫:৪৫ AM",
-          xp: 15
-        }
-      ]);
-    } else {
-      setEvents(mockEvents);
-    }
+    // Generate clean history state
+    setEvents([]);
   }, [stats.isGuest]);
 
-  // programmatically generate deterministic and high-fidelity 30 days dataset matching realistic patterns
+  // programmatically generate realistic empty 30 days dataset matching new user state
   const last30DaysData = useMemo(() => {
     const data: DailyTrend[] = [];
     const subjectsList = ["পদার্থবিজ্ঞান", "রসায়ন", "English", "উচ্চতর গণিত", "জীববিজ্ঞান"];
-    const isGuest = !!stats.isGuest;
     
-    // Seed helper
-    const getPseudoRandom = (seed: number, min: number, max: number) => {
-      const val = Math.sin(seed) * 10000;
-      return Math.floor((val - Math.floor(val)) * (max - min + 1)) + min;
-    };
-
     for (let i = 29; i >= 0; i--) {
       const date = new Date();
       date.setDate(date.getDate() - i);
       const bDateStr = date.toLocaleDateString("bn-BD", { day: "numeric", month: "short" });
       
-      const seedVal = i + (isGuest ? 45 : 12);
-      const subject = subjectsList[getPseudoRandom(seedVal, 0, subjectsList.length - 1)];
-      
-      let examsCount = 0;
-      let avgAccuracy = 0;
-      let avgTimePerQuestion = 0;
-      let xpEarned = getPseudoRandom(seedVal + 3, 5, 20);
-
-      // On some days, exams are taken
-      const tookExam = getPseudoRandom(seedVal + 1, 1, 100) > 55;
-      if (tookExam) {
-        examsCount = getPseudoRandom(seedVal + 2, 1, 3);
-        avgAccuracy = getPseudoRandom(seedVal + 4, 60, 100);
-        avgTimePerQuestion = getPseudoRandom(seedVal + 5, 12, 28);
-        xpEarned += examsCount * 30 + getPseudoRandom(seedVal + 6, 10, 40);
-      }
-
       data.push({
         date: bDateStr,
-        examsCount,
-        avgAccuracy: examsCount > 0 ? avgAccuracy : 0,
-        avgTimePerQuestion: examsCount > 0 ? avgTimePerQuestion : 0,
-        xpEarned,
-        subject
+        examsCount: 0,
+        avgAccuracy: 0,
+        avgTimePerQuestion: 0,
+        xpEarned: 0,
+        subject: subjectsList[0]
       });
     }
     return data;

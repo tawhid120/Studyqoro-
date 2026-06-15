@@ -21,6 +21,10 @@ import {
   HelpCircle
 } from "lucide-react";
 import { StudentStats } from "../types";
+import { auth, db } from "../lib/firebase";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { handleFirestoreError, OperationType } from "../lib/firebase";
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -184,34 +188,74 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
   const pupilYellow = getEyePupilOffset(240, 195, 4.5);
 
   // --- Form Handlers ---
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSuccessMessage("");
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      
-      const finalName = name.trim() || (isSignUp ? "Tawhid Islam" : "Tawhid Islam");
-      setStats({
-        name: finalName,
-        points: 145, 
-        streak: 3,   
-        level: 2,
-        rank: 50,    
-        examsGiven: 4,
-        totalQuestionsSolved: 32,
-        plan: "Free", 
-        completedMilestones: ["badge-2"],
-        isGuest: false
-      });
+    try {
+      if (isSignUp) {
+        // Sign Up
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await sendEmailVerification(userCredential.user);
+        
+        // Store user initial data
+        const userData: StudentStats = {
+          name: name.trim() || "New Student",
+          points: 0, 
+          streak: 0,   
+          level: 1,
+          rank: 0,    
+          examsGiven: 0,
+          totalQuestionsSolved: 0,
+          plan: "Free", 
+          completedMilestones: [],
+          isGuest: false
+        };
+        try {
+            await setDoc(doc(db, "students", userCredential.user.uid), userData);
+        } catch (error) {
+            handleFirestoreError(error, OperationType.CREATE, "students/" + userCredential.user.uid);
+        }
+        setSuccessMessage("নিবন্ধন সম্পন্ন! ইমেইল ভেরিফিকেশনের জন্য আপনার ইনবক্স চেক করুন।");
+        setTimeout(() => {
+          setSuccessMessage("");
+          onClose();
+        }, 1500);
+      } else {
+        // Sign In
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        if (!userCredential.user.emailVerified) {
+             setSuccessMessage("অনুগ্রহ করে আপনার ইমেইল ভেরিফাই করুন।");
+             setIsSubmitting(false);
+             return;
+        }
 
-      setSuccessMessage("সফলভাবে লগইন করা হয়েছে! স্টাডি ড্যাশবোর্ড লোড হচ্ছে...");
-      setTimeout(() => {
+        let userDoc;
+        try {
+            userDoc = await getDoc(doc(db, "students", userCredential.user.uid));
+        } catch (error) {
+            handleFirestoreError(error, OperationType.GET, "students/" + userCredential.user.uid);
+        }
+        
+        if (userDoc?.exists()) {
+           setStats({ ...(userDoc.data() as StudentStats), uid: userCredential.user.uid });
+        }
+        
         setSuccessMessage("");
         onClose();
-      }, 1000);
+      }
 
-    }, 1200);
+    } catch (error: any) {
+      console.error(error);
+      if (error.code === 'auth/email-already-in-use') {
+        setSuccessMessage("এই ইমেইলটি ইতিমধ্যে ব্যবহৃত হয়েছে, দয়া করে লগইন করুন।");
+      } else {
+        setSuccessMessage("ত্রুটি: " + error.message);
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleGuestRestore = () => {

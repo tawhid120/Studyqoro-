@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() { return request.auth != null; }
+    function isVerified() { return request.auth.token.email_verified == true; }
+    function isOwner(studentId) { return isSignedIn() && request.auth.uid == studentId; }
+
+    // Student collection
+    match /students/{studentId} {
+      allow read: if isOwner(studentId);
+      allow create: if isOwner(studentId);
+      allow update: if isOwner(studentId);
+    }
+  }
+}

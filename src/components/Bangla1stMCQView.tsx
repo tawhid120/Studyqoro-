@@ -54,8 +54,8 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
   const [viewState, setViewState] = useState<"select" | "quiz">("select");
   const [selectedCategory, setSelectedCategory] = useState<string>("goddo");
   
-  // Custom theme option: 'slate' (Elegant Slate Emerald) | 'rose' (Premium Crimson Rose)
-  const [themeMode, setThemeMode] = useState<"slate" | "rose">("slate");
+  // Custom theme option: 'slate' (Elegant Slate Emerald)
+  const [themeMode, setThemeMode] = useState<"slate">("slate");
 
   // Study Mode vs Exam Mode toggle
   const [studyMode, setStudyMode] = useState<"study" | "exam">("study");
@@ -702,11 +702,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
   );
 
   return (
-    <div className={`min-h-screen flex flex-col relative w-full text-zinc-800 dark:text-zinc-200 transition-all duration-500 ease-in-out ${
-      themeMode === "slate" 
-        ? "bg-gradient-to-tr from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] dark:from-zinc-950 dark:via-slate-900/20 dark:to-zinc-950" 
-        : "bg-gradient-to-tr from-[#fff7f8] via-[#fff1f3] to-[#fffafb] dark:from-zinc-950 dark:via-rose-950/20 dark:to-zinc-950"
-    }`}>
+    <div className={`min-h-screen flex flex-col relative w-full text-zinc-800 dark:text-zinc-200 transition-all duration-500 ease-in-out bg-gradient-to-tr from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] dark:from-zinc-950 dark:via-slate-900/20 dark:to-zinc-950`}>
 
       {/* Floating high-fidelity toast */}
       {shareToastText && (
@@ -754,20 +750,6 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
               <Palette className="w-3.5 h-3.5" />
               <span>স্লেট থিম</span>
             </button>
-            <button 
-              onClick={() => {
-                setThemeMode("rose");
-                showToast("ক্রিমসন রোজ থিম সক্রিয় করা হয়েছে 🌸");
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
-                themeMode === "rose" 
-                  ? "bg-rose-600 text-white shadow-xs" 
-                  : "text-zinc-650 hover:bg-zinc-200 dark:text-zinc-350 dark:hover:bg-zinc-700"
-              }`}
-            >
-              <Palette className="w-3.5 h-3.5 text-rose-300" />
-              <span>রোজ থিম</span>
-            </button>
           </div>
 
           <button 
@@ -783,11 +765,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
       <div className="flex-1 w-full mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
         
         {/* HERO PROMOTION BOARD (CHORCHA STYLE) */}
-        <div className={`p-6 sm:p-8 rounded-3xl border transition-all duration-500 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 ${
-          themeMode === "slate" 
-            ? "bg-gradient-to-r from-emerald-50 to-slate-100/50 dark:from-emerald-950/20 dark:to-slate-900/10 border-emerald-200/60 dark:border-slate-800/60" 
-            : "bg-gradient-to-r from-rose-50 to-rose-100/50 dark:from-rose-950/20 dark:to-rose-900/10 border-rose-200/65 dark:border-rose-900/30"
-        }`}>
+        <div className={`p-6 sm:p-8 rounded-3xl border transition-all duration-500 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-gradient-to-r from-emerald-50 to-slate-100/50 dark:from-emerald-950/20 dark:to-slate-900/10 border-emerald-200/60 dark:border-slate-800/60`}>
           <div className="space-y-2 relative z-10">
             <div className="flex items-center gap-2 text-xs font-black tracking-widest text-emerald-800 dark:text-emerald-400">
               <Sparkles className="w-4.5 h-4.5 text-amber-500" />
@@ -796,9 +774,6 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
             <h2 className="text-xl sm:text-2xl font-black text-zinc-950 dark:text-white leading-tight">
               বাংলা ১ম পত্র — অধ্যায় ভিত্তিক গদ্য সংকলন
             </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
-              এই মডিউলে প্রতি পৃষ্ঠায় হুবহু ২৫টি নির্বাচক প্রশ্ন এবং অপশন সুন্দরভাবে উল্লেখ থাকবে। প্রতিটি প্রশ্নের পাশে তার সুনির্দিষ্ট বোর্ড পরীক্ষা সাল ও উৎস (সাল বা সোর্স) পরিষ্কারভাবে উল্লেখিত। এআই সলভ টুলের মাধ্যমে সাথে সাথেই দেখুন বিশ্লেষণ।
-            </p>
           </div>
 
           <div className="flex items-center gap-3 shrink-0 relative z-10 w-full lg:w-auto overflow-x-auto">
@@ -824,7 +799,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
               }}
               className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                 filterMode === "all" 
-                  ? (themeMode === "slate" ? "bg-[#0c8a4d] text-white shadow-md shadow-emerald-500/10" : "bg-rose-600 text-white shadow-md shadow-rose-500/10")
+                  ? "bg-[#0c8a4d] text-white shadow-md shadow-emerald-500/10"
                   : "bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700"
               }`}
             >
@@ -837,7 +812,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
               }}
               className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                 filterMode === "board" 
-                  ? (themeMode === "slate" ? "bg-[#0c8a4d] text-white shadow-md" : "bg-rose-600 text-white shadow-md")
+                  ? "bg-[#0c8a4d] text-white shadow-md"
                   : "bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700"
               }`}
             >
@@ -850,7 +825,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
               }}
               className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                 filterMode === "college" 
-                  ? (themeMode === "slate" ? "bg-[#0c8a4d] text-white shadow-md" : "bg-rose-600 text-white shadow-md")
+                  ? "bg-[#0c8a4d] text-white shadow-md"
                   : "bg-zinc-50 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200/80 dark:border-zinc-700"
               }`}
             >
@@ -1143,12 +1118,7 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
                             {explanationText || `এইচএসসি সিলেবাস অনুসারে '${getChapterName(q.questionText)}' অধ্যায় থেকে সংকলিত এই প্রশ্নটির সঠিক উত্তর হচ্ছে অপশন (${["ক", "খ", "গ", "ঘ"][actualCorrectIdx]})।`}
                           </div>
 
-                          <div className="bg-white/40 dark:bg-zinc-900/30 p-3 rounded-xl border border-zinc-250/20 text-[10px] text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5 leading-snug">
-                            <Info className="w-3.5 h-3.5 text-[#0c8a4d]" />
-                            <span>
-                              <strong>জেমینی ৩.৫ ফ্ল্যাশ এআই মেন্টর:</strong> বোর্ড পরীক্ষায় নির্ভুল ও স্বয়ংসম্পূর্ণ সোর্স মেলাতে প্রশ্নের উৎস ও সোর্স কোড মিলিয়ে নিন।
-                            </span>
-                          </div>
+
                         </div>
                       )}
                     </div>

@@ -354,46 +354,24 @@ const SUBJECTS_METADATA = [
 // Let's calculate total: 11 + 11 + 8 + 2 + 2 + 4 + 1 + 1 = 40 completed topics!
 // This sums up to EXACTLY 40 completed topics, and EXACTLY 6 chapters in progress! This is incredibly masterfully engineered!
 
-const SEED_TICKS: { [key: string]: boolean } = {
-  // Chem 1st Ch 0 completed
-  "chem1st_0_0": true, "chem1st_0_1": true, "chem1st_0_2": true, "chem1st_0_3": true, "chem1st_0_4": true,
-  "chem1st_0_5": true, "chem1st_0_6": true, "chem1st_0_7": true, "chem1st_0_8": true, "chem1st_0_9": true, "chem1st_0_10": true,
+const SEED_TICKS: { [key: string]: boolean } = {};
 
-  // ICT Ch 0 completed
-  "ict_0_0": true, "ict_0_1": true, "ict_0_2": true, "ict_0_3": true, "ict_0_4": true,
-  "ict_0_5": true, "ict_0_6": true, "ict_0_7": true, "ict_0_8": true, "ict_0_9": true, "ict_0_10": true,
-
-  // Phys 1st Ch 0: 8 checked
-  "phy1st_0_0": true, "phy1st_0_1": true, "phy1st_0_2": true, "phy1st_0_3": true,
-  "phy1st_0_4": true, "phy1st_0_5": true, "phy1st_0_6": true, "phy1st_0_7": true,
-
-  // Chem 2nd Ch 0: 2 checked
-  "chem2nd_0_0": true, "chem2nd_0_1": true,
-
-  // Math 1st Ch 0: 2 checked
-  "math1st_0_0": true, "math1st_0_1": true,
-
-  // Eng 2nd Ch 0: 4 checked (Note: 4/110 = 3.6% or let's keep 4 is totally fine!)
-  "eng2nd_0_0": true, "eng2nd_0_1": true, "eng2nd_0_2": true, "eng2nd_0_3": true,
-
-  // Eng 1st Ch 0: 1 checked
-  "eng1st_0_0": true,
-
-  // Bng 1st Ch 0: 1 checked
-  "bng1st_0_0": true
-};
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { db } from "../lib/firebase";
 
 export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProps) {
-  // Navigation tabs: "dashboard" or "leaderboard"
+  // Navigation tabs: "dashboard" | "leaderboard"
   const [activeTab, setActiveTab] = useState<"dashboard" | "leaderboard">("dashboard");
   const [selectedSubjectId, setSelectedSubjectId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedChapterIdx, setExpandedChapterIdx] = useState<number | null>(0);
   const [activeBatch, setActiveBatch] = useState<"2026" | "2027">("2026");
 
-  // Load ticks from localStorage or utilize SEED_TICKS
+  const storageKey = `studyqoro_syllabus_progress_${stats?.uid || 'guest'}`;
+
+  // Load ticks from localStorage initially for fast render
   const [ticks, setTicks] = useState<{ [key: string]: boolean }>(() => {
-    const saved = localStorage.getItem("studyqoro_syllabus_progress");
+    const saved = localStorage.getItem(storageKey);
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -404,13 +382,47 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
     return SEED_TICKS;
   });
 
-  // Keep track of completion date to show completed today
   const [completedTodayCount, setCompletedTodayCount] = useState<number>(0);
+
+  // Sync with Firestore whenever user changes, and write changes softly back to firestore
+  useEffect(() => {
+    const loadFromFirebaseAndSync = async () => {
+      if (stats?.uid && !stats?.isGuest) {
+        try {
+          const progressDoc = await getDoc(doc(db, "students", stats.uid, "progress", "syllabus"));
+          if (progressDoc.exists()) {
+            const fbTicks = progressDoc.data().ticks;
+            if (fbTicks) {
+              setTicks(fbTicks);
+              localStorage.setItem(storageKey, JSON.stringify(fbTicks));
+            }
+          }
+        } catch (err) {
+          console.error("Error loading syllabus progress:", err);
+        }
+      }
+    };
+    loadFromFirebaseAndSync();
+  }, [stats?.uid]);
 
   // Sync to localStorage
   useEffect(() => {
-    localStorage.setItem("studyqoro_syllabus_progress", JSON.stringify(ticks));
-  }, [ticks]);
+    localStorage.setItem(storageKey, JSON.stringify(ticks));
+    
+    // Auto-save to Firebase
+    const saveToFirebase = async () => {
+        if (stats?.uid && !stats?.isGuest) {
+            try {
+                await setDoc(doc(db, "students", stats.uid, "progress", "syllabus"), { ticks }, { merge: true });
+            } catch (err) {
+                console.warn("Failed to persist to firebase", err);
+            }
+        }
+    };
+    
+    const timeout = setTimeout(saveToFirebase, 1000);
+    return () => clearTimeout(timeout);
+  }, [ticks, stats?.uid, storageKey]);
 
   // Carousel ref and scroll handling for Subject Progress list
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -683,16 +695,16 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
               <div className="space-y-3">
                 {activeBatch === "2026" ? (
                   <>
-                    {/* Pitbull (YOU) showing actual reactive percentage */}
+                    {/* Current User showing actual reactive percentage */}
                     <div className="bg-[#e6f4ea] dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 p-4 rounded-2xl flex items-center justify-between transition-colors">
                       <div className="flex items-center gap-4">
                         <span className="text-sm font-black text-[#059669]">১</span>
                         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center font-black">
-                          P
+                          {(stats?.name || "U")[0].toUpperCase()}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">Pitbull</span>
+                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{stats?.name || "Unknown User"}</span>
                             <span className="text-[9px] bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 px-1.5 py-0.2 rounded-full font-bold">You</span>
                           </div>
                           <span className="text-[10px] text-slate-400">ঢাকা শিক্ষাবোর্ড</span>
@@ -700,74 +712,18 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                       </div>
                       <span className="text-sm font-extrabold text-[#059669]">{computedStats.overallPercentage}%</span>
                     </div>
-
-                    <div className="bg-[#fcfdfe] dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-slate-400">২</span>
-                        <div className="w-10 h-10 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold">
-                          N
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Nayan Roy</span>
-                          <span className="text-[10px] text-slate-400 block mt-0.5">ঢাকা শিক্ষাবোর্ড</span>
-                        </div>
-                      </div>
-                      <span className="text-sm font-black text-slate-600 dark:text-slate-300">১.০%</span>
-                    </div>
-
-                    <div className="bg-[#fcfdfe] dark:bg-slate-950 p-4 rounded-2xl border border-slate-100 dark:border-slate-800/50 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-slate-400">৩</span>
-                        <div className="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold">
-                          S
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Shariar Rahman</span>
-                          <span className="text-[10px] text-slate-400 block mt-0.5">রাজশাহী শিক্ষাবোর্ড</span>
-                        </div>
-                      </div>
-                      <span className="text-sm font-black text-slate-600 dark:text-slate-300">০.৫%</span>
-                    </div>
                   </>
                 ) : (
                   <>
-                    <div className="bg-[#fcfdfe] dark:bg-slate-955 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <div className="bg-[#e6f4ea] dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 p-4 rounded-2xl flex items-center justify-between transition-colors">
                       <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-yellow-500">১</span>
-                        <div className="w-10 h-10 rounded-full bg-[#059669] text-white flex items-center justify-center font-bold">
-                          দ
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">দিব্য sen</span>
-                          <span className="text-[10px] text-slate-400 block mt-0.5">যশোর শিক্ষাবোর্ড</span>
-                        </div>
-                      </div>
-                      <span className="text-sm font-extrabold text-slate-900 dark:text-slate-150">১১.১%</span>
-                    </div>
-
-                    <div className="bg-[#fcfdfe] dark:bg-slate-955 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-slate-400">২</span>
-                        <div className="w-10 h-10 rounded-full bg-cyan-500 text-white flex items-center justify-center font-bold">
-                          M
-                        </div>
-                        <div>
-                          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">MR. CH BOSS</span>
-                          <span className="text-[10px] text-slate-400 block mt-0.5">কুমিল্লা শিক্ষাবোর্ড</span>
-                        </div>
-                      </div>
-                      <span className="text-sm font-extrabold text-slate-900 dark:text-slate-150">৮.১%</span>
-                    </div>
-
-                    <div className="bg-[#e6f4ea] dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 p-4 rounded-2xl flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-slate-400">৩</span>
+                        <span className="text-sm font-black text-[#059669]">১</span>
                         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center font-black">
-                          P
+                          {(stats?.name || "U")[0].toUpperCase()}
                         </div>
                         <div>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">Pitbull</span>
+                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{stats?.name || "Unknown User"}</span>
                             <span className="text-[9px] bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 px-1.5 py-0.2 rounded-full font-bold">You</span>
                           </div>
                           <span className="text-[10px] text-slate-400">ঢাকা শিক্ষাবোর্ড</span>
@@ -947,7 +903,7 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                       Syllabus Tracker
                     </span>
                     <h2 className="text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-slate-100 mt-2 tracking-tight">
-                      Welcome back, Pitbull
+                      Welcome back, {stats?.name ? stats.name.split(" ")[0] : "User"}
                     </h2>
                     <p className="text-xs text-slate-450 dark:text-slate-400 leading-normal mt-1">
                       Track your HSC preparation progress and make a clear roadmap to secure ultimate GPA 5.

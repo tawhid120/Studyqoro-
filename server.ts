@@ -564,10 +564,7 @@ async function startServer() {
   }
 
   function resetBattles() {
-    activeBattles = [
-      generateRandomBattle("পদার্থবিজ্ঞান ১ম পত্র"),
-      generateRandomBattle("উচ্চতর গণিত ১ম পত্র")
-    ];
+    activeBattles = [];
   }
   resetBattles();
 

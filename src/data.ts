@@ -138,53 +138,7 @@ export const QUESTION_BANK: Question[] = [
   }
 ];
 
-export const INITIAL_LEADERBOARD: LeaderboardUser[] = [
-  {
-    id: "l-1",
-    rank: 1,
-    name: "Asha Khatun",
-    district: "সিরাজগঞ্জ",
-    points: 319,
-    avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150",
-    streak: 8
-  },
-  {
-    id: "l-2",
-    rank: 2,
-    name: "Rafsanul Islam Rafin",
-    district: "চট্টগ্রাম",
-    points: 277,
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
-    streak: 15
-  },
-  {
-    id: "l-3",
-    rank: 3,
-    name: "Arman Hossen",
-    district: "কুমিল্লাহ",
-    points: 267,
-    avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
-    streak: 4
-  },
-  {
-    id: "l-4",
-    rank: 4,
-    name: "Mohammad Shahed",
-    district: "গাজীপুর",
-    points: 195,
-    avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150",
-    streak: 11
-  },
-  {
-    id: "l-5",
-    rank: 5,
-    name: "Miftahul Jannat Mitu",
-    district: "কক্সবাজার",
-    points: 183,
-    avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150",
-    streak: 6
-  }
-];
+export const INITIAL_LEADERBOARD: LeaderboardUser[] = [];
 
 export const ACHIEVEMENTS = [
   {

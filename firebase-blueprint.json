@@ -1,0 +1,28 @@
+{
+  "entities": {
+    "Student": {
+      "title": "Student",
+      "description": "Student profile data",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "points": { "type": "number" },
+        "streak": { "type": "number" },
+        "level": { "type": "number" },
+        "rank": { "type": "number" },
+        "examsGiven": { "type": "number" },
+        "totalQuestionsSolved": { "type": "number" },
+        "plan": { "type": "string" },
+        "completedMilestones": { "type": "array" },
+        "isGuest": { "type": "boolean" }
+      },
+      "required": ["name", "points", "streak", "level", "rank", "examsGiven", "totalQuestionsSolved", "plan", "completedMilestones", "isGuest"]
+    }
+  },
+  "firestore": {
+    "/students/{studentId}": {
+      "schema": { "$ref": "#/entities/Student" },
+      "description": "Stores student data."
+    }
+  }
+}

@@ -64,6 +64,7 @@ export interface ChatMessage {
 }
 
 export interface StudentStats {
+  uid?: string;
   name: string;
   points: number;
   streak: number;
