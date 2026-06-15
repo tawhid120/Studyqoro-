@@ -189,9 +189,9 @@ export const INITIAL_LEADERBOARD: LeaderboardUser[] = [
 export const ACHIEVEMENTS = [
   {
     id: "badge-1",
-    name: "নামাজী শিক্ষার্থী (Faithful Mind)",
-    description: "সাফল্যের মূল ভিত্তি নৈতিকতা। পড়াশোনা ও ইবাদতে সময়ানুবর্তিতা বজায় রাখার সম্মাননা badge!",
-    icon: "🕌",
+    name: "নিয়মতান্ত্রিক শিক্ষার্থী (Disciplined Mind)",
+    description: "সাফল্যের মূল ভিত্তি অধ্যাবসায়। পড়াশোনা ও দৈনিক কার্যক্রমে সময়ানুবর্তিতা বজায় রাখার সম্মাননা badge!",
+    icon: "🌟",
     pointsRequired: 50
   },
   {

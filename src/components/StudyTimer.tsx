@@ -21,7 +21,7 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const presets = [
-    { id: "pomodoro", name: "এইচএসসি সাধারণ স্প্রিন্ট", description: "২৫ মিনিট নিবিড় পড়া + ৫ মিনিট নামাজে বিরতি", duration: 1500, xp: 20 },
+    { id: "pomodoro", name: "এইচএসসি সাধারণ স্প্রিন্ট", description: "২৫ মিনিট নিবিড় পড়া + ৫ মিনিট রিফ্রেশমেন্ট বিরতি", duration: 1500, xp: 20 },
     { id: "quick_gk", name: "অ্যাডমিশন জিকে রাশ", description: "১৫ মিনিট দ্রুত মুখস্থকরণ + ৩ মিনিট হালকা বিশ্রাম", duration: 900, xp: 12 },
     { id: "deep_review", name: "মহা অধ্যায় পর্যালোচক", description: "৪৫ মিনিট মনস্তাত্ত্বিক ফোকাস + ১০ মিনিট দীর্ঘ বিরতি", duration: 2700, xp: 40 }
   ];
@@ -86,10 +86,10 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
       <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl">
         <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
           <Timer className="w-5 h-5 text-emerald-400" />
-          <span>স্মার্ট স্টাডি ও নামাজ টাইমার (Focus Engine)</span>
+          <span>স্মার্ট স্টাডি ও ফোকাস টাইমার (Focus Engine)</span>
         </h3>
         <p className="text-xs text-slate-400 mt-1">
-          নামাজ ও অনুশীলনের সাথে পড়ার সময়কে সিঙ্ক করে চূড়ান্ত কার্যকারিতা অর্জন করো। পড়াশেষে এক্সপি সংগ্রহ করতে ভুলো না!
+          নিয়মিত বিরতি ও অনুশীলনের সাথে পড়ার সময়কে সিঙ্ক করে চূড়ান্ত কার্যকারিতা অর্জন করো। পড়াশেষে এক্সপি সংগ্রহ করতে ভুলো না!
         </p>
 
         {/* Dynamic Presets list */}

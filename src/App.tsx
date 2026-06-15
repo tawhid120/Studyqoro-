@@ -11,12 +11,15 @@ import Dashboard from "./components/Dashboard";
 import QuestionBank from "./components/QuestionBank";
 import MockExam from "./components/MockExam";
 import ChorchaAI from "./components/ChorchaAI";
-import BattleExam from "./components/BattleExam";
+import ExamWar from "./components/ExamWar";
 import StudyTimer from "./components/StudyTimer";
 import ProgressTracker from "./components/ProgressTracker";
 import HistoryLog from "./components/HistoryLog";
 import AuthModal from "./components/AuthModal";
 import Leaderboard from "./components/Leaderboard";
+import SyllabusTracker from "./components/SyllabusTracker";
+import TeacherCorner from "./components/TeacherCorner";
+import StudyMaterials from "./components/StudyMaterials";
 import { StudentStats, Question } from "./types";
 import { Sparkles, Trophy, X, ShieldAlert, BadgeCheck } from "lucide-react";
 
@@ -24,7 +27,15 @@ export default function App() {
   const [activeTab, setActiveTab ] = useState<string>("dashboard");
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [darkMode, setDarkMode] = useState(false); // Default to light mode matching screenshot!
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("study-qoro-theme");
+      if (saved) return saved === "dark";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  });
   const [questions, setQuestions] = useState<Question[]>([]);
 
   // Default initial Guest account with full informational lists
@@ -45,21 +56,23 @@ export default function App() {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("study-qoro-theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("study-qoro-theme", "light");
     }
   }, [darkMode]);
 
-  // Deep-link check to auto-navigate to Battle tab
+  // Deep-link check to auto-navigate to War tab
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const roomFromUrl = urlParams.get("room") || urlParams.get("battle");
+    const roomFromUrl = urlParams.get("room") || urlParams.get("war") || urlParams.get("battle");
     if (roomFromUrl) {
       setActiveTab("battle");
     }
   }, []);
 
-  // Study Qoro Security Suite: Disable F12, Right-click Inspect, Dragging, and Copying
+  // Chorcha AI Security Suite: Disable F12, Right-click Inspect, Dragging, and Copying
   useEffect(() => {
     // 1. Disable context menu (right click)
     const handleContextMenu = (e: MouseEvent) => {
@@ -239,6 +252,8 @@ export default function App() {
           onOpenAuth={() => setShowAuthModal(true)}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
         />
 
         {/* 2. Main content area on the right side */}
@@ -250,6 +265,9 @@ export default function App() {
             onOpenAuth={() => setShowAuthModal(true)}
             darkMode={darkMode}
             setDarkMode={setDarkMode}
+            onProfileClick={() => handleTabSelection("progress")}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
           />
 
           <main className="flex-grow p-5 sm:p-7 max-w-7xl mx-auto w-full">
@@ -260,6 +278,14 @@ export default function App() {
                 setActiveTab={handleTabSelection} 
                 onQuickExam={handleQuickExamLauncher} 
                 onOpenAuth={() => setShowAuthModal(true)}
+                onOpenSidebar={() => setIsSidebarOpen(true)}
+              />
+            )}
+
+            {activeTab === "syllabus" && (
+              <SyllabusTracker 
+                stats={stats} 
+                setStats={setStats}
               />
             )}
 
@@ -288,10 +314,17 @@ export default function App() {
             )}
 
             {activeTab === "battle" && (
-              <BattleExam 
+              <ExamWar 
                 stats={stats} 
                 setStats={setStats} 
                 questions={questions}
+              />
+            )}
+
+            {activeTab === "materials" && (
+              <StudyMaterials 
+                stats={stats} 
+                setStats={setStats} 
               />
             )}
 
@@ -318,6 +351,14 @@ export default function App() {
             {activeTab === "progress" && (
               <ProgressTracker 
                 stats={stats} 
+                setStats={setStats}
+              />
+            )}
+
+            {(activeTab === "teacher" || activeTab.startsWith("teacher_")) && (
+              <TeacherCorner 
+                initialSubTab={activeTab === "teacher" ? "overview" : activeTab.replace("teacher_", "")} 
+                onBackToDashboard={() => handleTabSelection("dashboard")}
               />
             )}
           </main>
@@ -359,7 +400,7 @@ export default function App() {
                 </div>
                 <div className="flex gap-2.5 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
                   <BadgeCheck className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
-                  <span><strong>কাস্টম রিভিশন সেট ও নামাজী টাইমার:</strong> সেশনসমূহ সুন্দরভাবে পরিচালনার স্পেশাল রুটিন।</span>
+                  <span><strong>কাস্টম রিভিশন সেট ও ফোকাস টাইমার:</strong> সেশনসমূহ সুন্দরভাবে পরিচালনার স্পেশাল রুটিন।</span>
                 </div>
               </div>
 

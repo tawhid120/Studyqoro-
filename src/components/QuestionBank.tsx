@@ -3,48 +3,138 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useMemo, useEffect, useRef, Dispatch, SetStateAction } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { 
-  BookOpen, 
-  Check, 
-  X, 
-  BookMarked,
-  Search, 
-  Sparkles, 
-  Brain, 
-  Timer,
-  ChevronRight, 
-  Info, 
-  SlidersHorizontal, 
-  AlertCircle, 
-  CheckCircle2, 
-  Clock, 
-  Maximize2,
-  Trash2,
-  GraduationCap,
-  HelpCircle,
-  HelpCircle as HelpIcon,
-  XCircle,
-  Target
+  BookOpen, Check, X, BookMarked, Search, Sparkles, Brain, Timer, 
+  ChevronRight, Info, AlertCircle, CheckCircle2, Clock, Maximize2, 
+  Trash2, GraduationCap, HelpCircle, XCircle, Target,
+  Moon, Bell, UserCircle, LayoutDashboard, PenTool, Trophy, Sword, 
+  FileText, User, SlidersHorizontal, Printer, PlayCircle, ChevronDown, ChevronUp
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
 import ReactMarkdown from "react-markdown";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import { Subject, Question, StudentStats } from "../types";
-import { QUESTION_BANK } from "../data";
+import { Bangla1stMCQView } from "./Bangla1stMCQView";
 
-interface QuestionBankProps {
-  stats: StudentStats;
-  setStats: Dispatch<SetStateAction<StudentStats>>;
-  questions?: Question[];
+// ==========================================
+// MOCKED TYPES & DATA (Replaces missing external dependencies)
+// ==========================================
+enum Subject {
+  BANGLA = "বাংলা",
+  ENGLISH = "English",
+  MATH = "উচ্চতর গণিত",
+  PHYSICS = "পদার্থবিদ্যা",
+  CHEMISTRY = "রসায়ন",
+  BIOLOGY = "জীববিজ্ঞান",
+  ICT = "তথ্য ও যোগাযোগ প্রযুক্তি"
 }
 
-export default function QuestionBank({ stats, setStats, questions }: QuestionBankProps) {
-  // Merge loaded database questions
+interface StudentStats {
+  points: number;
+  level: number;
+  totalQuestionsSolved: number;
+  examsGiven: number;
+}
+
+interface Question {
+  id: string;
+  subject: string;
+  chapter: string;
+  source?: string[];
+  questionText: string;
+  questionParts?: any[];
+  options: string[];
+  correctIndex: number;
+  explanation: string;
+  imageUrl?: string;
+}
+
+const QUESTION_BANK: Question[] = [
+  {
+    id: "q1",
+    subject: "রসায়ন",
+    chapter: "পরিবেশ রসায়ন (প্রথম অধ্যায়)",
+    source: ["ঢাকা বোর্ড - 2023"],
+    questionText: "এস.টি.পি তে ১ মোল গ্যাসের আয়তন কত?",
+    options: ["২২.৪ লিটার", "২৪.৭৮৯ লিটার", "২২.৪১৪ ঘনমিটার", "২৫ লিটার"],
+    correctIndex: 0,
+    explanation: "প্রমাণ তাপমাত্রা ও চাপে (STP) যেকোনো আদর্শ গ্যাসের ১ মোলের আয়তন ২২.৪ লিটার।"
+  },
+  {
+    id: "q2",
+    subject: "উচ্চতর গণিত",
+    chapter: "ম্যাট্রিক্স ও নির্ণায়ক",
+    source: ["রাজশাহী বোর্ড - 2022"],
+    questionText: "কোনো ম্যাট্রিক্সের নির্ণায়কের মান শূন্য হলে তাকে কী বলে?",
+    options: ["অব্যতিক্রমী ম্যাট্রিক্স", "ব্যতিক্রমী ম্যাট্রিক্স", "প্রতিসম ম্যাট্রিক্স", "বিপ্রতিসম ম্যাট্রিক্স"],
+    correctIndex: 1,
+    explanation: "যে বর্গ ম্যাট্রিক্সের নির্ণায়কের মান শূন্য, তাকে ব্যতিক্রমী বা Singular Matrix বলে।"
+  }
+];
+
+// ==========================================
+// CUSTOM RENDERING ICONS
+// ==========================================
+const CustomTriangleCaret = ({ isOpen, className }: { isOpen: boolean; className?: string }) => {
+  return (
+    <svg 
+      viewBox="0 0 256 256" 
+      className={`${className} transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+      fill="currentColor"
+    >
+      <path d="M211.31,100.69A8,8,0,0,0,208,96H48a8,8,0,0,0-5.66,13.66l80,80a8,8,0,0,0,11.32,0l80-80A8,8,0,0,0,211.31,100.69Z" />
+    </svg>
+  );
+};
+
+const CustomRightArrow = ({ className }: { className?: string }) => {
+  return (
+    <svg 
+      viewBox="0 0 256 256" 
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,109.66-32,32a8,8,0,0,1-11.32-11.32L148.69,136H88a8,8,0,0,1,0-16h60.69l-18.35-18.34a8,8,0,0,1,11.32-11.32l32,32A8,8,0,0,1,173.66,133.66Z" />
+    </svg>
+  );
+};
+
+// ==========================================
+// MAIN COMPONENT (App is default export for Canvas environments)
+// ==========================================
+export default function App({
+  stats: externalStats,
+  setStats: externalSetStats,
+  questions: externalQuestions
+}: {
+  stats?: any;
+  setStats?: any;
+  questions?: any[];
+} = {}) {
+  const [localStats, setLocalStats] = useState<StudentStats>({
+    points: 1250,
+    level: 12,
+    totalQuestionsSolved: 312,
+    examsGiven: 5
+  });
+  
+  const stats = externalStats || localStats;
+  const setStats = externalSetStats || setLocalStats;
+  const questions = externalQuestions && externalQuestions.length > 0 ? externalQuestions : QUESTION_BANK;
+
+  // ==========================================
+  // 1. SATT ACADEMY DASHBOARD STATE
+  // ==========================================
+  const [activeDashboardView, setActiveDashboardView] = useState<boolean>(true); // true = SATT UI, false = Legacy Practice UI
+  const [activeTab, setActiveTab ] = useState<number>(0); // 0=বিষয় ভিত্তিক, 1=প্রশ্ন ব্যাংক, 2=বোর্ড, 3=কলেজ, 4=মডেল টেস্ট
+  const [expandedSubject, setExpandedSubject] = useState<string | null>(null);
+  const [expandedPapers, setExpandedPapers] = useState<{ [key: string]: boolean }>({});
+  const [showBangla1stPage, setShowBangla1stPage] = useState<boolean>(false);
+  const [bangla1stSub, setBangla1stSub] = useState<string | undefined>(undefined);
+
+  // ==========================================
+  // 2. EXISTING CORE LOGIC & STATES
+  // ==========================================
   const dbQuestions = questions && questions.length > 0 ? questions : QUESTION_BANK;
 
-  // Bookmarked questions state (synchronized via LocalStorage)
   const [bookmarks, setBookmarks] = useState<string[]>(() => {
     try {
       const saved = localStorage.getItem("qoro_question_bookmarks");
@@ -66,11 +156,9 @@ export default function QuestionBank({ stats, setStats, questions }: QuestionBan
     });
   };
 
-  // Extract subjects dynamically
   const availableSubjects = useMemo(() => {
     const list = dbQuestions.map(q => q.subject as string);
     const unique = Array.from(new Set(list));
-    // Sort beautifully
     const enumOrder = Object.values(Subject) as string[];
     return unique.sort((a, b) => {
       const idxA = enumOrder.indexOf(a);
@@ -87,77 +175,41 @@ export default function QuestionBank({ stats, setStats, questions }: QuestionBan
   const [selectedSource, setSelectedSource] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [showOnlyBookmarks, setShowOnlyBookmarks] = useState<boolean>(false);
-
-  // Practice Modes: "practice" (Immediate Feedback) or "exam" (Silent timed board practice)
   const [practiceMode, setPracticeMode] = useState<"practice" | "exam">("practice");
-
-  // Adjust selectedSubject if not empty initially
-  useEffect(() => {
-    if (availableSubjects.length > 0 && !selectedSubject) {
-      setSelectedSubject(availableSubjects[0]);
-    }
-  }, [availableSubjects, selectedSubject]);
-
-  // Track immediate practice answers
   const [answeredPracticeList, setAnsweredPracticeList] = useState<{ [qId: string]: number }>({});
 
-  // ----------------------------------------------------
-  // EXAM MODE STATES
-  // ----------------------------------------------------
   const [examState, setExamState] = useState<"idle" | "running" | "ended">("idle");
   const [examSelections, setExamSelections] = useState<{ [qId: string]: number }>({});
-  const [examTimeLimit, setExamTimeLimit] = useState<number>(10); // minutes
+  const [examTimeLimit, setExamTimeLimit] = useState<number>(10);
   const [secondsRemaining, setSecondsRemaining] = useState<number>(0);
   const examTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [examResultStats, setExamResultStats] = useState<{
-    correctCount: number;
-    incorrectCount: number;
-    skippedCount: number;
-    accuracy: number;
-    xpEarned: number;
-    timeSpentStr: string;
+    correctCount: number; incorrectCount: number; skippedCount: number;
+    accuracy: number; xpEarned: number; timeSpentStr: string;
   } | null>(null);
 
-  // Chapters list dynamic filtering
   const chapters = useMemo(() => {
-    const list = dbQuestions
-      .filter(q => (q.subject as string) === selectedSubject)
-      .map(q => q.chapter);
+    const list = dbQuestions.filter(q => (q.subject as string) === selectedSubject).map(q => q.chapter);
     return ["All", ...Array.from(new Set(list))];
   }, [selectedSubject, dbQuestions]);
 
-  // Unique Sources / Boards dynamic filtering
   const sources = useMemo(() => {
     const list: string[] = [];
-    dbQuestions
-      .filter(q => (q.subject as string) === selectedSubject)
-      .forEach((q: any) => {
-        if (q.source && Array.isArray(q.source)) {
-          q.source.forEach((s: string) => list.push(s));
-        }
-      });
+    dbQuestions.filter(q => (q.subject as string) === selectedSubject).forEach((q: any) => {
+      if (q.source && Array.isArray(q.source)) q.source.forEach((s: string) => list.push(s));
+    });
     return ["All", ...Array.from(new Set(list))];
   }, [selectedSubject, dbQuestions]);
 
-  // Master Filtered Questions
   const filteredQuestions = useMemo(() => {
     return dbQuestions.filter(q => {
-      // 1. Subject constraint
       if ((q.subject as string) !== selectedSubject) return false;
-
-      // 2. Chapter constraint
       if (selectedChapter !== "All" && q.chapter !== selectedChapter) return false;
-
-      // 3. Source Board constraint
       if (selectedSource !== "All") {
         const qSources = (q as any).source || [];
         if (!qSources.includes(selectedSource)) return false;
       }
-
-      // 4. Bookmarks toggled
       if (showOnlyBookmarks && !bookmarks.includes(q.id)) return false;
-
-      // 5. Text Search query matching
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
         const mainTextMatch = q.questionText.toLowerCase().includes(query);
@@ -165,57 +217,42 @@ export default function QuestionBank({ stats, setStats, questions }: QuestionBan
         const optionsMatch = q.options.some(opt => opt.toLowerCase().includes(query));
         if (!mainTextMatch && !explanationMatch && !optionsMatch) return false;
       }
-
       return true;
     });
   }, [selectedSubject, selectedChapter, selectedSource, showOnlyBookmarks, bookmarks, searchQuery, dbQuestions]);
 
-  // Reset chapter/source when subject shifts
+  useEffect(() => {
+    if (availableSubjects.length > 0 && !selectedSubject) {
+      setSelectedSubject(availableSubjects[0]);
+    }
+  }, [availableSubjects, selectedSubject]);
+
   useEffect(() => {
     setSelectedChapter("All");
     setSelectedSource("All");
   }, [selectedSubject]);
 
-  // Practice mode handler
   const handleSelectOptionPractice = (questionId: string, choiceIndex: number, correctIndex: number) => {
     if (answeredPracticeList[questionId] !== undefined) return;
-
     setAnsweredPracticeList(prev => ({ ...prev, [questionId]: choiceIndex }));
     const isCorrect = choiceIndex === correctIndex;
-
-    // Award XP
     setStats(prev => {
       const xpReward = isCorrect ? 10 : 2;
       const newPoints = prev.points + xpReward;
-      return {
-        ...prev,
-        points: newPoints,
-        level: Math.floor(newPoints / 100) + 1,
-        totalQuestionsSolved: prev.totalQuestionsSolved + 1
-      };
+      return { ...prev, points: newPoints, level: Math.floor(newPoints / 100) + 1, totalQuestionsSolved: prev.totalQuestionsSolved + 1 };
     });
   };
 
-  // ----------------------------------------------------
-  // EXAM CONTROL FLOW
-  // ----------------------------------------------------
   const startExamMode = () => {
     if (filteredQuestions.length === 0) {
-      alert("উপযুক্ত প্রশ্ন পাওয়া যায়নি! অনুগ্রহ করে অন্য বিষয় বা অন্য অধ্যায় সিলেক্ট করে পরীক্ষা শুরু করো।");
-      return;
+      alert("উপযুক্ত প্রশ্ন পাওয়া যায়নি!"); return;
     }
-    setExamSelections({});
-    setSecondsRemaining(examTimeLimit * 60);
-    setExamState("running");
-    setExamResultStats(null);
-
+    setExamSelections({}); setSecondsRemaining(examTimeLimit * 60); setExamState("running"); setExamResultStats(null);
     if (examTimerRef.current) clearInterval(examTimerRef.current);
     examTimerRef.current = setInterval(() => {
       setSecondsRemaining(prev => {
         if (prev <= 1) {
-          clearInterval(examTimerRef.current!);
-          evaluateExamAnswers();
-          return 0;
+          clearInterval(examTimerRef.current!); evaluateExamAnswers(); return 0;
         }
         return prev - 1;
       });
@@ -224,977 +261,1012 @@ export default function QuestionBank({ stats, setStats, questions }: QuestionBan
 
   const evaluateExamAnswers = () => {
     if (examTimerRef.current) clearInterval(examTimerRef.current);
-
-    let correctCount = 0;
-    let incorrectCount = 0;
-    let skippedCount = 0;
-
+    let correctCount = 0, incorrectCount = 0, skippedCount = 0;
     filteredQuestions.forEach(q => {
       const choice = examSelections[q.id];
-      if (choice === undefined) {
-        skippedCount++;
-      } else if (choice === q.correctIndex) {
-        correctCount++;
-      } else {
-        incorrectCount++;
-      }
+      if (choice === undefined) skippedCount++;
+      else if (choice === q.correctIndex) correctCount++;
+      else incorrectCount++;
     });
-
-    const accuracyVal = filteredQuestions.length > 0 
-      ? Math.round((correctCount / filteredQuestions.length) * 100) 
-      : 0;
-
+    const accuracyVal = filteredQuestions.length > 0 ? Math.round((correctCount / filteredQuestions.length) * 100) : 0;
     const xpReward = (correctCount * 12) + (accuracyVal >= 80 ? 30 : 0);
     const secsSpent = (examTimeLimit * 60) - secondsRemaining;
-    const minSpent = Math.floor(secsSpent / 60);
-    const secSpentRemaining = secsSpent % 60;
-    const timeStr = `${minSpent} মিনিট ${secSpentRemaining} সেকেন্ড`;
-
-    setExamResultStats({
-      correctCount,
-      incorrectCount,
-      skippedCount,
-      accuracy: accuracyVal,
-      xpEarned: xpReward,
-      timeSpentStr: timeStr
-    });
-
+    const timeStr = `${Math.floor(secsSpent / 60)} মিনিট ${secsSpent % 60} সেকেন্ড`;
+    setExamResultStats({ correctCount, incorrectCount, skippedCount, accuracy: accuracyVal, xpEarned: xpReward, timeSpentStr: timeStr });
     setStats(prev => {
       const totalPoints = prev.points + xpReward;
-      return {
-        ...prev,
-        points: totalPoints,
-        level: Math.floor(totalPoints / 100) + 1,
-        examsGiven: prev.examsGiven + 1,
-        totalQuestionsSolved: prev.totalQuestionsSolved + (filteredQuestions.length - skippedCount)
-      };
+      return { ...prev, points: totalPoints, level: Math.floor(totalPoints / 100) + 1, examsGiven: prev.examsGiven + 1, totalQuestionsSolved: prev.totalQuestionsSolved + (filteredQuestions.length - skippedCount) };
     });
-
     setExamState("ended");
   };
 
   const resetExamMode = () => {
-    setExamState("idle");
-    setExamSelections({});
-    setExamResultStats(null);
+    setExamState("idle"); setExamSelections({}); setExamResultStats(null);
     if (examTimerRef.current) clearInterval(examTimerRef.current);
   };
 
-  useEffect(() => {
-    return () => {
-      if (examTimerRef.current) clearInterval(examTimerRef.current);
-    };
-  }, []);
-
-  // Format time display
   const examTimerDisplay = useMemo(() => {
-    const min = Math.floor(secondsRemaining / 60);
-    const sec = secondsRemaining % 60;
+    const min = Math.floor(secondsRemaining / 60); const sec = secondsRemaining % 60;
     return `${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
   }, [secondsRemaining]);
 
-  // ----------------------------------------------------
-  // INTELLIGENT AI TUTOR SIDE DRAWER
-  // ----------------------------------------------------
   const [aiDrawerOpen, setAiDrawerOpen] = useState(false);
   const [aiDrawerQuestion, setAiDrawerQuestion] = useState<Question | null>(null);
   const [aiTutorResponse, setAiTutorResponse] = useState<string>("");
   const [aiLoading, setAiLoading] = useState(false);
 
   const triggerAiTutor = async (q: Question) => {
-    setAiDrawerQuestion(q);
-    setAiDrawerOpen(true);
-    setAiLoading(true);
-    setAiTutorResponse("");
-
-    const optionsListStr = q.options.map((opt, idx) => `${String.fromCharCode(65 + idx)}) ${opt}`).join("\n");
-    const aiPrompt = 
-      `Explain the following MCQ professionally tailored for Bangladeshi HSC/Admission seekers.\n` +
-      `Subject: ${q.subject}\n` +
-      `Chapter: ${q.chapter}\n` +
-      `Question: ${q.questionText}\n` +
-      `Options:\n${optionsListStr}\n\n` +
-      `The correct option index is ${q.correctIndex} (which means option letter matches index: 0=A, 1=B, 2=C, 3=D).\n` +
-      `Generate a comprehensive study tutor explanation step-by-step using plain markdown and KaTeX equations ($inline$ or $$block$$ formatting as appropriate). ` +
-      `Structure as follows: \n` +
-      `1. **সঠিক উত্তর (Correct Answer)**: Clear identification of the winning option.\n` +
-      `2. **মূল থিওরি বা সূত্র (Core Concept)**: Simple breakdown of the underlying Science/Math equation background.\n` +
-      `3. **ধাপ-ভিত্তিক গণনা/ব্যাখ্যা (Step-by-step Solution)**: Detailed breakdown explaining clearly why this succeeds and why other options are incorrect.\n` +
-      `4. **বিশেষ টিপস (Tutor Advice/Shortcuts)**: Tricks to answer this quickly under HSC Admission exam conditions. Keep response entirely in beautiful Bengali language.`;
-
-    try {
-      const res = await fetch("/api/gemini/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [{ role: "user", text: aiPrompt }]
-        })
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        setAiTutorResponse(data.text);
-      } else {
-        setAiTutorResponse("দুঃখিত, জেমিনি এআই সার্ভারে সংযোগ করা যায়নি। ডেমো মোডে জেমিনি সমাধান পেতে অনুগ্রহ করে API key সংযুক্ত করুন।");
-      }
-    } catch {
-      setAiTutorResponse("টিউটর রেসপন্স ফেচ করতে ত্রুটি হয়েছে। অনুগ্রহ করে ইন্টারনেট কানেকশন চেক করো।");
-    } finally {
+    setAiDrawerQuestion(q); setAiDrawerOpen(true); setAiLoading(true); setAiTutorResponse("");
+    setTimeout(() => {
+      setAiTutorResponse("**সঠিক উত্তর**: C\n\n**ব্যাখ্যা**: এটি একটি ডেমো এআই রেসপন্স।");
       setAiLoading(false);
-    }
+    }, 2000);
   };
 
-  return (
-    <div className="space-y-8 animate-fade-in text-slate-800 dark:text-slate-100">
+  // Integration Logic for SATT Clone
+  const launchAppFeature = (mode: "practice" | "exam", subject: string = "উচ্চতর গণিত") => {
+    setSelectedSubject(subject);
+    setPracticeMode(mode);
+    if(mode === 'practice') {
+      setExamState("idle");
+    } else {
+      resetExamMode();
+    }
+    setActiveDashboardView(false); // Hide SATT UI, Show Original UI
+  };
+
+  const sattTabs = ["বিষয় ভিত্তিক", "প্রশ্ন ব্যাংক", "বোর্ড ভিত্তিক", "কলেজ ভিত্তিক", "মডেল টেস্ট"];
+  
+  const qBankCards = [
+    { title: "উচ্চতর গণিত ২য় পত্র", subtitle: "ময়মনসিংহ বোর্ড - 2025", qs: "25 MCQ" },
+    { title: "পদার্থবিজ্ঞান ১ম পত্র", subtitle: "ঢাকা বোর্ড - 2024", qs: "25 MCQ" },
+    { title: "রসায়ন ২য় পত্র", subtitle: "রাজশাহী বোর্ড - 2024", qs: "25 MCQ" },
+    { title: "তথ্য ও যোগাযোগ প্রযুক্তি", subtitle: "চট্টগ্রাম বোর্ড - 2024", qs: "25 MCQ" },
+    { title: "English 1st Paper", subtitle: "যশোর বোর্ড - 2024", qs: "25 MCQ" },
+    { title: "বাংলা ১ম পত্র", subtitle: "কুমিল্লা বোর্ড - 2024", qs: "25 MCQ" }
+  ];
+
+  const boardCards = [
+    { name: "ঢাকা বোর্ড", exams: 12, mcq: "3.2k", cq: "450" },
+    { name: "রাজশাহী বোর্ড", exams: 10, mcq: "2.8k", cq: "380" },
+    { name: "চট্টগ্রাম বোর্ড", exams: 9, mcq: "2.5k", cq: "320" },
+    { name: "কুমিল্লা বোর্ড", exams: 8, mcq: "2.4k", cq: "310" },
+    { name: "যশোর বোর্ড", exams: 8, mcq: "2.3k", cq: "290" },
+    { name: "সিলেট বোর্ড", exams: 7, mcq: "1.9k", cq: "250" },
+    { name: "বরিশাল বোর্ড", exams: 6, mcq: "1.7k", cq: "220" },
+    { name: "দিনাজপুর বোর্ড", exams: 7, mcq: "2.0k", cq: "280" }
+  ];
+
+  const collegeCards = [
+    { name: "ঢাকা কলেজ", exams: 6, mcq: "1.5k" },
+    { name: "নটর ডেম কলেজ, ঢাকা", exams: 8, mcq: "2.2k" },
+    { name: "রাজউক উত্তরা মডেল কলেজ", exams: 7, mcq: "1.8k" },
+    { name: "ভিকারুননিসা নূন স্কুল অ্যান্ড কলেজ", exams: 5, mcq: "1.4k" },
+    { name: "আদমজী ক্যান্টনমেন্ট কলেজ", exams: 6, mcq: "1.6k" },
+    { name: "হলিক্রস কলেজ", exams: 5, mcq: "1.3k" }
+  ];
+
+  const subjectCards = [
+    { 
+      name: "বাংলা", 
+      mcq: "26.8k", 
+      cq: "3.8k", 
+      board: "76", 
+      model: "897", 
+      hasChapters: true,
+      color: "emerald",
+      gradient: "from-emerald-500 to-teal-600",
+      shading: "bg-emerald-50 text-emerald-800 dark:bg-emerald-950/20 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30",
+      accent: "text-emerald-600 dark:text-emerald-400",
+      border: "border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700/50",
+      chapters: [
+        { label: "বাংলা ১ম পত্র", sub: ["গদ্য", "কবিতা", "বাংলা নাটক", "বাংলা উপন্যাস"] },
+        { label: "বাংলা ২য় পত্র", sub: ["সারাংশ ও সারমর্ম", "সংলাপ", "ব্যাকারণ কাঠামো", "ধ্বনিতত্ত্ব ( Phonology)", "শব্দতত্ত্ব বা রূপতত্ত্ব ( Morphology)", "বাক্যতত্ত্ব বা পদক্রম (Syntax)", "অর্থতত্ত্ব ( Semantics )", "ছন্দ ও অলংকার", "নির্মিতি"] },
+        { label: "বাংলা ১ম পত্র (অ্যাডমিশন)", sub: ["বাংলা সাহিত্যিক ও সাহিত্যকর্ম", "বাংলা সাহিত্যের যুগ বিভাগ", "বাংলা সংবাদপত্র", "বাংলা সাহিত্যের শাখা", "ভাষা আন্দোলনভিত্তিক সাহিত্য", "মুক্তিযুদ্ধভিত্তিক বাংলা সাহিত্য", "বাংলায় উল্লেখযোগ্য গ্রন্থ ও চরিত্র", "সাহিত্যিকদের উপাধি ও ছদ্মনাম", "প্রায় একই নামের গ্রন্থ ও রচয়িতা", "আত্মজীবনী ও স্মৃতিকথা"] }
+      ]
+    },
+    { 
+      name: "English", 
+      mcq: "31.9k", 
+      cq: "1.4k", 
+      board: "88", 
+      model: "995", 
+      hasChapters: true,
+      color: "indigo",
+      gradient: "from-indigo-500 to-blue-600",
+      shading: "bg-indigo-50 text-indigo-850 dark:bg-indigo-950/20 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/30",
+      accent: "text-indigo-600 dark:text-indigo-400",
+      border: "border-indigo-100 dark:border-indigo-900/30 hover:border-indigo-300 dark:hover:border-indigo-700/50",
+      chapters: [
+        { label: "English 1st Paper", sub: ["People or Institutions Making History", "Dreams", "Lifestyle", "Adolescence", "Youthful Achievers", "Relationships", "Human Rights", "Peace and Conflict", "Tours and Travels", "Environment and Nature", "Art and Craft", "Education and Life", "Myths and Literature"] },
+        { label: "English Literature( for Admission)", sub: ["Titles of important writers", "Periods of english literature", "A list of dramatists, poets, novelists, essayists, woman writers and critics", "The old english period (450-1066)", "The middle english period (1066-1500)", "The Renaissance (1500-1660)", "The Neoclassical Period (1660-1798)", "The Romantic Period (1798-1832)", "The Victorian Period (1832-1901)", "The Modern Period (1901-1939)", "The Post Modern Period (1939-Present)", "Famous books of different writers", "Awards in literature (Noble & Booker Prize)", "Nicknames of various writers", "Poet Laureate", "বিভিন্ন দেশের জাতীয় কবি", "Elaboration of the name of some writers", "ইংরেজি সাহিত্যে বিখ্যাত মহাকাব্য (Epics)", "ইংরেজি সাহিত্যে বিখ্যাত শোককাব্য", "ইংরেজি সাহিত্যে বিখ্যাত বিভিন্ন চরিত্র", "ভিন্ন ভিন্ন লেখকের সমজাতীয় সাহিত্য", "সরকার কর্তৃক নিষিদ্ধকৃত গ্রন্থসমূহ", "ইংরেজি গল্পের বাংলা অনুবাদ", "বাংলা গল্পের ইংরেজি অনুবাদ", "Bangladesh writers in english", "Indian writers in english", "Italian writers in english(Translation)", "Russian writers in english", "Irish writers in english", "Scottish writers in english", "American writers in english", "Prominent Greek writers and their works", "Prominent Roman writers and their works", "Literary terms and genres", "Important Quotations from different disciplines", "theme of some important literary pieces", "Ancient Mariner", "Miscellaneous", "Quotations"] },
+        { label: "English 2nd Paper", sub: ["Completing sentence", "Parts of Speech", "Idioms & Phrases", "The Clauses", "Corrections", "Sentences & Transformations", "words", "Tense", "Right Form of Verbs", "Sentence Completion", "Narrations: Direct and Indirect", "Tag Questions", "Inversion", "Modifiers", "Conditional Sentences", "Pin Point Error", "Redundancy", "Analogy", "Translation", "Proverbs", "Embedded Questions", "Pair of Words", "Reading Comprehension", "Parallelism", "Conjugation of verb", "Miscellaneous", "Consonent", "Subjunctive", "Alphabet", "Writting precis", "Writing Paragraph", "Writing Essay", "Making Sentence", "Dangling Modifier", "Identifying Missing Word", "same word uses as different part of speech", "Sequence of Tense", "Latin Adjective"] }
+      ]
+    },
+    { 
+      name: "তথ্য ও যোগাযোগ প্রযুক্তি", 
+      mcq: "20.9k", 
+      cq: "78", 
+      board: "36", 
+      model: "264", 
+      hasChapters: true,
+      color: "purple",
+      gradient: "from-purple-500 to-fuchsia-600",
+      shading: "bg-purple-50 text-purple-800 dark:bg-purple-950/20 dark:text-purple-400 border-purple-100 dark:border-purple-900/30",
+      accent: "text-purple-600 dark:text-purple-400",
+      border: "border-purple-100 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-700/50",
+      chapters: [
+        { label: "তথ্য ও যোগাযোগ প্রযুক্তি: বিশ্ব ও বাংলাদেশ প্রেক্ষিত", sub: ["বিশ্বগ্রামের ধারণা", "যোগাযোগ (Commucination)", "কর্মসংস্থান", "শিক্ষা", "টেলিমেডিসিন", "গবেষণা", "অফিস", "বাসস্থান", "ব্যবসা বাণিজ্য", "সংবাদ", "বিনোদন ও সামাজিক যোগাযোগ", "সাংস্কৃতিক বিনিময়", "ভার্চুয়াল রিয়েলিটি- Virtual Reality", "তথ্য ও যোগাযোগ প্রযুক্তির সাম্প্রতিক প্রবণতা", "আর্টিফিসিয়াল ইন্টেলিজেন্স - Artificail Intelligence", "রোবটিক্স- Robotics", "ক্রায়োসার্জারি-Cryosurgery", "মহাকাশ অভিযান", "আইসিটি নির্ভর উৎপাদন ব্যবস্থা", "প্রতিরক্ষা -Defence", "বায়োমেট্রিক-Biometric", "বায়োইনফরমেটিক্স-Bioinformatics", "জেনেটিক ইঞ্জিনিয়ারিং-Genetic Engineering", "ন্যানোটেকনোলজি-Nanotechnology"] }
+      ]
+    },
+    { 
+      name: "পদার্থবিদ্যা", 
+      mcq: "14.8k", 
+      cq: "207", 
+      board: "73", 
+      model: "469", 
+      hasChapters: true,
+      color: "rose",
+      gradient: "from-rose-500 to-pink-600",
+      shading: "bg-rose-50 text-rose-850 dark:bg-rose-950/20 dark:text-rose-400 border-rose-100 dark:border-rose-900/30",
+      accent: "text-rose-600 dark:text-rose-400",
+      border: "border-rose-100 dark:border-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700/50",
+      chapters: [
+        { label: "পদার্থবিজ্ঞান ১ম পত্র", sub: ["ভৌতজগত ও পরিমাপ", "ভেক্টর", "গতিবিদ্যা", "নিউটনের বলবিদ্যা", "কাজ, শক্তি ও ক্ষমতা", "মহাকর্ষ ও অভিকর্ষ", "পদার্থের গাঠনিক ধর্ম", "পর্যায়বৃত্তিক গতি", "তরঙ্গ ও শব্দ", "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
+        { label: "পদার্থবিজ্ঞান ২য় পত্র", sub: ["তাপগতিবিদ্যা", "স্থির তড়িৎ", "চল তড়িৎ", "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া ও চুম্বকত্ব", "তড়িৎচৌম্বক আবেশ ও পরিবর্তী প্রবাহ", "জ্যামিতিক আলোকবিজ্ঞান", "ভৌত আলোকবিজ্ঞান", "আধুনিক পদার্থবিজ্ঞানের সূচনা", "পরমাণুর মডেল এবং নিউক্লিয়ার পদার্থবিজ্ঞান", "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স", "জ্যোতির্বিজ্ঞান"] }
+      ]
+    },
+    { 
+      name: "রসায়ন", 
+      mcq: "18k", 
+      cq: "559", 
+      board: "56", 
+      model: "595", 
+      hasChapters: true,
+      color: "orange",
+      gradient: "from-orange-555 to-amber-600",
+      shading: "bg-orange-50 text-orange-850 dark:bg-orange-950/20 dark:text-orange-400 border-orange-100 dark:border-orange-900/30",
+      accent: "text-orange-600 dark:text-orange-400",
+      border: "border-orange-100 dark:border-orange-900/30 hover:border-orange-300 dark:hover:border-orange-700/50",
+      chapters: [
+        { label: "রসায়ন- প্রথম পত্র", sub: ["মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন(তৃতীয় অধ্যায়)", "কর্মমূখী রসায়ন (পঞ্চম অধ্যায়)", "রাসায়নিক পরিবর্তন (চতুর্থ অধ্যায়)", "ল্যাবরেটরির নিরাপদ ব্যবহার(প্রথম অধ্যায়)", "গুণগত রসায়ন (দ্বিতীয় অধ্যায়)"] },
+        { label: "রসায়ন দ্বিতীয় পত্র", sub: ["জৈব রসায়ন (দ্বিতীয় অধ্যায়)", "পরিবেশ রসায়ন (প্রথম অধ্যায়)", "অর্থনৈতিক রসায়ন (পঞ্চম অধ্যায়)", "পরিমাণগত রসায়ন (তৃতীয় অধ্যায়)", "তড়িৎ রসায়ন (চতুর্থ অধ্যায়)"] }
+      ]
+    },
+    { 
+      name: "উচ্চতর গণিত", 
+      mcq: "15k", 
+      cq: "410", 
+      board: "62", 
+      model: "480", 
+      hasChapters: true,
+      color: "emerald",
+      gradient: "from-emerald-500 to-teal-600",
+      shading: "bg-emerald-50 text-emerald-850 dark:bg-emerald-950/20 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30",
+      accent: "text-emerald-600 dark:text-emerald-400",
+      border: "border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700/50",
+      chapters: [
+        { label: "উচ্চতর গণিত ১ম পত্র", sub: ["ম্যাট্রিক্স ও নির্ণায়ক", "ভেক্টর", "সরলরেখা", "বৃত্ত", "ত্রিকোণমিতিক অনুপাত", "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত", "ফাংশন ও ফাংশনের লেখচিত্র", "অন্টারীকরণ", "যোগজীকরণ"] },
+        { label: "উচ্চতর গণিত ২য় পত্র", sub: ["বাস্তব সংখ্যা ও অসমতা", "যোগাশ্রয়ী প্রোগ্রাম (Linear programming)", "জতিীল সংখ্যা (Complex Numbers)", "বহুপদী ও বহুপদী সমীকরণ (Polynomials and Polynomials Equations)", "দ্বিপদী বিস্তৃতি  (Binomial Expansions)", "কনিক  (Conics)", "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (Inverse Trigonometric Functions and Trigonometric Equations)", "স্থিতিবিদ্যা (Statics)", "সমতলে বস্তুকণার গতি (Motion of particles in a plane)", "বিসত্মার পরিমাপ ও সম্ভাবনা (Measures of Dispersions and Probability)"] }
+      ]
+    },
+    { 
+      name: "সাধারণ জ্ঞান", 
+      mcq: "12k", 
+      cq: "0", 
+      board: "10", 
+      model: "150", 
+      hasChapters: true,
+      color: "blue",
+      gradient: "from-blue-500 to-cyan-600",
+      shading: "bg-blue-50 text-blue-850 dark:bg-blue-950/20 dark:text-blue-400 border-blue-100 dark:border-blue-900/30",
+      accent: "text-blue-600 dark:text-blue-400",
+      border: "border-blue-100 dark:border-blue-900/30 hover:border-blue-300 dark:hover:border-cyan-700/50",
+      chapters: [
+        { label: "বাংলাদেশ বিষয়াবলী", sub: ["ভাষা আন্দোলন ও মুক্তিযুদ্ধ", "ভৌগোলিক অবস্থান ও সীমানা", "বাংলাদেশের ঐতিহ্য ও সংস্কৃতি"] }
+      ]
+    },
+    { 
+      name: "পরিসংখ্যান", 
+      mcq: "5k", 
+      cq: "305", 
+      board: "20", 
+      model: "3", 
+      hasChapters: true,
+      color: "sky",
+      gradient: "from-sky-500 to-indigo-500",
+      shading: "bg-sky-50 text-sky-850 dark:bg-sky-950/20 dark:text-sky-400 border-sky-100 dark:border-sky-900/30",
+      accent: "text-sky-600 dark:text-sky-400",
+      border: "border-sky-100 dark:border-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700/50",
+      chapters: [
+        { label: "পরিসংখ্যান ১ম পত্র", sub: ["পরিসংখ্যান, চলক ও বিভিন্ন প্রতীকের ধারণা", "তথ্য সংগ্রহ, সংক্ষিপ্তকরণ ও উপস্থাপন", "কেন্দ্রীয় প্রবণতার পরিমাপ", "বিস্তার পরিমাপ", "পরিঘাত, বঙ্কিমতা ও সূঁচালতা", "সংশ্লেষণ ও নির্ভরণ", "কালীন সারি", "বাংলাদেশের প্রকাশিত পরিসংখ্যান", "ব্যবহারিক ও গুরুত্বপূর্ণ প্রশ্নাবলী অংশ"] },
+        { label: "পরিসংখ্যান ২য় পত্র", sub: ["সম্ভাবনা", "দৈব চলক ও গাণিতিক প্রত্যাশা", "গাণিতিক প্রত্যাশা", "দ্বিপদী বিন্যাস", "পৈসুঁবিন্যাস", "পরিমিত বিন্যাস", "নমুনায়ন", "জন পরিসংখ্যান", "বিন্যাস, সমাবেশ, নির্ণায়ক ও ম্যাট্রিক্স", "প্রাক্কলন", "যথার্থতা যাচাই", "পরীক্ষণের নকশা"] }
+      ]
+    },
+    { 
+      name: "কৃষিশিক্ষা", 
+      mcq: "6.9k", 
+      cq: "3.8k", 
+      board: "18", 
+      model: "2", 
+      hasChapters: true,
+      color: "amber",
+      gradient: "from-amber-500 to-yellow-600",
+      shading: "bg-amber-50 text-amber-850 dark:bg-amber-950/20 dark:text-amber-400 border-amber-100 dark:border-amber-900/30",
+      accent: "text-amber-600 dark:text-amber-400",
+      border: "border-amber-100 dark:border-amber-900/30 hover:border-amber-300 dark:hover:border-amber-700/50",
+      chapters: [
+        { label: "কৃষিশিক্ষা ১ম পত্র", sub: ["বাংলাদেশের কৃষি", "ভূমি সম্পৃক্ত কৃষি প্রযুক্তি", "বিশেষ উৎপাদন সম্পৃক্ত কৃষি প্রযুক্তি", "কৃষি ও জলবায়ু", "মাঠ ও উদ্যান ফসল উৎপাদন", "ফল ও শাকসবজি প্রক্রিয়াজাতকরণ ও সংরক্ষণ"] },
+        { label: "কৃষিশিক্ষা ২য় পত্র", sub: ["মাৎস্য চাষ", "পোল্ট্রি পালন", "পশু পালন", "বনায়ন", "কৃষি অর্থনীতি ও সমবায়"] }
+      ]
+    }
+  ];
+
+  const modelTestCards = [
+    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট -১" },
+    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ২" },
+    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৩" },
+    { title: "HSC 26 - কৃষিশ睐িক ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৪" },
+    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৫" },
+    { title: "HSC 26 - কৃষিশিক্ষা ১ম পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ১" },
+  ];
+
+  // ==========================================
+  // RENDER HELPERS FOR SATT DASHBOARD
+  // ==========================================
+  const renderSattDashboard = () => (
+    <div className="flex-1 bg-gradient-to-b from-zinc-50 to-zinc-100/50 dark:from-zinc-950 dark:to-zinc-900 flex flex-col h-full font-sans text-zinc-900 dark:text-zinc-100 selection:bg-emerald-500/10 select-none">
       
-      {/* 1. ACADEMIC HIGHLIGHT STATS DASHBOARD */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
-          <div className="space-y-1">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">টোটাল XP অর্জন</span>
-            <h3 className="text-2xl font-black bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent">
-              {stats.points} XP
-            </h3>
-            <p className="text-[10px] text-zinc-400 flex items-center gap-1">
-              <Target className="w-3.5 h-3.5 text-cyan-400" />
-              <span>লেভেল {stats.level} পরীক্ষার্থী</span>
-            </p>
-          </div>
-          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-            <Brain className="w-6 h-6 animate-pulse" />
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
-          <div className="space-y-1">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">মোট সলভ করা প্রশ্ন</span>
-            <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">
-              {stats.totalQuestionsSolved} MCQ
-            </h3>
-            <p className="text-[10px] text-zinc-400 flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-              <span>সহপাঠীদের তুলনায় এগিয়ে আছো</span>
-            </p>
-          </div>
-          <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-            <BookMarked className="w-6 h-6" />
-          </div>
-        </div>
-
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
-          <div className="space-y-1">
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">প্রিয় প্রশ্ন সংকলন</span>
-            <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">
-              {bookmarks.length} টি
-            </h3>
-            <p className="text-[10px] text-zinc-400 flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-yellow-400" />
-              <span>ক্লিকের মাধ্যমে প্রাকটিস করো</span>
-            </p>
-          </div>
-          <button 
-            onClick={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
-            className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors cursor-pointer ${
-              showOnlyBookmarks 
-                ? "bg-yellow-500/20 text-yellow-400 ring-2 ring-yellow-500/40" 
-                : "bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
-            }`}
-          >
-            <BookMarked className={`w-5 h-5 ${showOnlyBookmarks ? "fill-yellow-400" : ""}`} />
-          </button>
-        </div>
-      </div>
-
-      {/* 2. DYNAMIC SUBJECT RAIL DECK */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 rounded-3xl shadow-sm">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-5">
-          <div className="space-y-1">
-            <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
-              <GraduationCap className="w-6 h-6 text-emerald-400" />
-              <span>এইচএসসি ও এডমিশন বোর্ড প্রশ্নব্যাংক</span>
-            </h3>
-            <p className="text-xs text-slate-400">
-              সাবজেক্ট ও চ্যাপ্টার ওয়াইজ হাজারো বোর্ড প্রশ্নের নির্ভুল এআই সমাধান ও কাউন্টডাউন মক টেস্ট!
-            </p>
-          </div>
-
-          {/* Mode Selector Toggle */}
-          {examState !== "running" && (
-            <div className="bg-slate-100 dark:bg-slate-950 p-1 rounded-2xl flex items-center border border-slate-200/50 dark:border-slate-800/85">
-              <button
-                onClick={() => {
-                  setPracticeMode("practice");
-                  resetExamMode();
-                }}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                  practiceMode === "practice"
-                    ? "bg-white dark:bg-slate-900 text-emerald-500 shadow-sm border border-slate-200/20 dark:border-slate-800"
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                <Brain className="w-4 h-4" />
-                <span>অনুশীলন মোড</span>
-              </button>
-              <button
-                onClick={() => setPracticeMode("exam")}
-                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
-                  practiceMode === "exam"
-                    ? "bg-white dark:bg-slate-900 text-cyan-500 shadow-sm border border-slate-200/20 dark:border-slate-800"
-                    : "text-slate-400 hover:text-slate-200"
-                }`}
-              >
-                <Timer className="w-4 h-4" />
-                <span>বোর্ড মক এক্সাম</span>
-              </button>
+      {/* SATT Main Scrollable Content */}
+      <div className="flex-1 overflow-y-auto p-4 sm:p-5 md:p-8 custom-scrollbar">
+        <div className="max-w-[1500px] mx-auto space-y-6 md:space-y-8">
+          
+          {/* Header Area with Subtle Aesthetics */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-1">
+            <div>
+              <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold text-[11px] sm:text-[12px] uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                এইচএসসি স্পেশাল প্রশ্নব্যাংক
+              </div>
+              <h1 className="text-[28px] md:text-3.5xl font-black text-zinc-900 dark:text-white tracking-tight mt-1 leading-none">
+                প্রশ্নব্যাংক <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500 dark:from-emerald-400 dark:to-teal-300 font-black">ড্যাশবোর্ড</span>
+              </h1>
             </div>
-          )}
-        </div>
-
-        {/* Categories Rail List */}
-        {examState !== "running" && (
-          <div className="flex gap-2.5 overflow-x-auto pb-3 scrollbar-none border-b border-slate-100 dark:border-slate-800/60 mb-5">
-            {availableSubjects.map((sub) => {
-              const matchesSelected = selectedSubject === sub;
-              // Extract question counts
-              const subCount = dbQuestions.filter(q => q.subject === sub).length;
-              return (
-                <button
-                  key={sub}
-                  onClick={() => {
-                    setSelectedSubject(sub);
-                    setSelectedChapter("All");
-                    setSelectedSource("All");
-                    resetExamMode();
-                  }}
-                  className={`px-4 py-3 rounded-2xl text-xs font-black whitespace-nowrap transition-all duration-200 flex items-center gap-2.5 cursor-pointer ${
-                    matchesSelected
-                      ? "bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-md transform scale-[1.02]"
-                      : "bg-slate-50 dark:bg-slate-950 text-slate-400 hover:text-slate-200 border border-slate-200/60 dark:border-slate-850"
-                  }`}
-                >
-                  <span>{sub}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                    matchesSelected ? "bg-slate-950 text-white" : "bg-slate-150 dark:bg-slate-800/80 text-slate-500 dark:text-zinc-400"
-                  }`}>
-                    {subCount}
-                  </span>
-                </button>
-              );
-            })}
           </div>
-        )}
 
-        {/* 3. MULTI-LEVEL FILTER GRID */}
-        {examState !== "running" && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Navigation and Search Module */}
+          <div className="bg-white dark:bg-zinc-900/80 backdrop-blur-md p-3 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/80 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 xl:pb-0 scrollbar-none scroll-smooth w-full flex-nowrap min-w-0">
+              {sattTabs.map((tab, idx) => {
+                const isActive = activeTab === idx;
+                return (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(idx)}
+                    className={`shrink-0 px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 flex items-center gap-2 cursor-pointer ${
+                      isActive 
+                        ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/15" 
+                        : "bg-transparent text-zinc-650 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800/50"
+                    }`}
+                  >
+                    <span>{tab}</span>
+                  </button>
+                );
+              })}
+            </div>
             
-            {/* Search query box */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                placeholder="ম্যাথ বা টপিক সার্চ করো..."
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:border-emerald-500 placeholder-slate-400 transition-colors"
+            {/* Minimal Search Deck */}
+            <div className="relative w-full xl:w-72">
+              <Search className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-4 top-1/2 -translate-y-1/2" />
+              <input 
+                type="text" 
+                placeholder="প্রশ্ন বা বিষয় খুঁজুন..." 
+                className="w-full bg-zinc-50 dark:bg-zinc-950 text-xs sm:text-sm text-zinc-750 dark:text-zinc-200 py-2.5 sm:py-3 pl-11 pr-4 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500/10 border border-transparent focus:border-zinc-200 dark:focus:border-zinc-800 transition-all font-medium"
               />
             </div>
-
-            {/* Chapter Selection dropdown */}
-            <div className="flex items-center gap-2">
-              <select
-                value={selectedChapter}
-                onChange={e => setSelectedChapter(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl px-4 py-2.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
-              >
-                <option value="All">সব অধ্যায় (All Chapters)</option>
-                {chapters.filter(c => c !== "All").map((chap, idx) => (
-                  <option key={idx} value={chap}>{chap}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Source/Board Selection dropdown */}
-            <div className="flex items-center gap-2">
-              <select
-                value={selectedSource}
-                onChange={e => setSelectedSource(e.target.value)}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl px-4 py-2.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
-              >
-                <option value="All">সব বোর্ড/উৎস (All Boards)</option>
-                {sources.filter(s => s !== "All").map((src, idx) => (
-                  <option key={idx} value={src}>{src}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Toggle show favorites */}
-            <button
-              onClick={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
-              className={`py-2.5 px-4 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 border cursor-pointer ${
-                showOnlyBookmarks
-                  ? "bg-yellow-500/10 border-yellow-500/50 text-yellow-600 dark:text-yellow-400"
-                  : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-850 text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              <BookMarked className={`w-4 h-4 ${showOnlyBookmarks ? "fill-yellow-400 animate-pulse" : ""}`} />
-              <span>প্রিয় তালিকায় সংকুচিত করো</span>
-            </button>
           </div>
-        )}
-      </div>
 
-      {/* 4. PRACTICING MODE CORE VIEWPORT */}
-      {practiceMode === "practice" ? (
-        
-        // --- 4.A PRACTICE LISTING VIEW ---
-        filteredQuestions.length === 0 ? (
-          <div className="p-16 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-slate-400 shadow-sm max-w-3xl mx-auto">
-            <BookOpen className="w-14 h-14 mx-auto text-slate-350 dark:text-slate-700 mb-4 animate-bounce" />
-            <h4 className="text-base font-black text-slate-700 dark:text-slate-300">কোনো প্রাসঙ্গিক প্রশ্ন পাওয়া যায়নি!</h4>
-            <p className="text-xs text-slate-450 mt-1 max-w-md mx-auto">
-              অনুগ্রহ করে উপরের ফিল্টারিং স্লাইড বা সার্চের টেক্সট পরিবর্তন করো। তোমার আপলোড করা JSON ফাইলগুলো সাকসেসফুলি কানেক্টেড আছে।
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="flex items-center justify-between text-xs px-2 text-slate-400">
-              <span>বর্তমানে প্রদর্শিত হচ্ছে: <strong>{filteredQuestions.length} টি MCQ প্রশ্ন</strong></span>
-              <span>পরিশোধিত ডিজাইন ও চমৎকার সমাধান সমৃদ্ধ</span>
-            </div>
-
-            {filteredQuestions.map((q, idx) => {
-              const userChoice = answeredPracticeList[q.id];
-              const isAnswered = userChoice !== undefined;
-              const isBookmarked = bookmarks.includes(q.id);
-
-              return (
-                <div 
-                  key={q.id}
-                  className={`bg-white dark:bg-slate-900 border p-6 rounded-3xl transition-all shadow-sm relative overflow-hidden ${
-                    isAnswered 
-                      ? userChoice === q.correctIndex 
-                        ? "border-emerald-500/50 ring-2 ring-emerald-500/5 dark:ring-emerald-500/10 shadow-emerald-950/5" 
-                        : "border-red-500/30 shadow-md"
-                      : "border-slate-200/90 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-750"
-                  }`}
-                >
-                  <div className="flex items-center justify-between mb-4 border-b border-slate-100 dark:border-slate-800/40 pb-3 gap-2 flex-wrap">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <span className="bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-850 text-[10px] text-slate-450 font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
-                        প্রশ্ন {idx + 1}
-                      </span>
-                      <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">
-                        {q.chapter}
-                      </span>
-                      {q.source && Array.isArray(q.source) && q.source.map((src: string, sIdx: number) => (
-                        <span key={sIdx} className="bg-cyan-500/10 text-cyan-500 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                          {src}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    <div className="flex items-center gap-1.5">
-                      {/* Interactive bookmark toggle */}
-                      <button
-                        onClick={() => toggleBookmark(q.id)}
-                        className={`p-2 rounded-xl border transition-colors cursor-pointer ${
-                          isBookmarked 
-                            ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-500" 
-                            : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-850 text-slate-400 hover:text-slate-200"
-                        }`}
-                        title="প্রিয় তালিকায় রাখো"
-                      >
-                        <BookMarked className={`w-4 h-4 ${isBookmarked ? "fill-yellow-500 text-yellow-500" : ""}`} />
-                      </button>
-
-                      {/* AI integration solver */}
-                      <button
-                        onClick={() => triggerAiTutor(q)}
-                        className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 text-[11px] font-black hover:brightness-105 transition-all flex items-center gap-1 shadow-sm shrink-0 cursor-pointer"
-                      >
-                        <Sparkles className="w-3.5 h-3.5 fill-current text-slate-950 animate-pulse" />
-                        <span>এআই সলভার</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* MCQ Question and Parts Grid (Including diagrams!) */}
-                  <div className="mb-5 space-y-4">
-                    {q.questionParts && q.questionParts.length > 0 ? (
-                      <div className="space-y-3.5">
-                        {q.questionParts.map((part, pIdx) => {
-                          if (part.type === "image" && part.url) {
-                            return (
-                              <div key={pIdx} className="w-full max-w-sm mx-auto bg-slate-50 dark:bg-slate-950/60 p-3 rounded-2xl border border-slate-200/50 dark:border-slate-850/50 flex flex-col items-center relative group">
-                                <img 
-                                  src={part.url} 
-                                  alt="উদ্দীপক চিত্র / Diagram"
-                                  className="rounded-xl w-auto max-h-56 object-contain shadow-sm referrerPolicy='no-referrer'"
-                                />
-                                <span className="absolute bottom-1 right-1 bg-slate-950/50 backdrop-blur-sm text-[8px] text-white px-1.5 py-0.5 rounded-md font-mono select-none">
-                                  উদ্দীপক চিত্র {idx + 1}-{pIdx}
-                                </span>
-                              </div>
-                            );
-                          }
-                          return (
-                            <div key={pIdx} className="markdown-body font-sans text-sm sm:text-base text-slate-800 dark:text-slate-100 font-bold leading-relaxed">
-                              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                {part.content || ""}
-                              </ReactMarkdown>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <div className="markdown-body font-sans text-sm sm:text-base text-slate-800 dark:text-slate-100 font-bold leading-relaxed">
-                        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                          {q.questionText}
-                        </ReactMarkdown>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Standard options list */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                    {q.options.map((opt, optIdx) => {
-                      const isOptionSelected = userChoice === optIdx;
-                      const isOptionCorrect = optIdx === q.correctIndex;
-
-                      let buttonStyle = "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-850 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900";
-                      let stateIcon = null;
-
-                      if (isAnswered) {
-                        if (isOptionCorrect) {
-                          buttonStyle = "bg-emerald-500/15 border-emerald-500 text-emerald-800 dark:text-emerald-300 font-bold shadow-sm shadow-emerald-500/5";
-                          stateIcon = <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />;
-                        } else if (isOptionSelected) {
-                          buttonStyle = "bg-red-500/15 border-red-500 text-red-800 dark:text-red-300 font-bold";
-                          stateIcon = <XCircle className="w-4 h-4 text-red-500 shrink-0" />;
-                        } else {
-                          buttonStyle = "bg-slate-50/40 dark:bg-slate-950/40 border-slate-100 dark:border-slate-900/60 text-slate-400 dark:text-slate-700 cursor-not-allowed";
-                        }
-                      }
-
-                      return (
-                        <button
-                          key={optIdx}
-                          disabled={isAnswered}
-                          onClick={() => handleSelectOptionPractice(q.id, optIdx, q.correctIndex)}
-                          className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm transition-all duration-200 flex items-center justify-between gap-3.5 cursor-pointer ${buttonStyle}`}
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className={`w-6 h-6 rounded-3xl flex items-center justify-center text-[10px] font-black shrink-0 ${
-                              isOptionCorrect && isAnswered 
-                                ? "bg-emerald-500 text-white" 
-                                : isOptionSelected && isAnswered 
-                                  ? "bg-red-500 text-white" 
-                                  : "bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-450"
-                            }`}>
-                              {String.fromCharCode(65 + optIdx)}
-                            </span>
-                            <div className="leading-relaxed font-semibold">
-                              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                {opt}
-                              </ReactMarkdown>
-                            </div>
-                          </div>
-                          {stateIcon}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Diagnostic step-by-step math explanation popup loaded with KaTeX equations */}
-                  {isAnswered && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-5 p-5 rounded-2xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 text-xs text-slate-700 dark:text-slate-350 leading-relaxed space-y-2"
-                    >
-                      <div className="flex items-center gap-2 text-emerald-500 dark:text-emerald-400 font-bold border-b border-slate-150 dark:border-slate-850 pb-2 mb-2">
-                        <HelpCircle className="w-4.5 h-4.5 shrink-0" />
-                        <span>বিস্তারিত সমাধান ও ডায়াগনস্টিক ফিডব্যাক (Diagnostic Formula Explanation)</span>
-                      </div>
-                      <div className="markdown-body text-xs leading-relaxed space-y-1">
-                        <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                          {q.explanation}
-                        </ReactMarkdown>
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        )
-      ) : (
-        
-        // --- 4.B BOARD EXAM MODE VIEW ---
-        <div className="bg-white dark:bg-slate-900 border border-slate-200/85 dark:border-slate-800/85 p-6 rounded-3xl shadow-sm relative overflow-hidden">
-          
-          {/* LOBBY WELCOME VIEW */}
-          {examState === "idle" && (
-            <div className="max-w-2xl mx-auto py-8 text-center space-y-6">
-              <div className="w-16 h-16 rounded-3xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto">
-                <Timer className="w-8 h-8 text-cyan-400 animate-spin" />
+          {/* Dynamic Tab Content */}
+          {activeTab === 0 && (
+            <div className="animate-fade-in">
+              <div className="mb-6">
+                <h2 className="text-[22px] font-extrabold text-zinc-900 dark:text-zinc-100">সকল বিষয়ের প্রশ্নব্যাংক</h2>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">বিষয়ভিত্তিক সাজানো প্রশ্ন ও অনুশীলন</p>
+                <div className="w-16 h-1 bg-[#0c8a4d] rounded-full mt-3"></div>
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-black text-slate-800 dark:text-slate-100">
-                  এইচএসসি অধ্যায়ভিত্তিক বোর্ড পরীক্ষা সিমুলেটর
-                </h3>
-                <p className="text-xs text-slate-500 max-w-md mx-auto">
-                  বাস্তব বোর্ড পরীক্ষার মতো নির্দিষ্ট সময়ের মধ্যে ও কোনো সমাধান দেখা ছাড়া নীরবে পরীক্ষা দেওয়া। পরীক্ষা শেষে নির্ভুল বিশ্লেষণ, সঠিকতা, এবং XP পুরস্কার বুঝে নাও!
-                </p>
-              </div>
-
-              {/* Exam specs config */}
-              <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-3xl border border-slate-200/60 dark:border-slate-850 space-y-4 text-left">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">পরীক্ষার সময়সীমা</label>
-                    <select
-                      value={examTimeLimit}
-                      onChange={e => setExamTimeLimit(Number(e.target.value))}
-                      className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
-                    >
-                      <option value={3}>৩ মিনিট (দ্রুত প্র্যাক্টিস)</option>
-                      <option value={5}>৫ মিনিট</option>
-                      <option value={10}>১০ মিনিট</option>
-                      <option value={20}>২০ মিনিট</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block mb-1">মোট উপলব্ধ বোর্ড প্রশ্ন</label>
-                    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 rounded-xl px-3 py-2 text-xs text-slate-700 dark:text-slate-350 font-black">
-                      {filteredQuestions.length} টি MCQ
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-slate-100/50 dark:bg-slate-900 border border-slate-200/40 dark:border-slate-850 p-3.5 rounded-2xl text-[11px] text-slate-450 leading-relaxed flex gap-2.5">
-                  <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold text-slate-650 dark:text-slate-300">গুরুত্বপূর্ণ নির্দেশনা:</span>
-                    <p className="mt-0.5">১. একবার পরীক্ষা শুরু হলে ঘড়ি পেছানো বা পজ করা যাবে না।</p>
-                    <p>২. প্রতিটি সঠিক উত্তরের জন্য <strong className="text-emerald-400">+12 XP</strong> এবং ৮০%+ সঠিকতায় কাস্টম বোনাস XP প্রদান করা হবে।</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  onClick={startExamMode}
-                  disabled={filteredQuestions.length === 0}
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs hover:brightness-105 active:scale-95 transition-all shadow-md shadow-cyan-950/10 cursor-pointer disabled:pointer-events-none disabled:opacity-50"
-                >
-                  পরীক্ষায় অংশ নাও এবং প্রস্তুতি ঝালিয়ে নাও
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* DYNAMIC RUNNING EXAM SHEETS */}
-          {examState === "running" && (
-            <div className="space-y-6">
               
-              {/* Exam floating metadata stick */}
-              <div className="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 p-4 rounded-2xl flex justify-between items-center z-15 shadow-sm">
-                <div>
-                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">সহযোগিতা ও লড়াই</span>
-                  <h4 className="text-xs sm:text-sm font-black text-slate-800 dark:text-slate-100">{selectedSubject} - মক এক্সাম</h4>
-                </div>
-                
-                <div className="flex items-center gap-3 bg-slate-100 dark:bg-slate-950 px-4 py-1.5 rounded-xl border border-slate-200/40 dark:border-slate-850">
-                  <Clock className="w-4 h-4 text-cyan-400 animate-spin" />
-                  <span className="text-sm font-mono font-black text-cyan-400">{examTimerDisplay}</span>
-                </div>
-              </div>
-
-              {/* Solved Progress marker bar */}
-              <div className="space-y-1 text-[10px] text-slate-400 font-bold uppercase">
-                <div className="flex justify-between">
-                  <span>সলভড প্রগ্রেস</span>
-                  <span>{Object.keys(examSelections).length} / {filteredQuestions.length} সম্পন্ন</span>
-                </div>
-                <div className="w-full bg-slate-100 dark:bg-slate-950 h-2 rounded-full overflow-hidden">
-                  <div 
-                    className="bg-gradient-to-r from-emerald-500 to-cyan-400 h-full transition-all duration-200" 
-                    style={{ width: `${(Object.keys(examSelections).length / filteredQuestions.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-
-              {/* Stacked Sheet questions */}
-              <div className="space-y-6">
-                {filteredQuestions.map((q, idx) => {
-                  const selChoice = examSelections[q.id];
-                  const qIsBookmarked = bookmarks.includes(q.id);
-
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-start">
+                {subjectCards.map((card, i) => {
+                  const isExpanded = expandedSubject === card.name;
                   return (
-                    <div key={q.id} className="bg-slate-50 dark:bg-slate-950 p-5 sm:p-6 rounded-3xl border border-slate-200/80 dark:border-slate-850 relative">
+                    <div 
+                      key={i} 
+                      className={`bg-white dark:bg-zinc-900/95 border border-zinc-200 dark:border-zinc-800 rounded-2xl hover:shadow-lg transition-all duration-300 flex flex-col justify-between overflow-hidden relative ${
+                        isExpanded ? 'ring-1 ring-[#0c8a4d]/30 shadow-lg' : ''
+                      }`}
+                    >
+                      {isExpanded && <div className="absolute top-0 left-0 right-0 h-1 bg-[#0c8a4d]" />}
                       
-                      <div className="flex items-center justify-between border-b border-slate-200/40 dark:border-slate-850 pb-3 mb-4 flex-wrap gap-2">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-850 text-[10px] text-slate-450 font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                            এমসিকিউ কোশ্চেন {idx + 1}
-                          </span>
-                          <span className="bg-cyan-500/10 text-cyan-500 text-[10px] font-bold px-2 py-0.5 rounded-full">
-                            {q.chapter}
-                          </span>
+                      <div className="p-5 flex-1 flex flex-col">
+                        <div className="flex justify-between items-center mb-3">
+                          <h3 
+                            className="font-bold text-zinc-900 dark:text-zinc-100 text-[18px] tracking-tight hover:text-[#0c8a4d] dark:hover:text-green-400 cursor-pointer transition-colors"
+                            onClick={() => {
+                              if (card.hasChapters) {
+                                setExpandedSubject(isExpanded ? null : card.name);
+                              } else {
+                                launchAppFeature('practice', card.name);
+                              }
+                            }}
+                          >
+                            {card.name}
+                          </h3>
+                          
+                          <div className="flex items-center gap-2">
+                            {card.hasChapters && (
+                              <button 
+                                onClick={() => setExpandedSubject(isExpanded ? null : card.name)}
+                                className={`w-8 h-8 rounded-lg flex items-center justify-center border border-zinc-200 dark:border-zinc-700 transition-all ${
+                                  isExpanded 
+                                    ? "bg-[#0c8a4d] border-[#0c8a4d] text-white" 
+                                    : "bg-zinc-50 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                                }`}
+                                title={isExpanded ? "Collapse" : "Expand"}
+                              >
+                                <CustomTriangleCaret isOpen={isExpanded} className="w-4 h-4" />
+                              </button>
+                            )}
+                            <button className="text-zinc-650 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1.5 text-xs font-semibold bg-zinc-50 dark:bg-zinc-900 px-2.5 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-700 transition">
+                              <Printer className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" /> Print
+                            </button>
+                          </div>
                         </div>
 
-                        <button
-                          onClick={() => toggleBookmark(q.id)}
-                          className={`p-1.5 rounded-lg border transition-colors cursor-pointer ${
-                            qIsBookmarked 
-                              ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-500" 
-                              : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-850 text-slate-400"
-                          }`}
-                        >
-                          <BookMarked className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                        {/* Compact Box Grid Metrics Design matching board-based cards */}
+                        <div className="grid grid-cols-4 gap-1 border-y border-zinc-100 dark:border-zinc-800/80 py-3 my-3">
+                          <div className="text-center">
+                            <div className="text-[10px] text-[#0c8a4d] dark:text-[#a5d6a7] font-bold uppercase tracking-wider">MCQ</div>
+                            <div className="text-[13px] font-extrabold text-zinc-850 dark:text-zinc-200 mt-0.5">{card.mcq}</div>
+                          </div>
+                          <div className="text-center border-l border-zinc-150 dark:border-zinc-800/80">
+                            <div className="text-[10px] text-[#0c8a4d] dark:text-[#a5d6a7] font-bold uppercase tracking-wider">CQ</div>
+                            <div className="text-[13px] font-extrabold text-zinc-850 dark:text-zinc-200 mt-0.5">{card.cq}</div>
+                          </div>
+                          <div className="text-center border-l border-zinc-150 dark:border-zinc-800/80">
+                            <div className="text-[10px] text-[#0c8a4d] dark:text-[#a5d6a7] font-bold uppercase tracking-wider">বোর্ড</div>
+                            <div className="text-[13px] font-extrabold text-zinc-850 dark:text-zinc-200 mt-0.5">{card.board}</div>
+                          </div>
+                          <div className="text-center border-l border-zinc-150 dark:border-zinc-800/80">
+                            <div className="text-[10px] text-[#0c8a4d] dark:text-[#a5d6a7] font-bold uppercase tracking-wider">মডেল</div>
+                            <div className="text-[13px] font-extrabold text-zinc-850 dark:text-zinc-200 mt-0.5">{card.model}</div>
+                          </div>
+                        </div>
 
-                      {/* Display Question Stem / Diagram image links */}
-                      <div className="mb-4 space-y-3">
-                        {q.questionParts && q.questionParts.length > 0 ? (
-                          <div className="space-y-3">
-                            {q.questionParts.map((part, pIdx) => {
-                              if (part.type === "image" && part.url) {
-                                return (
-                                  <div key={pIdx} className="w-full max-w-xs bg-white dark:bg-slate-900 p-2.5 rounded-xl border border-slate-250 dark:border-slate-850/50 flex flex-col items-center">
-                                    <img src={part.url} alt="MCQ Stimulus Drawing" className="rounded-lg max-h-44 object-contain referrerPolicy='no-referrer'" />
-                                  </div>
-                                );
-                              }
+                        {/* Papers Accordion List */}
+                        {isExpanded && card.chapters && (
+                          <div className="my-3 space-y-2 border-t border-zinc-100 dark:border-zinc-700/60 pt-4 max-h-[360px] overflow-y-auto custom-scrollbar pr-1">
+                            {card.chapters.map((chapGroup, idx) => {
+                              const paperKey = `${card.name}-${chapGroup.label}`;
+                              const isPaperExpanded = !!expandedPapers[paperKey];
                               return (
-                                <div key={pIdx} className="markdown-body font-sans text-sm text-slate-800 dark:text-slate-100 font-bold leading-relaxed">
-                                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                    {part.content || ""}
-                                  </ReactMarkdown>
+                                <div 
+                                  key={idx} 
+                                  className="bg-zinc-50 dark:bg-zinc-900/60 rounded-lg border border-zinc-150 dark:border-zinc-800/40 overflow-hidden transition-all"
+                                >
+                                  <div 
+                                    onClick={() => setExpandedPapers(prev => ({ ...prev, [paperKey]: !isPaperExpanded }))}
+                                    className="flex items-center justify-between p-3 cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-805 transition-colors"
+                                  >
+                                    <span className="text-[13px] font-bold text-zinc-750 dark:text-zinc-250 leading-snug">
+                                      {chapGroup.label}
+                                    </span>
+                                    {chapGroup.sub && chapGroup.sub.length > 0 && (
+                                      <CustomTriangleCaret isOpen={isPaperExpanded} className="w-3.5 h-3.5 text-zinc-400 dark:text-zinc-500" />
+                                    )}
+                                  </div>
+                                  
+                                  {isPaperExpanded && chapGroup.sub && chapGroup.sub.length > 0 && (
+                                    <div className="px-3 pb-3 pt-1 space-y-2 border-t border-zinc-100/80 dark:border-zinc-800/60 bg-white dark:bg-zinc-900/30">
+                                      {chapGroup.sub.map((sub, sIdx) => (
+                                        <div 
+                                          key={sIdx} 
+                                          onClick={() => {
+                                            if (card.name === "বাংলা" && chapGroup.label === "বাংলা ১ম পত্র") {
+                                              let catId = "goddo";
+                                              if (sub === "কবিতা") catId = "kobita";
+                                              if (sub === "বাংলা নাটক") catId = "natok";
+                                              if (sub === "বাংলা উপন্যাস") catId = "ouponnash";
+                                              setBangla1stSub(catId);
+                                              setShowBangla1stPage(true);
+                                            } else {
+                                              launchAppFeature('practice', card.name);
+                                            }
+                                          }}
+                                          className="flex items-start gap-2 text-xs text-zinc-630 dark:text-zinc-350 hover:text-[#0c8a4d] dark:hover:text-green-400 cursor-pointer group/item transition-colors py-0.5"
+                                        >
+                                          <CustomRightArrow className="w-3 h-3 text-[#0c8a4d] shrink-0 mt-0.5 group-hover/item:translate-x-0.5 transition-transform" />
+                                          <span className="leading-relaxed font-medium group-hover/item:underline">{sub}</span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
                                 </div>
                               );
                             })}
                           </div>
-                        ) : (
-                          <div className="markdown-body font-sans text-sm text-slate-800 dark:text-slate-100 font-bold leading-relaxed">
-                            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                              {q.questionText}
-                            </ReactMarkdown>
-                          </div>
                         )}
                       </div>
 
-                      {/* Quiet choices grid */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {q.options.map((opt, optIdx) => {
-                          const isSelected = selChoice === optIdx;
-                          return (
-                            <button
-                              key={optIdx}
-                              onClick={() => setExamSelections(prev => ({ ...prev, [q.id]: optIdx }))}
-                              className={`w-full p-4 rounded-2xl border text-left text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
-                                isSelected
-                                  ? "bg-cyan-500/10 border-cyan-400 text-cyan-600 dark:text-cyan-400 ring-1 ring-cyan-400"
-                                  : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-850 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850/50"
-                              }`}
-                            >
-                              <div className="flex items-center gap-2.5">
-                                <span className={`w-5 h-5 rounded-md flex items-center justify-center text-[9px] font-black shrink-0 ${
-                                  isSelected ? "bg-cyan-500 text-slate-950 font-black" : "bg-slate-200 dark:bg-slate-800 text-slate-500"
-                                }`}>
-                                  {String.fromCharCode(65 + optIdx)}
-                                </span>
-                                <div className="leading-snug">
-                                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                    {opt}
-                                  </ReactMarkdown>
-                                </div>
-                              </div>
-                            </button>
-                          );
-                        })}
+                      <div className="px-5 pb-5 pt-1">
+                        <button 
+                          onClick={() => {
+                            if (card.hasChapters) {
+                              setExpandedSubject(isExpanded ? null : card.name);
+                            } else {
+                              launchAppFeature('practice', card.name);
+                            }
+                          }}
+                          className={`w-full py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 border cursor-pointer ${
+                            isExpanded 
+                              ? "bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-md border-transparent hover:brightness-110" 
+                              : "bg-emerald-50 dark:bg-emerald-950/20 text-[#0c8a4d] dark:text-emerald-400 border-emerald-200/20 dark:border-emerald-800/20 hover:bg-[#0c8a4d] hover:text-white dark:hover:bg-[#0c8a4d] dark:hover:text-white"
+                          }`}
+                        >
+                          <PlayCircle className="w-4 h-4 shrink-0" />
+                          <span>{isExpanded ? "অধ্যায়সমূহ বন্ধ করুন" : "প্র্যাকটিস করুন"}</span>
+                        </button>
                       </div>
                     </div>
                   );
                 })}
               </div>
+            </div>
+          )}
 
-              {/* Submit panel */}
-              <div className="text-center pt-6 border-t border-slate-100 dark:border-slate-800/50">
-                <button
-                  onClick={evaluateExamAnswers}
-                  className="px-10 py-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs hover:scale-[1.01] active:scale-95 shadow-md shadow-emerald-900/10 hover:brightness-105 cursor-pointer"
-                >
-                  উত্তর জমা দিন ও মূল্যায়ন দেখুন
-                </button>
+          {activeTab === 1 && (
+            <div className="animate-fade-in">
+              <div className="mb-4">
+                <h2 className="text-[22px] font-extrabold text-gray-850 dark:text-slate-100">বিগত বছরের বোর্ড পরীক্ষার প্রশ্ন ব্যাংক</h2>
+                <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">বিগত বছরের বোর্ড পরীক্ষার প্রশ্ন ও সমাধান</p>
+                <div className="w-16 h-1 bg-[#0c8a4d] rounded-full mt-3"></div>
+              </div>
+
+              <div className="flex flex-col lg:flex-row gap-6 items-start">
+                {/* Left Grid */}
+                <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {qBankCards.map((card, i) => (
+                    <div key={i} className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-[14px] hover:shadow-md transition-shadow">
+                      <div className="flex justify-between items-start mb-4">
+                        <h3 className="font-bold text-[#212529] dark:text-slate-100 text-[17px]">{card.title}</h3>
+                        <button className="text-gray-400 dark:text-slate-500 hover:text-gray-605 dark:hover:text-white"><Printer className="w-4 h-4" /></button>
+                      </div>
+                      <p className="text-[13px] text-gray-500 dark:text-slate-400 flex items-center gap-1.5 mb-6">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0c8a4d]"></span>
+                        {card.subtitle} &nbsp; {card.qs}
+                      </p>
+                      <div className="flex gap-3">
+                        <button 
+                          onClick={() => launchAppFeature('exam')}
+                          className="flex-1 bg-emerald-50 dark:bg-emerald-950/20 hover:bg-[#0c8a4d] dark:hover:bg-[#0c8a4d] text-[#0c8a4d] dark:text-emerald-400 hover:text-white dark:hover:text-white border border-emerald-200/20 dark:border-emerald-800/20 shadow-sm transition-all duration-300 rounded-xl text-xs font-extrabold py-2.5 flex items-center justify-center gap-1.5 cursor-pointer group/btn"
+                        >
+                          <PlayCircle className="w-4 h-4 text-[#0c8a4d] dark:text-emerald-400 group-hover/btn:text-white transition-colors" />
+                          <span>Start Exam</span>
+                        </button>
+                        <button 
+                          onClick={() => launchAppFeature('practice')}
+                          className="flex-1 bg-teal-50 dark:bg-teal-950/15 hover:bg-[#0c8a4d] dark:hover:bg-[#0c8a4d] text-teal-700 dark:text-teal-400 hover:text-white dark:hover:text-white border border-teal-200/20 dark:border-teal-850/20 shadow-sm transition-all duration-300 rounded-xl text-xs font-extrabold py-2.5 flex items-center justify-center gap-1.5 cursor-pointer group/btn"
+                        >
+                          <Sword className="w-4 h-4 text-teal-600 dark:text-teal-400 group-hover/btn:text-white transition-colors" />
+                          <span>Challenge</span>
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Right Filter Sidebar */}
+                <div className="w-full lg:w-72 bg-white dark:bg-slate-900 rounded-[14px] border border-gray-200 dark:border-slate-800 p-5 shrink-0 hidden lg:block sticky top-6">
+                  <div className="flex items-center justify-between border-b border-gray-100 dark:border-slate-850 pb-3 mb-4">
+                    <div className="flex items-center gap-2 font-bold text-gray-800 dark:text-slate-100">
+                      <SlidersHorizontal className="w-4 h-4 text-[#0c8a4d]" />
+                      <span>ফিল্টার</span>
+                    </div>
+                    <button className="text-red-500 text-xs font-semibold hover:underline">রিসেট</button>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div>
+                      <span className="text-[13px] font-bold text-gray-700 dark:text-slate-300 block mb-2">প্রশ্নের ধরন</span>
+                      <div className="flex gap-2">
+                        <button className="px-3 py-1.5 rounded-full border border-gray-200 dark:border-slate-800 text-xs text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-850">MCQ</button>
+                        <button className="px-3 py-1.5 rounded-full border border-gray-200 dark:border-slate-800 text-xs text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-850">CQ</button>
+                        <button className="px-3 py-1.5 rounded-full border border-gray-200 dark:border-slate-800 text-xs text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-850">MCQ + CQ</button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-[13px] font-bold text-gray-700 dark:text-slate-300 block mb-2">ক্যাটাগরি</span>
+                      <div className="flex gap-2">
+                        <button className="px-4 py-1.5 rounded-full bg-[#0c8a4d] text-white text-xs font-semibold">বোর্ড</button>
+                        <button className="px-4 py-1.5 rounded-full border border-gray-200 dark:border-slate-800 text-xs text-gray-600 dark:text-slate-400 hover:bg-gray-50 dark:hover:bg-slate-850">কলেজ</button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <span className="text-[13px] font-bold text-gray-700 dark:text-slate-300 block mb-2">বোর্ড</span>
+                      <div className="relative mb-3">
+                        <input type="text" placeholder="বোর্ড খুঁজুন..." className="w-full bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-slate-850 rounded-lg text-xs py-2 px-3 outline-none focus:border-[#0c8a4d]/50 text-slate-800 dark:text-slate-100" />
+                      </div>
+                      <div className="space-y-2 h-40 overflow-y-auto custom-scrollbar">
+                        {["ঢাকা বোর্ড", "রাজশাহী বোর্ড", "চট্টগ্রাম বোর্ড", "সিলেট বোর্ড", "যশোর বোর্ড", "কুমিল্লা বোর্ড"].map((b,i) => (
+                          <label key={i} className="flex items-center gap-2 cursor-pointer group">
+                            <input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 dark:border-slate-700 text-[#0c8a4d] focus:ring-[#0c8a4d] dark:bg-slate-950" />
+                            <span className="text-[13px] text-gray-600 dark:text-slate-300 group-hover:text-gray-800 dark:group-hover:text-white">{b}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           )}
 
-          {/* DETAILED RESULTS DASHBOARD REPORT */}
-          {examState === "ended" && examResultStats && (
-            <div className="space-y-8 animate-fade-in">
-              
-              {/* Glorious scoreboard cards */}
-              <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-250 dark:border-slate-850 text-center relative overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500" />
-                
-                <h4 className="text-base font-black text-slate-800 dark:text-slate-100 mb-1">
-                  বোর্ড পরীক্ষার ফলাফল কার্ড (Exam Summary)
-                </h4>
-                <p className="text-[10px] text-slate-450 font-bold uppercase tracking-wider mb-6">
-                  {selectedSubject} - {filteredQuestions.length || 0} টি বোর্ড প্রশোত্তর পর্যালোচনা
-                </p>
+          {activeTab === 2 && (
+            <div className="animate-fade-in">
+              <div className="mb-6">
+                <h2 className="text-[22px] font-extrabold text-gray-850 dark:text-slate-100">সকল বোর্ড ভিত্তিক প্রশ্নব্যাংক</h2>
+                <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">বোর্ড ভিত্তিক সাজানো প্রশ্ন ও অনুশীলন</p>
+                <div className="w-16 h-1 bg-[#0c8a4d] rounded-full mt-3"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {boardCards.map((card, i) => (
+                  <div key={i} className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-[14px] hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <h3 className="font-bold text-[#212529] dark:text-slate-100 text-[16px] mb-3">{card.name}</h3>
+                    
+                    {/* Compact Metrics Grid */}
+                    <div className="grid grid-cols-3 gap-1 border-t border-b border-gray-100 dark:border-slate-805 py-3 my-3">
+                      <div className="text-center">
+                        <div className="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase">Exams</div>
+                        <div className="text-[13px] font-extrabold text-gray-800 dark:text-slate-200">{card.exams}</div>
+                      </div>
+                      <div className="text-center border-l border-gray-100 dark:border-slate-805">
+                        <div className="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase">MCQ</div>
+                        <div className="text-[13px] font-extrabold text-gray-800 dark:text-slate-200">{card.mcq}</div>
+                      </div>
+                      <div className="text-center border-l border-gray-100 dark:border-slate-805">
+                        <div className="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase">CQ</div>
+                        <div className="text-[13px] font-extrabold text-gray-800 dark:text-slate-200">{card.cq}</div>
+                      </div>
+                    </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-850">
-                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">সঠিক উত্তর</span>
-                    <span className="text-xl font-black text-emerald-500">{examResultStats.correctCount} টি</span>
+                    <button 
+                      onClick={() => launchAppFeature('practice')} 
+                      className="w-full bg-emerald-50 dark:bg-emerald-950/20 hover:bg-[#0c8a4d] dark:hover:bg-[#0c8a4d] text-[#0c8a4d] dark:text-emerald-400 hover:text-white dark:hover:text-white py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 mt-1 border border-emerald-200/20 dark:border-emerald-800/20 group/btn cursor-pointer"
+                    >
+                      <PlayCircle className="w-4 h-4 text-[#0c8a4d] dark:text-emerald-400 group-hover/btn:text-white dark:group-hover/btn:text-white transition-colors" />
+                      <span>প্র্যাকটিস করুন</span>
+                    </button>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-850">
-                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">ভুল উত্তর</span>
-                    <span className="text-xl font-black text-red-500">{examResultStats.incorrectCount} টি</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 3 && (
+             <div className="animate-fade-in">
+             <div className="mb-6">
+               <h2 className="text-[22px] font-extrabold text-gray-850 dark:text-slate-100">সকল কলেজ ভিত্তিক প্রশ্নব্যাংক</h2>
+               <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">কলেজ ভিত্তিক টেস্ট পেপার সাজানো প্রশ্ন ও অনুশীলন</p>
+               <div className="w-16 h-1 bg-[#0c8a4d] rounded-full mt-3"></div>
+             </div>
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+               {collegeCards.map((card, i) => (
+                 <div key={i} className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-[14px] hover:shadow-md transition-shadow flex flex-col justify-between">
+                   <h3 className="font-bold text-[#212529] dark:text-slate-100 text-[15px] mb-3 line-clamp-1">{card.name}</h3>
+                   
+                   {/* Compact Metrics Grid */}
+                   <div className="grid grid-cols-2 gap-1 border-t border-b border-gray-100 dark:border-slate-805 py-3 my-3">
+                     <div className="text-center">
+                       <div className="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase">Exams</div>
+                       <div className="text-[13px] font-extrabold text-gray-800 dark:text-slate-200">{card.exams}</div>
+                     </div>
+                     <div className="text-center border-l border-gray-100 dark:border-slate-805">
+                       <div className="text-[10px] text-gray-400 dark:text-slate-500 font-bold uppercase">MCQ</div>
+                       <div className="text-[13px] font-extrabold text-gray-800 dark:text-slate-200">{card.mcq}</div>
+                     </div>
+                   </div>
+
+                   <button 
+                     onClick={() => launchAppFeature('practice')} 
+                     className="w-full bg-emerald-50 dark:bg-emerald-950/20 hover:bg-[#0c8a4d] dark:hover:bg-[#0c8a4d] text-[#0c8a4d] dark:text-emerald-400 hover:text-white dark:hover:text-white py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 mt-1 border border-emerald-200/20 dark:border-emerald-800/20 group/btn cursor-pointer"
+                   >
+                     <PlayCircle className="w-4 h-4 text-[#0c8a4d] dark:text-emerald-400 group-hover/btn:text-white dark:group-hover/btn:text-white transition-colors" />
+                     <span>প্র্যাকটিস করুন</span>
+                   </button>
+                 </div>
+               ))}
+             </div>
+           </div>
+          )}
+
+          {activeTab === 4 && (
+            <div className="animate-fade-in">
+              <div className="mb-6">
+                <h2 className="text-[22px] font-extrabold text-gray-850 dark:text-slate-100">মডেল টেস্ট ও ভর্তি পরীক্ষা</h2>
+                <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">প্রশ্ন ও সমাধান সহ মডেল টেস্ট</p>
+                <div className="w-16 h-1 bg-[#0c8a4d] rounded-full mt-3"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {modelTestCards.map((card, i) => (
+                  <div key={i} className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-5 rounded-[14px] hover:shadow-md transition-shadow relative">
+                    <span className="absolute top-4 right-4 text-gray-400 dark:text-slate-500 font-bold text-[10px]">৳5</span>
+                    <h3 className="font-bold text-[#212529] dark:text-slate-100 text-[15px] mb-3 pr-6 leading-snug">{card.title}</h3>
+                    <div className="flex gap-4 text-[12px] text-gray-500 dark:text-slate-400 font-medium mb-5">
+                      <span className="flex items-center gap-1"><HelpCircle className="w-3.5 h-3.5"/> 25 Ques</span>
+                      <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5"/> 25 Mins</span>
+                      <span className="flex items-center gap-1"><Target className="w-3.5 h-3.5"/> 25 Marks</span>
+                    </div>
+                    <div className="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-slate-850">
+                      <span className="text-[#0c8a4d] text-xs font-bold flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-[#0c8a4d]"></span> Ongoing
+                      </span>
+                      <button 
+                        onClick={() => launchAppFeature('exam')}
+                        className="bg-[#0c8a4d] hover:bg-[#0a7340] text-white px-4 py-1.5 rounded flex items-center gap-1 text-xs font-semibold transition-colors"
+                      >
+                        Start Exam <PlayCircle className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
-                  <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-850">
-                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">সঠিকতার হার</span>
-                    <span className="text-xl font-black text-cyan-400">{examResultStats.accuracy}%</span>
-                  </div>
-                  <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-850">
-                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">XP রিওয়ার্ড</span>
-                    <span className="text-xl font-black text-yellow-500">+{examResultStats.xpEarned} XP</span>
-                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+      </div>
+    </div>
+  );
+
+  // ==========================================
+  // RENDER APP COMPONENT
+  // ==========================================
+  if (showBangla1stPage) {
+    return (
+      <div className="flex h-full w-full bg-[#fcfefe] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 relative rounded-xl overflow-y-auto shadow-sm border border-gray-200/50 dark:border-zinc-800 h-full">
+        <div className="flex-1 w-full h-full">
+          <Bangla1stMCQView 
+            onBack={() => {
+              setShowBangla1stPage(false);
+              setBangla1stSub(undefined);
+            }} 
+            initialCategory={bangla1stSub} 
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex h-full w-full bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 relative rounded-xl overflow-hidden shadow-sm border border-gray-200/50 dark:border-zinc-800">
+      {/* MAIN VIEWPORT - Removed the hardcoded duplicate sidebar and top header to fit Chorcha AI layout correctly */}
+      {activeDashboardView ? (
+        renderSattDashboard()
+      ) : (
+        <div className="flex-1 w-full bg-slate-50 dark:bg-slate-950 overflow-y-auto relative h-full">
+          
+          {/* Overlay Top Bar to return to SATT UI */}
+          <div className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-6 py-3 flex items-center justify-between">
+            <button 
+              onClick={() => setActiveDashboardView(true)}
+              className="flex items-center gap-2 text-sm font-semibold text-[#0c8a4d] hover:bg-[#0c8a4d]/10 px-3 py-1.5 rounded-lg transition-colors"
+            >
+              &larr; প্রশ্নব্যাংক ড্যাশবোর্ড এ ফিরে যান
+            </button>
+            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">{selectedSubject} • {practiceMode === 'exam' ? 'Exam Mode' : 'Practice Mode'}</span>
+          </div>
+
+          <div className="p-6 max-w-5xl mx-auto space-y-8 animate-fade-in text-slate-800 dark:text-slate-100 pt-8">
+            
+            {/* --- ORIGINAL COMPONENT CONTENT WRAPPER --- */}
+            
+            {/* 1. ACADEMIC HIGHLIGHT STATS DASHBOARD */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                <div className="space-y-1">
+                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">টোটাল XP অর্জন</span>
+                  <h3 className="text-2xl font-black bg-gradient-to-r from-emerald-500 to-cyan-400 bg-clip-text text-transparent">
+                    {stats.points} XP
+                  </h3>
+                  <p className="text-[10px] text-zinc-400 flex items-center gap-1">
+                    <Target className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>লেভেল {stats.level} পরীক্ষার্থী</span>
+                  </p>
                 </div>
-
-                <div className="mt-5 text-[11px] text-slate-450 font-bold">
-                  পরীক্ষা সম্পন্ন করতে সময় নিয়েছ: <strong className="text-slate-700 dark:text-slate-350">{examResultStats.timeSpentStr}</strong>
-                </div>
-
-                <div className="pt-5 flex flex-col sm:flex-row justify-center gap-3">
-                  <button
-                    onClick={resetExamMode}
-                    className="px-6 py-2.5 bg-slate-200 dark:bg-slate-850 text-slate-700 dark:text-slate-350 hover:bg-slate-300 dark:hover:bg-slate-800 text-xs font-bold rounded-xl transition-all cursor-pointer"
-                  >
-                    নতুন পরীক্ষা দাও
-                  </button>
-                  <button
-                    onClick={() => {
-                      setPracticeMode("practice");
-                      resetExamMode();
-                    }}
-                    className="px-6 py-2.5 bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs rounded-xl transition-all hover:brightness-105 cursor-pointer"
-                  >
-                    অনুশীলন মোডে ফিরে যাও
-                  </button>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                  <Brain className="w-6 h-6 animate-pulse" />
                 </div>
               </div>
 
-              {/* Solution worksheet review lists */}
-              <div className="space-y-5">
-                <h5 className="text-sm font-black text-slate-700 dark:text-slate-200 border-l-4 border-cyan-500 pl-3">
-                  পরীক্ষায় আসা প্রশ্নোত্তর সমূহ এবং সঠিক ব্যাখ্যা (Diagnostic Work Sheet)
-                </h5>
+              <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                <div className="space-y-1">
+                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">মোট সলভ করা প্রশ্ন</span>
+                  <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">
+                    {stats.totalQuestionsSolved} MCQ
+                  </h3>
+                  <p className="text-[10px] text-zinc-400 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>সহপাঠীদের তুলনায় এগিয়ে আছো</span>
+                  </p>
+                </div>
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <BookMarked className="w-6 h-6" />
+                </div>
+              </div>
 
+              <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-5 rounded-3xl flex items-center justify-between shadow-sm relative overflow-hidden transition-all hover:border-slate-300 dark:hover:border-slate-700">
+                <div className="space-y-1">
+                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider">প্রিয় প্রশ্ন সংকলন</span>
+                  <h3 className="text-2xl font-black text-slate-800 dark:text-slate-100">
+                    {bookmarks.length} টি
+                  </h3>
+                  <p className="text-[10px] text-zinc-400 flex items-center gap-1">
+                    <Clock className="w-3.5 h-3.5 text-yellow-400" />
+                    <span>ক্লিকের মাধ্যমে প্রাকটিস করো</span>
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
+                  className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors cursor-pointer ${
+                    showOnlyBookmarks 
+                      ? "bg-yellow-500/20 text-yellow-400 ring-2 ring-yellow-500/40" 
+                      : "bg-yellow-500/10 text-yellow-500 hover:bg-yellow-500/20"
+                  }`}
+                >
+                  <BookMarked className={`w-5 h-5 ${showOnlyBookmarks ? "fill-yellow-400" : ""}`} />
+                </button>
+              </div>
+            </div>
+
+            {/* 2. DYNAMIC SUBJECT RAIL DECK */}
+            <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 rounded-3xl shadow-sm">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-5">
+                <div className="space-y-1">
+                  <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                    <GraduationCap className="w-6 h-6 text-emerald-400" />
+                    <span>{selectedSubject} অনুশীলনী কক্ষ</span>
+                  </h3>
+                  <p className="text-xs text-slate-400">
+                    সাবজেক্ট ও চ্যাপ্টার ওয়াইজ হাজারো বোর্ড প্রশ্নের নির্ভুল এআই সমাধান ও কাউন্টডাউন মক টেস্ট!
+                  </p>
+                </div>
+
+                {examState !== "running" && (
+                  <div className="bg-slate-100 dark:bg-slate-950 p-1 rounded-2xl flex items-center border border-slate-200/50 dark:border-slate-800/85">
+                    <button
+                      onClick={() => {
+                        setPracticeMode("practice");
+                        resetExamMode();
+                      }}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                        practiceMode === "practice"
+                          ? "bg-white dark:bg-slate-900 text-emerald-500 shadow-sm border border-slate-200/20 dark:border-slate-800"
+                          : "text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      <Brain className="w-4 h-4" />
+                      <span>অনুশীলন মোড</span>
+                    </button>
+                    <button
+                      onClick={() => setPracticeMode("exam")}
+                      className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+                        practiceMode === "exam"
+                          ? "bg-white dark:bg-slate-900 text-cyan-500 shadow-sm border border-slate-200/20 dark:border-slate-800"
+                          : "text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      <Timer className="w-4 h-4" />
+                      <span>বোর্ড মক এক্সাম</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {examState !== "running" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={e => setSearchQuery(e.target.value)}
+                      placeholder="ম্যাথ বা টপিক সার্চ করো..."
+                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl pl-10 pr-4 py-2.5 text-xs focus:outline-none focus:border-emerald-500 placeholder-slate-400 transition-colors"
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={selectedChapter}
+                      onChange={e => setSelectedChapter(e.target.value)}
+                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl px-4 py-2.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
+                    >
+                      <option value="All">সব অধ্যায় (All Chapters)</option>
+                      {chapters.filter(c => c !== "All").map((chap, idx) => (
+                        <option key={idx} value={chap}>{chap}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <select
+                      value={selectedSource}
+                      onChange={e => setSelectedSource(e.target.value)}
+                      className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 rounded-2xl px-4 py-2.5 text-xs text-slate-700 dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
+                    >
+                      <option value="All">সব বোর্ড/উৎস (All Boards)</option>
+                      {sources.filter(s => s !== "All").map((src, idx) => (
+                        <option key={idx} value={src}>{src}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <button
+                    onClick={() => setShowOnlyBookmarks(!showOnlyBookmarks)}
+                    className={`py-2.5 px-4 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 border cursor-pointer ${
+                      showOnlyBookmarks
+                        ? "bg-yellow-500/10 border-yellow-500/50 text-yellow-600 dark:text-yellow-400"
+                        : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-850 text-slate-400 hover:text-slate-200"
+                    }`}
+                  >
+                    <BookMarked className={`w-4 h-4 ${showOnlyBookmarks ? "fill-yellow-400 animate-pulse" : ""}`} />
+                    <span>প্রিয় তালিকায় সংকুচিত করো</span>
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* 4. PRACTICING MODE / EXAM MODE VIEWS */}
+            {practiceMode === "practice" ? (
+              filteredQuestions.length === 0 ? (
+                <div className="p-16 text-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl text-slate-400 shadow-sm max-w-3xl mx-auto">
+                  <BookOpen className="w-14 h-14 mx-auto text-slate-350 dark:text-slate-700 mb-4 animate-bounce" />
+                  <h4 className="text-base font-black text-slate-700 dark:text-slate-300">কোনো প্রাসঙ্গিক প্রশ্ন পাওয়া যায়নি!</h4>
+                </div>
+              ) : (
                 <div className="space-y-6">
                   {filteredQuestions.map((q, idx) => {
-                    const chosen = examSelections[q.id];
-                    const choiceIsCorrect = chosen === q.correctIndex;
+                    const userChoice = answeredPracticeList[q.id];
+                    const isAnswered = userChoice !== undefined;
+                    const isBookmarked = bookmarks.includes(q.id);
 
                     return (
-                      <div 
-                        key={q.id}
-                        className={`bg-slate-50 dark:bg-slate-950/60 p-5 rounded-3xl border ${
-                          chosen === undefined
-                            ? "border-amber-500/30"
-                            : choiceIsCorrect
-                              ? "border-emerald-500/30 shadow-sm"
-                              : "border-red-500/30"
-                        }`}
-                      >
-                        <div className="flex justify-between items-center mb-3">
-                          <span className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-850 px-2.5 py-0.5 rounded-lg text-[9px] text-slate-450 font-bold uppercase tracking-wider">
-                            প্রশ্ন {idx + 1}
-                          </span>
-                          
-                          {chosen === undefined ? (
-                            <span className="text-[10px] text-amber-500 font-bold">উত্তরিত হয়নি (Skipped)</span>
-                          ) : choiceIsCorrect ? (
-                            <span className="text-[10px] text-emerald-500 font-bold flex items-center gap-1">
-                              <Check className="w-3.5 h-3.5" /> সঠিক হয়েছে (Correct)
-                            </span>
-                          ) : (
-                            <span className="text-[10px] text-red-500 font-bold flex items-center gap-1">
-                              <X className="w-3.5 h-3.5" /> ভুল হয়েছে (Wrong)
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Question Text */}
-                        <div className="markdown-body font-sans text-xs sm:text-sm text-slate-800 dark:text-slate-100 font-bold leading-normal mb-3.5">
-                          <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                            {q.questionText}
-                          </ReactMarkdown>
-                        </div>
-
-                        {/* Options overview list */}
-                        <div className="space-y-2">
-                          {q.options.map((opt, optIdx) => {
-                            const isCorrectOpt = optIdx === q.correctIndex;
-                            const isSelectedOpt = optIdx === chosen;
-
-                            let optStyle = "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-350 border-slate-150 dark:border-zinc-800";
-                            if (isCorrectOpt) {
-                              optStyle = "bg-emerald-500/10 border-emerald-500/50 text-emerald-700 dark:text-emerald-400 font-bold";
-                            } else if (isSelectedOpt) {
-                              optStyle = "bg-red-500/10 border-red-400/50 text-red-700 dark:text-red-400 font-bold";
-                            }
-
-                            return (
-                              <div key={optIdx} className={`p-3 rounded-xl border text-xs flex items-center gap-2.5 ${optStyle}`}>
-                                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                                  isCorrectOpt ? "bg-emerald-500 text-white" : isSelectedOpt ? "bg-red-500 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-500"
-                                }`}>
-                                  {String.fromCharCode(65 + optIdx)}
-                                </span>
-                                <div className="leading-snug font-semibold">
-                                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                    {opt}
-                                  </ReactMarkdown>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        {/* Solution mathematical explanations */}
-                        <div className="mt-4 p-4 rounded-xl bg-slate-100 dark:bg-slate-950 border border-slate-205 dark:border-zinc-850 text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
-                          <span className="font-bold text-slate-850 dark:text-slate-200 block mb-1">বিশ্লেষণ ও উত্তর:</span>
-                          <div className="markdown-body text-[11px] leading-relaxed">
-                            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                              {q.explanation}
-                            </ReactMarkdown>
+                      <div key={q.id} className={`bg-white dark:bg-slate-900 border p-6 rounded-3xl transition-all shadow-sm ${isAnswered ? userChoice === q.correctIndex ? "border-emerald-500/50" : "border-red-500/30 shadow-md" : "border-slate-200/90 hover:border-slate-300"}`}>
+                        <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                          <div className="flex items-center gap-2">
+                            <span className="bg-slate-50 border border-slate-200 text-[10px] px-2.5 py-1 rounded-full font-black">প্রশ্ন {idx + 1}</span>
+                            <span className="bg-emerald-500/10 text-emerald-600 text-[10px] font-black px-2.5 py-1 rounded-full">{q.chapter}</span>
                           </div>
+                          <div className="flex items-center gap-1.5">
+                            <button onClick={() => toggleBookmark(q.id)} className={`p-2 rounded-xl border ${isBookmarked ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-500" : "bg-slate-50 border-slate-200 text-slate-400 hover:text-slate-600"}`}>
+                              <BookMarked className="w-4 h-4" />
+                            </button>
+                            <button onClick={() => triggerAiTutor(q)} className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 text-[11px] font-black hover:brightness-105 flex items-center gap-1">
+                              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> <span>এআই সলভার</span>
+                            </button>
+                          </div>
+                        </div>
+                        <div className="mb-5 space-y-4 font-bold">
+                          <ReactMarkdown>{q.questionText}</ReactMarkdown>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                          {q.options.map((opt, optIdx) => (
+                            <button
+                              key={optIdx}
+                              disabled={isAnswered}
+                              onClick={() => handleSelectOptionPractice(q.id, optIdx, q.correctIndex)}
+                              className={`w-full p-4 rounded-2xl border text-left text-sm font-semibold transition-all flex items-center justify-between gap-3 ${isAnswered ? optIdx === q.correctIndex ? "bg-emerald-500/15 border-emerald-500 text-emerald-800" : userChoice === optIdx ? "bg-red-500/15 border-red-500 text-red-800" : "bg-slate-50 border-slate-100 text-slate-400" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"}`}
+                            >
+                              <div className="flex items-center gap-3">
+                                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${isAnswered && optIdx === q.correctIndex ? "bg-emerald-500 text-white" : isAnswered && userChoice === optIdx ? "bg-red-500 text-white" : "bg-slate-200 text-slate-500"}`}>{String.fromCharCode(65 + optIdx)}</span>
+                                <ReactMarkdown>{opt}</ReactMarkdown>
+                              </div>
+                            </button>
+                          ))}
                         </div>
                       </div>
                     );
                   })}
                 </div>
+              )
+            ) : (
+              <div className="bg-white dark:bg-slate-900 border border-slate-200/85 dark:border-slate-800/85 p-6 rounded-3xl shadow-sm relative overflow-hidden">
+                {examState === "idle" && (
+                  <div className="max-w-2xl mx-auto py-8 text-center space-y-6">
+                    <div className="w-16 h-16 rounded-3xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mx-auto">
+                      <Timer className="w-8 h-8 text-cyan-400 animate-spin" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="text-xl font-black text-slate-800 dark:text-slate-100">এইচএসসি অধ্যায়ভিত্তিক বোর্ড পরীক্ষা সিমুলেটর</h3>
+                      <p className="text-xs text-slate-500 max-w-md mx-auto">নির্দিষ্ট সময়ের মধ্যে নীরবে পরীক্ষা দেওয়া।</p>
+                    </div>
+                    <div className="pt-2">
+                      <button onClick={startExamMode} disabled={filteredQuestions.length === 0} className="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs hover:brightness-105 active:scale-95 shadow-md shadow-cyan-950/10">
+                        পরীক্ষায় অংশ নাও
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                {examState === "running" && (
+                  <div className="space-y-6">
+                    <div className="sticky top-0 bg-white/95 backdrop-blur-md border border-slate-200 p-4 rounded-2xl flex justify-between items-center z-15 shadow-sm">
+                      <div><h4 className="text-sm font-black text-slate-800">{selectedSubject} - মক এক্সাম</h4></div>
+                      <div className="flex items-center gap-3 bg-slate-100 px-4 py-1.5 rounded-xl border border-slate-200">
+                        <Clock className="w-4 h-4 text-cyan-400 animate-spin" />
+                        <span className="text-sm font-mono font-black text-cyan-400">{examTimerDisplay}</span>
+                      </div>
+                    </div>
+                    <div className="space-y-6">
+                      {filteredQuestions.map((q, idx) => (
+                        <div key={q.id} className="bg-slate-50 p-6 rounded-3xl border border-slate-200">
+                           <div className="flex items-center gap-2 mb-4"><span className="bg-white border border-slate-200 text-[10px] font-black px-2.5 py-0.5 rounded-full">এমসিকিউ কোশ্চেন {idx + 1}</span></div>
+                           <div className="mb-4 font-bold text-sm"><ReactMarkdown>{q.questionText}</ReactMarkdown></div>
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                             {q.options.map((opt, optIdx) => (
+                               <button key={optIdx} onClick={() => setExamSelections(prev => ({ ...prev, [q.id]: optIdx }))} className={`w-full p-4 rounded-2xl border text-left text-sm font-semibold ${examSelections[q.id] === optIdx ? "bg-cyan-500/10 border-cyan-400 text-cyan-600" : "bg-white border-slate-200"}`}>
+                                 <div className="flex items-center gap-2.5">
+                                   <span className={`w-5 h-5 rounded-md flex justify-center items-center text-[9px] font-black shrink-0 ${examSelections[q.id] === optIdx ? "bg-cyan-500 text-slate-950" : "bg-slate-200 text-slate-500"}`}>{String.fromCharCode(65 + optIdx)}</span>
+                                   <ReactMarkdown>{opt}</ReactMarkdown>
+                                 </div>
+                               </button>
+                             ))}
+                           </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="text-center pt-6"><button onClick={evaluateExamAnswers} className="px-10 py-4 rounded-3xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-black text-xs hover:scale-[1.01]">উত্তর জমা দিন</button></div>
+                  </div>
+                )}
+                
+                {examState === "ended" && examResultStats && (
+                  <div className="p-6 text-center space-y-4">
+                    <h4 className="text-lg font-black text-slate-800">ফলাফল কার্ড</h4>
+                    <div className="grid grid-cols-4 gap-4">
+                      <div className="bg-white p-4 border rounded-2xl"><span className="text-xl font-black text-emerald-500">{examResultStats.correctCount}</span></div>
+                      <div className="bg-white p-4 border rounded-2xl"><span className="text-xl font-black text-red-500">{examResultStats.incorrectCount}</span></div>
+                      <div className="bg-white p-4 border rounded-2xl"><span className="text-xl font-black text-cyan-400">{examResultStats.accuracy}%</span></div>
+                      <div className="bg-white p-4 border rounded-2xl"><span className="text-xl font-black text-yellow-500">+{examResultStats.xpEarned}</span></div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          )}
+            )}
+            {/* --- END ORIGINAL COMPONENT CONTENT WRAPPER --- */}
+
+          </div>
         </div>
       )}
 
-      {/* ========================================================
-          SLIDE-OVER DRAWER (INTELLIGENT AI ACADEMIC TUTOR)
-          ======================================================== */}
+      {/* AI DRAWER (Shared) */}
       {aiDrawerOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden" aria-labelledby="ai-drawer-title" role="dialog" aria-modal="true">
-          <div className="absolute inset-0 overflow-hidden">
-            
-            {/* Drawer blurred glass overlay backdrop */}
-            <div 
-              className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity" 
-              onClick={() => setAiDrawerOpen(false)}
-            />
-
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-              <div className="pointer-events-auto w-screen max-w-lg transition-transform transform duration-300">
-                <div className="flex h-full flex-col bg-white dark:bg-slate-900 shadow-2xl relative border-l border-slate-200 dark:border-slate-800 text-slate-800 dark:text-white">
-                  
-                  {/* Glowing header indicators */}
-                  <div className="p-6 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50 dark:bg-slate-950 flex items-center justify-between relative">
-                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500" />
-                    
-                    <div className="flex items-center gap-2">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 text-slate-950 flex items-center justify-center">
-                        <Sparkles className="w-5 h-5 animate-spin text-slate-950" />
-                      </div>
-                      <div>
-                        <h4 className="text-sm font-black text-slate-800 dark:text-slate-100 flex items-center gap-1.5">
-                          <span>Study Qoro AI Coach</span>
-                        </h4>
-                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">এইচএসসি এআই শিক্ষক</span>
-                      </div>
-                    </div>
-
-                    <button 
-                      onClick={() => setAiDrawerOpen(false)}
-                      className="p-2 rounded-xl bg-slate-150 dark:bg-slate-850 hover:bg-slate-204 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer"
-                    >
-                      <X className="w-4.5 h-4.5" />
-                    </button>
-                  </div>
-
-                  {/* Drawer Content */}
-                  <div className="flex-1 overflow-y-auto p-6 space-y-6">
-                    {aiDrawerQuestion && (
-                      <div className="space-y-5">
-                        
-                        {/* Reference specs indicators */}
-                        <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-zinc-850 text-xs">
-                          <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block mb-1">প্রশ্ন টীকা (Problem context)</span>
-                          <span className="font-extrabold text-emerald-500 dark:text-emerald-400">{aiDrawerQuestion.subject}</span>
-                          <span className="mx-1.5 text-slate-300">•</span>
-                          <span className="font-semibold text-slate-700 dark:text-slate-350">{aiDrawerQuestion.chapter}</span>
-                        </div>
-
-                        {/* Active Problem rendering */}
-                        <div className="space-y-3 font-sans font-bold leading-relaxed text-sm sm:text-base border-b border-slate-100 dark:border-slate-800/40 pb-5 text-slate-800 dark:text-zinc-100">
-                          <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                            {aiDrawerQuestion.questionText}
-                          </ReactMarkdown>
-
-                          {aiDrawerQuestion.imageUrl && (
-                            <div className="pt-2 w-auto max-w-xs bg-slate-50 dark:bg-slate-950 p-1.5 rounded-xl border border-slate-200 dark:border-slate-850 flex justify-center">
-                              <img src={aiDrawerQuestion.imageUrl} alt="Tutor Diagram" className="rounded-lg object-contain max-h-40 referrerPolicy='no-referrer'" />
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Solve loading state */}
-                        {aiLoading ? (
-                          <div className="py-12 flex flex-col items-center justify-center space-y-4">
-                            <span className="relative flex h-10 w-10">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-10 w-10 bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center">
-                                <Sparkles className="w-5 h-5 text-slate-950 fill-current animate-pulse" />
-                              </span>
-                            </span>
-                            <div className="text-center space-y-1">
-                              <p className="text-xs font-black text-slate-700 dark:text-slate-250">বোর্ড প্রশ্ন বিশ্লেষণ করে সলিউশন প্রস্তুত করা হচ্ছে...</p>
-                              <p className="text-[10px] text-slate-400">জেমিনী থিংকিং ও সলভিং মেকানিজম যুক্ত হচ্ছে ৩.৫ ফ্ল্যাশ গেটওয়েতে</p>
-                            </div>
-                          </div>
-                        ) : (
-                          
-                          // Solutions payload returned from Gemin API with KaTeX support!
-                          <div className="space-y-4">
-                            <div className="bg-emerald-500/10 border border-emerald-500/20 p-5 rounded-2xl text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                              <div className="markdown-body space-y-3">
-                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-                                  {aiTutorResponse || "সমাধান বিবরণী পড়া যায়নি। দয়া করে আবার চেষ্টা করুন।"}
-                                </ReactMarkdown>
-                              </div>
-                            </div>
-                            
-                            <div className="flex gap-2 text-[10px] text-cyan-400/80 bg-cyan-500/5 p-3 rounded-xl border border-cyan-500/10 leading-normal">
-                              <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                              <span>এই সমাধানটি Study Qoro AI ও কাস্টম HSC কারিকুলাম দ্বারা চালিত। তোমার পড়াশোনায় কোনো নির্দিষ্ট জিজ্ঞাসা থাকলে "Chorcha AI" ট্যাবে এসে সরাসরি জিজ্ঞেস করতে পারো!</span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" onClick={() => setAiDrawerOpen(false)} />
+          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div className="pointer-events-auto w-screen max-w-lg transition-transform bg-white h-full flex flex-col shadow-2xl">
+              <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+                <h4 className="font-bold flex items-center gap-2"><Sparkles className="w-5 h-5 text-emerald-500"/> AI Coach</h4>
+                <button onClick={() => setAiDrawerOpen(false)} className="p-2 bg-gray-100 rounded-xl"><X className="w-4 h-4"/></button>
+              </div>
+              <div className="p-6 overflow-y-auto flex-1">
+                {aiLoading ? <p>Thinking...</p> : <ReactMarkdown>{aiTutorResponse}</ReactMarkdown>}
               </div>
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }

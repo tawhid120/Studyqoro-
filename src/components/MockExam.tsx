@@ -190,7 +190,7 @@ export default function MockExam({ stats, setStats, questions }: MockExamProps) 
             </div>
             <div>
               <h3 className="text-xl font-bold text-slate-100 italic">নিজের মডেল টেস্ট ইঞ্জিন তৈরি করো</h3>
-              <p className="text-xs text-slate-400 mt-1">পড়াশোনা ও নামাজ ট্র্যাকিং ও কাস্টম সিলেবাস অনুসারে পরীক্ষা সেট আপ করো।</p>
+              <p className="text-xs text-slate-400 mt-1">পড়াশোনা ও ডেইলি হ্যাবিট ট্র্যাকিং ও কাস্টম সিলেবাস অনুসারে পরীক্ষা সেট আপ করো।</p>
             </div>
           </div>
 

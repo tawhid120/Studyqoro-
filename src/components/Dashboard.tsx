@@ -3,202 +3,26 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { motion } from "motion/react";
-import { 
-  BookOpen, 
-  Play, 
-  Flame, 
-  Trophy, 
-  ArrowRight, 
-  ChevronDown, 
-  Lock, 
-  Sparkles,
-  BookmarkCheck,
-  Zap,
-  Check,
-  Swords,
-  Timer,
-  ClipboardList,
-  Target,
-  ChevronRight,
-  Sparkle,
-  User,
-  Activity,
-  Heart
-} from "lucide-react";
 import { StudentStats } from "../types";
+import { FileText, Target, Trophy, Lock, Users, Sparkles, UserPlus, ArrowUpRight, Award, Shield, Zap, Star, ChevronRight } from "lucide-react";
 
 // ==========================================
-// UNIQUE PREMIUM CONCEPTUAL FLAT VECTOR ILLUSTRATIONS
+// IMPORT PREMIUM MODERN FLAT SVG ILLUSTRATIONS
 // ==========================================
+import questionBankImg from "../../svg_images/new/question.svg";
+import battleImg from "../../svg_images/new/eaxm_war.svg";
+import studyMaterialsImg from "../../svg_images/new/studyMATERIALS.svg";
+import timerImg from "../../svg_images/new/fast-practise.svg";
+import mocksImg from "../../svg_images/new/moktest.svg";
+import aiImg from "../../svg_images/instructor_icon-0caxuzpv5pngv.svg";
+import leaderboardImg from "../../svg_images/new/leaderboard.svg";
+import progressImg from "../../svg_images/new/progress.svg";
+import historyImg from "../../svg_images/new/history.svg";
+import studentIcon from "../../svg_images/student_icon.0zq-mh67whwod.svg";
 
-function QuestionBankVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#F59E0B" fillOpacity="0.08" />
-      <g transform="translate(15, 15)">
-        {/* Flat Folder tab design */}
-        <path d="M5,15 L25,15 L32,23 L65,23 C68,23 70,25 70,28 L70,55 C70,58 68,60 65,60 L5,60 C2,60 0,58 0,55 L0,18 C0,15 2,15 5,15 Z" fill="#FBBF24" />
-        {/* Floating pages coming out */}
-        <path d="M15,10 L55,10 C58,10 60,12 60,15 L60,32" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" />
-        <rect x="18" y="28" width="34" height="22" rx="4" fill="#FFFBEB" stroke="#D97706" strokeWidth="1.5" />
-        {/* Page text lines */}
-        <line x1="24" y1="34" x2="42" y2="34" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-        <line x1="24" y1="40" x2="46" y2="40" stroke="#92400E" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="24" y1="45" x2="36" y2="45" stroke="#92400E" strokeWidth="1.5" strokeLinecap="round" />
-        {/* Star Sparkle */}
-        <polygon points="58,25 61,31 67,32 62,36 64,42 58,38 52,42 54,36 49,32 55,31" fill="#FBBF24" />
-      </g>
-    </svg>
-  );
-}
-
-function BattleArenaVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#F43F5E" fillOpacity="0.08" />
-      <g transform="translate(18, 18)">
-        {/* Shield background */}
-        <path d="M32,5 C50,5 58,8 58,15 C58,35 48,50 32,58 C16,50 6,35 6,15 C6,8 14,5 32,5 Z" fill="#FFF1F2" stroke="#F43F5E" strokeWidth="2" />
-        {/* Crossed energy sabers / lightsabers */}
-        <g transform="translate(10, 8)">
-          <line x1="4" y1="38" x2="38" y2="4" stroke="#F43F5E" strokeWidth="3.5" strokeLinecap="round" />
-          <line x1="6" y1="36" x2="3" y2="33" stroke="#9F1239" strokeWidth="3.5" strokeLinecap="round" />
-          
-          <line x1="38" y1="38" x2="4" y2="4" stroke="#10B981" strokeWidth="3.5" strokeLinecap="round" />
-          <line x1="36" y1="36" x2="39" y2="33" stroke="#065F46" strokeWidth="3.5" strokeLinecap="round" />
-        </g>
-        {/* Small collision sparkle */}
-        <polygon points="32,22 34,26 38,27 34,29 32,33 30,29 26,27 30,26" fill="#FBBF24" />
-      </g>
-    </svg>
-  );
-}
-
-function FocusSpeedVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#0EA5E9" fillOpacity="0.08" />
-      <g transform="translate(20, 20)">
-        {/* Stopwatch Dial */}
-        <circle cx="30" cy="32" r="24" fill="#F0F9FF" stroke="#0EA5E9" strokeWidth="2.5" />
-        {/* Dial ticks */}
-        <line x1="30" y1="12" x2="30" y2="16" stroke="#0284C7" strokeWidth="2" />
-        <line x1="30" y1="48" x2="30" y2="52" stroke="#0284C7" strokeWidth="2" />
-        <line x1="12" y1="32" x2="16" y2="32" stroke="#0284C7" strokeWidth="2" />
-        <line x1="48" y1="32" x2="52" y2="32" stroke="#0284C7" strokeWidth="2" />
-        {/* High energy Lightning inside stopwatch */}
-        <path d="M30,18 L24,30 L31,30 L29,43 L37,29 L31,29 Z" fill="#38BDF8" stroke="#0284C7" strokeWidth="1.5" />
-        {/* Top button */}
-        <rect x="25" y="4" width="10" height="4" rx="1" fill="#0284C7" />
-        <line x1="30" y1="2" x2="30" y2="5" stroke="#0EA5E9" strokeWidth="2.2" />
-      </g>
-    </svg>
-  );
-}
-
-function MockExamVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#10B981" fillOpacity="0.08" />
-      <g transform="translate(20, 16)">
-        {/* Clipboard backplate */}
-        <rect x="8" y="10" width="44" height="54" rx="6" fill="#FFFFFF" stroke="#0F172A" strokeWidth="2" className="dark:fill-slate-900 dark:stroke-slate-100" />
-        {/* Top metal clip */}
-        <path d="M22,6 C22,4 24,3 27,3 L33,3 C36,3 38,4 38,6 L38,10 L22,10 Z" fill="#64748B" />
-        {/* Form rows with custom ticks */}
-        <line x1="16" y1="22" x2="40" y2="22" stroke="#10B981" strokeWidth="2" strokeLinecap="round" />
-        <line x1="16" y1="32" x2="44" y2="32" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="16" y1="42" x2="32" y2="42" stroke="#64748B" strokeWidth="1.5" strokeLinecap="round" />
-        {/* Perfect check badge */}
-        <circle cx="44" cy="48" r="9" fill="#10B981" />
-        <path d="M40.5,48 L43,50.5 L47.5,45.5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </g>
-    </svg>
-  );
-}
-
-function StudyHelperAIVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#8B5CF6" fillOpacity="0.08" />
-      <g transform="translate(18, 18)">
-        {/* Floating Robot Body */}
-        <rect x="14" y="20" width="36" height="28" rx="14" fill="#6366F1" stroke="#312E81" strokeWidth="2" />
-        {/* Animated Face screen */}
-        <rect x="20" y="25" width="24" height="15" rx="6" fill="#1E1B4B" />
-        {/* Smart glowing eyes */}
-        <circle cx="27" cy="32" r="2.5" fill="#A78BFA" className="animate-pulse" />
-        <circle cx="37" cy="32" r="2.5" fill="#A78BFA" className="animate-pulse" />
-        {/* Cute AI Ears */}
-        <rect x="10" y="28" width="4" height="12" rx="2" fill="#8B5CF6" />
-        <rect x="50" y="28" width="4" height="12" rx="2" fill="#8B5CF6" />
-        {/* Golden top wifi antenna */}
-        <line x1="32" y1="10" x2="32" y2="20" stroke="#F59E0B" strokeWidth="2" />
-        <circle cx="32" cy="7" r="3" fill="#F59E0B" />
-        {/* Sparkles around bot */}
-        <path d="M12,12 L13.5,14 L16,14 L14.5,15 L15,17.5 L12,16 L9,17.5 L9.5,15 L8,14 L10.5,14 Z" fill="#A78BFA" />
-      </g>
-    </svg>
-  );
-}
-
-function TrophyLeaderboardVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#14B8A6" fillOpacity="0.08" />
-      <g transform="translate(18, 16)">
-        {/* Championship trophy */}
-        <path d="M12,18 C12,10 18,8 32,8 C46,8 52,10 52,18 C52,36 38,44 32,44 C26,44 12,36 12,18 Z" fill="#FFFBEB" stroke="#F59E0B" strokeWidth="2.5" />
-        <path d="M12,14 L4,14 C2,14 2,22 8,22 C12,22 12,18 12,18 Z" stroke="#F59E0B" strokeWidth="2" fill="none" />
-        <path d="M52,14 L60,14 C62,14 62,22 56,22 C52,22 52,18 52,18 Z" stroke="#F59E0B" strokeWidth="2" fill="none" />
-        <rect x="25" y="44" width="14" height="12" rx="2" fill="#FBBF24" />
-        <line x1="20" y1="56" x2="44" y2="56" stroke="#D97706" strokeWidth="3" strokeLinecap="round" />
-        {/* Glow Stars */}
-        <polygon points="32,18 34,22 39,23 35,26 36,31 32,28 28,31 29,26 25,23 30,22" fill="#FBBF24" />
-      </g>
-    </svg>
-  );
-}
-
-function ProgressTrackerVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="50" cy="50" r="40" fill="#6366F1" fillOpacity="0.08" />
-      <g transform="translate(18, 18)">
-        {/* Circle radar rings */}
-        <circle cx="32" cy="32" r="24" fill="#EEF2FF" stroke="#6366F1" strokeWidth="2" strokeDasharray="3 3" />
-        <circle cx="32" cy="32" r="14" fill="#FFFFFF" stroke="#4F46E5" strokeWidth="1.5" />
-        {/* Arrow hits center */}
-        <line x1="4" y1="60" x2="28" y2="36" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" />
-        <polygon points="28,36 20,38 26,44" fill="#4F46E5" />
-        {/* Progressive graph bars behind */}
-        <rect x="42" y="12" width="6" height="28" rx="2" fill="#818CF8" />
-        <rect x="42" y="24" width="6" height="16" rx="2" fill="#4F46E5" />
-      </g>
-    </svg>
-  );
-}
-
-function HistoryLogVector() {
-  return (
-    <svg className="w-12 h-12 sm:w-14 sm:h-14 select-none pointer-events-none drop-shadow-sm transition-transform duration-300 group-hover:scale-110" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/250/svg">
-      <circle cx="50" cy="50" r="40" fill="#64748B" fillOpacity="0.08" />
-      <g transform="translate(18, 18)">
-        {/* Circular clock trail with custom arrow */}
-        <circle cx="32" cy="32" r="22" stroke="#64748B" strokeWidth="2.5" strokeDasharray="40 10" strokeLinecap="round" fill="none" />
-        <path d="M50.5,23.5 L53.5,31 L46,28 Z" fill="#64748B" />
-        {/* Sand Glass inner representing past countdown logic */}
-        <path d="M22,14 L42,14 L32,32 L22,14 Z" fill="#E2E8F0" stroke="#475569" strokeWidth="1.5" />
-        <path d="M22,50 L42,50 L32,32 L22,50 Z" fill="#CBD5E1" stroke="#475569" strokeWidth="1.5" />
-        {/* Drop lines */}
-        <circle cx="32" cy="32" r="1.5" fill="#475569" />
-        <circle cx="32" cy="37" r="1.5" fill="#475569" />
-      </g>
-    </svg>
-  );
-}
+const otherFeaturesImg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none"><rect x="8" y="8" width="20" height="20" rx="7" fill="%2300be90" fill-opacity="0.15" stroke="%2300be90" stroke-width="4"/><rect x="36" y="8" width="20" height="20" rx="7" fill="%2300be90" fill-opacity="0.15" stroke="%2300be90" stroke-width="4"/><rect x="8" y="36" width="20" height="20" rx="7" fill="%2300be90" fill-opacity="0.15" stroke="%2300be90" stroke-width="4"/><rect x="36" y="36" width="20" height="20" rx="7" fill="%2300be90" fill-opacity="0.15" stroke="%2300be90" stroke-width="4"/><circle cx="18" cy="18" r="3" fill="%2300be90"/><circle cx="46" cy="18" r="3" fill="%2300be90"/><circle cx="18" cy="46" r="3" fill="%2300be90"/><circle cx="46" cy="46" r="3" fill="%2300be90"/></svg>`;
 
 interface DashboardProps {
   stats: StudentStats;
@@ -206,78 +30,15 @@ interface DashboardProps {
   setActiveTab: (tab: string) => void;
   onQuickExam: () => void;
   onOpenAuth: () => void;
+  onOpenSidebar?: () => void;
 }
 
-export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, onOpenAuth }: DashboardProps) {
-  const [expandedSubject, setExpandedSubject] = useState<string | null>(null);
-  const [dailyGoal, setDailyGoal] = useState<number>(20);
-  
-  const radius = 28;
-  const strokeWidth = 5.5;
-  const circumference = 2 * Math.PI * radius;
-
-  const currentProgress = stats.totalQuestionsSolved || 0;
-  const percentage = Math.min(Math.round((currentProgress / dailyGoal) * 100), 100);
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
-
-  const handleSimulateIncrement = () => {
-    setStats(prev => ({
-      ...prev,
-      totalQuestionsSolved: prev.totalQuestionsSolved + 1
-    }));
-  };
-
-  const handleSimulateDecrement = () => {
-    setStats(prev => ({
-      ...prev,
-      totalQuestionsSolved: Math.max(0, prev.totalQuestionsSolved - 1)
-    }));
-  };
-
-  // Prayer Planner States & Logic
-  const [completedSlots, setCompletedSlots] = useState<{ [key: string]: boolean }>({
-    fazr: true,
-    dhuhr: false,
-    asr: false,
-    maghrib: false,
-    isha: false,
-  });
-
-  const prayerStudySlots = [
-    { id: "fazr", name: "ফজর সেশন", time: "ভোর ৫:৩০ - ৮:০০", focus: "English ও GK মুখস্থ", xp: 15, tag: "স্মরণ পার্ট" },
-    { id: "dhuhr", name: "যোহর সেশন", time: "দুপুর ২:০০ - ৪:০০", focus: "উচ্চতর গণিত ও পদার্থবিজ্ঞান", xp: 15, tag: "সমস্যা সমাধান" },
-    { id: "asr", name: "আসর সেশন", time: "বিকেল ৪:৪৫ - ৫:৩০", focus: "ডেইলি কুইজ ও প্র্যাকটিস", xp: 10, tag: "স্পীড কুইজ" },
-    { id: "maghrib", name: "মাগরিব সেশন", time: "সন্ধ্যা ৬:৪৫ - ৮:১৫", focus: "অপ্রস্তুত অধ্যায় রিভিউ", xp: 20, tag: "রিভিশন" },
-    { id: "isha", name: "এশা সেশন", time: "রাত ৯:১৫ - ১০:৪৫", focus: "মক টেস্ট ও মূল্যায়ন", xp: 20, tag: "মক রেডি" }
-  ];
-
-  const handleTogglePrayerSlot = (slotId: string, xpReward: number) => {
-    if (stats.isGuest) {
-      onOpenAuth();
+export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, onOpenAuth, onOpenSidebar }: DashboardProps) {
+  const handleBentoClick = (tabId: string) => {
+    if (tabId === "other_features") {
+      onOpenSidebar?.();
       return;
     }
-
-    const wasChecked = completedSlots[slotId];
-    setCompletedSlots(prev => ({ ...prev, [slotId]: !prev[slotId] }));
-
-    setStats(prev => {
-      const addedPoints = wasChecked ? -xpReward : xpReward;
-      const newPoints = Math.max(0, prev.points + addedPoints);
-      return {
-        ...prev,
-        points: newPoints,
-        level: Math.floor(newPoints / 100) + 1
-      };
-    });
-  };
-
-  const subjectProgressList = [
-    { name: "বাংলা", progress: stats.isGuest ? 0 : 45, count: "৮টি টপিক প্রস্তুত", details: "অপরিচিতা, ঐতিহাসিক ভাষণ ও কবিতা রিভিশন সম্পন্ন।" },
-    { name: "English", progress: stats.isGuest ? 0 : 30, count: "৫টি টপিক প্রস্তুত", details: "Right Forms of Verbs, Subjunctive & Prepositions." },
-    { name: "সাধারণ জ্ঞান", progress: stats.isGuest ? 0 : 80, count: "১২টি টপিক প্রস্তুত", details: "সংবিধানের ইতিহাস, মুক্তিযুদ্ধ এবং মুজিবনগর সরকার।" }
-  ];
-
-  const handleBentoClick = (tabId: string) => {
     if (stats.isGuest && (tabId === "battle" || tabId === "progress")) {
       onOpenAuth();
     } else {
@@ -285,406 +46,410 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
     }
   };
 
-  // Time-based Bangla greeting inside dashboard header
-  const getBanglaGreeting = () => {
-    const hours = new Date().getHours();
-    if (hours < 12) return "শুভ সকাল";
-    if (hours < 16) return "শুভ দুপুর";
-    if (hours < 18) return "শুভ বিকেল";
-    return "শুভ সন্ধ্যা";
-  };
-
   return (
     <div className="space-y-6 animate-fade-in max-w-7xl mx-auto text-slate-800 dark:text-slate-100 pb-12 select-none">
       
-      {/* 1. Guest warning strip */}
-      {stats.isGuest && (
-        <div className="bg-gradient-to-r from-[#00be90]/10 to-emerald-500/10 border border-emerald-500/20 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs shadow-sm">
-          <div className="flex items-center gap-2.5 text-emerald-800 dark:text-emerald-400 font-bold">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-            <span>গেস্ট হিসেবে আছেন। পরীক্ষার পূর্ণাঙ্গ ট্র্যাক পেতে ও লিডারবোর্ডে অংশ নিতে এখনই অ্যাকাউন্ট খুলুন!</span>
-          </div>
-          <button 
-            onClick={onOpenAuth}
-            className="px-4 py-1.5 bg-gradient-to-r from-emerald-500 to-[#00be90] hover:brightness-105 active:scale-95 text-white font-extrabold rounded-xl text-xs transition-all shadow-md shrink-0 cursor-pointer"
-          >
-            লগইন / রিজিষ্ট্রেশন
-          </button>
-        </div>
-      )}
+      {/* Universal Beautiful Responsive Dashboard Header Section */}
+      <div className="feature-header-section px-4 sm:px-2 pt-2 md:pt-4">
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight font-display tracking-tight">
+          ড্যাশবোর্ড
+        </h1>
+      </div>
 
-      {/* 3. MULTI-COLUMN APP-BAR GRID OF PREMIUM CONCEPTUAL ILLUSTRATED TILES (Exactly like the requested layout but ultra-smooth and interactive) */}
-      <div id="core-interactive-decks" className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800/80 rounded-[32px] p-6 sm:p-8 shadow-sm">
+      {/* 3. MULTI-COLUMN APP-BAR GRID OF PREMIUM CONCEPTUAL ILLUSTRATED TILES */}
+      <div id="core-interactive-decks" className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/80 rounded-[32px] p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.015)]">
         
-        {/* Descriptive Section Heading */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800/60">
-          <div className="text-center sm:text-left space-y-1">
-            <h2 className="text-xs font-black uppercase text-[#00be90] tracking-widest font-mono flex items-center gap-1.5 justify-center sm:justify-start">
-              <span className="w-2 h-2 rounded-full bg-[#00dda6] animate-pulse" />
-              প্রধান ফিচার ডেক্স (Study Qoro Main Features Arena)
-            </h2>
-            <p className="text-[11px] text-slate-400 dark:text-slate-500 font-semibold leading-relaxed">
-              তোমার HSC বোর্ড ও বিশ্ববিদ্যালয় ভর্তি পরীক্ষার অনন্য প্রস্তুতির জন্য নিচের ডেকগুলো অনুশীলন করো
-            </p>
-          </div>
-          
-          <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full shrink-0">
-            ৮টি মূল মডিউল সক্রিয়
-          </span>
-        </div>
 
-        {/* 8-Column Grid Layout matching the screenshot */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-5 sm:gap-6 justify-center items-stretch">
+
+        {/* 4-Column Grid Layout matching the screenshot for mobile, expansive grid for desktop */}
+        <div className="feature-grid grid grid-cols-4 xs:grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-6 justify-center items-stretch">
           
           {[
             {
               id: "questions",
               title: "প্রশ্ন ব্যাংক",
-              badge: "১০k+ MCQ",
-              badgeBg: "bg-amber-500",
-              colorClass: "bg-amber-100/40 dark:bg-amber-950/20 group-hover:bg-amber-100 hover:shadow-amber-100/40 border-amber-250 hover:border-amber-400 group-hover:scale-105",
-              vector: <QuestionBankVector />
-            },
-            {
-              id: "battle",
-              title: "ব্যাটেল এক্সাম",
-              badge: "লাইভ 🎮",
-              badgeBg: "bg-rose-500 animate-pulse",
-              colorClass: "bg-rose-100/40 dark:bg-rose-950/20 group-hover:bg-rose-100 hover:shadow-rose-100/40 border-rose-250 hover:border-rose-450 group-hover:scale-105",
-              vector: <BattleArenaVector />
+              image: questionBankImg
             },
             {
               id: "timer",
               title: "দ্রুত প্র্যাকটিস",
-              badge: "স্পীড ⚡",
-              badgeBg: "bg-sky-500",
-              colorClass: "bg-sky-100/40 dark:bg-sky-950/20 group-hover:bg-sky-100 hover:shadow-sky-100/40 border-sky-250 hover:border-sky-450 group-hover:scale-105",
-              vector: <FocusSpeedVector />
+              image: timerImg
             },
             {
               id: "mocks",
-              title: "মক পরীক্ষা",
-              badge: "OMR 📊",
-              badgeBg: "bg-[#00be90]",
-              colorClass: "bg-emerald-100/40 dark:bg-emerald-950/20 group-hover:bg-emerald-110 hover:shadow-emerald-100/40 border-emerald-250 hover:border-[#00be90] group-hover:scale-105",
-              vector: <MockExamVector />
-            },
-            {
-              id: "ai",
-              title: "Study Qoro AI",
-              badge: "এআই ✨",
-              badgeBg: "bg-violet-500",
-              colorClass: "bg-violet-100/40 dark:bg-violet-950/20 group-hover:bg-violet-100 hover:shadow-violet-100/40 border-violet-250 hover:border-violet-450 group-hover:scale-105",
-              vector: <StudyHelperAIVector />
+              title: "মক টেস্ট",
+              image: mocksImg
             },
             {
               id: "leaderboard",
               title: "লিডারবোর্ড",
-              badge: "জাতীয় 🏆",
-              badgeBg: "bg-teal-500",
-              colorClass: "bg-teal-100/40 dark:bg-teal-950/20 group-hover:bg-teal-100 hover:shadow-teal-100/40 border-teal-250 hover:border-teal-450 group-hover:scale-105",
-              vector: <TrophyLeaderboardVector />
+              image: leaderboardImg
+            },
+            {
+              id: "battle",
+              title: "এক্সাম ওয়ার",
+              image: battleImg
+            },
+            {
+              id: "materials",
+              title: "স্টাডি ম্যাটেরিয়ালস",
+              image: studyMaterialsImg
             },
             {
               id: "progress",
-              title: "প্রোগ্রেস ট্র্যাকার",
-              badge: "নতুন 🎯",
-              badgeBg: "bg-indigo-500",
-              colorClass: "bg-indigo-100/40 dark:bg-indigo-950/20 group-hover:bg-indigo-100 hover:shadow-indigo-100/40 border-indigo-250 hover:border-indigo-450 group-hover:scale-105",
-              vector: <ProgressTrackerVector />
+              title: "প্রগ্রেস",
+              image: progressImg
             },
             {
-              id: "history",
-              title: "অনুশীলন ইতিহাস",
-              badge: "লগ ⏳",
-              badgeBg: "bg-slate-500",
-              colorClass: "bg-slate-100/40 dark:bg-slate-900/40 group-hover:bg-slate-200 hover:shadow-slate-100/40 border-slate-250 hover:border-slate-450 group-hover:scale-105",
-              vector: <HistoryLogVector />
+              id: "other_features",
+              title: "অন্যান্য ফিচারসমূহ",
+              image: otherFeaturesImg,
+              noInvert: true
             }
           ].map((item) => (
             <motion.div
               key={item.id}
               onClick={() => handleBentoClick(item.id)}
               whileTap={{ scale: 0.96 }}
-              className="group flex flex-col items-center justify-between cursor-pointer space-y-3 p-2 text-center text-slate-800 dark:text-slate-100"
+              className="feature-card group flex flex-col items-center justify-start cursor-pointer select-none text-slate-800 dark:text-slate-100 w-full"
             >
-              {/* Launcher Rounded App-Style Tile Container exactly like screenshot */}
-              <div className={`w-20 h-20 sm:w-22 sm:h-22 rounded-3xl border border-slate-200/60 dark:border-slate-800/80 flex items-center justify-center relative shadow-sm group-hover:shadow-md transition-all duration-300 ${item.colorClass}`}>
-                
-                {/* Micro Smart Corner Badge */}
-                <span className={`absolute -top-1.5 -right-1.5 text-[8px] font-black text-white px-1.5 py-0.5 rounded-full shadow-sm z-20 ${item.badgeBg}`}>
-                  {item.badge}
-                </span>
-
-                {/* Conceptual flat vector illustration */}
-                <div className="relative z-10">
-                  {item.vector}
-                </div>
+              {/* Squircles matching screenshot exactly without cropping and box styled */}
+              <div className="feature-icon-container">
+                <img 
+                  src={item.image} 
+                  className={`feature-icon w-full h-full object-contain select-none pointer-events-none drop-shadow-sm transition-transform duration-305 group-hover:scale-106 ${item.noInvert ? "no-invert" : ""}`} 
+                  referrerPolicy="no-referrer" 
+                  alt={item.title} 
+                />
               </div>
 
-              {/* Minimal Clean Text Label directly centered under the button exactly like screenshot */}
-              <div className="space-y-0.5">
-                <span className="block text-xs sm:text-[13px] font-black text-slate-800 dark:text-slate-100 group-hover:text-[#00be90] transition-colors leading-tight">
-                  {item.title}
-                </span>
-                <span className="block text-[9px] font-extrabold text-slate-400 dark:text-slate-500 tracking-tight leading-none uppercase shrink-0">
-                  {item.id === "ai" ? "Assistant" : (item.id === "questions" ? "Practice" : "Live Exam")}
-                </span>
-              </div>
+              {/* Minimal Clean Text Label directly centered below the card tile for both mobile & desktop */}
+              <span className="feature-label">
+                {item.title}
+              </span>
             </motion.div>
           ))}
 
         </div>
       </div>
 
-      {/* 4. SPLIT TWO-COLUMN SECONDARY METRICS (8 Column Left / 4 Column Right) */}
-      <div id="secondary-metrics-grid" className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      {/* 4. PREMIUM UNIVERSAL RESPONSIVE STATS & FRIENDS PANEL */}
+      <div className="stats-friends-panel max-w-5xl mx-auto w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 mt-8 px-2 sm:px-0">
         
-        {/* LEFT COLUMN: Study Planner / Namaz Tracker Widget */}
-        <div className="lg:col-span-8 space-y-6">
+        {/* Card 1: পরীক্ষা (Completed Exams) */}
+        <div className="group relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-3xl p-4.5 sm:p-5 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(14,165,233,0.08)] hover:-translate-y-1 hover:border-sky-200/50 dark:hover:border-sky-500/20 transition-all duration-300 overflow-hidden">
+          {/* Subtle Ambient Background Aura */}
+          <div className="absolute -right-8 -top-8 w-24 h-24 bg-sky-400/5 dark:bg-sky-500/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
           
-          {/* Unique Study Planner Tracker Widget */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-[28px] shadow-sm">
-            <div className="flex justify-between items-center mb-4 pb-2 border-b border-slate-100 dark:border-slate-800/60">
-              <h3 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400 tracking-wider flex items-center gap-2">
-                <BookmarkCheck className="w-4.5 h-4.5 text-[#00be90]" />
-                <span>ইবাদত ও পড়ালেখার লাইভ প্ল্যানার (Namaz & Study Tracker)</span>
-              </h3>
-              <span className="text-[10px] font-bold text-[#00be90] bg-[#00dda6]/10 px-2.5 py-0.5 rounded-full">XP বোনাস</span>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-              {prayerStudySlots.map((slot) => {
-                const isCompleted = completedSlots[slot.id];
-                return (
-                  <div 
-                    key={slot.id} 
-                    className={`p-3 rounded-2xl border text-center transition-all duration-300 flex flex-col justify-between min-h-[110px] ${
-                      isCompleted 
-                        ? "bg-slate-50/60 dark:bg-slate-950/70 border-[#00be90]/40 text-slate-800 dark:text-slate-200" 
-                        : "bg-white dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-850/60 text-slate-500"
-                    }`}
-                  >
-                    <div className="space-y-1">
-                      <span className="text-[9px] uppercase font-mono font-extrabold tracking-wider text-slate-400 block dark:text-slate-500">
-                        {slot.tag}
-                      </span>
-                      <h6 className="text-[11px] font-black text-slate-800 dark:text-slate-200 leading-tight">
-                        {slot.name}
-                      </h6>
-                      <span className="text-[9px] text-slate-405 dark:text-slate-500 block">
-                        {slot.time}
-                      </span>
-                    </div>
-
-                    <div className="pt-2 flex items-center justify-between mt-auto">
-                      <span className="text-[9px] font-mono font-bold text-[#00be90]">+{slot.xp}XP</span>
-                      <button 
-                        onClick={() => handleTogglePrayerSlot(slot.id, slot.xp)}
-                        className={`w-7 h-7 rounded-xl flex items-center justify-center transition-colors shadow-sm cursor-pointer ${
-                          isCompleted 
-                            ? "bg-[#00be90] text-white" 
-                            : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-400 dark:text-slate-400"
-                        }`}
-                      >
-                        {isCompleted ? <Check className="w-4 h-4 stroke-[3]" /> : <span className="text-xs font-black">+</span>}
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase">পরীক্ষা</span>
+            <div className="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-500 dark:text-sky-400 flex items-center justify-center shadow-xs">
+              <FileText className="w-4.5 h-4.5 pointer-events-none transition-transform group-hover:scale-110" />
             </div>
           </div>
-
-          {/* MINDFULNESS/HEALTH STATEMENT BANNER */}
-          <div className="bg-gradient-to-r from-indigo-50/40 to-slate-50 border border-slate-200/60 dark:from-slate-950/20 dark:to-slate-900 p-4.5 rounded-[24px] flex items-start gap-3">
-            <Heart className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5 fill-current" />
-            <div className="space-y-1">
-              <span className="text-[9px] bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                মাইন্ডফুলনেস সাপোর্ট ও স্বাস্থ্য টিপস
-              </span>
-              <p className="text-[11px] text-slate-520 dark:text-slate-400 leading-relaxed font-semibold">
-                সারাদিনের অতিরিক্ত পড়ায় নিজের মানসিক অবস্থা শান্ত রাখা জরুরি। প্রতিটি ৩ ঘন্টা স্টডির পর নামাজ পড়ার মাধ্যমে দেহ ও মনকে সতেজ রাখবে, যা দীর্ঘমেয়াদে মনে রাখার শক্তি দ্বিগুণ করে দেবে।
-              </p>
+          
+          <div className="mt-6">
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white leading-none font-display tracking-tight flex items-baseline gap-1">
+              <span>{stats.examsGiven}</span>
+              <span className="text-[10px] sm:text-xs font-bold text-slate-400 dark:text-slate-500">টি</span>
+            </div>
+            <div className="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 mt-1.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>স্মার্ট মূল্যায়ন</span>
             </div>
           </div>
-
         </div>
 
-        {/* RIGHT COLUMN: Interactive Goal & Subject Progress scorecard widgets */}
-        <div className="lg:col-span-4 space-y-6">
+        {/* Card 2: প্রশ্নব্যাংক (Question Bank) */}
+        <div className="group relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-3xl p-4.5 sm:p-5 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(16,185,129,0.08)] hover:-translate-y-1 hover:border-emerald-200/50 dark:hover:border-emerald-500/20 transition-all duration-300 overflow-hidden">
+          {/* Subtle Ambient Background Aura */}
+          <div className="absolute -right-8 -top-8 w-24 h-24 bg-emerald-400/5 dark:bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase">প্রশ্ন ব্যাংক</span>
+            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 flex items-center justify-center shadow-xs">
+              <Target className="w-4.5 h-4.5 pointer-events-none transition-transform group-hover:scale-110" />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white leading-none font-display tracking-tight text-emerald-600 dark:text-emerald-400">
+              9,385+
+            </div>
+            <div className="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 mt-1.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <span>সক্রিয় প্রশ্ন ভাণ্ডার</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 3: র‍্যাংক (National Rank) */}
+        <div className="group relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-3xl p-4.5 sm:p-5 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(245,158,11,0.08)] hover:-translate-y-1 hover:border-amber-200/50 dark:hover:border-amber-500/20 transition-all duration-300 overflow-hidden">
+          {/* Subtle Ambient Background Aura */}
+          <div className="absolute -right-8 -top-8 w-24 h-24 bg-amber-400/5 dark:bg-amber-500/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase">মেধাক্রম</span>
+            <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-500 dark:text-amber-400 flex items-center justify-center shadow-xs">
+              <Trophy className="w-4.5 h-4.5 pointer-events-none transition-transform group-hover:scale-110" />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white leading-none font-display tracking-tight text-amber-600 dark:text-amber-400">
+              #{stats.rank || 64}
+            </div>
+            <div className="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 mt-1.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span>জাতীয় অবস্থান</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 4: PLAN (Membership Plan) */}
+        <div className="group relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-3xl p-4.5 sm:p-5 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(139,92,246,0.08)] hover:-translate-y-1 hover:border-violet-200/50 dark:hover:border-violet-500/20 transition-all duration-300 overflow-hidden">
+          {/* Subtle Ambient Background Aura */}
+          <div className="absolute -right-8 -top-8 w-24 h-24 bg-violet-400/5 dark:bg-violet-500/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 tracking-wide uppercase">অ্যাকাউন্ট</span>
+            <div className="w-8 h-8 rounded-xl bg-violet-500/10 text-violet-500 dark:text-violet-400 flex items-center justify-center shadow-xs">
+              <Sparkles className="w-4.5 h-4.5 pointer-events-none transition-transform group-hover:scale-110" />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white leading-none font-display tracking-tight text-violet-600 dark:text-violet-400">
+              {stats.plan === "Free" ? "ফ্রি প্ল্যান" : "প্রো মেম্বার"}
+            </div>
+            <div className="flex items-center gap-1 group/btn text-[10.5px] font-bold text-violet-600 dark:text-violet-400 cursor-pointer hover:opacity-85 mt-1.5 transition-all">
+              <span className="underline decoration-dotted underline-offset-3">আপগ্রেড করুন</span>
+              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+            </div>
+          </div>
+        </div>
+
+        {/* Card 5: Friends (Classmates) */}
+        <div className="group relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-3xl flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.01)] hover:shadow-[0_12px_30px_rgba(168,85,247,0.08)] hover:-translate-y-1 hover:border-purple-200/50 dark:hover:border-purple-500/20 transition-all duration-300 col-span-2 md:col-span-2 lg:col-span-1 overflow-hidden min-h-[145px]">
+          {/* Subtle Ambient Background Aura */}
+          <div className="absolute -right-8 -top-8 w-24 h-24 bg-purple-400/5 dark:bg-purple-500/10 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+
+          {/* Header Part with Padding */}
+          <div className="p-4 pb-2 flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <div className="w-6.5 h-6.5 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+                <Users className="w-4 h-4 pointer-events-none transition-transform group-hover:scale-105" />
+              </div>
+              <span className="text-[11px] sm:text-xs font-bold text-slate-800 dark:text-slate-200">সহপাঠী</span>
+            </div>
+            
+            <button className="text-[10px] font-semibold text-purple-600 dark:text-purple-300 hover:text-purple-700 dark:hover:text-purple-200 transition-colors">
+              সব দেখুন
+            </button>
+          </div>
+
+          {/* Clean minimal abstract graphics representing empty friends list with visual premium style */}
+          <div className="px-4 py-1.5 flex items-center gap-1 justify-center">
+            {/* Visual multi-bubble preview initials */}
+            <div className="flex -space-x-2">
+              <div className="w-6 h-6 rounded-full border border-white dark:border-slate-950 bg-gradient-to-br from-indigo-400 to-sky-400 flex items-center justify-center text-[8px] font-extrabold text-white">S</div>
+              <div className="w-6 h-6 rounded-full border border-white dark:border-slate-950 bg-gradient-to-br from-amber-400 to-rose-400 flex items-center justify-center text-[8px] font-extrabold text-white">K</div>
+              <div className="w-6 h-6 rounded-full border border-white dark:border-slate-950 bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center text-[8px] font-extrabold text-white">+</div>
+            </div>
+          </div>
+
+          <div className="p-4 pt-1 flex flex-col items-center justify-center gap-2">
+            <p className="text-[10px] text-slate-400 dark:text-slate-500 font-semibold text-center">
+              এখনও কোনো সহপাঠী যুক্ত নেই
+            </p>
+            <button className="w-full flex items-center justify-center gap-1 px-2.5 py-1.5 bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white rounded-xl text-[10px] font-bold shadow-md shadow-purple-500/10 hover:shadow-purple-500/25 active:scale-97 transition-all cursor-pointer">
+              <UserPlus className="w-3.5 h-3.5" />
+              <span>সহপাঠী যুক্ত করুন</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      {/* 5. LUXURY PRESTIGE LEADERBOARD & ACHIEVEMENTS ARENA */}
+      <div className="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 px-2 sm:px-0">
+        
+        {/* Left Column: মেধা লীগ (Bronze Arena Leaderboard) */}
+        <div className="relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-[32px] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_12px_40px_rgba(245,158,11,0.06)] transition-all duration-300 overflow-hidden group">
+          {/* Subtle Ambient Golden Background Aura */}
+          <div className="absolute -left-12 -bottom-12 w-48 h-48 bg-amber-500/5 dark:bg-amber-500/10 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
           
-          {/* DAILY STUDY GOAL PANEL with glowing radial rings */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-[28px] shadow-sm relative overflow-hidden"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-xs font-black uppercase text-slate-400 dark:text-slate-500 tracking-wider">
-                  দৈনিক পড়ার লক্ষ্যমাত্রা
-                </h3>
-                <p className="text-[10px] text-slate-400 font-bold tracking-wider uppercase font-mono">My Solving Goal</p>
-              </div>
-              <span className="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-black px-2.5 py-0.5 rounded-full tracking-wide">
-                লাস্ট গোল: {dailyGoal}টি
-              </span>
-            </div>
-
-            <div className="flex items-center gap-5">
-              {/* Specialized Progress Circle */}
-              <div className="relative w-20 h-20 flex-shrink-0 flex items-center justify-center select-none">
-                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 72 72">
-                  <circle
-                    cx="36"
-                    cy="36"
-                    r={radius}
-                    className="stroke-slate-100 dark:stroke-slate-800"
-                    strokeWidth={strokeWidth}
-                    fill="transparent"
-                  />
-                  <motion.circle
-                    cx="36"
-                    cy="36"
-                    r={radius}
-                    className="stroke-[#00be90]"
-                    strokeWidth={strokeWidth}
-                    fill="transparent"
-                    strokeDasharray={circumference}
-                    initial={{ strokeDashoffset: circumference }}
-                    animate={{ strokeDashoffset: strokeDashoffset }}
-                    transition={{ type: "spring", stiffness: 60, damping: 15 }}
-                    strokeLinecap="round"
-                  />
-                </svg>
-                {/* Internal representation */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  {percentage >= 100 ? (
-                    <motion.span 
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="text-base"
-                    >
-                      👑
-                    </motion.span>
-                  ) : (
-                    <span className="text-[11px] font-black font-mono text-slate-850 dark:text-slate-100">
-                      {percentage}%
-                    </span>
-                  )}
-                </div>
-              </div>
-
-              {/* Progress text description */}
-              <div className="flex-grow space-y-1 select-none">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-2xl font-mono font-black text-slate-900 dark:text-white">
-                    {currentProgress}
+          {/* Header Part */}
+          <div className="flex items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800/60">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="flex h-2.5 w-2.5 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                </span>
+                <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+                  অনলাইন মেধা লীগ 
+                  <span className="text-[10px] sm:text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full select-none">
+                    ব্রোঞ্জ টিয়ার
                   </span>
-                  <span className="text-xs text-slate-400 font-extrabold">/ {dailyGoal} সম্পন্ন</span>
-                </div>
-                <div className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed font-semibold">
-                  {percentage >= 100 ? (
-                    <span className="text-[#00be90] font-black flex items-center gap-1">
-                      <span>🏆 গোল অর্জন সম্পূর্ণ হয়েছে!</span>
-                    </span>
-                  ) : percentage >= 50 ? (
-                    <span>অর্ধেক সম্পূর্ণ হয়েছে। এগিয়ে যাও! 🔥</span>
-                  ) : (
-                    <span>প্রতিদিন কাস্টম প্র্যাকটিস সম্পন্ন করে গোলটি লালন করুন।</span>
-                  )}
-                </div>
+                </h3>
               </div>
+              <p className="text-[10.5px] font-semibold text-slate-400 dark:text-slate-500">
+                পড়াশোনা ও পরীক্ষা দিয়ে আজকের লিডারবোর্ডের টপে থাকুন।
+              </p>
             </div>
+            
+            <button 
+              onClick={() => setActiveTab("leaderboard")}
+              className="group/arr shrink-0 flex items-center gap-1 px-3 py-1.5 bg-slate-100/80 hover:bg-slate-200 dark:bg-slate-800/60 dark:hover:bg-slate-800 text-[10.5px] font-bold text-slate-700 dark:text-slate-350 rounded-xl transition-all shadow-xs cursor-pointer"
+            >
+              <span>সব দেখুন</span>
+              <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/arr:translate-x-0.5" />
+            </button>
+          </div>
 
-            {/* Simulated toolset */}
-            <div className="mt-4 pt-3.5 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between">
-              <div className="flex items-center gap-1">
-                <span className="text-[9px] font-bold text-slate-400 uppercase select-none font-mono">চেঞ্জ:</span>
-                <div className="flex gap-1.5">
-                  {[10, 20, 30, 50].map((g) => (
-                    <button
-                      key={g}
-                      onClick={() => setDailyGoal(g)}
-                      className={`px-2 py-0.5 text-[9px] font-black rounded-md transition-all cursor-pointer ${
-                        dailyGoal === g 
-                          ? "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900" 
-                          : "bg-slate-50 dark:bg-slate-800 text-slate-400 hover:text-slate-700"
-                      }`}
-                    >
-                      {g}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Incrementor/Decrementor for simulated checking */}
-              <div className="flex items-center gap-1 bg-slate-50 dark:bg-slate-950 px-1 py-0.5 rounded-xl border border-slate-150 dark:border-slate-800">
-                <button
-                  onClick={handleSimulateDecrement}
-                  title="কমিয়ে দিন"
-                  className="w-5 h-5 flex items-center justify-center text-xs font-bold text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 active:scale-95 transition-all cursor-pointer"
-                >
-                  -
-                </button>
-                <span className="text-[9px] font-extrabold text-slate-400 px-0.5 select-none">টেস্ট</span>
-                <button
-                  onClick={handleSimulateIncrement}
-                  title="বাড়িয়ে দিন"
-                  className="w-5 h-5 flex items-center justify-center text-xs font-bold text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 active:scale-95 transition-all cursor-pointer"
-                >
-                  +
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* SUBTOPICS / SUBJECT REPORT CARDS SECTION */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 p-5 rounded-[28px] shadow-sm">
-            <div className="flex justify-between items-center mb-4 pb-1">
-              <h3 className="text-xs font-black uppercase text-slate-500 dark:text-slate-400 tracking-wider">
-                সাবজেক্ট ভিত্তিক ট্র্যাকার
-              </h3>
-              <span className="text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-550 dark:text-slate-400 px-2 py-0.5 rounded-full font-mono font-bold">HSC • Admission</span>
-            </div>
-
-            <div className="space-y-4">
-              {subjectProgressList.map((sub, sidx) => {
-                const isExpanded = expandedSubject === sub.name;
-                return (
-                  <div key={sidx} className="border-b border-slate-105 dark:border-slate-800/60 pb-3 last:border-0 last:pb-0">
-                    <button 
-                      onClick={() => setExpandedSubject(isExpanded ? null : sub.name)}
-                      className="w-full flex items-center justify-between text-left text-xs font-extrabold text-slate-800 dark:text-slate-200 group py-1.5 cursor-pointer"
-                    >
-                      <span className="flex items-center gap-1.5">
-                        <Target className="w-3.5 h-3.5 text-[#00be90]" />
-                        {sub.name}
-                      </span>
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono">
-                        <span className="text-[#00be90] font-black">{sub.progress}%</span>
-                        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform ${isExpanded ? "rotate-180" : ""}`} />
-                      </div>
-                    </button>
-                    
-                    {/* Modern Dynamic progress line */}
-                    <div className="w-full bg-slate-100 dark:bg-slate-950 h-1.5 rounded-full overflow-hidden mt-1 select-none">
-                      <div 
-                        className="bg-gradient-to-r from-emerald-500 to-[#00be90] h-full rounded-full transition-all duration-500"
-                        style={{ width: `${sub.progress}%` }}
-                      />
-                    </div>
-
-                    {isExpanded && (
-                      <div className="mt-2.5 p-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-150 dark:border-slate-850 rounded-2xl text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed space-y-1 animate-fade-in select-text">
-                        <p className="font-extrabold text-slate-705 dark:text-slate-205">{sub.count}</p>
-                        <p>{sub.details}</p>
-                      </div>
-                    )}
+          {/* Leaderboard Table list */}
+          <div className="mt-4 space-y-2.5">
+            {[
+              { rank: 1, name: "prachi barua", xp: 418, status: "active", iconStyle: "bg-linear-to-r from-amber-400 to-amber-500 text-slate-950 shadow-md shadow-amber-500/20" },
+              { rank: 2, name: "Badol Minji", xp: 114, status: "away", iconStyle: "bg-linear-to-r from-slate-200 to-slate-400 dark:from-slate-400 dark:to-slate-500 text-slate-950 shadow-md shadow-slate-400/20" },
+              { rank: 3, name: "Ruzana khan", xp: 73, status: "active", iconStyle: "bg-linear-to-r from-orange-400 to-orange-500 text-white shadow-md shadow-orange-500/20" },
+              { rank: 4, name: "OC Gaming (512)", xp: 69, status: "active", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" },
+              { rank: 5, name: "Tasnia Hoque", xp: 49, status: "away", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" },
+              { rank: 6, name: "Puspita Devi", xp: 47, status: "active", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" }
+            ].map((user) => (
+              <div 
+                key={user.rank} 
+                className="flex items-center justify-between gap-3 p-2.5 sm:p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/40 hover:border-slate-200 dark:hover:border-slate-800 shadow-[0_2px_12px_rgba(0,0,0,0.005)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.015)] hover:scale-[1.01] transition-all duration-200 min-w-0"
+              >
+                <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                  {/* Rank chip */}
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl font-bold font-display flex items-center justify-center shrink-0 text-xs sm:text-sm ${user.iconStyle}`}>
+                    #{user.rank}
                   </div>
-                );
-              })}
+                  
+                  {/* Profile avatar representation with light glows */}
+                  <div className="relative shrink-0 select-none">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center border border-slate-300/10">
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    {/* Active state spot */}
+                    <span className={`absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full border-2 border-white dark:border-slate-900 ${user.status === "active" ? "bg-emerald-500" : "bg-amber-400"}`} />
+                  </div>
+                  
+                  {/* User Name */}
+                  <span className="text-[11.5px] sm:text-xs font-bold text-slate-850 dark:text-slate-200 truncate min-w-0 capitalize">
+                    {user.name}
+                  </span>
+                </div>
+
+                {/* Score XP */}
+                <div className="flex items-center gap-1.5 shrink-0 select-none">
+                  {user.rank <= 3 && (
+                    <Zap className={`w-3.5 h-3.5 ${user.rank === 1 ? "text-amber-500 fill-amber-500 animate-pulse" : user.rank === 2 ? "text-slate-400 fill-slate-350" : "text-orange-400 fill-orange-405"}`} />
+                  )}
+                  <div className="bg-slate-50 dark:bg-slate-950/80 px-2.5 py-1 rounded-xl border border-slate-100 dark:border-slate-850">
+                    <span className="font-mono text-[10.5px] font-extrabold text-slate-950 dark:text-white leading-none">
+                      {user.xp}
+                    </span>
+                    <span className="text-[9px] font-bold text-slate-400 dark:text-slate-500 ml-0.5">
+                      XP
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column: অর্জনসমূহ ও মেডেল (Achievements & Goals) */}
+        <div className="relative bg-linear-to-b from-white to-slate-50/50 dark:from-slate-900/90 dark:to-slate-950/80 border border-slate-200/40 dark:border-slate-800/60 rounded-[32px] p-5 sm:p-6 shadow-[0_8px_30px_rgba(0,0,0,0.015)] hover:shadow-[0_12px_40px_rgba(139,92,246,0.06)] transition-all duration-300 overflow-hidden group flex flex-col justify-between">
+          {/* Subtle Ambient Violet Background Aura */}
+          <div className="absolute -right-12 -bottom-12 w-48 h-48 bg-violet-500/5 dark:bg-violet-500/10 rounded-full blur-3xl pointer-events-none group-hover:scale-110 transition-transform duration-500" />
+          
+          <div>
+            {/* Header Part */}
+            <div className="flex items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-800/60">
+              <div className="space-y-1">
+                <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight flex items-center gap-1.5">
+                  <Award className="w-4.5 h-4.5 text-violet-500 dark:text-violet-400" />
+                  অর্জন ও মেডেলসমূহ
+                </h3>
+                <p className="text-[10.5px] font-semibold text-slate-400 dark:text-slate-500">
+                  পরীক্ষার মাইলফলক ও বিশেষ কার্যাক্রমে আনলক করুন মেডেল।
+                </p>
+              </div>
+              
+              <button 
+                onClick={() => setActiveTab("progress")}
+                className="group/arr shrink-0 flex items-center gap-1 px-3 py-1.5 bg-slate-100/80 hover:bg-slate-200 dark:bg-slate-800/60 dark:hover:bg-slate-800 text-[10.5px] font-bold text-slate-700 dark:text-slate-350 rounded-xl transition-all shadow-xs cursor-pointer"
+              >
+                <span>সব ব্যাজ</span>
+                <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/arr:translate-x-0.5" />
+              </button>
+            </div>
+
+            {/* Target bullseye & Progress Section */}
+            <div className="mt-6 flex flex-col items-center justify-center p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/40 shadow-[0_2px_12px_rgba(0,0,0,0.005)]">
+              {/* Bullseye SVG custom premium art */}
+              <div className="relative group/target flex items-center justify-center cursor-pointer mb-3">
+                <div className="absolute w-16 h-16 rounded-full bg-violet-500/10 dark:bg-violet-500/20 animate-pulse" />
+                <div className="absolute w-12 h-12 rounded-full bg-violet-500/15 dark:bg-violet-500/30 blur-xs transition-transform duration-500 group-hover/target:scale-120" />
+                
+                {/* Custom glowing target rendering */}
+                <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-violet-500/30">
+                  <Target className="w-5.5 h-5.5 text-white animate-bounce-slow" />
+                </div>
+              </div>
+
+              <h4 className="text-[12.5px] font-extrabold text-slate-850 dark:text-white mb-1 text-center">
+                চলমান কোনো অর্জন ধাপে নেই
+              </h4>
+              <p className="text-[10.5px] font-semibold text-slate-400 dark:text-slate-500 text-center max-w-[280px]">
+                আপনার প্রথম মেডেল <span className="text-violet-600 dark:text-violet-400 font-bold">নিয়মিত যোদ্ধা</span> আনলক হতে আর মাত্র কয়েক কুইজ বাকি।
+              </p>
+
+              {/* High precision shiny progress bar */}
+              <div className="w-full max-w-[260px] mt-4 space-y-1">
+                <div className="flex justify-between items-center text-[9.5px] font-extrabold select-none">
+                  <span className="text-slate-400 dark:text-slate-500">চলতি অগ্রগতি</span>
+                  <span className="text-violet-600 dark:text-violet-400">75%</span>
+                </div>
+                <div className="relative w-full h-2.5 bg-slate-100 dark:bg-slate-850 rounded-full overflow-hidden">
+                  <div className="absolute top-0 left-0 h-full w-[75%] bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.3)]" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Locked Badge Micro-grid below for motivation */}
+          <div className="mt-5 border-t border-slate-100 dark:border-slate-800/40 pt-4">
+            <h5 className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2.5">
+              মাইলফলক ব্যাজসমূহ
+            </h5>
+            
+            <div className="grid grid-cols-4 gap-2.5">
+              {[
+                { id: "star", name: "স্মার্ট স্টার", icon: <Star className="w-4 h-4 text-slate-400 group-hover:text-amber-500 transition-colors" />, level: "৫০ XP" },
+                { id: "zap", name: "স্ট্রিক মাস্টার", icon: <Zap className="w-4 h-4 text-slate-400 group-hover:text-amber-400 transition-colors" />, level: "১০০ XP" },
+                { id: "shield", name: "ব্যাটেল উইনার", icon: <Shield className="w-4 h-4 text-slate-400 group-hover:text-violet-500 transition-colors" />, level: "১৫০ XP" },
+                { id: "award", name: "মেধাবী মস্তিষ্ক", icon: <Award className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />, level: "২০০ XP" }
+              ].map((badge) => (
+                <div 
+                  key={badge.id}
+                  className="group relative flex flex-col items-center justify-center p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100/80 dark:border-slate-850/40 hover:border-violet-100 dark:hover:border-violet-950 shadow-2xs hover:shadow-md transition-all cursor-pointer text-center min-w-0"
+                >
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850 flex items-center justify-center mb-1.5">
+                    {badge.icon}
+                  </div>
+                  <span className="text-[9px] font-extrabold text-slate-500 dark:text-slate-400 truncate w-full">
+                    {badge.name}
+                  </span>
+                  <span className="text-[7.5px] font-bold text-slate-400 dark:text-slate-500 tracking-tight leading-none mt-0.5">
+                    {badge.level}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 

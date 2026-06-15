@@ -579,7 +579,7 @@ export default function ChorchaAI({ stats, setStats, onUpgrade }: ChorchaAIProps
   );
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-[32px] shadow-sm tracking-tight relative overflow-hidden transition-all flex flex-col md:flex-row h-[485px] md:h-[520px] max-w-6xl mx-auto w-full">
+    <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-[32px] shadow-sm tracking-tight relative overflow-hidden transition-all flex flex-col md:flex-row h-[580px] md:h-[520px] max-w-6xl mx-auto w-full">
       
       {/* Left Column: Collapsible Chat History List Panel */}
       {showHistorySidebar && (

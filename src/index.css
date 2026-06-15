@@ -2,15 +2,100 @@
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
 
+:root {
+  /* ==========================================
+     LIGHT THEME DEFINITIONS (HIGH CONTRAST)
+     ========================================== */
+  --color-primary: #059669;      /* Emerald default */
+  --color-secondary: #0ea5e9;    /* Sky default */
+  --color-accent-violet: #8b5cf6; /* Violet */
+  --color-warning-gold: #f59e0b;  /* Amber */
+  --color-danger-red: #ef4444;   /* Red */
+  
+  --color-bg-base: #f7f8f9;      /* Layout Base Grey */
+  --color-bg-card: #ffffff;      /* Clean Card Base */
+  --color-text-primary: #0f172a; /* Slate-900 title text */
+  --color-text-secondary: #475569; /* Slate-600 body text */
+  --color-border-subtle: #e2e8f0;  /* Light slate borders */
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+.dark {
+  /* ==========================================
+     SCIENTIFIC DESATURATED ACCESSIBLE DARK THEME
+     - Saturation slightly lower to suppress eye fatigue
+     - Lightness raised to pass WCAG AAA (contrast ratio > 7:1)
+     ========================================== */
+  --color-primary: #34d399;      /* Desaturated Emerald */
+  --color-secondary: #38bdf8;    /* Desaturated Sky/Cyan */
+  --color-accent-violet: #c084fc; /* Desaturated Violet */
+  --color-warning-gold: #fbbf24;  /* Desaturated Amber/Gold */
+  --color-danger-red: #f87171;   /* Desaturated Red / Pastel */
+  
+  --color-bg-base: #0b0f19;      /* Relaxing midnight deep space blue */
+  --color-bg-card: #151f33;      /* Slightly lighter card layout overlay */
+  --color-text-primary: #f1f5f9; /* Eye-safe off-white title */
+  --color-text-secondary: #94a3b8; /* Desaturated muted body text */
+  --color-border-subtle: #1e293b;  /* Dark slate border */
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Color Bindings for Tailwind Utility Classes */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent-violet: var(--color-accent-violet);
+  --color-warning-gold: var(--color-warning-gold);
+  --color-danger-red: var(--color-danger-red);
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-card: var(--color-bg-card);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border-subtle: var(--color-border-subtle);
 }
 
 @layer utilities {
   .animate-fade-in {
     animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  .highlight-underline {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .stroke-draw-underline {
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    animation: drawUnderlineAnimation 3.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .highlight-circle {
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+  }
+  
+  .stroke-draw-circle {
+    stroke-dasharray: 850;
+    stroke-dashoffset: 850;
+    animation: drawCircleAnimation 2.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+}
+
+@keyframes drawUnderlineAnimation {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes drawCircleAnimation {
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -22,5 +107,235 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Universal Support for SVG Dashboard Icons In Dark Mode */
+.dark .feature-icon:not(.no-invert) {
+  filter: invert(0.8) brightness(1.15) !important;
+}
+
+/* ==========================================
+   DESKTOP STYLING (min-width: 769px)
+   ========================================== */
+@media (min-width: 769px) {
+  .feature-card {
+    padding: 12px !important;
+    border-radius: 20px !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background: transparent !important;
+  }
+  
+  .feature-card:hover {
+    background: rgba(241, 245, 249, 0.5) !important;
+  }
+  
+  .dark .feature-card:hover {
+    background: rgba(30, 41, 59, 0.4) !important;
+  }
+
+  .feature-icon-container {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    background: #f1f5f9 !important;
+    border-radius: 18px !important;
+    margin: 0 auto 10px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .dark .feature-icon-container {
+    background: #1e293b !important;
+  }
+
+  .feature-card:hover .feature-icon-container {
+    transform: translateY(-2px) scale(1.04) !important;
+    background: #e2e8f0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .dark .feature-card:hover .feature-icon-container {
+    background: #334155 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .feature-icon {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .feature-label {
+    font-size: 13.5px !important;
+    line-height: 1.4 !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+    color: #475569 !important;
+    padding-top: 4px !important;
+    margin: 0 !important;
+    transition: color 0.15s ease !important;
+  }
+
+  .dark .feature-label {
+    color: #cbd5e1 !important;
+  }
+
+  .feature-card:hover .feature-label {
+    color: #0f172a !important;
+  }
+
+  .dark .feature-card:hover .feature-label {
+    color: #f8fafc !important;
+  }
+}
+
+/* ==========================================
+   MOBILE & TABLET ADAPTIVE FIXES (max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll globally across all main viewport containers */
+  html, body, #root, .animate-fade-in {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Feature Grid Layout - exactly 4 columns on mobile, proper padding & gaps */
+  .feature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Section title and description above the grid proper 16px side padding */
+  .feature-header-section {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+  }
+
+  /* Feature outer deck adaptive spacing */
+  #core-interactive-decks {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-radius: 20px !important;
+    margin-left: 12px !important;
+    margin-right: 12px !important;
+    box-shadow: none !important;
+  }
+
+  /* Consistent heights, widths, and centered styles for each card */
+  .feature-card {
+    width: 100% !important;
+    height: auto !important; /* Allow card height to expand dynamically based on content length */
+    min-height: auto !important; /* No massive minimum height for grid layout */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 2px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.2s ease-in-out !important;
+    box-sizing: border-box !important;
+  }
+  
+  .dark .feature-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Remove internal tile wrapper fixed shapes to let mobile card control sizing */
+  .feature-card-tile {
+    width: 105px !important; /* Cap width for consistency */
+    height: auto !important;
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transform: none !important;
+  }
+
+  /* Centered, at least 48px icon container with a gorgeous squircle background box matching reference screenshot */
+  .feature-icon-container {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    background: #f1f5f9 !important; /* Elegant light slate squircle tray */
+    border-radius: 16px !important;
+    margin: 0 auto 6px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .dark .feature-icon-container {
+    background: #1e293b !important; /* Dark mode elegant squircle tray */
+  }
+
+  /* Ensure the icon image scales completely inside container */
+  .feature-icon {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  /* Readable and centered label below the icon (minimum 10.5px font size for high density) */
+  .feature-label {
+    font-size: 11px !important; /* Compact matching screenshot */
+    line-height: 1.2 !important;
+    font-weight: 800 !important;
+    text-align: center !important;
+    display: block !important;
+    width: 100% !important;
+    color: #475569 !important; /* Soft dark slate color on light mode */
+    padding-top: 2px !important;
+    padding-bottom: 0 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    margin: 0 !important;
+  }
+
+  .dark .feature-label {
+    color: #cbd5e1 !important; /* Bright soft grey in dark mode */
+  }
+
+  /* Ensure touch targets have correct minimum interactive dimensions */
+  button, 
+  .cursor-pointer,
+  .feature-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Text wrapping rules to prevent any text cutting off on small viewports */
+  p, h1, h2, h3, h4, h5, h6, span, strong {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
 }

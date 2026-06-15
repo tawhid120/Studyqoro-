@@ -35,6 +35,7 @@ export interface LeaderboardUser {
   points: number;
   avatarUrl: string;
   streak: number;
+  isSelf?: boolean;
 }
 
 export interface ExamSession {

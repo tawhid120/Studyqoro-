@@ -47,11 +47,11 @@ export default function Footer({ darkMode = false }: FooterProps) {
     { label: "প্রশ্ন ব্যাংক (Question Bank)", link: "#" },
     { label: "১ ক্লিকে মক টেস্ট (1-Tap Mock Test)", link: "#" },
     { label: "দ্রুত প্র্যাকটিস (Fast Practice)", link: "#" },
-    { label: "রিয়েল-টাইম ব্যাটল রুম (Battle Room)", link: "#" },
-    { label: "AI ডাউট সলভ (Chorcha AI Solver)", link: "#" },
+    { label: "রিয়েল-টাইম ওয়ার রুম (War Room)", link: "#" },
+    { label: "AI ডাউট সলভ (AI Solver)", link: "#" },
     { label: "দেশসেরা লিডারবোর্ড (Leaderboard)", link: "#" },
     { label: "মিস্টেক ভল্ট (Mistake Vault)", link: "#" },
-    { label: "নামাজী ট্র্যাকার ওয়াচগার্ড (Daily Tracker)", link: "#" }
+    { label: "দৈনিক স্টাডি ট্র্যাকার ওয়াচগার্ড (Daily Tracker)", link: "#" }
   ];
 
   const companyPolicies = [
@@ -77,7 +77,7 @@ export default function Footer({ darkMode = false }: FooterProps) {
             </div>
             <div>
               <h4 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider flex items-center gap-1.5">
-                Chorcha AI / Study Qoro <span className="px-1.5 py-0.5 text-[9px] font-black rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">PRO</span>
+                Study Qoro <span className="px-1.5 py-0.5 text-[9px] font-black rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">PRO</span>
               </h4>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">এইচএসসি ও এডমিশন কারিকুলাম ভিত্তিক বাংলাদেশের সবচেয়ে আকর্ষণীয় ও আধুনিক ইন্টারেক্টিভ পোর্টাল</p>
             </div>
@@ -111,11 +111,11 @@ export default function Footer({ darkMode = false }: FooterProps) {
           <div className="lg:col-span-4 space-y-6 text-left">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-400 flex items-center justify-center text-slate-950 shadow-md">
-                <span className="text-lg font-black font-sans">Q</span>
+                <span className="text-lg font-black font-sans">S</span>
               </div>
               <div>
                 <h3 className="text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase flex items-center gap-1.5 font-sans">
-                  Study Qoro <span className="text-emerald-500">AI</span>
+                  study <span className="text-emerald-500">qoro</span>
                 </h3>
                 <p className="text-[10px] text-emerald-600 dark:text-emerald-400 font-black uppercase tracking-widest leading-none mt-0.5">চর্চা ও গ্যামিফাইড প্র্যাকটিস</p>
               </div>
@@ -177,12 +177,12 @@ export default function Footer({ darkMode = false }: FooterProps) {
               </div>
             </div>
 
-            {/* Verification badging / halal-certified branding */}
+            {/* Verification badging */}
             <div className="flex items-center gap-2.5 bg-slate-50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800/80 p-3.5 rounded-2xl w-fit">
               <BadgeCheck className="w-5 h-5 text-emerald-500 shrink-0" />
               <div className="text-[10px] leading-relaxed">
-                <div className="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-widest text-[9px]">Sovereign Safety & Islamic values</div>
-                <div className="text-slate-500 dark:text-slate-400 font-bold">🕌 ১০০% কুরাআনিক বরকতপূর্ণ ও অ্যাড-ফ্রি লার্নিং সেবা।</div>
+                <div className="font-extrabold text-slate-800 dark:text-slate-200 uppercase tracking-widest text-[9px]">Sovereign Safety & Ad-Free Learning</div>
+                <div className="text-slate-500 dark:text-slate-400 font-bold">🎓 ১০০% বিজ্ঞাপন-মুক্ত এবং নিরাপদ অনন্য লার্নিং সেবা।</div>
               </div>
             </div>
 
@@ -302,7 +302,7 @@ export default function Footer({ darkMode = false }: FooterProps) {
       <div className="border-t border-slate-100 dark:border-slate-850 bg-slate-50 dark:bg-slate-950/40 py-6 px-4">
         <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-500 dark:text-slate-400">
           <p className="text-left">
-            স্বত্ব © ২০২৬ দাঁড়িয়েকমা ও চর্চা লিঃ কর্তৃক সর্বস্বত্ব সংরক্ষিত l © {new Date().getFullYear()} Study Qoro AI. All rights reserved.
+            স্বত্ব © ২০২৬ দাঁড়িয়েকমা ও Study Qoro কর্তৃক সর্বস্বত্ব সংরক্ষিত l © {new Date().getFullYear()} Study Qoro. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-[11px] sm:text-xs">
             <a href="#" className="hover:text-emerald-500 transition-colors">শর্তাবলী ও নিয়মাবলি</a>

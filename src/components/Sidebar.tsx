@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, X } from "lucide-react";
 import { StudentStats } from "../types";
 
 interface SidebarProps {
@@ -15,24 +15,11 @@ interface SidebarProps {
   onOpenAuth: () => void;
   darkMode: boolean;
   setDarkMode: (value: boolean) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
 // ----------------- HIGH-FIDELITY CUSTOM SVG ICONS -----------------
-
-function BrandLogo({ isCollapsed }: { isCollapsed: boolean }) {
-  return (
-    <div className="flex items-center gap-2 select-none shrink-0 cursor-pointer">
-      <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-white font-black text-lg shadow-sm">
-        Q
-      </div>
-      {!isCollapsed && (
-        <span className="font-extrabold text-sm sm:text-base tracking-tight text-slate-900 dark:text-slate-100">
-          Study <span className="text-emerald-600 dark:text-emerald-400">Qoro</span>
-        </span>
-      )}
-    </div>
-  );
-}
 
 function HomeIcon({ className }: { className?: string }) {
   return (
@@ -107,7 +94,18 @@ function ProgressGaugeIcon({ className }: { className?: string }) {
   );
 }
 
-function BattleIcon({ className }: { className?: string }) {
+function SyllabusIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z" />
+      <path d="m9 6 6-1" />
+      <path d="M9 10h6" />
+      <path d="M9 14h6" />
+    </svg>
+  );
+}
+
+function WarIcon({ className }: { className?: string }) {
   return (
     <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
       <path d="M14.5 17.5 3 6V3h3l11.5 11.5" />
@@ -128,6 +126,128 @@ function DatabaseIcon({ className }: { className?: string }) {
   );
 }
 
+function BookOpenIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  );
+}
+
+// ----------------- TEACHER SUB-MODULE SVG ICONS -----------------
+
+function TripleGearsIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Large Gear Bottom Left */}
+      <path d="M6 14a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z" />
+      <path d="M6 11.5v1M6 21v1M3.5 16.5h1M7.5 16.5h1" strokeWidth="1.8" />
+      
+      {/* Medium Gear Top Left */}
+      <path d="M11 6a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" strokeWidth="1.8" />
+      <path d="M11 3.5v1M11 11.5v1M8.5 8h1M12.5 8h1" strokeWidth="1.8" />
+
+      {/* Small Gear Right */}
+      <path d="M17 11.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" strokeWidth="1.6" />
+      <path d="M17 9.5v1M17 15.5v1M15 13h1M18 13h1" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
+function QuestionPencilIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
+      {/* Rounded question mark container */}
+      <path d="M12 2a8 8 0 1 0 4.5 14.6" />
+      {/* Question mark glyph */}
+      <path d="M10 8.5a1.8 1.8 0 0 1 3.2 1.1c0 1.1-1 1.7-1.7 2.2" />
+      <circle cx="11.5" cy="15" r="0.8" fill="currentColor" />
+      {/* Pencil at bottom-right */}
+      <path d="M14.5 20.5l6-6-2-2-6 6v2z" />
+      <path d="M16.5 14.5l2 2" />
+    </svg>
+  );
+}
+
+function SheetIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+      <polyline points="14 2 14 8 20 8" />
+    </svg>
+  );
+}
+
+function LightbulbIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
+      {/* Lightbulb glass outline */}
+      <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .5 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+      {/* Socket lines */}
+      <path d="M9 18h6" />
+      <path d="M10 22h4" />
+      {/* Light rays */}
+      <line x1="12" y1="2" x2="12" y2="3" />
+      <line x1="3" y1="8" x2="4" y2="8" />
+      <line x1="20" y1="8" x2="21" y2="8" />
+      <line x1="5.6" y1="13.1" x2="6.3" y2="12.4" />
+      <line x1="17.7" y1="12.4" x2="18.4" y2="13.1" />
+      <line x1="17.7" y1="3.6" x2="17" y2="4.3" />
+      <line x1="6.3" y1="4.3" x2="5.6" y2="3.6" />
+    </svg>
+  );
+}
+
+function OnlineExamIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Laptop Screen */}
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      {/* Laptop Stand / Base */}
+      <path d="M2 20h20M7 16l-1 4M17 16l1 4" />
+      {/* Profile Card Inside Screen */}
+      <circle cx="8" cy="9" r="1.8" />
+      <path d="M5.5 13a2.5 2.5 0 0 1 5 0" />
+      {/* Details layout lines */}
+      <line x1="14" y1="8" x2="18" y2="8" strokeWidth="1.6" />
+      <line x1="14" y1="11" x2="17" y2="11" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
+function OmrCheckerIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      {/* Main OMR Calculator frame */}
+      <rect x="4" y="2" width="14" height="20" rx="2" />
+      {/* Top display screen */}
+      <rect x="7" y="5" width="8" height="3" rx="0.5" strokeWidth="1.6" />
+      {/* Bubble circle grid rows */}
+      <circle cx="8" cy="11.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="11" cy="11.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="11.5" r="1" fill="currentColor" stroke="none" />
+      
+      <circle cx="8" cy="15" r="1" fill="currentColor" stroke="none" />
+      <circle cx="11" cy="15" r="1" fill="currentColor" stroke="none" />
+      
+      {/* Check Badge on Bottom Right */}
+      <circle cx="17" cy="18" r="4.5" fill="white" className="dark:fill-slate-900" stroke="currentColor" strokeWidth="1.6" />
+      {/* Small Checkmark */}
+      <path d="m15.5 18 1 1 2-2.2" strokeWidth="1.6" />
+    </svg>
+  );
+}
+
+function SchoolIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
+    </svg>
+  );
+}
+
 // ----------------- SIDEBAR EXPORT -----------------
 
 export default function Sidebar({ 
@@ -137,7 +257,9 @@ export default function Sidebar({
   onUpgrade, 
   onOpenAuth, 
   darkMode, 
-  setDarkMode 
+  setDarkMode,
+  isOpen,
+  onClose
 }: SidebarProps) {
   
   // Collapse controller for smooth desktop space reclaiming
@@ -198,8 +320,10 @@ export default function Sidebar({
   // Exact menu map matching screenshot from top to bottom
   const menuItems = [
     { id: "dashboard", label: "ড্যাশবোর্ড", icon: HomeIcon },
+    { id: "syllabus", label: "সিলেবাস ট্র্যাকার", icon: SyllabusIcon },
     { id: "questions", label: "প্রশ্নব্যাংক", icon: ArchiveIcon },
-    { id: "battle", label: "Battle Exam", icon: BattleIcon },
+    { id: "battle", label: "Exam War", icon: WarIcon },
+    { id: "materials", label: "স্টাডি ম্যাটেরিয়ালস", icon: BookOpenIcon },
     { id: "timer", label: "দ্রুত প্র্যাকটিস", icon: InfinityIcon },
     { id: "mocks", label: "মক পরীক্ষা", icon: EditPaperIcon },
     { id: "ai", label: "Study Qoro AI", icon: SparklesIcon },
@@ -208,105 +332,130 @@ export default function Sidebar({
     { id: "progress", label: "প্রোগ্রেস", icon: ProgressGaugeIcon },
   ];
 
+  const teacherItem = { id: "teacher", label: "টিচার কর্নার", icon: SchoolIcon };
+
   return (
-    <aside 
-      id="app-sidebar" 
-      className={`bg-white dark:bg-slate-900 border-r border-slate-150 dark:border-slate-800 text-slate-800 dark:text-slate-100 flex flex-col h-screen sticky top-0 shrink-0 select-none transition-all duration-300 ${asideClass} ${asidePadding}`}
-    >
-      
-      {/* 1. Header Toolbar matches the screenshot exactly */}
-      <div className={`flex items-center justify-between border-b border-slate-100 dark:border-slate-800/60 ${headerMargin} ${
-        isCollapsed ? "flex-col gap-3 align-middle" : "flex-row"
-      }`}>
-        
-        {/* Playful brand custom glyph letter logo with dynamic scaling */}
-        <div className={`transition-all duration-200 ${isCompactViewport && !isCollapsed ? "scale-90 origin-left" : ""}`}>
-          <BrandLogo isCollapsed={isCollapsed} />
-        </div>
-
-        {/* Sliding Dual Sun/Moon Slider pill perfectly styled */}
-        {!isCollapsed && (
-          <div 
-            onClick={() => setDarkMode(!darkMode)}
-            className="flex bg-slate-100 dark:bg-slate-800 p-0.5 rounded-full items-center gap-0.5 cursor-pointer select-none border border-slate-200/40 dark:border-slate-700/50 hover:brightness-98 active:scale-95 transition-all text-[11px]"
-            title="থিম পরিবর্তন করুন (Light/Dark Switcher)"
-          >
-            <div className={`p-1 rounded-full transition-all duration-200 ${!darkMode ? "bg-white text-amber-500 shadow-sm" : "text-slate-400 dark:text-slate-500"}`}>
-              <Sun className="w-3 h-3" />
-            </div>
-            <div className={`p-1 rounded-full transition-all duration-200 ${darkMode ? "bg-slate-700 text-yellow-400 shadow-sm" : "text-slate-400 dark:text-slate-500"}`}>
-              <Moon className="w-3 h-3" />
-            </div>
-          </div>
-        )}
-
-        {/* Dynamic Column Split/Collapse Layout trigger */}
-        <button 
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1 hover:bg-slate-100 dark:hover:bg-slate-800/60 text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 rounded-xl transition-all active:scale-95 border border-transparent hover:border-slate-200/50 dark:hover:border-slate-700/50"
-          title={isCollapsed ? "মেনু প্রসারিত করুন" : "মেনু সংকুচিত করুন"}
-        >
-          <svg 
-            width="15" 
-            height="15" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2.3" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-            className="text-slate-450 dark:text-slate-500"
-          >
-            <rect width="18" height="18" x="3" y="3" rx="2" />
-            <path d="M15 3v18" />
-          </svg>
-        </button>
-      </div>
-
-      {/* 2. Navigation items matching the photo perfectly */}
-      <nav className="flex-1 space-y-0.5 overflow-y-auto scrollbar-none py-1">
-        {menuItems.map((item) => {
-          const Icon = item.icon;
-          const isActive = activeTab === item.id;
-          
-          return (
-            <button
-              key={item.id}
-              onClick={() => setActiveTab(item.id)}
-              className={`w-full flex items-center rounded-xl text-left font-semibold transition-all duration-150 select-none group relative ${itemPadding} ${
-                isActive 
-                  ? "bg-[#ecf6f3] dark:bg-emerald-950/20 text-[#059669] dark:text-emerald-400 font-bold shadow-sm" 
-                  : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/40 hover:text-slate-800 dark:hover:text-slate-200"
-              }`}
-              title={item.label}
-            >
-              {/* Highlight bar for active items when collapsed */}
-              {isActive && isCollapsed && (
-                <div className="absolute left-0 top-2 bottom-2 w-1 bg-emerald-500 rounded-r-md" />
-              )}
-
-              <Icon className={`shrink-0 transition-all ${iconDimension} ${
-                isActive 
-                  ? "text-[#059669] dark:text-emerald-400 drop-shadow-sm scale-[1.03]" 
-                  : "text-slate-400 dark:text-slate-500 group-hover:scale-105 group-hover:text-slate-500 dark:group-hover:text-slate-450"
-              }`} />
-              
-              {!isCollapsed && (
-                <span className="tracking-wide">{item.label}</span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
-
-      {/* 3. Small Clean brand endorsement at footer */}
-      {!isCollapsed && (
-        <div className={`border-t border-slate-50 dark:border-slate-800/40 text-center text-[10px] text-slate-400 select-none ${isCompactViewport ? "py-2" : "py-4"}`}>
-          <span className="font-bold text-emerald-600 dark:text-emerald-500/80">Study Qoro</span>
-          <span className="opacity-70"> v1.2</span>
-        </div>
+    <>
+      {/* Backdrop for Mobile Drawer */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-950/50 backdrop-blur-[2px] z-45 lg:hidden transition-opacity duration-300"
+          onClick={onClose}
+        />
       )}
 
-    </aside>
+      <aside 
+        id="app-sidebar" 
+        className={`bg-white dark:bg-slate-900 border-r border-[#eaeaea] dark:border-slate-800 text-slate-800 dark:text-slate-100 flex flex-col h-screen sticky top-0 shrink-0 select-none transition-all duration-300 z-50 
+          lg:flex 
+          ${isOpen ? "fixed inset-y-0 left-0 flex shadow-2xl" : "hidden lg:flex"} 
+          ${asideClass} ${asidePadding}`}
+      >
+        
+        {/* Sleek circular floating toggle button sitting on the right edge/border, aligned vertically with Dashboard */}
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="hidden lg:flex absolute top-[26px] -right-3.5 z-40 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full w-7 h-7 items-center justify-center text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 hover:scale-105 active:scale-95 transition-all shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_2px_8px_rgba(0,0,0,0.3)] cursor-pointer"
+          title={isCollapsed ? "মেনু প্রসারিত করুন" : "মেনু সংকুচিত করুন"}
+        >
+          {isCollapsed ? (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          ) : (
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          )}
+        </button>
+
+        {/* Mobile close button inside mobile drawer */}
+        {isOpen && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-slate-450 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 lg:hidden cursor-pointer z-50 min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+            title="মেনু বন্ধ করুন"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
+
+        {/* 2. Navigation items matching the photo perfectly */}
+        <nav className="flex-grow space-y-0.5 overflow-y-auto scrollbar-none pt-14 lg:pt-5 pb-6">
+          {menuItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeTab === item.id;
+            
+            return (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActiveTab(item.id);
+                  if (onClose) onClose();
+                }}
+                className={`w-full flex items-center rounded-xl text-left font-semibold transition-all duration-150 select-none group relative ${itemPadding} ${
+                  isActive 
+                    ? "bg-[#ecf6f3] dark:bg-emerald-950/20 text-[#059669] dark:text-emerald-400 font-bold shadow-sm" 
+                    : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/40 hover:text-slate-800 dark:hover:text-slate-200"
+                }`}
+                title={item.label}
+              >
+                {/* Highlight bar for active items when collapsed */}
+                {isActive && isCollapsed && (
+                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-emerald-500 rounded-r-md" />
+                )}
+
+                <Icon className={`shrink-0 transition-all ${iconDimension} ${
+                  isActive 
+                    ? "text-[#059669] dark:text-emerald-400 drop-shadow-sm scale-[1.03]" 
+                    : "text-slate-400 dark:text-slate-500 group-hover:scale-105 group-hover:text-slate-500 dark:group-hover:text-slate-450"
+                }`} />
+                
+                {(!isCollapsed || isOpen) && (
+                  <span className="tracking-wide">{item.label}</span>
+                )}
+              </button>
+            );
+          })}
+
+          {(() => {
+            const Icon = teacherItem.icon;
+            const isActive = activeTab === "teacher" || activeTab.startsWith("teacher_");
+            
+            return (
+              <button
+                key={teacherItem.id}
+                onClick={() => {
+                  setActiveTab(teacherItem.id);
+                  if (onClose) onClose();
+                }}
+                className={`w-full flex items-center rounded-xl text-left font-semibold transition-all duration-150 select-none group relative ${itemPadding} ${
+                  isActive 
+                    ? "bg-[#ecf6f3] dark:bg-emerald-950/20 text-[#059669] dark:text-emerald-400 font-bold shadow-sm" 
+                    : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/40 hover:text-slate-800 dark:hover:text-slate-200"
+                }`}
+                title={teacherItem.label}
+              >
+                {/* Highlight bar for active items when collapsed */}
+                {isActive && isCollapsed && (
+                  <div className="absolute left-0 top-2 bottom-2 w-1 bg-emerald-500 rounded-r-md" />
+                )}
+
+                <Icon className={`shrink-0 transition-all ${iconDimension} ${
+                  isActive 
+                    ? "text-[#059669] dark:text-emerald-400 drop-shadow-sm scale-[1.03]" 
+                    : "text-slate-400 dark:text-slate-500 group-hover:scale-105 group-hover:text-slate-500 dark:group-hover:text-slate-450"
+                }`} />
+                
+                {(!isCollapsed || isOpen) && (
+                  <span className="tracking-wide">{teacherItem.label}</span>
+                )}
+              </button>
+            );
+          })()}
+        </nav>
+
+      </aside>
+    </>
   );
 }

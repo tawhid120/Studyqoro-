@@ -21,13 +21,13 @@ const SUBJECT_CHAPTERS: { [sub: string]: string[] } = {
   "উচ্চতর অনুকূল": ["সব", "যেকোনো অধ্যায়"]
 };
 
-interface BattleExamProps {
+interface ExamWarProps {
   stats: StudentStats;
   setStats: Dispatch<SetStateAction<StudentStats>>;
   questions?: Question[];
 }
 
-interface BattleRoom {
+interface WarRoom {
   id: string;
   subject: string;
   chapter: string;
@@ -51,7 +51,7 @@ interface BattleRoom {
   createdAt: number;
 }
 
-export default function BattleExam({ stats, setStats, questions }: BattleExamProps) {
+export default function ExamWar({ stats, setStats, questions }: ExamWarProps) {
   const [myUserId] = useState<string>(() => {
     let savedId = localStorage.getItem("study_qoro_user_id");
     if (!savedId) {
@@ -61,15 +61,15 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     return savedId;
   });
 
-  // Navigation tabs of battle page: "Live Feed" vs "My Battles"
+  // Navigation tabs of war page: "Live Feed" vs "My Wars"
   const [activeSubTab, setActiveSubTab] = useState<"feed" | "my">("feed");
   
   // Game states: "lobby" (screen feed) | "inside-room" (waiting/ready) | "playing" (active MCQ) | "waiting-results" (for opponents) | "results" (victory/defeat)
   const [gameState, setGameState] = useState<"lobby" | "inside-room" | "playing" | "waiting-results" | "results">("lobby");
   
-  // Active selected or joined battle room details
-  const [joinedRoom, setJoinedRoom] = useState<BattleRoom | null>(null);
-  const [rooms, setRooms] = useState<BattleRoom[]>([]);
+  // Active selected or joined war room details
+  const [joinedRoom, setJoinedRoom] = useState<WarRoom | null>(null);
+  const [rooms, setRooms] = useState<WarRoom[]>([]);
   const [loading, setLoading] = useState(false);
 
   // Active playing states
@@ -103,7 +103,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
   const handleCopyCode = async () => {
     if (!joinedRoom) return;
     try {
-      await navigator.clipboard.writeText(`BTL-${joinedRoom.id.toUpperCase()}`);
+      await navigator.clipboard.writeText(`WAR-${joinedRoom.id.toUpperCase()}`);
       setCopiedCode(true);
       setTimeout(() => setCopiedCode(false), 2000);
     } catch (err) {
@@ -114,7 +114,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
   const handleCopyLink = async () => {
     if (!joinedRoom) return;
     try {
-      const shareUrl = `${window.location.origin}/battle?room=${joinedRoom.id}`;
+      const shareUrl = `${window.location.origin}/war?room=${joinedRoom.id}`;
       await navigator.clipboard.writeText(shareUrl);
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2000);
@@ -135,17 +135,17 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     }
   }, [gameState, showCreateDialog, showJoinDialog]);
 
-  // Fetch battle rooms on mount and periodically
+  // Fetch war rooms on mount and periodically
   const fetchRooms = async () => {
     try {
-      const res = await fetch("/api/db/battles");
+      const res = await fetch("/api/db/wars");
       if (!res.ok) throw new Error("সংযোগে ব্যর্থতা!");
       const data = await res.json();
       if (data.battles) {
         setRooms(data.battles);
         // Sync active joined room details if still playing
         if (joinedRoom) {
-          const fresh = data.battles.find((b: BattleRoom) => b.id === joinedRoom.id);
+          const fresh = data.battles.find((b: WarRoom) => b.id === joinedRoom.id);
           if (fresh) {
             setJoinedRoom(fresh);
           }
@@ -166,7 +166,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
   // Handle automatic deep-link URL rooms joining on mount
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    const roomFromUrl = urlParams.get("room") || urlParams.get("battle");
+    const roomFromUrl = urlParams.get("room") || urlParams.get("war") || urlParams.get("battle");
     if (roomFromUrl) {
       handleJoinRoom(roomFromUrl);
       // cleaner URL rewrite helper
@@ -189,7 +189,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     };
   }, [showCreateDialog, showJoinDialog]);
 
-  // Create battle helper
+  // Create war helper
   const handleCreateRoom = async (e: React.FormEvent) => {
     if (e) e.preventDefault();
     setLoading(true);
@@ -217,7 +217,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
         ]
       };
 
-      const res = await fetch("/api/db/battles", {
+      const res = await fetch("/api/db/wars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -231,13 +231,13 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
         fetchRooms();
       }
     } catch (err) {
-      alert("ব্যাটেল তৈরি সম্পন্ন করা যায়নি।");
+      alert("এক্সাম ওয়ার রুম তৈরি সম্পন্ন করা যায়নি।");
     } finally {
       setLoading(false);
     }
   };
 
-  // Join battle helper
+  // Join war helper
   const handleJoinRoom = async (roomId: string) => {
     setLoading(true);
     try {
@@ -247,7 +247,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
         avatarInitials: stats.name[0] || "P"
       };
 
-      const res = await fetch(`/api/db/battles/${roomId}/join`, {
+      const res = await fetch(`/api/db/wars/${roomId}/join`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ player: playerPayload })
@@ -272,8 +272,8 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     }
   };
 
-  // Resume or join battle room helper
-  const handleResumeOrJoinRoom = async (room: BattleRoom) => {
+  // Resume or join war room helper
+  const handleResumeOrJoinRoom = async (room: WarRoom) => {
     // Check if current user is already a participant
     const me = (room.players || []).find(p => p && p.id === myUserId);
     if (me) {
@@ -304,8 +304,8 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     }
   };
 
-  // Pre-start battle match
-  const handleStartPreMatch = (room: BattleRoom) => {
+  // Pre-start war match
+  const handleStartPreMatch = (room: WarRoom) => {
     setGameState("playing");
     setCurrentQIdx(0);
     setPlayerScore(0);
@@ -321,12 +321,12 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     }
   }, [joinedRoom, gameState]);
 
-  // Listen for battle room completion while player is in WAITING-RESULTS state
+  // Listen for war room completion while player is in WAITING-RESULTS state
   const statsAppliedRef = useRef<string | null>(null);
 
   useEffect(() => {
     if (gameState === "waiting-results" && joinedRoom && joinedRoom.status === "completed") {
-      // Avoid awarding points multiple times for the same battle room
+      // Avoid awarding points multiple times for the same war room
       if (statsAppliedRef.current !== joinedRoom.id) {
         statsAppliedRef.current = joinedRoom.id;
 
@@ -358,12 +358,12 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     }
   }, [joinedRoom, gameState, playerScore, myUserId, setStats]);
 
-  // Command-host trigger to start the battle room manually
+  // Command-host trigger to start the war room manually
   const handleStartMatchServer = async () => {
     if (!joinedRoom) return;
     setLoading(true);
     try {
-      const res = await fetch(`/api/db/battles/${joinedRoom.id}/start`, {
+      const res = await fetch(`/api/db/wars/${joinedRoom.id}/start`, {
         method: "POST"
       });
       if (!res.ok) {
@@ -423,7 +423,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
 
     // Sync live score immediately to server database
     try {
-      await fetch(`/api/db/battles/${joinedRoom.id}/update-score`, {
+      await fetch(`/api/db/wars/${joinedRoom.id}/update-score`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -453,7 +453,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
     if (joinedRoom) {
       try {
         // submit score
-        const res = await fetch(`/api/db/battles/${joinedRoom.id}/submit`, {
+        const res = await fetch(`/api/db/wars/${joinedRoom.id}/submit`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -490,7 +490,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
   const handleRestartDatabaseRooms = async () => {
     setLoading(true);
     try {
-      await fetch("/api/db/battles/reset", { method: "POST" });
+      await fetch("/api/db/wars/reset", { method: "POST" });
       fetchRooms();
     } catch (e) {
       console.error(e);
@@ -518,13 +518,13 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                     <div className="w-10 h-10 rounded-xl bg-pink-50 dark:bg-pink-950/40 text-pink-500 flex items-center justify-center border border-pink-100 dark:border-pink-900/60 shadow-sm">
                       <Swords className="w-5.5 h-5.5 text-pink-500 shrink-0" />
                     </div>
-                    <h2 className="text-xl md:text-2xl font-black text-slate-800 dark:text-slate-100 tracking-tight">Battle Exam</h2>
+                    <h2 className="text-xl md:text-2xl font-black text-slate-800 dark:text-slate-100 tracking-tight">Exam War</h2>
                   </div>
-                  <p className="text-slate-500 text-xs font-semibold">বন্ধুদের সাথে MCQ battle করো!</p>
+                  <p className="text-slate-500 text-xs font-semibold">বন্ধুদের সাথে MCQ war করো!</p>
                 </div>
                 
                 {/* Simulated Red Live Pulse Badge */}
-                <span className="flex items-center gap-1.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 text-red-500 dark:text-red-400 font-extrabold text-[10px] px-3.5 py-1.5 rounded-full uppercase tracking-wider animate-pulse shadow-sm">
+                <span className="flex items-center gap-1.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900/50 text-red-500 dark:text-red-400 font-extrabold text-[10px] px-3.5 py-1.5 rounded-full uppercase tracking-wider animate-pulse shadow-sm relative">
                   <span className="w-2 h-2 rounded-full bg-red-500 inline-block shrink-0" />
                   LIVE
                 </span>
@@ -533,13 +533,13 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
               {/* Action columns row - Pink (Create) vs Blue (Join) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
                 
-                {/* Create/New battle box (pink theme) */}
+                {/* Create/New war box (pink theme) */}
                 <div 
                   onClick={() => setShowCreateDialog(true)}
                   className="bg-pink-50/40 dark:bg-pink-950/10 hover:bg-pink-50 dark:hover:bg-pink-950/20 border border-pink-100/60 dark:border-pink-900/30 p-5 rounded-2xl cursor-pointer transition-all duration-200 text-center active:scale-[0.98] group hover:border-pink-400/40"
                 >
-                  <h3 className="text-sm font-bold text-slate-850 dark:text-slate-200 group-hover:text-pink-600 transition-colors">নতুন Battle</h3>
-                  <p className="text-[10px] text-slate-400 mt-1">battle তৈরি করো</p>
+                  <h3 className="text-sm font-bold text-slate-850 dark:text-slate-200 group-hover:text-pink-600 transition-colors">নতুন War</h3>
+                  <p className="text-[10px] text-slate-400 mt-1">war তৈরি করো</p>
                 </div>
 
                 {/* Join code box (blue theme) */}
@@ -575,7 +575,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                     : "text-slate-500 dark:text-slate-400 hover:text-slate-850 dark:hover:text-slate-200"
                 }`}
               >
-                My Battles
+                My Wars
               </button>
             </div>
 
@@ -586,7 +586,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                   <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl p-12 text-center">
                     <User className="w-10 h-10 text-slate-300 mx-auto mb-3" />
                     <h3 className="text-sm font-bold text-slate-700 dark:text-slate-300">কোনো সক্রিয় কুইজ লড়াই খালি নেই</h3>
-                    <p className="text-[10px] text-slate-400 mt-1 max-w-sm mx-auto">বর্তমানে কোনো স্টুডেন্ট পরীক্ষা শুরু করেনি। আপনি চাইলে উপরের "নতুন Battle" বক্সে ক্লিক করে প্রথম লড়াই সেশন শুরু করতে পারেন!</p>
+                    <p className="text-[10px] text-slate-400 mt-1 max-w-sm mx-auto">বর্তমানে কোনো স্টুডেন্ট পরীক্ষা শুরু করেনি। আপনি চাইলে উপরের "নতুন War" বক্সে ক্লিক করে প্রথম লড়াই সেশন শুরু করতে পারেন!</p>
                   </div>
                 ) : (
                   rooms.filter(r => r && r.status !== "completed").map((room) => {
@@ -611,7 +611,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                           </div>
 
                           <p className="text-slate-500 font-medium text-xs">
-                            {room.totalQuestions} প্রশ্ন • {room.secondsPerQuestion}s/প্রশ্ন • {room.players.length}/{room.maxPlayers} জন
+                             {room.totalQuestions} প্রশ্ন • {room.secondsPerQuestion}s/প্রশ্ন • {room.players.length}/{room.maxPlayers} জন
                           </p>
 
                           {/* Joined participants row details matching user's image layout */}
@@ -619,31 +619,31 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                             {room.players.map((plr, iIdx) => (
                               <div 
                                 key={plr.id || iIdx}
-                                className="flex items-center gap-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-850 px-4 py-2.5 rounded-xl text-xs"
+                                className="flex items-center gap-3 bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-855 px-4 py-2.5 rounded-xl text-xs"
                               >
                                 <span className="w-6 h-6 rounded-lg bg-emerald-100 dark:bg-emerald-950/30 text-[#059669] font-bold flex items-center justify-center text-xs">
                                   {plr.avatarInitials}
                                 </span>
                                 <p className="text-slate-600 dark:text-slate-300 font-medium font-bengali">
-                                  <strong className="text-slate-800 dark:text-slate-150 font-bold">{plr.name}</strong> battle দিচ্ছে
+                                  <strong className="text-slate-800 dark:text-slate-150 font-bold">{plr.name}</strong> war দিচ্ছে
                                 </p>
                               </div>
                             ))}
                           </div>
                         </div>
 
-                        {/* Wide Join Battle Footer button precisely matches screenshot */}
+                        {/* Wide Join War Footer button precisely matches screenshot */}
                         <button
                           onClick={() => handleResumeOrJoinRoom(room)}
                           disabled={isClosed}
                           className={`w-full py-3.5 ${
                             isClosed 
-                              ? "bg-slate-100 dark:bg-slate-800 text-slate-400 cursor-not-allowed font-medium" 
+                              ? "bg-slate-100 dark:bg-slate-850 text-slate-400 cursor-not-allowed font-medium" 
                               : "bg-slate-950 dark:bg-slate-800 hover:bg-slate-900 text-white font-extrabold active:scale-[0.99]"
                           } text-xs tracking-wide transition-all border-t border-slate-100 dark:border-slate-855 flex items-center justify-center gap-2`}
                         >
                           <Swords className="w-3.5 h-3.5" />
-                          Join Battle
+                          Join War
                         </button>
                       </div>
                     );
@@ -654,7 +654,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
               <div className="space-y-4">
                 {rooms.filter(r => r && r.players && r.players.some(p => p && p.id === myUserId)).length === 0 ? (
                   <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl p-10 text-center text-xs text-slate-400">
-                    <p className="font-bengali">আপনি এখনো কুইজ ব্যাটেলে অংশ নেননি।</p>
+                    <p className="font-bengali">আপনি এখনো কুইজ ওয়ারে অংশ নেননি।</p>
                     <button
                       onClick={() => setActiveSubTab("feed")}
                       className="mt-4 px-4 py-2 bg-[#ecf6f3] text-[#059669] hover:bg-emerald-100 transition-all rounded-xl font-bold font-bengali"
@@ -706,11 +706,11 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                                   plr.id === myUserId
                                     ? "bg-indigo-100 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400"
                                     : "bg-emerald-100 dark:bg-emerald-950/30 text-[#059669]"
-                                }`}>
+                                }}`}>
                                   {plr.avatarInitials}
                                 </span>
                                 <p className="text-slate-600 dark:text-slate-300 font-medium font-bengali">
-                                  <strong className="text-slate-800 dark:text-slate-150 font-bold">{plr.name}</strong> {plr.id === myUserId ? " (আপনি)" : "battle দিচ্ছে"}
+                                  <strong className="text-slate-800 dark:text-slate-150 font-bold">{plr.name}</strong> {plr.id === myUserId ? " (আপনি)" : "war দিচ্ছে"}
                                 </p>
                               </div>
                             ))}
@@ -726,7 +726,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                           {isCompleted
                             ? "ফলাফল দেখুন (View Results)"
                             : isRunning
-                              ? "লড়াইয়ে ফিরুন (Resume Battle)"
+                              ? "লড়াইয়ে ফিরুন (Resume War)"
                               : "লবিতে প্রবেশ করুন (Enter Lobby)"}
                         </button>
                       </div>
@@ -752,7 +752,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                 <div className="flex gap-4.5 items-start">
                   <span className="w-6 h-6 rounded-lg bg-slate-950 dark:bg-slate-800 text-white text-xs font-black flex items-center justify-center shrink-0">1</span>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-800 dark:text-slate-250">Battle Create করো</h4>
+                    <h4 className="text-xs font-bold text-slate-800 dark:text-slate-250">War Create করো</h4>
                     <p className="text-[10px] text-slate-400 mt-0.5 leading-normal">Subject, mode, questions বেছে নাও</p>
                   </div>
                 </div>
@@ -776,18 +776,17 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                 <div className="flex gap-4.5 items-start">
                   <span className="w-6 h-6 rounded-lg bg-slate-950 dark:bg-slate-800 text-white text-xs font-black flex items-center justify-center shrink-0">4</span>
                   <div>
-                    <h4 className="text-xs font-bold text-slate-800 dark:text-slate-250">Winner হও!</h4>
+                    <h4 className="text-xs font-bold text-[#16a34a] dark:text-emerald-400">Winner হও!</h4>
                     <p className="text-[10px] text-slate-400 mt-0.5 leading-normal">বেশি score = winner 🏆</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Box 2: Battle Types */}
+            {/* Box 2: War Types */}
             <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-3xl shadow-sm overflow-hidden">
               <div className="p-5 border-b border-slate-100 dark:border-slate-850">
                 <h3 className="text-xs uppercase font-extrabold text-slate-400 tracking-wider flex items-center gap-2 select-none">
-                  🎯 BATTLE TYPES
+                  🎯 WAR TYPES
                 </h3>
               </div>
               
@@ -828,7 +827,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
               </button>
               <div>
                 <h2 className="text-xl font-black text-slate-850 dark:text-slate-100 font-bengali">
-                  Battle Lobby
+                  War Lobby
                 </h2>
                 <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
                   Competitive Exam Room
@@ -872,7 +871,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                 <div className="space-y-4 relative z-10">
                   <span className="inline-flex items-center gap-1.5 text-[9.5px] font-extrabold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    BATTLE ROOM
+                    WAR ROOM
                   </span>
                   
                   <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white font-bengali mt-2">
@@ -969,7 +968,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
             {/* Right Column: 4 space width */}
             <div className="lg:col-span-4 space-y-6">
 
-              {/* 1. Battle Code Card */}
+              {/* 1. War Code Card */}
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -978,7 +977,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
               >
                 <div className="flex items-center justify-between">
                   <h4 className="text-xs font-black uppercase text-slate-400 tracking-wider">
-                    Battle Code
+                    War Code
                   </h4>
                   {/* Share badge */}
                   <span className="text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900/40 px-2.5 py-1 rounded-lg">
@@ -987,12 +986,12 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                 </div>
 
                 {/* Simulated Display Input Code */}
-                <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-100 dark:border-slate-850 text-center relative overflow-hidden group">
+                <div className="bg-slate-50 dark:bg-slate-950 p-5 rounded-2xl border border-slate-100 dark:border-slate-855 text-center relative overflow-hidden group">
                   <span className="text-[9px] font-bold text-slate-400 block uppercase tracking-widest mb-1 select-none">
                     CODE
                   </span>
                   <span className="text-2xl font-black font-mono tracking-widest text-slate-850 dark:text-white block pt-1 select-all">
-                    BTL-{joinedRoom.id.toUpperCase()}
+                    WAR-{joinedRoom.id.toUpperCase()}
                   </span>
                 </div>
 
@@ -1131,7 +1130,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                                 players: prev.players.map(p => p.id === myUserId ? { ...p, shout: shoutText } : p)
                               };
                             });
-                            await fetch(`/api/db/battles/${joinedRoom.id}/shout`, {
+                            await fetch(`/api/db/wars/${joinedRoom.id}/shout`, {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
                               body: JSON.stringify({ playerId: myUserId, shout: shoutText })
@@ -1158,7 +1157,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                   className="w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs tracking-wider rounded-2xl transition-all shadow-md flex items-center justify-center gap-2 group cursor-pointer"
                 >
                   <Swords className="w-4 h-4 animate-bounce" />
-                  <span className="font-bengali">Battle শুরু করো →</span>
+                  <span className="font-bengali">War শুরু করো →</span>
                 </motion.button>
               ) : (
                 <div className="space-y-2">
@@ -1413,12 +1412,12 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
             </p>
             <button
               onClick={async () => {
-                if (!window.confirm("আপনি কি নিশ্চিতভাবে এই ব্যাটেল ম্যাচটি এখানেই শেষ করতে চান? এতে বর্তমান স্কোরের ভিত্তিতে ফলাফল প্রকাশিত হবে।")) {
+                if (!window.confirm("আপনি কি নিশ্চিতভাবে এই ওয়ার ম্যাচটি এখানেই শেষ করতে চান? এতে বর্তমান স্কোরের ভিত্তিতে ফলাফল প্রকাশিত হবে।")) {
                   return;
                 }
                 try {
                   setLoading(true);
-                  const res = await fetch(`/api/db/battles/${joinedRoom.id}/force-complete`, {
+                  const res = await fetch(`/api/db/wars/${joinedRoom.id}/force-complete`, {
                     method: "POST"
                   });
                   if (res.ok) {
@@ -1529,7 +1528,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                   </div>
                   <div>
                     <h3 className="text-lg font-black text-slate-900 dark:text-white leading-tight tracking-tight">
-                      নতুন কুইজ ব্যাটেল সেশন
+                      নতুন কুইজ ওয়ার সেশন
                     </h3>
                     <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mt-0.5">
                       CREATE MULTIPLAYER COMBAT ROOM
@@ -1551,7 +1550,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                 <div className="space-y-3 bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800/60 p-4.5 rounded-[22px] shadow-sm">
                   <div className="flex items-center justify-between">
                     <label className="text-[10px] font-extrabold text-slate-400 dark:text-slate-500 uppercase tracking-widest block">
-                      🎮 BATTLE MODE
+                      🎮 WAR MODE
                     </label>
                     <span className="text-[9px] font-bold text-indigo-500 bg-indigo-50 dark:bg-indigo-950/40 px-2 py-0.5 rounded-full">
                       {createMode} mode
@@ -1862,7 +1861,7 @@ export default function BattleExam({ stats, setStats, questions }: BattleExamPro
                   <div className="space-y-2">
                     {[
                       { id: "Friendly", title: "Friendly Combat", desc: "EXP পরিবর্তনের ঝামেলা নেই — সাধারণ প্র্যাকটিস লড়াই", colorClass: "text-[#059669]", icon: Sparkle },
-                      { id: "Ranked", title: "Ranked Battle", desc: "বিজয়ী পাবেন +৪০ EXP ও একটি কুইজ ট্রফি!", colorClass: "text-indigo-500", icon: Trophy },
+                      { id: "Ranked", title: "Ranked War", desc: "বিজয়ী পাবেন +৪০ EXP ও একটি কুইজ ট্রফি!", colorClass: "text-indigo-500", icon: Trophy },
                       { id: "High Stakes", title: "High Stakes Double EXP", desc: "ডাবল জয় নিশ্চিত করতে ২ গুন্ EXP রিওয়ার্ড!", colorClass: "text-rose-500", icon: Crown }
                     ].map((stake) => {
                       const isSelected = createStakes === stake.id;

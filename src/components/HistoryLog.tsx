@@ -85,7 +85,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
       {
         id: "ev-2",
         type: "prayer",
-        title: "ফজর স্টাডি সেশন ও ইবাদত",
+        title: "ভোরবেলা স্টাডি সেশন সমাপ্ত",
         subtitle: "English ও সাধারণ জ্ঞান মুখস্থ করা সম্পন্ন।",
         timestamp: "আজ, ৫:৩০ AM",
         xp: 15
@@ -118,7 +118,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
       {
         id: "ev-6",
         type: "prayer",
-        title: "মাগরিব স্টাডি সেশন ও নামাজ",
+        title: "সন্ধ্যা স্টাডি সেশন সমাপ্ত",
         subtitle: "বাঙালি উপন্যাস রিভিশন ও শর্ট সাজেশন বিশ্লেষণ সম্পন্ন।",
         timestamp: "২ দিন আগে",
         xp: 20
@@ -131,8 +131,8 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
         {
           id: "ev-guest-1",
           type: "prayer",
-          title: "ফজর স্টাডি সেশন সমাপ্ত",
-          subtitle: "স্টাডি নামাজ সেশনের বোনাস এক্সপি ড্যাশবোর্ডে যোগ করা হয়েছে।",
+          title: "ভোরবেলা স্টাডি সেশন সমাপ্ত",
+          subtitle: "স্টাডি সেশনের বোনাস এক্সপি ড্যাশবোর্ডে যোগ করা হয়েছে।",
           timestamp: "আজ, ভোর ৫:৪৫ AM",
           xp: 15
         }
@@ -248,7 +248,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-            পড়াশোনা ও ইবাদত হিস্ট্রি 📈
+            পড়াশোনা ও কার্যক্রমের হিস্ট্রি 📈
           </h2>
           <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">
             তোমার বিগত ৩০ দিনের বিশ্লেষণ ড্যাশবোর্ড, মক টেস্ট স্কোর ট্রেন্ড এবং অ্যাক্টিভিটি হিস্ট্রি।
@@ -540,7 +540,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
                     "border-red-500 text-red-500"
                   }`}>
                     {event.type === "exam" && "📝"}
-                    {event.type === "prayer" && "🕌"}
+                    {event.type === "prayer" && "⏰"}
                     {event.type === "ai" && "🤖"}
                     {event.type === "streak" && "🔥"}
                   </div>
@@ -603,7 +603,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
                 </div>
 
                 <div className="flex justify-between items-center text-xs">
-                  <span className="text-slate-500 dark:text-slate-400 font-bold">নামাজ ট্র্যাকিং বোনাস:</span>
+                  <span className="text-slate-500 dark:text-slate-400 font-bold">ডেইলি স্টাডি বোনাস:</span>
                   <span className="font-mono font-black text-amber-500 text-sm">{stats.isGuest ? "১ সেশন" : "৪ সেশন"}</span>
                 </div>
               </div>
@@ -627,7 +627,7 @@ export default function HistoryLog({ stats }: HistoryLogProps) {
                 <span>ক্রমাগত অগ্রগতি</span>
               </div>
               <p className="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                "নিশ্চয় নামাজের মাধ্যমে আমরা ডিসিপ্লিনের সর্বোচ্চ ধারা বজায় রাখতে পারি।" Study Qoro-এর সাথে ধারাবাহিক প্রস্তুতি নিতে থাকো, সফলতাই আসবে।
+                "নিয়মিত অভ্যাসের মাধ্যমে আমরা ডিসিপ্লিনের সর্বোচ্চ ধারা বজায় রাখতে পারি।" Study Qoro-এর সাথে ধারাবাহিক প্রস্তুতি নিতে থাকো, সফলতাই আসবে।
               </p>
             </div>
 
