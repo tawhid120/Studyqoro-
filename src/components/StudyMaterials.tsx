@@ -330,10 +330,10 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
   // Filters output
   const filteredMaterials = allMaterials.filter(m => {
     const matchesSearch = 
-      m.banglaTitle.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      m.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-      m.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      m.author.toLowerCase().includes(searchTerm.toLowerCase());
+      (m.banglaTitle || "").toLowerCase().includes((searchTerm || "").toLowerCase()) || 
+      (m.title || "").toLowerCase().includes((searchTerm || "").toLowerCase()) || 
+      (m.description || "").toLowerCase().includes((searchTerm || "").toLowerCase()) ||
+      (m.author || "").toLowerCase().includes((searchTerm || "").toLowerCase());
     
     const matchesSubject = selectedSubject === "ALL" || m.subject === selectedSubject;
     const matchesType = selectedType === "ALL" || m.type === selectedType;
@@ -479,7 +479,7 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
           </div>
 
           {/* Type filter tags */}
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-none whitespace-nowrap self-start">
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap w-full max-w-full pb-1">
             {[
               { id: "ALL", label: "সকল প্রকার" },
               { id: "note", label: "হ্যান্ড নোটস" },
@@ -489,7 +489,7 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
               <button
                 key={type.id}
                 onClick={() => setSelectedType(type.id)}
-                className={`px-3 py-1.5 rounded-lg text-[10px] font-black transition-all ${
+                className={`px-3 py-1.5 rounded-lg text-[10px] font-black transition-all flex-shrink-0 whitespace-nowrap ${
                   selectedType === type.id
                     ? "bg-emerald-500 text-slate-950 shadow-sm"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-705"
@@ -502,12 +502,12 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
         </div>
 
         {/* Row 2: Subject horizontal slide tags */}
-        <div className="border-t border-slate-100 dark:border-slate-800/60 pt-3">
+        <div className="border-t border-slate-100 dark:border-slate-800/60 pt-3 max-w-full">
           <div className="text-[9px] font-extrabold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-2">বিষয় অনুযায়ী ফিল্টার করুন:</div>
-          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 w-full max-w-full">
             <button
               onClick={() => setSelectedSubject("ALL")}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex-shrink-0 whitespace-nowrap ${
                 selectedSubject === "ALL"
                   ? "bg-[#ecf6f3] dark:bg-emerald-950/40 text-[#059669] border border-[#059669]/20"
                   : "bg-slate-50 dark:bg-slate-950 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 border border-slate-150 dark:border-slate-850"
@@ -520,7 +520,7 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
               <button
                 key={sub}
                 onClick={() => setSelectedSubject(sub)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex-shrink-0 ${
                   selectedSubject === sub
                     ? "bg-[#ecf6f3] dark:bg-emerald-950/40 text-[#059669] border border-[#059669]/20"
                     : "bg-slate-50 dark:bg-slate-950 text-slate-500 dark:text-slate-400 hover:bg-slate-100/50 border border-slate-150 dark:border-slate-850"
@@ -735,6 +735,26 @@ export default function StudyMaterials({ stats, setStats }: StudyMaterialsProps)
           </div>
         </div>
       )}
+
+      {/* NEW: SEO Friendly internal links section for article marketing */}
+      <div className="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
+        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">
+          <BookOpen className="w-4 h-4 text-indigo-500" />
+          সাজেশন ও আর্টিকেল (Study Blog)
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <a href="/blog/hsc-chemistry-1st-paper-suggestion-2025" className="p-4 bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-2xl hover:border-indigo-400 transition-colors block group">
+            <span className="text-[10px] text-indigo-500 font-bold uppercase mb-1 block">Suggestion</span>
+            <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-500 transition-colors">এইচএসসি রসায়ন ১ম পত্র সাজেশন ২০২৫: শেষ মুহূর্তের প্রস্তুতি</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">এইচএসসি রসায়ন ১ম পত্রের গুরুত্বপূর্ণ অধ্যায় ও টপিকের সাজেশন। বিশেষ করে গুণগত রসায়ন এবং পর্যায়বৃত্ত ধর্ম থেকে...</p>
+          </a>
+          <a href="/blog/dhaka-university-admission-marks-distribution" className="p-4 bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 rounded-2xl hover:border-indigo-400 transition-colors block group">
+            <span className="text-[10px] text-indigo-500 font-bold uppercase mb-1 block">Admission</span>
+            <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 group-hover:text-indigo-500 transition-colors">ঢাবি ভর্তি পরীক্ষার মানবন্টন ও চান্স পাওয়ার কৌশল</h4>
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">ঢাকা বিশ্ববিদ্যালয়ের ক, খ ও গ ইউনিটের নতুন মানবন্টন ও প্রস্তুতি নেওয়ার সেরা কৌশল। ঢাবি (DU) ভর্তি পরীক্ষায়...</p>
+          </a>
+        </div>
+      </div>
 
     </div>
   );

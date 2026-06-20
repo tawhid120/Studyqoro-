@@ -14,9 +14,36 @@ service cloud.firestore {
 
     // Student collection
     match /students/{studentId} {
-      allow read: if isOwner(studentId);
+      allow read: if isSignedIn();
       allow create: if isOwner(studentId);
       allow update: if isOwner(studentId);
+
+      // Student progress subcollection (such as syllabus tracker)
+      match /progress/{anyProgressDocument} {
+        allow read, write: if isOwner(studentId);
+      }
+    }
+
+    // College Applications collection (legacy)
+    match /college_applications/{appId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+    }
+
+    // Pending Colleges collection
+    match /pending_colleges/{appId} {
+      allow read: if isSignedIn() && (
+        resource.data.createdBy == request.auth.uid ||
+        request.auth.token.email == 'lorddanju@gmail.com'
+      );
+      allow create: if isSignedIn() && request.resource.data.createdBy == request.auth.uid;
+      allow delete: if isSignedIn() && request.auth.token.email == 'lorddanju@gmail.com';
+    }
+
+    // Main Colleges collection
+    match /colleges/{collegeId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isSignedIn() && request.auth.token.email == 'lorddanju@gmail.com';
     }
   }
 }

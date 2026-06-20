@@ -4,11 +4,14 @@
  */
 
 import { useState, useEffect } from "react";
+import { doc, updateDoc } from "firebase/firestore";
+import { db, auth } from "../lib/firebase";
+import { signOut } from "firebase/auth";
 import { 
   Award, 
   Zap, 
   Flame, 
-  Trophy, 
+  Trophy,
   CheckCircle, 
   Clock, 
   Target, 
@@ -64,6 +67,7 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
   // New States for Custom Rich Features
   const [plannerTasks, setPlannerTasks] = useState<{ id: string, text: string, completed: boolean, xp: number }[]>(() => {
+    if (stats.plannerTasks) return stats.plannerTasks;
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("user-profile-planner-tasks");
       if (saved) return JSON.parse(saved);
@@ -79,6 +83,7 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
   const [newTaskText, setNewTaskText] = useState("");
 
   const [purchasedRewards, setPurchasedRewards] = useState<string[]>(() => {
+    if (stats.purchasedRewards) return stats.purchasedRewards;
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("user-unlocked-rewards");
       if (saved) return JSON.parse(saved);
@@ -101,11 +106,23 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
   // Sync state helpers
   useEffect(() => {
     localStorage.setItem("user-profile-planner-tasks", JSON.stringify(plannerTasks));
-  }, [plannerTasks]);
+    setStats(prev => {
+      if (JSON.stringify(prev.plannerTasks) !== JSON.stringify(plannerTasks)) {
+        return { ...prev, plannerTasks };
+      }
+      return prev;
+    });
+  }, [plannerTasks, setStats]);
 
   useEffect(() => {
     localStorage.setItem("user-unlocked-rewards", JSON.stringify(purchasedRewards));
-  }, [purchasedRewards]);
+    setStats(prev => {
+      if (JSON.stringify(prev.purchasedRewards) !== JSON.stringify(purchasedRewards)) {
+        return { ...prev, purchasedRewards };
+      }
+      return prev;
+    });
+  }, [purchasedRewards, setStats]);
 
   // Handle planner actions
   const handleAddTask = (e: React.FormEvent) => {
@@ -180,25 +197,47 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
   // Form states initialized with current global or custom persistent storage values
   const [formName, setFormName] = useState(stats.name);
-  const [formDob, setFormDob] = useState(() => localStorage.getItem("profile-dob") || "2008-01-01");
-  const [formGender, setFormDobGender] = useState(() => localStorage.getItem("profile-gender") || "male");
-  const [formAddress, setFormAddress] = useState(() => localStorage.getItem("profile-address") || "ঢাকা, বাংলাদেশ");
-  const [formSchool, setFormSchool] = useState(() => localStorage.getItem("profile-school") || "ঢাকা রেসিডেনসিয়াল মডেল কলেজ");
   
-  const [formClassCode, setFormClassCode] = useState(() => localStorage.getItem("profile-class") || "HSC");
-  const [formGroup, setFormGroup] = useState(() => localStorage.getItem("profile-group") || "SCIENCE");
-  const [formBatch, setFormBatch] = useState(() => localStorage.getItem("profile-batch") || "HSC_2027");
-  const [formSscRoll, setFormSscRoll] = useState(() => localStorage.getItem("profile-ssc-roll") || "214050");
-  const [formSscReg, setFormSscReg] = useState(() => localStorage.getItem("profile-ssc-reg") || "1710405230");
-  const [formBoard, setFormBoard] = useState(() => localStorage.getItem("profile-board") || "Dhaka");
-  const [formPassingYear, setFormPassingYear] = useState(() => localStorage.getItem("profile-passing-year") || "2025");
+  useEffect(() => {
+    if (stats.name && stats.name !== "গেস্ট পরীক্ষার্থী" && stats.name !== "গেস্ট পরীক্ষার্থী (Guest Student)") {
+      setFormName(stats.name);
+    }
+  }, [stats.name]);
+
+  const [formDob, setFormDob] = useState(() => stats.dob || localStorage.getItem("profile-dob") || "2008-01-01");
+  const [formGender, setFormDobGender] = useState(() => stats.gender || localStorage.getItem("profile-gender") || "male");
+  const [formAddress, setFormAddress] = useState(() => stats.address || localStorage.getItem("profile-address") || "ঢাকা, বাংলাদেশ");
+  
+  const [formClassCode, setFormClassCode] = useState(() => stats.classCode || localStorage.getItem("profile-class") || "HSC");
+  const [formGroup, setFormGroup] = useState(() => stats.group || localStorage.getItem("profile-group") || "SCIENCE");
+  const [formBatch, setFormBatch] = useState(() => stats.batch || localStorage.getItem("profile-batch") || "HSC_2027");
+  const [formSscRoll, setFormSscRoll] = useState(() => stats.sscRoll || localStorage.getItem("profile-ssc-roll") || "214050");
+  const [formSscReg, setFormSscReg] = useState(() => stats.sscReg || localStorage.getItem("profile-ssc-reg") || "1710405230");
+  const [formBoard, setFormBoard] = useState(() => stats.board || localStorage.getItem("profile-board") || "Dhaka");
+  const [formPassingYear, setFormPassingYear] = useState(() => stats.passingYear || localStorage.getItem("profile-passing-year") || "2025");
   
   const [formOptionalSubjects, setFormOptionalSubjects] = useState<string[]>(() => {
+    if (stats.optionalSubjects) return stats.optionalSubjects;
     const saved = localStorage.getItem("profile-optionals");
     return saved ? JSON.parse(saved) : ["biology", "higher-math"];
   });
 
-  const [formAvatar, setFormAvatar] = useState(() => localStorage.getItem("profile-avatar") || "👨‍🎓");
+  const [formAvatar, setFormAvatar] = useState(() => stats.avatar || localStorage.getItem("profile-avatar") || "👨‍🎓");
+
+  useEffect(() => {
+    if (stats.dob) setFormDob(stats.dob);
+    if (stats.gender) setFormDobGender(stats.gender);
+    if (stats.address) setFormAddress(stats.address);
+    if (stats.classCode) setFormClassCode(stats.classCode);
+    if (stats.group) setFormGroup(stats.group);
+    if (stats.batch) setFormBatch(stats.batch);
+    if (stats.sscRoll) setFormSscRoll(stats.sscRoll);
+    if (stats.sscReg) setFormSscReg(stats.sscReg);
+    if (stats.board) setFormBoard(stats.board);
+    if (stats.passingYear) setFormPassingYear(stats.passingYear);
+    if (stats.optionalSubjects) setFormOptionalSubjects(stats.optionalSubjects);
+    if (stats.avatar) setFormAvatar(stats.avatar);
+  }, [stats]);
 
   // Password fields
   const [newPassword, setNewPassword] = useState("");
@@ -214,54 +253,12 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
   // Mistake Vault local state - auto-saves and provides instant XP
   const [mistakes, setMistakes] = useState<Question[]>(() => {
+    if (stats.mistakes) return stats.mistakes;
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("user-mistake-bank");
       if (saved) return JSON.parse(saved);
     }
-    return [
-      {
-        id: "m-1",
-        subject: Subject.PHYSICS,
-        chapter: "ভেক্টর",
-        questionText: "নিচের কোন জোড়টি ডট গুণন বিনিময় সূত্র মেনে চলে কিন্তু ক্রস গুণন মেনে চলে না?",
-        options: [
-          "A . B = B . A এবং A × B = B × A",
-          "ডট গুণন বিনিময় নিয়ম মানে কিন্তু ক্রস গুণন বিনিময় নিয়ম মানে না: A × B = -(B × A)",
-          "উভয় ক্রিয়ামূলক গুণন কেবল স্কেলার রাশি তৈরি করে",
-          "কোনোটিই সঠিক নয়"
-        ],
-        correctIndex: 1,
-        explanation: "ভেক্টরের ডট গুণন বিনিময়যোগ্য হলেও ক্রস গুণন বিনিময়যোগ্য নয় কারণ দিক বিপরীত হয়ে যায়: A x B = -(B x A)।"
-      },
-      {
-        id: "m-2",
-        subject: Subject.CHEMISTRY,
-        chapter: "গুণগত রসায়ন",
-        questionText: "ইলেকট্রন বিন্যাসের ক্ষেত্রে হুন্ডের নীতি (Hund's Rule) নিচের কোন অরবিটালের জন্য প্রযোজ্য নয়?",
-        options: [
-          "p-অরবিটাল",
-          "d-অরবিটাল",
-          "s-অরবিটাল (কারণ এতে কেবল একটি সাব-অরবিটাল থাকে)",
-          "f-অরবিটাল"
-        ],
-        correctIndex: 2,
-        explanation: "হুন্ডের নীতি সমশক্তিসম্পন্ন একাধিক অরবিটালের ক্ষেত্রে প্রযোজ্য। s-অরবিটালের সমশক্তিসম্পন্ন উপস্তর বা অরবিটাল না থাকায় এখানে নীতিটি কাজ করে না।"
-      },
-      {
-        id: "m-3",
-        subject: Subject.MATHEMATICS,
-        chapter: "ত্রিকোণমিতি",
-        questionText: "sec²θ - tan²θ = 1 সূত্রটি কেবল তখনই সত্য হবে যখন θ এর মান:",
-        options: [
-          "যেকোনো কোণের জন্য সত্য",
-          "θ ≠ (2n+1)π/2 কোণ ব্যতীত যেকোনো বাস্তব মানের জন্য",
-          "কেবল সূক্ষ্মকোণের জন্য সত্য",
-          "সবগুলোই ভুল উত্তর"
-        ],
-        correctIndex: 1,
-        explanation: "secθ এবং tanθ অসংজ্ঞায়িত হয়ে যায় ৯০ ডিগ্রির বিজোড় গুণিতক কোণে। তাই θ ≠ (2n+1)π/2 হতে হবে।"
-      }
-    ];
+    return [];
   });
 
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, number>>({});
@@ -271,7 +268,13 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
   // Sync mistakes list
   useEffect(() => {
     localStorage.setItem("user-mistake-bank", JSON.stringify(mistakes));
-  }, [mistakes]);
+    setStats(prev => {
+      if (mistakes.length !== (prev.mistakes?.length || 0)) {
+        return { ...prev, mistakes };
+      }
+      return prev;
+    });
+  }, [mistakes, setStats]);
 
   // Calendar Day Click states
   const [selectedStreakDay, setSelectedStreakDay] = useState<number | null>(14);
@@ -413,31 +416,34 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
   // XP progression breakdown logic for custom styled SVG chart
   const weeklyXPData = [
-    { day: "শনি", xp: 12 },
-    { day: "রবি", xp: 20 },
-    { day: "সোম", xp: 45 },
-    { day: "মঙ্গল", xp: 30 },
-    { day: "বুধ", xp: 55 },
-    { day: "বৃহ", xp: 15 },
-    { day: "শুক্র", xp: stats.points % 100 }
+    { day: "শনি", xp: Math.floor((stats.points || 0) * 0.05) },
+    { day: "রবি", xp: Math.floor((stats.points || 0) * 0.15) },
+    { day: "সোম", xp: Math.floor((stats.points || 0) * 0.2) },
+    { day: "মঙ্গল", xp: Math.floor((stats.points || 0) * 0.1) },
+    { day: "বুধ", xp: Math.floor((stats.points || 0) * 0.25) },
+    { day: "বৃহ", xp: Math.floor((stats.points || 0) * 0.15) },
+    { day: "শুক্র", xp: Math.floor((stats.points || 0) * 0.1) }
   ];
 
-  // Presets of days for Streak calendar (June 2026)
-  const calendarDays = Array.from({ length: 30 }, (_, i) => ({
-    day: i + 1,
-    hasStreak: i === 7 || i === 13 || i === 14 || i === 19 || i === 20 || i === 21,
-    isToday: i === 13 // June 14, 2026 (index 13)
-  }));
+  // Presets of days for Streak calendar
+  const todayDate = new Date().getDate();
+  const calendarDays = Array.from({ length: 30 }, (_, i) => {
+    const isStreakDay = i >= todayDate - 1 - stats.streak && i <= todayDate - 1;
+    return {
+      day: i + 1,
+      hasStreak: stats.streak > 0 && isStreakDay,
+      isToday: i === todayDate - 1
+    };
+  });
 
   // Handle saving general configurations
-  const handleSaveSettings = (e: React.FormEvent) => {
+  const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Save to LocalStorage for persistence
     localStorage.setItem("profile-dob", formDob);
     localStorage.setItem("profile-gender", formGender);
     localStorage.setItem("profile-address", formAddress);
-    localStorage.setItem("profile-school", formSchool);
     localStorage.setItem("profile-class", formClassCode);
     localStorage.setItem("profile-group", formGroup);
     localStorage.setItem("profile-batch", formBatch);
@@ -448,13 +454,37 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
     localStorage.setItem("profile-optionals", JSON.stringify(formOptionalSubjects));
     localStorage.setItem("profile-avatar", formAvatar);
 
-    // Update global app stats state
+    // Sync state and firebase
+    const newName = formName || stats.name;
+    const newStatsMap = {
+      name: newName,
+      dob: formDob,
+      gender: formGender,
+      address: formAddress,
+      classCode: formClassCode,
+      group: formGroup,
+      batch: formBatch,
+      sscRoll: formSscRoll,
+      sscReg: formSscReg,
+      board: formBoard,
+      passingYear: formPassingYear,
+      optionalSubjects: formOptionalSubjects,
+      avatar: formAvatar,
+      isGuest: false
+    };
+
     setStats(prev => ({
       ...prev,
-      name: formName || prev.name,
-      district: formAddress,
-      isGuest: false
+      ...newStatsMap
     }));
+
+    if (stats.uid) {
+      try {
+        await updateDoc(doc(db, "students", stats.uid), newStatsMap);
+      } catch (err) {
+        console.error("Failed to save profile to Firebase", err);
+      }
+    }
 
     setSaveFeedback("✅ আপনার প্রোফাইল সেটিংস সফলভাবে আপডেট ও লোকাল স্টোরেজে সংরক্ষিত হয়েছে!");
     setTimeout(() => setSaveFeedback(""), 4500);
@@ -572,9 +602,13 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
             <div className="border-t border-slate-100 dark:border-slate-850 pt-3 mt-3.5">
               <button
-                onClick={() => {
+                onClick={async () => {
                   if (confirm("আপনি কি নিশ্চিতভাবে আপনার সেশন থেকে লগ আউট করতে চান?")) {
-                    setStats(prev => ({ ...prev, isGuest: true, name: "গেস্ট পরীক্ষার্থী" }));
+                    try {
+                      await signOut(auth);
+                    } catch (error) {
+                      console.error("Error signing out:", error);
+                    }
                   }
                 }}
                 className="w-full flex items-center gap-2.5 p-3 text-red-500 hover:bg-rose-500/10 rounded-2xl font-bold text-xs transition-colors text-left"
@@ -643,7 +677,7 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
                     { id: "streak", label: "🔥 Day Streak (ধারাবাহিকতা)", val: `${stats.streak} দিন`, color: "text-rose-500 font-display font-black" },
                     { id: "reward", label: "⚡ XP Earned (মোট পয়েন্ট)", val: `${stats.points} XP`, color: "text-amber-500 font-display font-black" },
                     { id: "rank", label: "🥈 National Rank (র‍্যাম)", val: `#${stats.rank}`, color: "text-[#059669] font-display font-black" },
-                    { id: "exams", label: "🚀 Exams Taken (পরীক্ষাময়)", val: `${stats.examsGiven === 34 ? 34 : stats.examsGiven} বার`, color: "text-indigo-500 font-display font-black" }
+                    { id: "exams", label: "🚀 Exams Taken (পরীক্ষাময়)", val: `${stats.examsGiven} বার`, color: "text-indigo-500 font-display font-black" }
                   ].map(stat => (
                     <div key={stat.id} className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 p-4 rounded-2.5xl text-center shadow-sm relative overflow-hidden">
                       <p className="text-[10px] text-slate-550 dark:text-slate-400 font-medium truncate">{stat.label}</p>
@@ -654,10 +688,10 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                   {[
-                    { id: "try", label: "🎯 Qs Attempted (অনুশীলন)", val: `${stats.totalQuestionsSolved === 0 ? 112 : stats.totalQuestionsSolved} টি`, color: "text-slate-800 dark:text-slate-100" },
-                    { id: "right", label: "✅ Right Answers (সঠিক)", val: `${stats.totalQuestionsSolved === 0 ? 104 : Math.ceil(stats.totalQuestionsSolved * 0.9)} টি`, color: "text-emerald-500" },
+                    { id: "try", label: "🎯 Qs Attempted (অনুশীলন)", val: `${stats.totalQuestionsSolved} টি`, color: "text-slate-800 dark:text-slate-100" },
+                    { id: "right", label: "✅ Right Answers (সঠিক)", val: `${Math.max(0, stats.totalQuestionsSolved - mistakes.length)} টি`, color: "text-emerald-500" },
                     { id: "wrong", label: "❌ Wrong Answers (ভুল)", val: `${mistakes.length} টি`, color: "text-rose-500" },
-                    { id: "accuracy", label: "📈 G.PA Accuracy (গড় মান)", val: `${stats.totalQuestionsSolved === 0 ? "৯২.৪" : "৯৬.৮"}%`, color: "text-cyan-500 font-mono text-base" }
+                    { id: "accuracy", label: "📈 G.PA Accuracy (গড় মান)", val: `${stats.totalQuestionsSolved > 0 ? ((Math.max(0, stats.totalQuestionsSolved - mistakes.length) / stats.totalQuestionsSolved) * 100).toFixed(1) : 0}%`, color: "text-cyan-500 font-mono text-base" }
                   ].map(stat => (
                     <div key={stat.id} className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 p-4 rounded-2.5xl text-center transition shadow-sm">
                       <p className="text-[10px] text-slate-550 dark:text-slate-400 font-medium truncate">{stat.label}</p>
@@ -678,7 +712,9 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
                       <p className="text-[10px] text-slate-400">প্রতিদিন পড়াশোনায় সক্রিয় থাকুন এবং লাভ করুন আকর্ষণীয় ব্যাজ!</p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold text-[#059669] dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">জুন ২০২৬</span>
+                  <span className="text-[10px] font-bold text-[#059669] dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
+                    {new Intl.DateTimeFormat('bn-BD', { month: 'long', year: 'numeric' }).format(new Date())}
+                  </span>
                 </div>
 
                 <div className="grid grid-cols-7 gap-1 text-center font-display text-[10px] text-slate-400 font-black mb-3 uppercase tracking-wider">
@@ -722,11 +758,13 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
                   <div className="mt-4 p-3 bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 rounded-2xl text-[11px] text-slate-500 leading-normal flex items-start gap-2.5 animate-fadeIn">
                     <span className="text-lg leading-none">🧠</span>
                     <div>
-                      <p className="font-extrabold text-[#059669] dark:text-emerald-400">জুন {selectedStreakDay}, ২০২৬ সেশনের বিশ্লেষণ:</p>
+                      <p className="font-extrabold text-[#059669] dark:text-emerald-400">
+                        {new Intl.DateTimeFormat('bn-BD', { month: 'long' }).format(new Date())} {selectedStreakDay.toLocaleString('bn-BD')}, {new Date().getFullYear()} সেশনের বিশ্লেষণ:
+                      </p>
                       <p className="text-[10px] text-slate-400 mt-0.5">
                         {selectedStreakDay % 3 === 0 
                           ? "আপনি সেদিন ২ টি বড় অধ্যায় মক পরীক্ষা দিয়েছিলেন। গণিতে সর্বোচ্চ ১০০% নির্ভুলতা অর্জিত হয়েছিল।" 
-                          : "সেদিন আপনি ১ ঘণ্টা ১৪ মিনিট দ্রুত প্র্যাকটিস পোর্টাল ব্যবহার করে আইসিটি প্রশ্ন সলভ করেছেন।"}
+                          : "সেদিন আপনি ১ ঘণ্টা ১৪ মিনিট দ্রুত প্র্যাকটিস পোর্টাল ব্যবহার করে প্রশ্ন সলভ করেছেন।"}
                       </p>
                     </div>
                   </div>
@@ -746,7 +784,7 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
 
                 <div className="flex items-end justify-between h-20 pt-4 px-1 gap-2.5 select-none md:px-6">
                   {weeklyXPData.map((d, index) => {
-                    const maxBarXP = 75;
+                    const maxBarXP = Math.max(75, ...weeklyXPData.map(w => w.xp));
                     const barHeightPct = Math.max(10, Math.min(100, (d.xp / maxBarXP) * 100));
                     
                     return (
@@ -1437,7 +1475,7 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
                   <button
                     key={pSub.id}
                     onClick={() => setActiveSettingSub(pSub.id as any)}
-                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                    className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all whitespace-nowrap flex-shrink-0 ${
                       activeSettingSub === pSub.id
                         ? "bg-white dark:bg-slate-900 text-emerald-600 dark:text-emerald-400 shadow-sm"
                         : "text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/40"
@@ -1563,14 +1601,25 @@ export default function ProgressTracker({ stats, setStats }: ProgressTrackerProp
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1">
                       <label className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wide block">শিক্ষা প্রতিষ্ঠানের নাম (College/School):</label>
-                      <input 
-                        type="text" 
-                        value={formSchool}
-                        onChange={(e) => setFormSchool(e.target.value)}
-                        placeholder="কলেজ বা স্কুলের নাম লিখুন"
-                        className="w-full px-3.5 py-2 bg-slate-50/50 dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-xl text-xs dark:text-slate-200 focus:outline-none focus:border-emerald-500 transition-colors"
-                        required
-                      />
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-slate-50/50 dark:bg-slate-955 border border-slate-200 dark:border-slate-800 rounded-xl p-2.5">
+                        <div className="flex-1 min-w-0">
+                          {stats.collegeName ? (
+                            <>
+                              <div className="font-bold text-xs text-slate-800 dark:text-slate-200 truncate">{stats.collegeName}</div>
+                              <div className="text-[10px] text-slate-500 mt-0.5 truncate">{stats.division} • {stats.district}</div>
+                            </>
+                          ) : (
+                            <div className="text-xs text-slate-500 italic">এখনো কলেজ নির্বাচন করা হয়নি</div>
+                          )}
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => window.dispatchEvent(new CustomEvent("open-college-selector"))}
+                          className="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 rounded-lg text-[10px] sm:text-xs font-bold transition-colors shrink-0 border border-emerald-200 dark:border-emerald-800/50"
+                        >
+                          কলেজ পরিবর্তন
+                        </button>
+                      </div>
                     </div>
 
                     <div className="space-y-1">

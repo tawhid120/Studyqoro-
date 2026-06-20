@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import { INITIAL_LEADERBOARD } from "../data";
 import { StudentStats } from "../types";
+import { collection, getDocs, orderBy, query, limit } from "firebase/firestore";
+import { db } from "../lib/firebase";
 
 interface LeaderboardProps {
   stats: StudentStats;
@@ -40,6 +42,72 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
   const [showRulesModal, setShowRulesModal] = useState(false);
   const [showShareSuccess, setShowShareSuccess] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  const [realPlayers, setRealPlayers] = useState<any[]>([]);
+  const [isLoadingPlayers, setIsLoadingPlayers] = useState(true);
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      try {
+        const q = query(collection(db, "students"), orderBy("points", "desc"), limit(100));
+        const snapshot = await getDocs(q);
+        const players = snapshot.docs.map((doc, idx) => {
+          const data = doc.data();
+          return {
+            id: doc.id,
+            rank: idx + 1,
+            name: data.name || "Unknown",
+            district: data.institution || "বাংলাদেশ",
+            points: data.points || 0,
+            avatarUrl: `https://api.dicebear.com/7.x/micah/svg?seed=${doc.id}`,
+            streak: data.streak || 0,
+            isSelf: stats.uid === doc.id
+          };
+        });
+        
+        const currentUserId = stats.isGuest ? "guest" : (stats.uid || "current_user");
+        const selfIdx = players.findIndex(p => p.id === currentUserId);
+        if (selfIdx !== -1) {
+          players[selfIdx].points = stats.points;
+        } else {
+          players.push({
+              id: currentUserId,
+              rank: players.length + 1,
+              name: stats.name,
+              district: "বাংলাদেশ",
+              points: stats.points,
+              avatarUrl: `https://api.dicebear.com/7.x/micah/svg?seed=${currentUserId}`,
+              streak: stats.streak || 0,
+              isSelf: true
+          });
+        }
+        
+        // Re-sort in case current user was added/updated
+        players.sort((a, b) => b.points - a.points);
+        players.forEach((p, idx) => p.rank = idx + 1);
+
+        setRealPlayers(players);
+      } catch (err) {
+        console.error("Failed to fetch players", err);
+        // Fallback to self
+        setRealPlayers([
+            {
+                id: stats.uid || "guest",
+                rank: 1,
+                name: stats.name,
+                district: "Local",
+                points: stats.points,
+                avatarUrl: "https://api.dicebear.com/7.x/micah/svg?seed=fallback",
+                streak: stats.streak || 0,
+                isSelf: true
+            }
+        ]);
+      } finally {
+        setIsLoadingPlayers(false);
+      }
+    };
+    fetchPlayers();
+  }, [stats]);
 
   // Custom simulation: Allow student to earn simulated points to rank up in the leaderboard!
   const [userPointsOverride, setUserPointsOverride] = useState<number>(0);
@@ -86,13 +154,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(180, 83, 9, 0.15)",
       accentText: "text-amber-400",
       badgeGlow: "shadow-amber-500/10",
-      seedPlayers: [
-        { id: "p1-1", rank: 1, name: "Siam Ahmed", district: "ঢাকা", points: 85, avatarUrl: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150", streak: 3 },
-        { id: "p1-self", rank: 2, name: `${statsWithOverride.name} (আপনি)`, district: "ঢাকা (guest)", points: statsWithOverride.points, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", streak: statsWithOverride.streak || 1 },
-        { id: "p1-2", rank: 3, name: "Tanzila Akter", district: "বরিশাল", points: 15, avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", streak: 1 },
-        { id: "p1-3", rank: 4, name: "Fahim Faisal", district: "কুমিল্লা", points: 12, avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150", streak: 0 },
-        { id: "p1-4", rank: 5, name: "Prashanta Paul", district: "ময়মনসিংহ", points: 0, avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150", streak: 0 }
-      ]
+      seedPlayers: []
     },
     {
       id: 2,
@@ -107,13 +169,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(148, 163, 184, 0.15)",
       accentText: "text-slate-300",
       badgeGlow: "shadow-slate-500/10",
-      seedPlayers: [
-        { id: "p2-1", rank: 1, name: "Alamin Khan", district: "খুলনা", points: 195, avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", streak: 7 },
-        { id: "p2-2", rank: 2, name: "Farhana Yesmin", district: "দিনাজপুর", points: 180, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", streak: 6 },
-        { id: "p2-3", rank: 3, name: "Mehrazul Islam", district: "রংপুর", points: 145, avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150", streak: 4 },
-        { id: "p2-4", rank: 4, name: "Sadia Chowdhury", district: "সিলেট", points: 112, avatarUrl: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150", streak: 2 },
-        { id: "p2-5", rank: 5, name: "MD Samrat", district: "যশোর", points: 95, avatarUrl: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d?w=150", streak: 3 }
-      ]
+      seedPlayers: []
     },
     {
       id: 3,
@@ -128,13 +184,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(245, 158, 11, 0.15)",
       accentText: "text-amber-300",
       badgeGlow: "shadow-amber-500/20",
-      seedPlayers: [
-        { id: "p3-1", rank: 1, name: "Adiya Tabassum", district: "গাজীপুর", points: 345, avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150", streak: 12 },
-        { id: "p3-2", rank: 2, name: "Sayed Hossain", district: "সিলেট", points: 290, avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", streak: 8 },
-        { id: "p3-3", rank: 3, name: "Nusrat Jahan", district: "বগুড়া", points: 265, avatarUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150", streak: 10 },
-        { id: "p3-4", rank: 4, name: "Mahmudul Hasan", district: "ফেনী", points: 210, avatarUrl: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150", streak: 4 },
-        { id: "p3-5", rank: 5, name: "Sanjida Sultana", district: "খুলনা", points: 180, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", streak: 5 }
-      ]
+      seedPlayers: []
     },
     {
       id: 4,
@@ -149,13 +199,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(20, 184, 166, 0.15)",
       accentText: "text-teal-300",
       badgeGlow: "shadow-teal-500/20",
-      seedPlayers: [
-        { id: "p4-1", rank: 1, name: "Sadia Afrin", district: "টাঙ্গাইল", points: 490, avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", streak: 18 },
-        { id: "p4-2", rank: 2, name: "Sudipto Sen", district: "চট্টগ্রাম", points: 450, avatarUrl: "https://images.unsplash.com/photo-1500048993953-d23a436266cf?w=150", streak: 14 },
-        { id: "p4-3", rank: 3, name: "MD Rafiqul Islam", district: "নারায়ণগঞ্জ", points: 410, avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150", streak: 9 },
-        { id: "p4-4", rank: 4, name: "Tasnim Ahmed", district: "ভোলা", points: 380, avatarUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=150", streak: 11 },
-        { id: "p4-5", rank: 5, name: "Rakibul Hasan", district: "ঝিনাইদহ", points: 350, avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150", streak: 12 }
-      ]
+      seedPlayers: []
     },
     {
       id: 5,
@@ -170,13 +214,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(59, 130, 246, 0.15)",
       accentText: "text-blue-300",
       badgeGlow: "shadow-blue-500/25",
-      seedPlayers: [
-        { id: "p5-1", rank: 1, name: "Fahmida Sultana", district: "পাবনা", points: 680, avatarUrl: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=150", streak: 21 },
-        { id: "p5-2", rank: 2, name: "Shishir Ahmed", district: "কক্সবাজার", points: 610, avatarUrl: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150", streak: 17 },
-        { id: "p5-3", rank: 3, name: "Joy Dutta", district: "হবিগঞ্জ", points: 570, avatarUrl: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=150", streak: 15 },
-        { id: "p5-4", rank: 4, name: "Rashedul Bari", district: "কুষ্টিয়া", points: 540, avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", streak: 12 },
-        { id: "p5-5", rank: 5, name: "Moumita Roy", district: "রংপুর", points: 510, avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150", streak: 10 }
-      ]
+      seedPlayers: []
     },
     {
       id: 6,
@@ -191,13 +229,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(16, 185, 129, 0.15)",
       accentText: "text-emerald-300",
       badgeGlow: "shadow-emerald-500/25",
-      seedPlayers: [
-        { id: "p6-1", rank: 1, name: "Prachi Barua", district: "বান্দরবান", points: 890, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", streak: 25 },
-        { id: "p6-2", rank: 2, name: "Badol Minji", district: "নওগাঁ", points: 840, avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150", streak: 22 },
-        { id: "p6-3", rank: 3, name: "Ruzana Khan", district: "নাটোর", points: 810, avatarUrl: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150", streak: 19 },
-        { id: "p6-4", rank: 4, name: "OC Gaming (512)", district: "ঢাকা", points: 790, avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150", streak: 16 },
-        { id: "p6-5", rank: 5, name: "Zahid Hasan", district: "চুয়াডাঙ্গা", points: 765, avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150", streak: 15 }
-      ]
+      seedPlayers: []
     },
     {
       id: 7,
@@ -212,13 +244,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(139, 92, 246, 0.15)",
       accentText: "text-purple-300",
       badgeGlow: "shadow-purple-500/25",
-      seedPlayers: [
-        { id: "p7-1", rank: 1, name: "Siam Hussain", district: "সিলেট", points: 1250, avatarUrl: "https://images.unsplash.com/photo-1542206395-9feb3edaa68d?w=150", streak: 35 },
-        { id: "p7-2", rank: 2, name: "Niaz Morshed", district: "নোয়াখালী", points: 1190, avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150", streak: 28 },
-        { id: "p7-3", rank: 3, name: "Israt Binte UI", district: "কুমিল্লা", points: 1120, avatarUrl: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150", streak: 30 },
-        { id: "p7-4", rank: 4, name: "Mashrafe Norko", district: "নড়াইল", points: 1050, avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", streak: 24 },
-        { id: "p7-5", rank: 5, name: "Rifat Chowdhury", district: "চট্টগ্রাম", points: 980, avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150", streak: 21 }
-      ]
+      seedPlayers: []
     },
     {
       id: 8,
@@ -233,13 +259,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
       radialCore: "rgba(245, 158, 11, 0.2)",
       accentText: "text-amber-400 font-extrabold animate-pulse",
       badgeGlow: "shadow-amber-500/30",
-      seedPlayers: [
-        { id: "p8-1", rank: 1, name: "Anisur Rahman", district: "সাতক্ষীরা", points: 1950, avatarUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150", streak: 53 },
-        { id: "p8-2", rank: 2, name: "Shahriar Shakil", district: "পিরোজপুর", points: 1820, avatarUrl: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150", streak: 48 },
-        { id: "p8-3", rank: 3, name: "Zarin Subah", district: "ঢাকা", points: 1780, avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150", streak: 42 },
-        { id: "p8-4", rank: 4, name: "Kamrul Hasan Chowdhury", district: "ফরিদপুর", points: 1650, avatarUrl: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150", streak: 39 },
-        { id: "p8-5", rank: 5, name: "Fatema Tuz Zohra", district: "কুড়িগ্রাম", points: 1590, avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150", streak: 35 }
-      ]
+      seedPlayers: []
     }
   ];
 
@@ -258,15 +278,30 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
     setSelectedLeagueId(id);
   };
 
-  // Filter criteria for active search term
-  const activePlayersList = currentLeague.seedPlayers.filter(player => 
-    player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    player.district.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Dynamically group realPlayers into Leagues based on predefined point thresholds
+  const getLeagueByPoints = (points: number) => {
+    if (points >= 1500) return 8; // Supreme
+    if (points >= 1000) return 7; // Titan
+    if (points >= 800) return 6;  // Elite
+    if (points >= 600) return 5;  // Diamond
+    if (points >= 400) return 4;  // Platinum
+    if (points >= 250) return 3;  // Gold
+    if (points >= 100) return 2;  // Silver
+    return 1; // Bronze
+  };
 
-  const filteredNationalList = INITIAL_LEADERBOARD.filter(user => 
-    user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    user.district.toLowerCase().includes(searchTerm.toLowerCase())
+  // Filter criteria for active search term
+  const activePlayersList = realPlayers.filter(player => {
+    // Determine player's league
+    const pPoints = player.isSelf ? player.points + userPointsOverride : player.points;
+    const leagueId = getLeagueByPoints(pPoints);
+    const matchesSearch = (player.name || "").toLowerCase().includes((searchTerm || "").toLowerCase()) || (player.district || "").toLowerCase().includes((searchTerm || "").toLowerCase());
+    return leagueId === selectedLeagueId && matchesSearch;
+  });
+
+  const filteredNationalList = realPlayers.filter(user => 
+    (user.name || "").toLowerCase().includes((searchTerm || "").toLowerCase()) ||
+    (user.district || "").toLowerCase().includes((searchTerm || "").toLowerCase())
   );
 
   // Auto scroll the selected league badge into center on change
@@ -689,10 +724,11 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-end pt-4 max-w-4xl mx-auto">
             
             {/* National Rank #2 Podium */}
+            {realPlayers[1] && (
             <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 p-6 rounded-3xl text-center space-y-4 shadow-sm order-2 md:order-1 transition hover:shadow-md">
               <div className="relative inline-block">
                 <img 
-                  src={INITIAL_LEADERBOARD[1]?.avatarUrl} 
+                  src={realPlayers[1]?.avatarUrl} 
                   alt="Rank 2"
                   className="w-16 h-16 rounded-full mx-auto object-cover border-4 border-slate-200/80 shadow-inner"
                   referrerPolicy="no-referrer"
@@ -703,29 +739,31 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-xs font-black text-slate-800 dark:text-slate-100">{INITIAL_LEADERBOARD[1]?.name}</h3>
+                <h3 className="text-xs font-black text-slate-800 dark:text-slate-100">{realPlayers[1]?.name}</h3>
                 <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1 font-bold">
                   <MapPin className="w-3 h-3 text-slate-300 shrink-0" />
-                  {INITIAL_LEADERBOARD[1]?.district}
+                  {realPlayers[1]?.district}
                 </p>
               </div>
 
               <div className="flex justify-around items-center pt-3 border-t border-slate-50 dark:border-slate-850/60 text-[11px] select-none font-semibold">
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">জড়িত স্কোর</span>
-                  <strong className="text-slate-700 dark:text-slate-250 font-extrabold">{INITIAL_LEADERBOARD[1]?.points || 277} XP</strong>
+                  <strong className="text-slate-700 dark:text-slate-250 font-extrabold">{realPlayers[1]?.points || 277} XP</strong>
                 </div>
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">স্ট্রিক</span>
                   <strong className="text-amber-500 font-black flex items-center justify-center gap-0.5">
                     <Flame className="w-3.5 h-3.5 fill-current shrink-0" />
-                    {INITIAL_LEADERBOARD[1]?.streak || 15}
+                    {realPlayers[1]?.streak || 15}
                   </strong>
                 </div>
               </div>
             </div>
+            )}
 
             {/* National Rank #1 Podium (Champ) */}
+            {realPlayers[0] && (
             <div className="bg-white dark:bg-slate-900 border-2 border-amber-400/80 p-6 md:py-10 rounded-3xl text-center space-y-4 shadow-lg order-1 md:order-2 relative transition hover:shadow-xl">
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-amber-550 text-slate-950 text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md flex items-center gap-1 select-none leading-none">
                 <Star className="w-3 h-3 fill-current animate-spin" />
@@ -734,7 +772,7 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
 
               <div className="relative inline-block">
                 <img 
-                  src={INITIAL_LEADERBOARD[0]?.avatarUrl} 
+                  src={realPlayers[0]?.avatarUrl} 
                   alt="Rank 1"
                   className="w-20 h-20 rounded-full mx-auto object-cover border-4 border-amber-400 shadow-lg"
                   referrerPolicy="no-referrer"
@@ -745,33 +783,35 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-sm font-black text-slate-850 dark:text-slate-100">{INITIAL_LEADERBOARD[0]?.name}</h3>
+                <h3 className="text-sm font-black text-slate-850 dark:text-slate-100">{realPlayers[0]?.name}</h3>
                 <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1 font-semibold">
                   <MapPin className="w-3 h-3 text-amber-500 shrink-0" />
-                  {INITIAL_LEADERBOARD[0]?.district}
+                  {realPlayers[0]?.district}
                 </p>
               </div>
 
               <div className="flex justify-around items-center pt-3 border-t border-slate-50 dark:border-slate-850/60 text-[11px] select-none font-semibold">
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">জড়িত স্কোর</span>
-                  <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">{INITIAL_LEADERBOARD[0]?.points || 319} XP</strong>
+                  <strong className="text-emerald-600 dark:text-emerald-400 font-extrabold">{realPlayers[0]?.points || 319} XP</strong>
                 </div>
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">স্ট্রিক</span>
                   <strong className="text-amber-500 font-black flex items-center justify-center gap-0.5 animate-pulse">
                     <Flame className="w-3.5 h-3.5 fill-current shrink-0" />
-                    {INITIAL_LEADERBOARD[0]?.streak || 8}
+                    {realPlayers[0]?.streak || 8}
                   </strong>
                 </div>
               </div>
             </div>
+            )}
 
             {/* National Rank #3 Podium */}
+            {realPlayers[2] && (
             <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-800 p-6 rounded-3xl text-center space-y-4 shadow-sm order-3 transition hover:shadow-md">
               <div className="relative inline-block">
                 <img 
-                  src={INITIAL_LEADERBOARD[2]?.avatarUrl} 
+                  src={realPlayers[2]?.avatarUrl} 
                   alt="Rank 3"
                   className="w-16 h-16 rounded-full mx-auto object-cover border-4 border-amber-600/80 shadow-inner"
                   referrerPolicy="no-referrer"
@@ -782,27 +822,28 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-xs font-black text-slate-800 dark:text-slate-100">{INITIAL_LEADERBOARD[2]?.name}</h3>
+                <h3 className="text-xs font-black text-slate-800 dark:text-slate-100">{realPlayers[2]?.name}</h3>
                 <p className="text-[10px] text-slate-400 flex items-center justify-center gap-1 font-semibold">
                   <MapPin className="w-3 h-3 text-slate-300 shrink-0" />
-                  {INITIAL_LEADERBOARD[2]?.district}
+                  {realPlayers[2]?.district}
                 </p>
               </div>
 
               <div className="flex justify-around items-center pt-3 border-t border-slate-50 dark:border-slate-850/60 text-[11px] select-none font-semibold">
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">জড়িত স্কোর</span>
-                  <strong className="text-slate-700 dark:text-slate-250 font-extrabold">{INITIAL_LEADERBOARD[2]?.points || 267} XP</strong>
+                  <strong className="text-slate-700 dark:text-slate-250 font-extrabold">{realPlayers[2]?.points || 267} XP</strong>
                 </div>
                 <div>
                   <span className="text-slate-400 dark:text-slate-500 block font-bold text-[9px] uppercase tracking-wide">স্ট্রিক</span>
                   <strong className="text-amber-500 font-black flex items-center justify-center gap-0.5">
                     <Flame className="w-3.5 h-3.5 fill-current shrink-0" />
-                    {INITIAL_LEADERBOARD[2]?.streak || 4}
+                    {realPlayers[2]?.streak || 4}
                   </strong>
                 </div>
               </div>
             </div>
+            )}
 
           </div>
 
@@ -906,14 +947,15 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            {/* Champion of May */}
+            {/* Champion 1 */}
+            {realPlayers[0] ? (
             <div className="bg-white dark:bg-slate-900 border-2 border-amber-400/30 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center text-center space-y-4 shadow-sm hover:shadow-md transition">
               <div className="absolute -right-3 -top-3 w-12 h-12 bg-amber-500/5 rotate-12" />
-              <span className="text-[9px] bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1 rounded-full font-black uppercase">মে ২০২৬ চ্যাম্পিয়ন</span>
+              <span className="text-[9px] bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1 rounded-full font-black uppercase">হল অব ফেম চ্যাম্পিয়ন</span>
               
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150" 
+                  src={realPlayers[0]?.avatarUrl} 
                   alt="Gold Title" 
                   className="w-16 h-16 rounded-full object-cover border-4 border-amber-400"
                   referrerPolicy="no-referrer"
@@ -921,23 +963,29 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
                 <Crown className="w-5 h-5 text-amber-500 absolute -top-3 left-1/2 -translate-x-1/2 fill-current animate-pulse" />
               </div>
 
-              <div className="span-y-0.5">
-                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">Asha Khatun</h4>
-                <p className="text-[10px] text-slate-400 font-bold">সিরাজগঞ্জ জেলা • ৫,১৯০ XP</p>
+              <div className="space-y-0.5">
+                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">{realPlayers[0]?.name}</h4>
+                <p className="text-[10px] text-slate-400 font-bold">{realPlayers[0]?.district} • {realPlayers[0]?.points} XP</p>
               </div>
 
               <p className="text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">
                 &quot;প্রতিটি কুইজের চমৎকার ব্যাখ্যা ও গেমিফাইড চ্যালেঞ্জ আমার প্রস্তুতির গতি দ্বিগুণ করে দিয়েছিল।&quot;
               </p>
             </div>
+            ) : (
+            <div className="bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center text-center min-h-[200px]">
+              <span className="text-[10px] text-slate-400 font-bold">সিজন শেষ হয়নি</span>
+            </div>
+            )}
 
-            {/* Champion of April */}
+            {/* Champion 2 */}
+            {realPlayers[1] ? (
             <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center text-center space-y-4 shadow-sm hover:shadow-md transition">
-              <span className="text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full font-black uppercase">এপ্রিল ২০২৬ চ্যাম্পিয়ন</span>
+              <span className="text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full font-black uppercase">দ্বিতীয় রানার-আপ</span>
               
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150" 
+                  src={realPlayers[1]?.avatarUrl} 
                   alt="Gold Title" 
                   className="w-16 h-16 rounded-full object-cover border-4 border-slate-350"
                   referrerPolicy="no-referrer"
@@ -945,23 +993,29 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
                 <Shield className="w-5 h-5 text-slate-300 absolute -top-3 left-1/2 -translate-x-1/2 fill-current" />
               </div>
 
-              <div className="span-y-0.5">
-                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">Rafsanul Islam Rafin</h4>
-                <p className="text-[10px] text-slate-400 font-bold">চট্টগ্রাম জেলা • ৪,৯৮২ XP</p>
+              <div className="space-y-0.5">
+                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">{realPlayers[1]?.name}</h4>
+                <p className="text-[10px] text-slate-400 font-bold">{realPlayers[1]?.district} • {realPlayers[1]?.points} XP</p>
               </div>
 
               <p className="text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">
                 &quot;স্টাডি টাইমার ও লাইভ এক্সাম ওয়ারে লড়াই করার মজাটাই আলাদা। এটি সত্যিই আমাকে অনুপ্রাণিত করেছে।&quot;
               </p>
             </div>
+            ) : (
+            <div className="bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center text-center min-h-[200px]">
+              <span className="text-[10px] text-slate-400 font-bold">সিজন শেষ হয়নি</span>
+            </div>
+            )}
 
-            {/* Champion of March */}
+            {/* Champion 3 */}
+            {realPlayers[2] ? (
             <div className="bg-white dark:bg-slate-900 border border-slate-150 dark:border-slate-850 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center text-center space-y-4 shadow-sm hover:shadow-md transition">
-              <span className="text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full font-black uppercase">মার্চ ২০২৬ চ্যাম্পিয়ন</span>
+              <span className="text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full font-black uppercase">তৃতীয় স্থান</span>
               
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" 
+                  src={realPlayers[2]?.avatarUrl} 
                   alt="Gold Title" 
                   className="w-16 h-16 rounded-full object-cover border-4 border-orange-400"
                   referrerPolicy="no-referrer"
@@ -969,15 +1023,20 @@ export default function Leaderboard({ stats }: LeaderboardProps) {
                 <Medal className="w-5 h-5 text-orange-450 absolute -top-3 left-1/2 -translate-x-1/2 fill-current" />
               </div>
 
-              <div className="span-y-0.5">
-                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">Arman Hossen</h4>
-                <p className="text-[10px] text-slate-400 font-bold">কুমিল্লা জেলা • ৪,৩২০ XP</p>
+              <div className="space-y-0.5">
+                <h4 className="text-xs font-black text-slate-800 dark:text-slate-100">{realPlayers[2]?.name}</h4>
+                <p className="text-[10px] text-slate-400 font-bold">{realPlayers[2]?.district} • {realPlayers[2]?.points} XP</p>
               </div>
 
               <p className="text-[10.5px] text-slate-500 dark:text-slate-400 leading-relaxed font-semibold italic">
                 &quot;এইচএসসি পরীক্ষার আগে নিজেকে যাচাই করার জন্য এর চেয়ে দারুণ প্ল্যাটফর্ম আমি আর কোথাও দেখিনি।&quot;
               </p>
             </div>
+            ) : (
+            <div className="bg-slate-50 dark:bg-slate-800/40 border border-dashed border-slate-200 dark:border-slate-700 p-6 rounded-3xl relative overflow-hidden flex flex-col items-center justify-center text-center min-h-[200px]">
+              <span className="text-[10px] text-slate-400 font-bold">সিজন শেষ হয়নি</span>
+            </div>
+            )}
 
           </div>
         </div>

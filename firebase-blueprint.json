@@ -17,12 +17,25 @@
         "isGuest": { "type": "boolean" }
       },
       "required": ["name", "points", "streak", "level", "rank", "examsGiven", "totalQuestionsSolved", "plan", "completedMilestones", "isGuest"]
+    },
+    "SyllabusProgress": {
+      "title": "SyllabusProgress",
+      "description": "Stores completed tick marks/progress for syllabus tracking",
+      "type": "object",
+      "properties": {
+        "ticks": { "type": "object" }
+      },
+      "required": ["ticks"]
     }
   },
   "firestore": {
     "/students/{studentId}": {
       "schema": { "$ref": "#/entities/Student" },
       "description": "Stores student data."
+    },
+    "/students/{studentId}/progress/syllabus": {
+      "schema": { "$ref": "#/entities/SyllabusProgress" },
+      "description": "Syllabus progress data."
     }
   }
 }

@@ -212,9 +212,9 @@ export default function App({
       if (showOnlyBookmarks && !bookmarks.includes(q.id)) return false;
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
-        const mainTextMatch = q.questionText.toLowerCase().includes(query);
-        const explanationMatch = q.explanation.toLowerCase().includes(query);
-        const optionsMatch = q.options.some(opt => opt.toLowerCase().includes(query));
+        const mainTextMatch = (q.questionText || "").toLowerCase().includes(query);
+        const explanationMatch = (q.explanation || "").toLowerCase().includes(query);
+        const optionsMatch = Array.isArray(q.options) && q.options.some(opt => (opt || "").toLowerCase().includes(query));
         if (!mainTextMatch && !explanationMatch && !optionsMatch) return false;
       }
       return true;
@@ -346,6 +346,14 @@ export default function App({
     { name: "হলিক্রস কলেজ", exams: 5, mcq: "1.3k" }
   ];
 
+  const modelTestCards = [
+    { title: "এইচএসসি পদার্থবিজ্ঞান ১ম পত্র ও ২য় পত্র কম্বাইন্ড টেস্ট" },
+    { title: "মডিউল টেস্ট - ০১: উচ্চতর গণিত জটিল সংখ্যা ও দ্বিপদী" },
+    { title: "এইচএসসি রসায়ন ২য় পত্র পূর্ণাঙ্গ প্রি-টেস্ট মডেল টেস্ট" },
+    { title: "মেডিকেল ভর্তি পরীক্ষা প্রস্তুতি বিশেষ মক টেস্ট" },
+    { title: "ঢাকা বিশ্ববিদ্যালয় ক-ইউনিট গণিত চূড়ান্ত মডেল টেস্ট" }
+  ];
+
   const subjectCards = [
     { 
       name: "বাংলা", 
@@ -396,7 +404,7 @@ export default function App({
       accent: "text-purple-600 dark:text-purple-400",
       border: "border-purple-100 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-700/50",
       chapters: [
-        { label: "তথ্য ও যোগাযোগ প্রযুক্তি: বিশ্ব ও বাংলাদেশ প্রেক্ষিত", sub: ["বিশ্বগ্রামের ধারণা", "যোগাযোগ (Commucination)", "কর্মসংস্থান", "শিক্ষা", "টেলিমেডিসিন", "গবেষণা", "অফিস", "বাসস্থান", "ব্যবসা বাণিজ্য", "সংবাদ", "বিনোদন ও সামাজিক যোগাযোগ", "সাংস্কৃতিক বিনিময়", "ভার্চুয়াল রিয়েলিটি- Virtual Reality", "তথ্য ও যোগাযোগ প্রযুক্তির সাম্প্রতিক প্রবণতা", "আর্টিফিসিয়াল ইন্টেলিজেন্স - Artificail Intelligence", "রোবটিক্স- Robotics", "ক্রায়োসার্জারি-Cryosurgery", "মহাকাশ অভিযান", "আইসিটি নির্ভর উৎপাদন ব্যবস্থা", "প্রতিরক্ষা -Defence", "বায়োমেট্রিক-Biometric", "বায়োইনফরমেটিক্স-Bioinformatics", "জেনেটিক ইঞ্জিনিয়ারিং-Genetic Engineering", "ন্যানোটেকনোলজি-Nanotechnology"] }
+        { label: "তথ্য ও যোগাযোগ প্রযুক্তি", sub: ["বিশ্ব ও বাংলাদেশ প্রেক্ষিত", "কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং", "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", "ওয়েব ডিজাইন পরিচিতি এবং HTML", "প্রোগ্রামিং ভাষা", "ডাটাবেজ ম্যানেজমেন্ট সিস্টেম"] }
       ]
     },
     { 
@@ -412,42 +420,8 @@ export default function App({
       accent: "text-rose-600 dark:text-rose-400",
       border: "border-rose-100 dark:border-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700/50",
       chapters: [
-        { label: "পদার্থবিজ্ঞান ১ম পত্র", sub: ["ভৌতজগত ও পরিমাপ", "ভেক্টর", "গতিবিদ্যা", "নিউটনের বলবিদ্যা", "কাজ, শক্তি ও ক্ষমতা", "মহাকর্ষ ও অভিকর্ষ", "পদার্থের গাঠনিক ধর্ম", "পর্যায়বৃত্তিক গতি", "তরঙ্গ ও শব্দ", "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
-        { label: "পদার্থবিজ্ঞান ২য় পত্র", sub: ["তাপগতিবিদ্যা", "স্থির তড়িৎ", "চল তড়িৎ", "তড়িৎ প্রবাহের চৌম্বক ক্রিয়া ও চুম্বকত্ব", "তড়িৎচৌম্বক আবেশ ও পরিবর্তী প্রবাহ", "জ্যামিতিক আলোকবিজ্ঞান", "ভৌত আলোকবিজ্ঞান", "আধুনিক পদার্থবিজ্ঞানের সূচনা", "পরমাণুর মডেল এবং নিউক্লিয়ার পদার্থবিজ্ঞান", "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স", "জ্যোতির্বিজ্ঞান"] }
-      ]
-    },
-    { 
-      name: "রসায়ন", 
-      mcq: "18k", 
-      cq: "559", 
-      board: "56", 
-      model: "595", 
-      hasChapters: true,
-      color: "orange",
-      gradient: "from-orange-555 to-amber-600",
-      shading: "bg-orange-50 text-orange-850 dark:bg-orange-950/20 dark:text-orange-400 border-orange-100 dark:border-orange-900/30",
-      accent: "text-orange-600 dark:text-orange-400",
-      border: "border-orange-100 dark:border-orange-900/30 hover:border-orange-300 dark:hover:border-orange-700/50",
-      chapters: [
-        { label: "রসায়ন- প্রথম পত্র", sub: ["মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন(তৃতীয় অধ্যায়)", "কর্মমূখী রসায়ন (পঞ্চম অধ্যায়)", "রাসায়নিক পরিবর্তন (চতুর্থ অধ্যায়)", "ল্যাবরেটরির নিরাপদ ব্যবহার(প্রথম অধ্যায়)", "গুণগত রসায়ন (দ্বিতীয় অধ্যায়)"] },
-        { label: "রসায়ন দ্বিতীয় পত্র", sub: ["জৈব রসায়ন (দ্বিতীয় অধ্যায়)", "পরিবেশ রসায়ন (প্রথম অধ্যায়)", "অর্থনৈতিক রসায়ন (পঞ্চম অধ্যায়)", "পরিমাণগত রসায়ন (তৃতীয় অধ্যায়)", "তড়িৎ রসায়ন (চতুর্থ অধ্যায়)"] }
-      ]
-    },
-    { 
-      name: "উচ্চতর গণিত", 
-      mcq: "15k", 
-      cq: "410", 
-      board: "62", 
-      model: "480", 
-      hasChapters: true,
-      color: "emerald",
-      gradient: "from-emerald-500 to-teal-600",
-      shading: "bg-emerald-50 text-emerald-850 dark:bg-emerald-950/20 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30",
-      accent: "text-emerald-600 dark:text-emerald-400",
-      border: "border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700/50",
-      chapters: [
-        { label: "উচ্চতর গণিত ১ম পত্র", sub: ["ম্যাট্রিক্স ও নির্ণায়ক", "ভেক্টর", "সরলরেখা", "বৃত্ত", "ত্রিকোণমিতিক অনুপাত", "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত", "ফাংশন ও ফাংশনের লেখচিত্র", "অন্টারীকরণ", "যোগজীকরণ"] },
-        { label: "উচ্চতর গণিত ২য় পত্র", sub: ["বাস্তব সংখ্যা ও অসমতা", "যোগাশ্রয়ী প্রোগ্রাম (Linear programming)", "জতিীল সংখ্যা (Complex Numbers)", "বহুপদী ও বহুপদী সমীকরণ (Polynomials and Polynomials Equations)", "দ্বিপদী বিস্তৃতি  (Binomial Expansions)", "কনিক  (Conics)", "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (Inverse Trigonometric Functions and Trigonometric Equations)", "স্থিতিবিদ্যা (Statics)", "সমতলে বস্তুকণার গতি (Motion of particles in a plane)", "বিসত্মার পরিমাপ ও সম্ভাবনা (Measures of Dispersions and Probability)"] }
+        { label: "পদার্থবিজ্ঞান ১ম পত্র", sub: ["ভৌত জগৎ ও পরিমাপ", "ভেক্টর", "গতিবিদ্যা", "নিউটনিয়ান বলবিদ্যা", "কাজ, শক্তি ও ক্ষমতা", "মহাকর্ষ ও অভিকর্ষ", "পদার্থের গাঠনিক ধর্ম", "পর্যাবৃত্ত গতি", "তরঙ্গ", "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
+        { label: "পদার্থবিজ্ঞান ২য় পত্র", sub: ["তাপগতিবিদ্যা", "স্থির তড়িৎ", "চল তড়িৎ", "জ্যামিতিক আলোকবিজ্ঞান", "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"] }
       ]
     },
     { 
@@ -479,50 +453,16 @@ export default function App({
       accent: "text-sky-600 dark:text-sky-400",
       border: "border-sky-100 dark:border-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700/50",
       chapters: [
-        { label: "পরিসংখ্যান ১ম পত্র", sub: ["পরিসংখ্যান, চলক ও বিভিন্ন প্রতীকের ধারণা", "তথ্য সংগ্রহ, সংক্ষিপ্তকরণ ও উপস্থাপন", "কেন্দ্রীয় প্রবণতার পরিমাপ", "বিস্তার পরিমাপ", "পরিঘাত, বঙ্কিমতা ও সূঁচালতা", "সংশ্লেষণ ও নির্ভরণ", "কালীন সারি", "বাংলাদেশের প্রকাশিত পরিসংখ্যান", "ব্যবহারিক ও গুরুত্বপূর্ণ প্রশ্নাবলী অংশ"] },
-        { label: "পরিসংখ্যান ২য় পত্র", sub: ["সম্ভাবনা", "দৈব চলক ও গাণিতিক প্রত্যাশা", "গাণিতিক প্রত্যাশা", "দ্বিপদী বিন্যাস", "পৈসুঁবিন্যাস", "পরিমিত বিন্যাস", "নমুনায়ন", "জন পরিসংখ্যান", "বিন্যাস, সমাবেশ, নির্ণায়ক ও ম্যাট্রিক্স", "প্রাক্কলন", "যথার্থতা যাচাই", "পরীক্ষণের নকশা"] }
-      ]
-    },
-    { 
-      name: "কৃষিশিক্ষা", 
-      mcq: "6.9k", 
-      cq: "3.8k", 
-      board: "18", 
-      model: "2", 
-      hasChapters: true,
-      color: "amber",
-      gradient: "from-amber-500 to-yellow-600",
-      shading: "bg-amber-50 text-amber-850 dark:bg-amber-950/20 dark:text-amber-400 border-amber-100 dark:border-amber-900/30",
-      accent: "text-amber-600 dark:text-amber-400",
-      border: "border-amber-100 dark:border-amber-900/30 hover:border-amber-300 dark:hover:border-amber-700/50",
-      chapters: [
-        { label: "কৃষিশিক্ষা ১ম পত্র", sub: ["বাংলাদেশের কৃষি", "ভূমি সম্পৃক্ত কৃষি প্রযুক্তি", "বিশেষ উৎপাদন সম্পৃক্ত কৃষি প্রযুক্তি", "কৃষি ও জলবায়ু", "মাঠ ও উদ্যান ফসল উৎপাদন", "ফল ও শাকসবজি প্রক্রিয়াজাতকরণ ও সংরক্ষণ"] },
-        { label: "কৃষিশিক্ষা ২য় পত্র", sub: ["মাৎস্য চাষ", "পোল্ট্রি পালন", "পশু পালন", "বনায়ন", "কৃষি অর্থনীতি ও সমবায়"] }
+        { label: "পরিসংখ্যান ১ম পত্র", sub: ["পরিসংখ্যান, চলক ও বিভিন্ন প্রতীকের ধারণা", "তথ্য সংগ্রহ, সংক্ষিপ্তকরণ ও উপস্থাপন", "কেন্দ্রীয় প্রবণতা"] },
+        { label: "পরিসংখ্যান ২য় পত্র", sub: ["সম্ভাবনা", "দৈব চলক ও গাণিতিক প্রত্যাশা"] }
       ]
     }
   ];
 
-  const modelTestCards = [
-    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট -১" },
-    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ২" },
-    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৩" },
-    { title: "HSC 26 - কৃষিশ睐িক ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৪" },
-    { title: "HSC 26 - কৃষিশিক্ষা ২য় পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ৫" },
-    { title: "HSC 26 - কৃষিশিক্ষা ১ম পত্র স্পেশাল ফাইনাল মডেল টেস্ট - ১" },
-  ];
-
-  // ==========================================
-  // RENDER HELPERS FOR SATT DASHBOARD
-  // ==========================================
-  const renderSattDashboard = () => (
-    <div className="flex-1 bg-gradient-to-b from-zinc-50 to-zinc-100/50 dark:from-zinc-950 dark:to-zinc-900 flex flex-col h-full font-sans text-zinc-900 dark:text-zinc-100 selection:bg-emerald-500/10 select-none">
-      
-      {/* SATT Main Scrollable Content */}
-      <div className="flex-1 overflow-y-auto p-4 sm:p-5 md:p-8 custom-scrollbar">
-        <div className="max-w-[1500px] mx-auto space-y-6 md:space-y-8">
-          
-          {/* Header Area with Subtle Aesthetics */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-1">
+  const renderSattDashboard = () => {
+    return (
+      <div className="flex-1 overflow-y-auto space-y-6 w-full pb-12 animate-fade-in relative">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1 px-4 sm:px-6 md:px-8 mt-6">
             <div>
               <div className="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-extrabold text-[11px] sm:text-[12px] uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -535,7 +475,7 @@ export default function App({
           </div>
 
           {/* Navigation and Search Module */}
-          <div className="bg-white dark:bg-zinc-900/80 backdrop-blur-md p-3 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/80 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-4">
+          <div className="bg-white dark:bg-zinc-900/80 backdrop-blur-md p-3 rounded-2xl border border-zinc-200/50 dark:border-zinc-800/80 shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-4 mx-4 sm:mx-6 md:mx-8">
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 xl:pb-0 scrollbar-none scroll-smooth w-full flex-nowrap min-w-0">
               {sattTabs.map((tab, idx) => {
                 const isActive = activeTab === idx;
@@ -568,7 +508,7 @@ export default function App({
 
           {/* Dynamic Tab Content */}
           {activeTab === 0 && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in px-4 sm:px-6 md:px-8">
               <div className="mb-6">
                 <h2 className="text-[22px] font-extrabold text-zinc-900 dark:text-zinc-100">সকল বিষয়ের প্রশ্নব্যাংক</h2>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-1">বিষয়ভিত্তিক সাজানো প্রশ্ন ও অনুশীলন</p>
@@ -724,7 +664,7 @@ export default function App({
           )}
 
           {activeTab === 1 && (
-            <div className="animate-fade-in">
+            <div className="animate-fade-in px-4 sm:px-6 md:px-8">
               <div className="mb-4">
                 <h2 className="text-[22px] font-extrabold text-gray-850 dark:text-slate-100">বিগত বছরের বোর্ড পরীক্ষার প্রশ্ন ব্যাংক</h2>
                 <p className="text-sm text-gray-500 dark:text-slate-400 mt-1">বিগত বছরের বোর্ড পরীক্ষার প্রশ্ন ও সমাধান</p>
@@ -925,9 +865,8 @@ export default function App({
           )}
 
         </div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   // ==========================================
   // RENDER APP COMPONENT
@@ -949,7 +888,7 @@ export default function App({
   }
 
   return (
-    <div className="flex h-full w-full bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 relative rounded-xl overflow-hidden shadow-sm border border-gray-200/50 dark:border-zinc-800">
+    <div className="flex flex-col w-full h-full text-zinc-900 dark:text-zinc-100 relative">
       {/* MAIN VIEWPORT - Removed the hardcoded duplicate sidebar and top header to fit Chorcha AI layout correctly */}
       {activeDashboardView ? (
         renderSattDashboard()

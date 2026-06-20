@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC পদার্থবিজ্ঞান ১ম পত্র | অধ্যায় ২: ভেক্টর | PhET Simulation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur shadow-sm border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 py-3 overflow-x-auto">
+            <ul class="flex items-center gap-6 whitespace-nowrap text-sm font-medium text-slate-600">
+                <li class="text-slate-800 font-bold hidden md:block mr-4">দ্রুত নেভিগেশন:</li>
+                <li><a href="#topic-1" class="hover:text-blue-600 transition-colors">১. ভেক্টর যোগ ও সামান্তরিক সূত্র</a></li>
+                <li><a href="#topic-2" class="hover:text-blue-600 transition-colors">২. ভেক্টর সমীকরণ ও স্কেলিং</a></li>
+                <li><a href="#topic-3" class="hover:text-blue-600 transition-colors">৩. লম্ব উপাংশ ও আপেক্ষিক বেগ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="bg-blue-900 rounded-3xl p-8 md:p-12 text-white shadow-xl mb-12 relative overflow-hidden">
+            <div class="relative z-10 text-center">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-blue-800/80 text-sm font-semibold mb-4 tracking-wider shadow-sm">
+                    PHET SIMULATION LAB
+                </span>
+                <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+                    HSC পদার্থবিজ্ঞান ১ম পত্র<br />অধ্যায় ২: ভেক্টর
+                </h1>
+                <p class="text-blue-100 text-lg max-w-2xl mx-auto">
+                    ইন্টারেক্টিভ সিমুলেশনের মাধ্যমে ভেক্টরের গাণিতিক সূত্র ও বাস্তব প্রয়োগের চাক্ষুষ অভিজ্ঞতা।
+                </p>
+            </div>
+        </header>
+
+        <main class="space-y-12">
+            
+            <!-- Topic 1 -->
+            <section id="topic-1" class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden scroll-mt-24">
+                <div class="bg-slate-100 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 border-b border-slate-200">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl shadow-sm">
+                        ১
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-1">ভেক্টর যোগ, বিয়োগ ও সামান্তরিক সূত্র</h2>
+                        <p class="text-slate-500 text-sm md:text-base font-medium">(Parallelogram Law, Triangle Law, Polygon Law)</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center gap-2 bg-blue-50 border border-blue-100 px-4 py-2.5 rounded-xl text-blue-800 font-mono font-bold text-sm md:text-base shadow-sm">
+                        <span>R = √(P² + Q² + 2PQcosα)</span>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50 shadow-inner">
+                        <iframe 
+                            src="https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html" 
+                            width="100%" 
+                            height="500px" 
+                            class="border-0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 md:p-8 border-t border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-5">অনুশীলন প্রশ্নসমূহ:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ১. দুটি ভেক্টরের মধ্যবর্তী কোণ ০°, ৯০° এবং ১৮০° হলে তাদের লব্ধি (Sum) কেমন হয়?
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ২. সামান্তরিক সূত্র কীভাবে কাজ করে তা সিমুলেশন ব্যবহার করে দেখাও।
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ৩. ভেক্টর বিয়োগের ক্ষেত্রে লব্ধি ভেক্টরের দিক কোন দিকে হয়?
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Topic 2 -->
+            <section id="topic-2" class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden scroll-mt-24">
+                <div class="bg-slate-100 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 border-b border-slate-200">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl shadow-sm">
+                        ২
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-1">ভেক্টর সমীকরণ ও স্কেলিং</h2>
+                        <p class="text-slate-500 text-sm md:text-base font-medium">(Vector Equations with coefficients)</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center gap-2 bg-blue-50 border border-blue-100 px-4 py-2.5 rounded-xl text-blue-800 font-mono font-bold text-sm md:text-base shadow-sm">
+                        <span>a·A + b·B = C</span>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50 shadow-inner">
+                        <iframe 
+                            src="https://phet.colorado.edu/sims/html/vector-addition-equations/latest/vector-addition-equations_en.html" 
+                            width="100%" 
+                            height="500px" 
+                            class="border-0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 md:p-8 border-t border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-5">অনুশীলন প্রশ্নসমূহ:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ১. স্কেলার গুণিতক (যেমন a বা b) পরিবর্তন করলে ভেক্টরের মানের কী পরিবর্তন ঘটে?
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ২. a·A এবং b·B এর মান পরিবর্তন করে কীভাবে C ভেক্টরকে শূন্য (Null Vector) করা যায়?
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ৩. ঋণাত্মক স্কেলার দিয়ে গুণ করলে ভেক্টরের দিক কীভাবে পরিবর্তিত হয়?
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Topic 3 -->
+            <section id="topic-3" class="bg-white border border-slate-200 rounded-3xl shadow-sm overflow-hidden scroll-mt-24">
+                <div class="bg-slate-100 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 border-b border-slate-200">
+                    <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold text-xl shadow-sm">
+                        ৩
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl md:text-2xl font-bold text-slate-800 mb-1">ভেক্টর বিভাজন ও লম্ব উপাংশ + আপেক্ষিক বেগ</h2>
+                        <p class="text-slate-500 text-sm md:text-base font-medium">(Resolution of Vectors, Relative Velocity)</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 flex items-center gap-2 bg-blue-50 border border-blue-100 px-4 py-2.5 rounded-xl text-blue-800 font-mono font-bold text-sm md:text-base shadow-sm">
+                        <span>Fx = Fcosθ, Fy = Fsinθ</span>
+                    </div>
+                </div>
+                <div class="p-6 md:p-8">
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-slate-50 shadow-inner">
+                        <iframe 
+                            src="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_en.html" 
+                            width="100%" 
+                            height="500px" 
+                            class="border-0"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 md:p-8 border-t border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-5">অনুশীলন প্রশ্নসমূহ:</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ১. কোন নির্দিষ্ট কোণে (যেমন ৪৫°) নিক্ষেপ করলে পাল্লা (Range) সর্বোচ্চ হয় কেন? ভেক্টর উপাংশ দিয়ে ব্যাখ্যা করো।
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ২. আদি বেগ (Initial Velocity) বৃদ্ধি করলে x এবং y অক্ষ বরাবর উপাংশের কী রূপ পরিবর্তন ঘটে?
+                        </li>
+                        <li class="flex items-start gap-3 text-slate-700 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                            ৩. সর্বোচ্চ উচ্চতায় y-অক্ষ বরাবর বেগ শূন্য হয় কেন?
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="mt-12 text-center text-slate-500 text-sm">
+            <p>PhET Interactive Simulations, University of Colorado Boulder এর সৌজন্যে।</p>
+        </footer>
+    </div>
+</body>
+</html>

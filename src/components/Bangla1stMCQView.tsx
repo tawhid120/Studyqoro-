@@ -696,10 +696,12 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
 
   const totalPages = Math.ceil(totalQuestions / limitPerPage);
 
-  const displayedQuestions = questions.filter(q => 
-    q.questionText.toLowerCase().includes(searchQuery.toLowerCase()) || 
-    q.source.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const displayedQuestions = questions.filter(q => {
+    const qText = q.questionText || "";
+    const qSource = Array.isArray(q.source) ? q.source.join(", ") : (q.source || "");
+    return qText.toLowerCase().includes((searchQuery || "").toLowerCase()) || 
+           qSource.toLowerCase().includes((searchQuery || "").toLowerCase());
+  });
 
   return (
     <div className={`min-h-screen flex flex-col relative w-full text-zinc-800 dark:text-zinc-200 transition-all duration-500 ease-in-out bg-gradient-to-tr from-[#f8fafc] via-[#f1f5f9] to-[#f8fafc] dark:from-zinc-950 dark:via-slate-900/20 dark:to-zinc-950`}>
@@ -728,63 +730,66 @@ export const Bangla1stMCQView: React.FC<Bangla1stMCQProps> = ({ onBack, initialC
               </span>
             </div>
             <h1 className="text-xl font-black text-zinc-900 dark:text-white tracking-tight leading-none mt-1">
-              গদ্য (Prose) — প্রশ্ন ব্যাংক ও এআই সমাধান
+              {selectedCategory === 'goddo' ? 'গদ্য (Prose)' : 
+               selectedCategory === 'kobita' ? 'কবিতা (Poetry)' : 
+               selectedCategory === 'natok' ? 'নাটক (Drama)' : 
+               selectedCategory === 'ouponnash' ? 'উপন্যাস (Novel)' : 'প্রশ্ন ব্যাংক'} — প্রশ্ন ব্যাংক ও এআই সমাধান
             </h1>
           </div>
         </div>
 
-        {/* Dynamic theme switcher & Back button */}
-        <div className="flex flex-wrap items-center gap-2.5">
-          <div className="bg-zinc-100 dark:bg-zinc-800 p-1 rounded-xl flex items-center gap-1 border border-zinc-200/50 dark:border-zinc-700/50">
+          {/* Dynamic theme switcher & Back button */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div className="bg-zinc-100 dark:bg-zinc-800 p-1 rounded-xl flex items-center gap-1 border border-zinc-200/50 dark:border-zinc-700/50">
+              <button 
+                onClick={() => {
+                  setThemeMode("slate");
+                  showToast("মার্বেল স্লেট থিম সক্রিয় করা হয়েছে 🌿");
+                }}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
+                  themeMode === "slate" 
+                    ? "bg-[#0c8a4d] text-white shadow-xs" 
+                    : "text-zinc-650 hover:bg-zinc-200 dark:text-zinc-350 dark:hover:bg-zinc-700"
+                }`}
+              >
+                <Palette className="w-3.5 h-3.5" />
+                <span>স্লেট থিম</span>
+              </button>
+            </div>
+
             <button 
-              onClick={() => {
-                setThemeMode("slate");
-                showToast("মার্বেল স্লেট থিম সক্রিয় করা হয়েছে 🌿");
-              }}
-              className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 cursor-pointer ${
-                themeMode === "slate" 
-                  ? "bg-[#0c8a4d] text-white shadow-xs" 
-                  : "text-zinc-650 hover:bg-zinc-200 dark:text-zinc-350 dark:hover:bg-zinc-700"
-              }`}
+              onClick={onBack}
+              className="px-4 py-2 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-black flex items-center gap-1.5 transition-all text-zinc-700 dark:text-zinc-300 cursor-pointer bg-white dark:bg-zinc-900"
             >
-              <Palette className="w-3.5 h-3.5" />
-              <span>স্লেট থিম</span>
+              <ArrowLeft className="w-4 h-4" />
+              <span>হোমে ফিরুন</span>
             </button>
           </div>
-
-          <button 
-            onClick={onBack}
-            className="px-4 py-2 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-black flex items-center gap-1.5 transition-all text-zinc-700 dark:text-zinc-300 cursor-pointer bg-white dark:bg-zinc-900"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>হোমে ফিরুন</span>
-          </button>
         </div>
-      </div>
 
-      <div className="flex-1 w-full mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
-        
-        {/* HERO PROMOTION BOARD (CHORCHA STYLE) */}
-        <div className={`p-6 sm:p-8 rounded-3xl border transition-all duration-500 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-gradient-to-r from-emerald-50 to-slate-100/50 dark:from-emerald-950/20 dark:to-slate-900/10 border-emerald-200/60 dark:border-slate-800/60`}>
-          <div className="space-y-2 relative z-10">
-            <div className="flex items-center gap-2 text-xs font-black tracking-widest text-emerald-800 dark:text-emerald-400">
-              <Sparkles className="w-4.5 h-4.5 text-amber-500" />
-              <span>PREMIUM DIGITAL TEST PAPER</span>
+        <div className="flex-1 w-full mx-auto max-w-7xl p-4 sm:p-6 lg:p-8 flex flex-col justify-between">
+          
+          {/* HERO PROMOTION BOARD (CHORCHA STYLE) */}
+          <div className={`p-6 sm:p-8 rounded-3xl border transition-all duration-500 relative overflow-hidden flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 bg-gradient-to-r from-emerald-50 to-slate-100/50 dark:from-emerald-950/20 dark:to-slate-900/10 border-emerald-200/60 dark:border-slate-800/60`}>
+            <div className="space-y-2 relative z-10">
+              <div className="flex items-center gap-2 text-xs font-black tracking-widest text-emerald-800 dark:text-emerald-400">
+                <Sparkles className="w-4.5 h-4.5 text-amber-500" />
+                <span>PREMIUM DIGITAL TEST PAPER</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black text-zinc-950 dark:text-white leading-tight">
+                বাংলা ১ম পত্র — অধ্যায় ভিত্তিক {selectedCategory === 'goddo' ? 'গদ্য' : selectedCategory === 'kobita' ? 'কবিতা' : selectedCategory === 'natok' ? 'নাটক' : selectedCategory === 'ouponnash' ? 'উপন্যাস' : ''} সংকলন
+              </h2>
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-zinc-950 dark:text-white leading-tight">
-              বাংলা ১ম পত্র — অধ্যায় ভিত্তিক গদ্য সংকলন
-            </h2>
-          </div>
 
-          <div className="flex items-center gap-3 shrink-0 relative z-10 w-full lg:w-auto overflow-x-auto">
-            <div className="rounded-full bg-white dark:bg-zinc-800 px-4 py-2 border border-zinc-200 dark:border-zinc-700 shadow-sm flex items-center gap-2 select-none">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-xs font-black text-zinc-700 dark:text-zinc-300">
-                মোট গদ্য প্রশ্ন: {toBnDigit(2572)} টি
-              </span>
+            <div className="flex items-center gap-3 shrink-0 relative z-10 w-full lg:w-auto overflow-x-auto">
+              <div className="rounded-full bg-white dark:bg-zinc-800 px-4 py-2 border border-zinc-200 dark:border-zinc-700 shadow-sm flex items-center gap-2 select-none">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-black text-zinc-700 dark:text-zinc-300">
+                  মোট প্রশ্ন: {categoriesList.find(c => c.id === selectedCategory)?.count || `${toBnDigit(questions.length)} টি প্রশ্ন`}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
 
         {/* COMPREHENSIVE FILTER ENGINE (COMBINING COMPETITORS DARICOMMA & sATT) */}
         <div className="bg-white/80 dark:bg-zinc-900/80 rounded-2xl p-4 border border-zinc-200/50 dark:border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm my-6">

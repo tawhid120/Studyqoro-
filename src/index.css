@@ -332,10 +332,9 @@
     min-width: 44px;
   }
 
-  /* Text wrapping rules to prevent any text cutting off on small viewports */
-  p, h1, h2, h3, h4, h5, h6, span, strong {
-    white-space: normal !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
+  /* Text wrapping rules to prevent any text cutting off on small viewports while respecting layout wrappers */
+  p, h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }

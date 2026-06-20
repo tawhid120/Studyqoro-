@@ -210,7 +210,8 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
           totalQuestionsSolved: 0,
           plan: "Free", 
           completedMilestones: [],
-          isGuest: false
+          isGuest: false,
+          collegeName: institution.trim() || null
         };
         try {
             await setDoc(doc(db, "students", userCredential.user.uid), userData);

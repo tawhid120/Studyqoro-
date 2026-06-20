@@ -83,12 +83,12 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
     <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
       
       {/* Dynamic header of study timer */}
-      <div className="bg-slate-900 border border-slate-800 p-6 rounded-3xl">
-        <h3 className="text-xl font-bold text-slate-100 flex items-center gap-2">
-          <Timer className="w-5 h-5 text-emerald-400" />
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 rounded-3xl shadow-xs">
+        <h3 className="text-xl font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+          <Timer className="w-5 h-5 text-emerald-500 dark:text-emerald-400" />
           <span>স্মার্ট স্টাডি ও ফোকাস টাইমার (Focus Engine)</span>
         </h3>
-        <p className="text-xs text-slate-400 mt-1">
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           নিয়মিত বিরতি ও অনুশীলনের সাথে পড়ার সময়কে সিঙ্ক করে চূড়ান্ত কার্যকারিতা অর্জন করো। পড়াশেষে এক্সপি সংগ্রহ করতে ভুলো না!
         </p>
 
@@ -100,12 +100,12 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
               onClick={() => handleSelectPreset(p.id, p.duration)}
               className={`p-4 rounded-2xl text-left border transition-all ${
                 activePreset === p.id
-                  ? "bg-emerald-600/10 border-emerald-400 text-slate-200"
-                  : "bg-slate-950/60 border-slate-850 text-slate-500 hover:text-slate-300 hover:border-slate-800"
+                  ? "bg-emerald-500/10 border-emerald-400 text-[#047857] dark:text-emerald-400 font-bold"
+                  : "bg-slate-50/50 dark:bg-slate-955/60 border-slate-200 dark:border-slate-855 text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 hover:border-slate-300 dark:hover:border-slate-800"
               }`}
             >
-              <h4 className={`text-xs font-bold ${activePreset === p.id ? "text-emerald-400 font-extrabold" : "text-slate-300"}`}>{p.name}</h4>
-              <p className="text-[10px] text-slate-400 mt-1 leading-normal">{p.description}</p>
+              <h4 className={`text-xs font-bold ${activePreset === p.id ? "text-emerald-600 dark:text-emerald-450 font-extrabold" : "text-slate-700 dark:text-slate-300"}`}>{p.name}</h4>
+              <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-normal">{p.description}</p>
               <span className="text-[10px] font-bold text-slate-500 font-mono block mt-2.5">+{p.xp} XP পুরষ্কার</span>
             </button>
           ))}
@@ -113,24 +113,24 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
       </div>
 
       {/* Main clock display layout card */}
-      <div className="bg-slate-900 border border-slate-800 p-8 rounded-3xl text-center space-y-6 relative overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 rounded-3xl text-center space-y-6 relative overflow-hidden shadow-xs">
         
         {/* Floating background decorative effect */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl" />
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl" />
 
         {/* Clocks */}
-        <div className="w-64 h-64 rounded-full border-4 border-slate-800 border-t-emerald-500 flex flex-col items-center justify-center mx-auto bg-slate-950 select-none shadow-xl">
-          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">রানিং সেশন</span>
-          <span className="text-5xl font-black font-mono text-slate-100 my-2">{formatTime()}</span>
-          <span className="text-[10px] text-emerald-400 font-bold px-2 py-0.5 rounded-full bg-emerald-950/20 border border-emerald-500/10">
+        <div className="w-64 h-64 rounded-full border-4 border-slate-150 dark:border-slate-800 border-t-emerald-500 flex flex-col items-center justify-center mx-auto bg-slate-50 dark:bg-slate-950 select-none shadow-xl">
+          <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">রানিং সেশন</span>
+          <span className="text-5xl font-black font-mono text-slate-800 dark:text-slate-100 my-2">{formatTime()}</span>
+          <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/20 border border-emerald-300 dark:border-emerald-500/10">
             {isActive ? "মনোযোগ বজায় রাখো 🎯" : "স্থগিত রয়েছে ⏸️"}
           </span>
         </div>
 
         {/* Display completed notification */}
         {sessionCompleted && (
-          <div className="max-w-md mx-auto p-4 bg-emerald-600/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center gap-2.5 text-xs text-emerald-300 animate-fade-in font-bold">
+          <div className="max-w-md mx-auto p-4 bg-emerald-600/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center gap-2.5 text-xs text-emerald-700 dark:text-emerald-300 animate-fade-in font-bold">
             <CheckCircle className="w-4.5 h-4.5" />
             <span>অভিনন্দন! তোমার স্টাডি চক্র সম্পূর্ণ হয়েছে এবং প্রোফাইলে বোনাস এক্সপি যোগ করা হয়েছে!</span>
           </div>
@@ -141,9 +141,9 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
           {isActive ? (
             <button
               onClick={() => setIsActive(false)}
-              className="flex-1 py-3.5 bg-slate-800 hover:bg-slate-705 text-slate-200 text-xs rounded-xl font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all border border-slate-750"
+              className="flex-1 py-3.5 bg-slate-105 hover:bg-slate-150 dark:bg-slate-800 dark:hover:bg-slate-705 text-slate-700 dark:text-slate-200 text-xs rounded-xl font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-all border border-slate-200 dark:border-slate-750 cursor-pointer"
             >
-              <Pause className="w-4 h-4 text-emerald-400" /> সাময়িক বিরতি (PAUSE)
+              <Pause className="w-4 h-4 text-emerald-500 dark:text-emerald-400" /> সাময়িক বিরতি (PAUSE)
             </button>
           ) : (
             <button
@@ -151,7 +151,7 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
                 setSessionCompleted(false);
                 setIsActive(true);
               }}
-              className="flex-1 py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:brightness-110 text-slate-950 text-xs rounded-xl font-black flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-lg shadow-emerald-500/10"
+              className="flex-1 py-3.5 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:brightness-110 text-slate-950 text-xs rounded-xl font-black flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-lg shadow-emerald-500/10 cursor-pointer"
             >
               <Play className="w-4 h-4 fill-current" /> সেশন শুরু করুন (START)
             </button>
@@ -164,7 +164,7 @@ export default function StudyTimer({ stats, setStats }: StudyTimerProps) {
               setDurationSeconds(p ? p.duration : 1500);
               setSessionCompleted(false);
             }}
-            className="p-3.5 bg-slate-950 border border-slate-850 hover:bg-slate-900 text-slate-400 hover:text-slate-200 rounded-xl transition-all"
+            className="p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 border border-slate-200 dark:border-slate-850 dark:hover:bg-slate-900 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-xl transition-all cursor-pointer"
             title="টাইমার রিসেট"
           >
             <RotateCcw className="w-4.5 h-4.5" />

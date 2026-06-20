@@ -372,9 +372,9 @@ export default function App({
               <span className="text-lg sm:text-xl font-black font-sans">S</span>
             </div>
             <div className="text-left leading-tight">
-              <h1 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase font-sans flex items-center gap-1">
+              <div className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase font-sans flex items-center gap-1">
                 study <span className="px-1.5 py-0.5 rounded bg-[#EBF8F6] dark:bg-emerald-950/40 text-[#00A884] dark:text-[#4FD1C5] text-[9px] sm:text-[10px] font-bold">qoro</span>
-              </h1>
+              </div>
               <p className="hidden xs:block text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest mt-0.5">অ্যাকাডেমিক পোর্টাল</p>
             </div>
           </div>
@@ -426,12 +426,12 @@ export default function App({
             {/* Left Side: Text Content */}
             <div className="md:col-span-6 space-y-6 sm:space-y-8 text-center md:text-left relative z-10 md:pr-4">
               
-              <h2 className="text-[17px] xs:text-xl sm:text-2xl md:text-[25px] lg:text-[28px] xl:text-[32px] font-black text-slate-900 dark:text-white leading-[1.3] tracking-tight font-sans pb-1 flex flex-wrap items-center justify-center md:justify-start gap-y-2">
+              <h1 className="text-[17px] xs:text-xl sm:text-2xl md:text-[25px] lg:text-[28px] xl:text-[32px] font-black text-slate-900 dark:text-white leading-[1.3] tracking-tight font-sans pb-1 flex flex-wrap items-center justify-center md:justify-start gap-y-2">
                 পড়াশোনা করো{" "}
                 <br className="hidden sm:block" />
                 <HighlightUnderline>নিজের গতিতে</HighlightUnderline>,{" "}
                 <HighlightCircle>(AI সহায়তায়!)</HighlightCircle>
-              </h2>
+              </h1>
 
               <p className="text-xs sm:text-sm md:text-sm lg:text-base text-slate-700 dark:text-slate-300 max-w-lg mx-auto md:mx-0 leading-relaxed font-semibold px-2 sm:px-0">
                 হাজার হাজার রিয়েল বোর্ড প্রশ্ন ব্যাংক, অধ্যায়ভিত্তিক <span className="text-[#00A884] dark:text-[#4FD1C5] border-b-2 border-[#92E3CE] dark:border-[#4FD1C5]/50 font-black px-0.5">কাস্টম মক টেস্ট</span> , স্পিড ডাবলিং টাইমার, এবং তাৎক্ষণিক <span className="text-[#00A884] dark:text-[#4FD1C5] border-b-2 border-[#92E3CE] dark:border-[#4FD1C5]/50 font-black px-0.5 font-sans">AI ডাউট সলভ</span> নিয়ে প্রস্তুত হও যেকোনো প্রতিযোগিতামূলক পরীক্ষার জন্য।

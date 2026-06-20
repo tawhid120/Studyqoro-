@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
@@ -20,17 +20,25 @@ import Leaderboard from "./components/Leaderboard";
 import SyllabusTracker from "./components/SyllabusTracker";
 import TeacherCorner from "./components/TeacherCorner";
 import StudyMaterials from "./components/StudyMaterials";
+import SimulationsView from "./components/SimulationsView";
+import JoinCollegeModal from "./components/JoinCollegeModal";
+import AdminPanel from "./components/AdminPanel";
+import BlogView from "./components/BlogView";
+import SingleQuestionView from "./components/SingleQuestionView";
 import { StudentStats, Question } from "./types";
 import { Sparkles, Trophy, X, ShieldAlert, BadgeCheck } from "lucide-react";
 import { auth, db, handleFirestoreError, OperationType } from "./lib/firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+  import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export default function App() {
   const [activeTab, setActiveTab ] = useState<string>("dashboard");
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showJoinCollegeModal, setShowJoinCollegeModal] = useState(false);
+  const [hasPromptedCollege, setHasPromptedCollege] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [dynamicRoute, setDynamicRoute] = useState<{type: "blog" | "question" | null, param: string | null}>({ type: null, param: null });
   const [darkMode, setDarkMode] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("study-qoro-theme");
@@ -56,22 +64,109 @@ export default function App() {
   } as any);
 
   useEffect(() => {
+    const path = window.location.pathname;
+    if (path.startsWith("/blog/")) {
+      const slug = path.split("/blog/")[1];
+      if (slug) setDynamicRoute({ type: "blog", param: slug });
+    } else if (path.startsWith("/question/")) {
+      const id = path.split("/question/")[1];
+      if (id) setDynamicRoute({ type: "question", param: id });
+    }
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.emailVerified) {
         try {
           const userDoc = await getDoc(doc(db, "students", user.uid));
           if (userDoc.exists()) {
-            setStats({ ...userDoc.data() as StudentStats, isGuest: false, uid: user.uid });
+            setStats({ ...userDoc.data() as StudentStats, isGuest: false, uid: user.uid, email: user.email });
           }
         } catch (error) {
           handleFirestoreError(error, OperationType.GET, "students/" + user.uid);
         }
       } else {
-        setStats(prev => ({ ...prev, isGuest: true }));
+        setStats({
+          name: "গেস্ট পরীক্ষার্থী (Guest Student)",
+          points: 15,
+          streak: 0, 
+          level: 1,
+          rank: 99912,
+          examsGiven: 0,
+          totalQuestionsSolved: 0,
+          plan: "Free",
+          completedMilestones: [],
+          isGuest: true
+        } as any);
       }
     });
     return unsubscribe;
   }, []);
+
+  // Listen to open-college-selector public event
+  useEffect(() => {
+    const handleOpen = () => setShowJoinCollegeModal(true);
+    window.addEventListener("open-college-selector", handleOpen);
+    return () => window.removeEventListener("open-college-selector", handleOpen);
+  }, []);
+
+  // Prompt registered users with no college once per session
+  useEffect(() => {
+    if (!stats.isGuest && !stats.collegeName && !hasPromptedCollege) {
+      setShowJoinCollegeModal(true);
+      setHasPromptedCollege(true);
+    }
+  }, [stats.isGuest, stats.collegeName, hasPromptedCollege]);
+
+  const prevStats = useRef(stats);
+  useEffect(() => {
+    if (!stats || stats.isGuest || !stats.uid) return;
+
+    if (prevStats.current.uid !== stats.uid) {
+      prevStats.current = stats;
+      return; 
+    }
+
+    const saveChanges = async () => {
+      try {
+        await updateDoc(doc(db, "students", stats.uid as string), {
+          points: stats.points,
+          streak: stats.streak,
+          level: stats.level,
+          rank: stats.rank,
+          examsGiven: stats.examsGiven,
+          totalQuestionsSolved: stats.totalQuestionsSolved,
+          plan: stats.plan,
+          name: stats.name,
+          completedMilestones: stats.completedMilestones || [],
+          collegeId: stats.collegeId || null,
+          collegeName: stats.collegeName || null,
+          division: stats.division || null,
+          district: stats.district || null,
+          dob: stats.dob || null,
+          gender: stats.gender || null,
+          address: stats.address || null,
+          classCode: stats.classCode || null,
+          group: stats.group || null,
+          batch: stats.batch || null,
+          sscRoll: stats.sscRoll || null,
+          sscReg: stats.sscReg || null,
+          board: stats.board || null,
+          passingYear: stats.passingYear || null,
+          optionalSubjects: stats.optionalSubjects || null,
+          avatar: stats.avatar || null,
+          plannerTasks: stats.plannerTasks || null,
+          purchasedRewards: stats.purchasedRewards || null,
+          mistakes: stats.mistakes || null
+        });
+      } catch (err) {
+        console.error("Auto-sync failed", err);
+      }
+    };
+
+    saveChanges();
+    prevStats.current = stats;
+  }, [stats]);
 
   // Sync dark class to the document root
   useEffect(() => {
@@ -103,7 +198,7 @@ export default function App() {
     // 2. Disable text selection globally except on input/textarea nodes
     const handleSelectStart = (e: Event) => {
       const target = e.target as HTMLElement | null;
-      if (target) {
+      if (target && target.tagName) {
         const tagName = target.tagName.toLowerCase();
         if (tagName === "input" || tagName === "textarea" || target.isContentEditable) {
           return;
@@ -115,7 +210,7 @@ export default function App() {
     // 3. Prevent dragging on image components
     const handleDragStart = (e: DragEvent) => {
       const target = e.target as HTMLElement | null;
-      if (target && target.tagName.toLowerCase() === "img") {
+      if (target && target.tagName && target.tagName.toLowerCase() === "img") {
         e.preventDefault();
       }
     };
@@ -236,9 +331,13 @@ export default function App() {
   // Route tab checks. Allow full navigation for smooth previewing
   const handleTabSelection = (tabId: string) => {
     setActiveTab(tabId);
+    setDynamicRoute({ type: null, param: null });
+    if (tabId === "dashboard" || tabId === "questions" || tabId === "history") {
+      window.history.pushState({}, "", "/");
+    }
   };
 
-  if (stats.isGuest) {
+  if (stats.isGuest && !dynamicRoute.type) {
     return (
       <>
         <LandingPage 
@@ -278,7 +377,7 @@ export default function App() {
         />
 
         {/* 2. Main content area on the right side */}
-        <div className="flex-1 flex flex-col h-screen overflow-y-auto">
+        <div className="flex-1 flex flex-col h-screen overflow-y-auto overflow-x-hidden min-w-0 w-full">
           <Header 
             stats={stats} 
             onQuickExam={handleQuickExamLauncher} 
@@ -292,7 +391,15 @@ export default function App() {
           />
 
           <main className="flex-grow p-5 sm:p-7 max-w-7xl mx-auto w-full">
-            {activeTab === "dashboard" && (
+            {dynamicRoute.type === "blog" && dynamicRoute.param && (
+              <BlogView slug={dynamicRoute.param} onBack={() => handleTabSelection("dashboard")} />
+            )}
+
+            {dynamicRoute.type === "question" && dynamicRoute.param && (
+              <SingleQuestionView id={dynamicRoute.param} onBack={() => handleTabSelection("questions")} />
+            )}
+
+            {!dynamicRoute.type && activeTab === "dashboard" && (
               <Dashboard 
                 stats={stats} 
                 setStats={setStats} 
@@ -303,14 +410,14 @@ export default function App() {
               />
             )}
 
-            {activeTab === "syllabus" && (
+            {!dynamicRoute.type && activeTab === "syllabus" && (
               <SyllabusTracker 
                 stats={stats} 
                 setStats={setStats}
               />
             )}
 
-            {activeTab === "questions" && (
+            {!dynamicRoute.type && activeTab === "questions" && (
               <QuestionBank 
                 stats={stats} 
                 setStats={setStats} 
@@ -318,7 +425,7 @@ export default function App() {
               />
             )}
 
-            {activeTab === "mocks" && (
+            {!dynamicRoute.type && activeTab === "mocks" && (
               <MockExam 
                 stats={stats} 
                 setStats={setStats} 
@@ -326,7 +433,7 @@ export default function App() {
               />
             )}
 
-            {activeTab === "ai" && (
+            {!dynamicRoute.type && activeTab === "ai" && (
               <ChorchaAI 
                 stats={stats} 
                 setStats={setStats} 
@@ -334,7 +441,7 @@ export default function App() {
               />
             )}
 
-            {activeTab === "battle" && (
+            {!dynamicRoute.type && activeTab === "battle" && (
               <ExamWar 
                 stats={stats} 
                 setStats={setStats} 
@@ -342,44 +449,56 @@ export default function App() {
               />
             )}
 
-            {activeTab === "materials" && (
+            {!dynamicRoute.type && activeTab === "materials" && (
               <StudyMaterials 
                 stats={stats} 
                 setStats={setStats} 
               />
             )}
 
-            {activeTab === "leaderboard" && (
+            {!dynamicRoute.type && activeTab === "simulations" && (
+              <SimulationsView 
+                stats={stats} 
+              />
+            )}
+
+            {!dynamicRoute.type && activeTab === "leaderboard" && (
               <Leaderboard 
                 stats={stats} 
               />
             )}
 
 
-            {activeTab === "timer" && (
+            {!dynamicRoute.type && activeTab === "timer" && (
               <StudyTimer 
                 stats={stats} 
                 setStats={setStats} 
               />
             )}
 
-            {activeTab === "history" && (
+            {!dynamicRoute.type && activeTab === "history" && (
               <HistoryLog 
                 stats={stats} 
               />
             )}
 
-            {activeTab === "progress" && (
+            {!dynamicRoute.type && activeTab === "progress" && (
               <ProgressTracker 
                 stats={stats} 
                 setStats={setStats}
               />
             )}
 
-            {(activeTab === "teacher" || activeTab.startsWith("teacher_")) && (
+            {!dynamicRoute.type && (activeTab === "teacher" || activeTab.startsWith("teacher_")) && (
               <TeacherCorner 
                 initialSubTab={activeTab === "teacher" ? "overview" : activeTab.replace("teacher_", "")} 
                 onBackToDashboard={() => handleTabSelection("dashboard")}
+              />
+            )}
+
+            {!dynamicRoute.type && activeTab === "admin" && (
+              <AdminPanel 
+                stats={stats} 
               />
             )}
           </main>
@@ -453,6 +572,14 @@ export default function App() {
         <AuthModal 
           isOpen={showAuthModal}
           onClose={() => setShowAuthModal(false)}
+          stats={stats}
+          setStats={setStats}
+        />
+
+        {/* 5. Custom Join College Modal */}
+        <JoinCollegeModal 
+          isOpen={showJoinCollegeModal}
+          onClose={() => setShowJoinCollegeModal(false)}
           stats={stats}
           setStats={setStats}
         />

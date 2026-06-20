@@ -578,7 +578,7 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
 
   // Filter subjects count or dynamic search matching
   const filteredSubjects = SUBJECTS_METADATA.filter(s => 
-    s.name.includes(searchQuery) || s.engName.toLowerCase().includes(searchQuery.toLowerCase())
+    (s.name || "").includes(searchQuery) || (s.engName || "").toLowerCase().includes((searchQuery || "").toLowerCase())
   );
 
   return (

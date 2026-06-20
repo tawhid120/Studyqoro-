@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from "react";
-import { Sun, Moon, X } from "lucide-react";
+import { Sun, Moon, X, ShieldAlert } from "lucide-react";
 import { StudentStats } from "../types";
 
 interface SidebarProps {
@@ -122,6 +122,16 @@ function DatabaseIcon({ className }: { className?: string }) {
       <ellipse cx="12" cy="5" rx="9" ry="3" />
       <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
       <path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3" />
+    </svg>
+  );
+}
+
+function Cube3DIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
     </svg>
   );
 }
@@ -320,10 +330,11 @@ export default function Sidebar({
   // Exact menu map matching screenshot from top to bottom
   const menuItems = [
     { id: "dashboard", label: "ড্যাশবোর্ড", icon: HomeIcon },
-    { id: "syllabus", label: "সিলেবাস ট্র্যাকার", icon: SyllabusIcon },
     { id: "questions", label: "প্রশ্নব্যাংক", icon: ArchiveIcon },
     { id: "battle", label: "Exam War", icon: WarIcon },
     { id: "materials", label: "স্টাডি ম্যাটেরিয়ালস", icon: BookOpenIcon },
+    { id: "simulations", label: "থ্রিডি ও সিমুলেশন", icon: Cube3DIcon },
+    { id: "syllabus", label: "সিলেবাস ট্র্যাকার", icon: SyllabusIcon },
     { id: "timer", label: "দ্রুত প্র্যাকটিস", icon: InfinityIcon },
     { id: "mocks", label: "মক পরীক্ষা", icon: EditPaperIcon },
     { id: "ai", label: "Study Qoro AI", icon: SparklesIcon },
@@ -331,6 +342,10 @@ export default function Sidebar({
     { id: "leaderboard", label: "লিডারবোর্ড", icon: PodiumIcon },
     { id: "progress", label: "প্রোগ্রেস", icon: ProgressGaugeIcon },
   ];
+
+  if (stats.email === "lorddanju@gmail.com") {
+    menuItems.push({ id: "admin", label: "Admin Panel", icon: ShieldAlert as any });
+  }
 
   const teacherItem = { id: "teacher", label: "টিচার কর্নার", icon: SchoolIcon };
 

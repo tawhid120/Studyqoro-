@@ -122,6 +122,15 @@ async function startServer() {
 
   app.use(express.json());
 
+  // Vite middleware setup (Moved up so it can be used for HTML transformation)
+  let vite: any;
+  if (process.env.NODE_ENV !== "production") {
+    vite = await createViteServer({
+      server: { middlewareMode: true },
+      appType: "spa",
+    });
+  }
+
   // API Route: Health query
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", mode: process.env.NODE_ENV || "development" });
@@ -1149,12 +1158,180 @@ You must output ONLY raw JSON in this exact structure:
     }
   });
 
+  // ========================================================
+  // PROGRAMMATIC SEO (SSR) & Dynamic Meta-Tagging
+  // ========================================================
+  const BLOG_POSTS = [
+    {
+      slug: "hsc-chemistry-1st-paper-suggestion-2025",
+      title: "এইচএসসি রসায়ন ১ম পত্র সাজেশন ২০২৫: শেষ মুহূর্তের প্রস্তুতি",
+      content: "এইচএসসি রসায়ন ১ম পত্রের গুরুত্বপূর্ণ অধ্যায় ও টপিকের সাজেশন। বিশেষ করে গুণগত রসায়ন এবং পর্যায়বৃত্ত ধর্ম থেকে প্রতি বছর বেশি প্রশ্ন আসে। সৃজনশীল প্রশ্নের জন্য গাণিতিক সমস্যার সমাধান এবং এমসিকিউ এর জন্য মূল বইয়ের খুঁটিনাটি পড়া একান্ত জরুরি...",
+      date: "2024-06-25",
+      category: "Suggestion"
+    },
+    {
+      slug: "dhaka-university-admission-marks-distribution",
+      title: "ঢাবি ভর্তি পরীক্ষার মানবন্টন ও চান্স পাওয়ার কৌশল",
+      content: "ঢাকা বিশ্ববিদ্যালয়ের ক, খ ও গ ইউনিটের নতুন মানবন্টন ও প্রস্তুতি নেওয়ার সেরা কৌশল। ঢাবি (DU) ভর্তি পরীক্ষায় এমসিকিউ এবং লিখিত উভয় অংশেই পাস করা বাধ্যতামূলক। সময় বিভাজন এবং নেগেটিভ মার্কিং এড়িয়ে চলার উপায় নিয়ে বিস্তারিত আলোচনা...",
+      date: "2024-06-20",
+      category: "Admission"
+    }
+  ];
+
+  app.get("/api/blogs", (req, res) => {
+    res.json({ blogs: BLOG_POSTS });
+  });
+
+  app.get("/api/blogs/:slug", (req, res) => {
+    const post = BLOG_POSTS.find(b => b.slug === req.params.slug);
+    if (post) res.json(post);
+    else res.status(404).json({ error: "Not found" });
+  });
+
+  // Programmatic SEO Route for Questions
+  app.get("/question/:id", async (req, res, next) => {
+    try {
+      const qId = req.params.id;
+      const qDB = loadQuestions();
+      const specificQuestion = qDB.find((q: any) => q.id === qId);
+
+      if (!specificQuestion) {
+        return next(); // fallback to standard SPA if not found
+      }
+
+      const indexFilePath = process.env.NODE_ENV !== "production" 
+        ? path.join(process.cwd(), "index.html")
+        : path.join(process.cwd(), "dist", "index.html");
+
+      if (!fs.existsSync(indexFilePath)) return next();
+      let html = fs.readFileSync(indexFilePath, "utf-8");
+
+      // Apply vite HTML transformations (this injects the Vite client scripts in dev)
+      if (vite) {
+        html = await vite.transformIndexHtml(req.originalUrl, html);
+      }
+
+      // Set up Meta Tags
+      const titleText = `${specificQuestion.questionText.slice(0, 60)} | Study Qoro`;
+      const metaDescription = specificQuestion.questionText.slice(0, 150) + " - সঠিক উত্তর ও ব্যাখ্যা সহ দেখুন। HSC & Admission Preparation.";
+      
+      html = html.replace(/<title>(.*?)<\/title>/g, `<title>${titleText}</title>`);
+      html = html.replace(/<meta name="title" content="(.*?)"\s*\/?>/i, `<meta name="title" content="${titleText}" />`);
+      html = html.replace(/<meta name="description" content="(.*?)"\s*\/?>/i, `<meta name="description" content="${metaDescription}" />`);
+      html = html.replace(/<meta property="og:title" content="(.*?)"\s*\/?>/i, `<meta property="og:title" content="${titleText}" />`);
+      html = html.replace(/<meta property="twitter:title" content="(.*?)"\s*\/?>/i, `<meta property="twitter:title" content="${titleText}" />`);
+
+      // Inject Server-Side Rendered HTML for basic bots and JS var
+      const ssrContent = `
+        <div id="ssr-content" style="display:none;" aria-hidden="true" data-server-rendered="true">
+          <article itemscope itemtype="https://schema.org/Question">
+            <h1 itemprop="name">${specificQuestion.subject} - ${specificQuestion.chapter}</h1>
+            <h2 itemprop="text">${specificQuestion.questionText}</h2>
+            <ul>
+              ${specificQuestion.options?.map((opt: string) => `<li>${typeof opt === "string" ? opt : (opt as any).text || ""}</li>`).join('') || ''}
+            </ul>
+            <div itemprop="suggestedAnswer" itemscope itemtype="https://schema.org/Answer">
+              <div itemprop="text">${specificQuestion.explanation || "No explanation provided"}</div>
+            </div>
+          </article>
+        </div>
+      `;
+
+      html = html.replace('<div id="root"></div>', `<div id="root"></div>\n${ssrContent}\n<script>window.__INITIAL_QUESTION_DATA__ = ${JSON.stringify(specificQuestion).replace(/</g, '\\u003c')};</script>`);
+      
+      res.send(html);
+    } catch (err) {
+      console.error("SSR Question Error:", err);
+      next();
+    }
+  });
+
+  // Dynamic Sitemap Generator for SEO
+  app.get("/sitemap.xml", (req, res) => {
+    try {
+      const qDB = loadQuestions();
+      const baseUrl = "https://chorcha.ai";
+      
+      let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+      xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+      
+      // Add static core pages
+      const corePages = ["", "/dashboard", "/exam-war", "/question-bank", "/study-materials", "/leaderboard"];
+      corePages.forEach(p => {
+        xml += `  <url>\n    <loc>${baseUrl}${p}</loc>\n    <changefreq>daily</changefreq>\n    <priority>${p === "" ? "1.0" : "0.8"}</priority>\n  </url>\n`;
+      });
+
+      // Add dynamic blogs
+      BLOG_POSTS.forEach(b => {
+        xml += `  <url>\n    <loc>${baseUrl}/blog/${b.slug}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+      });
+
+      // Add dynamic questions
+      qDB.forEach((q: any) => {
+        xml += `  <url>\n    <loc>${baseUrl}/question/${q.id}</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>\n`;
+      });
+
+      xml += `</urlset>`;
+      
+      res.header('Content-Type', 'application/xml');
+      res.send(xml);
+    } catch (err) {
+      console.error("Sitemap error:", err);
+      res.status(500).send("Error generating sitemap");
+    }
+  });
+
+  // Programmatic SEO Route for Blogs
+  app.get("/blog/:slug", async (req, res, next) => {
+    try {
+      const slug = req.params.slug;
+      const post = BLOG_POSTS.find(b => b.slug === slug);
+
+      if (!post) {
+        return next();
+      }
+
+      const indexFilePath = process.env.NODE_ENV !== "production" 
+        ? path.join(process.cwd(), "index.html")
+        : path.join(process.cwd(), "dist", "index.html");
+
+      if (!fs.existsSync(indexFilePath)) return next();
+      let html = fs.readFileSync(indexFilePath, "utf-8");
+
+      if (vite) {
+        html = await vite.transformIndexHtml(req.originalUrl, html);
+      }
+
+      const titleText = `${post.title} | Chorcha AI Blog`;
+      const metaDesc = `${post.content.slice(0, 150)}...`;
+
+      html = html.replace(/<title>(.*?)<\/title>/g, `<title>${titleText}</title>`);
+      html = html.replace(/<meta name="title" content="(.*?)"\s*\/?>/i, `<meta name="title" content="${titleText}" />`);
+      html = html.replace(/<meta name="description" content="(.*?)"\s*\/?>/i, `<meta name="description" content="${metaDesc}" />`);
+      html = html.replace(/<meta property="og:title" content="(.*?)"\s*\/?>/i, `<meta property="og:title" content="${titleText}" />`);
+      html = html.replace(/<meta property="twitter:title" content="(.*?)"\s*\/?>/i, `<meta property="twitter:title" content="${titleText}" />`);
+
+      const ssrContent = `
+        <div id="ssr-content" style="display:none;" aria-hidden="true" data-server-rendered="true">
+          <article itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">${post.title}</h1>
+            <p itemprop="datePublished">${post.date}</p>
+            <div itemprop="articleBody">${post.content}</div>
+          </article>
+        </div>
+      `;
+
+      html = html.replace('<div id="root"></div>', `<div id="root"></div>\n${ssrContent}\n<script>window.__INITIAL_BLOG_DATA__ = ${JSON.stringify(post).replace(/</g, '\\u003c')};</script>`);
+      
+      res.send(html);
+    } catch (err) {
+      console.error("SSR Blog Error:", err);
+      next();
+    }
+  });
+
   // Vite middleware for asset serving or static fallback
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
+  if (vite) {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), 'dist');

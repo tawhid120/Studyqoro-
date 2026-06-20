@@ -3,10 +3,14 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Dispatch, SetStateAction } from "react";
-import { motion } from "motion/react";
+import { Dispatch, SetStateAction, useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
+import { collection, getDocs, limit, orderBy, query } from "firebase/firestore";
+import { db } from "../lib/firebase";
 import { StudentStats } from "../types";
-import { FileText, Target, Trophy, Lock, Users, Sparkles, UserPlus, ArrowUpRight, Award, Shield, Zap, Star, ChevronRight } from "lucide-react";
+import { FileText, Target, Trophy, Lock, Users, Sparkles, UserPlus, ArrowUpRight, Award, Shield, Zap, Star, ChevronRight, X, Check, Building, GraduationCap } from "lucide-react";
 
 // ==========================================
 // IMPORT PREMIUM MODERN FLAT SVG ILLUSTRATIONS
@@ -34,6 +38,73 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, onOpenAuth, onOpenSidebar }: DashboardProps) {
+  const [topPlayers, setTopPlayers] = useState<any[]>([]);
+  const [recentAchievement, setRecentAchievement] = useState<{name: string, level: number, xpText: string, icon: any} | null>(null);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const { width, height } = useWindowSize();
+  const prevPoints = useRef(stats.points);
+
+  const BADGES = [
+    { id: "star", name: "স্মার্ট স্টার", level: 50, xpText: "৫০ XP", icon: (props: any) => <Star {...props} /> },
+    { id: "zap", name: "স্ট্রিক মাস্টার", level: 100, xpText: "১০০ XP", icon: (props: any) => <Zap {...props} /> },
+    { id: "shield", name: "ব্যাটেল উইনার", level: 150, xpText: "১৫০ XP", icon: (props: any) => <Shield {...props} /> },
+    { id: "award", name: "মেধাবী মস্তিষ্ক", level: 200, xpText: "২০০ XP", icon: (props: any) => <Award {...props} /> }
+  ];
+
+  const unlockedBadges = BADGES.filter(b => stats.points >= b.level);
+  const nextBadge = BADGES.find(b => stats.points < b.level);
+
+  useEffect(() => {
+    const newBadges = BADGES.filter(b => stats.points >= b.level && prevPoints.current < b.level);
+    if (newBadges.length > 0) {
+      const newlyUnlocked = newBadges[newBadges.length - 1];
+      setRecentAchievement(newlyUnlocked);
+      setShowConfetti(true);
+      setTimeout(() => {
+        setShowConfetti(false);
+      }, 7000);
+      setTimeout(() => {
+        setRecentAchievement(null);
+      }, 10000);
+    }
+    prevPoints.current = stats.points;
+  }, [stats.points]);
+
+  useEffect(() => {
+    const fetchLeaderboard = async () => {
+      try {
+         const q = query(collection(db, "students"), orderBy("points", "desc"), limit(6));
+         const snapshot = await getDocs(q);
+         const players = snapshot.docs.map((doc, idx) => ({
+             id: doc.id,
+             rank: idx + 1,
+             name: doc.data().name || "Unknown",
+             xp: doc.data().points || 0,
+             status: "active"
+         }));
+         
+         const currentUserId = stats.isGuest ? "guest" : (stats.uid || "current_user");
+         if (players.every(p => p.id !== currentUserId)) {
+             if (players.length >= 6 && stats.points > players[5].xp) {
+                 players[5] = { rank: 6, id: currentUserId, name: stats.name, xp: stats.points, status: "active" };
+             } else if (players.length < 6) {
+                 players.push({ rank: players.length + 1, id: currentUserId, name: stats.name, xp: stats.points, status: "active" });
+             }
+             players.sort((a,b) => b.xp - a.xp).forEach((p, idx) => p.rank = idx + 1);
+         }
+         
+         if (players.length > 0) {
+            setTopPlayers(players.slice(0, 6));
+         } else {
+            setTopPlayers([]);
+         }
+      } catch(err) {
+         setTopPlayers([]);
+      }
+    };
+    fetchLeaderboard();
+  }, [stats.isGuest, stats.points, stats.name]);
+
   const handleBentoClick = (tabId: string) => {
     if (tabId === "other_features") {
       onOpenSidebar?.();
@@ -47,13 +118,68 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
   };
 
   return (
-    <div className="space-y-6 animate-fade-in max-w-7xl mx-auto text-slate-800 dark:text-slate-100 pb-12 select-none">
+    <div className="space-y-6 animate-fade-in max-w-7xl mx-auto text-slate-800 dark:text-slate-100 pb-12 select-none relative">
       
+      {/* Celebration Settings */}
+      {showConfetti && <Confetti width={width} height={height} recycle={false} numberOfPieces={600} gravity={0.15} className="!fixed !z-50 pointer-events-none" />}
+      
+      {/* Achievement Notification Modal */}
+      <AnimatePresence>
+        {recentAchievement && (
+          <motion.div 
+            initial={{ opacity: 0, y: -50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-white dark:bg-slate-900 border border-violet-200 dark:border-violet-800 shadow-2xl rounded-2xl p-4 min-w-[320px]"
+          >
+            <div className="w-12 h-12 rounded-full bg-violet-100 dark:bg-violet-900/50 flex items-center justify-center text-violet-600 dark:text-violet-400">
+               <recentAchievement.icon className="w-6 h-6" />
+            </div>
+            <div>
+               <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">নতুন মেডেল অর্জিত!</h3>
+               <p className="text-base font-extrabold text-violet-700 dark:text-violet-300">{recentAchievement.name}</p>
+            </div>
+            <button onClick={() => setRecentAchievement(null)} className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+               <X className="w-4 h-4" />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Universal Beautiful Responsive Dashboard Header Section */}
-      <div className="feature-header-section px-4 sm:px-2 pt-2 md:pt-4">
+      <div className="feature-header-section px-4 sm:px-2 pt-2 md:pt-4 space-y-4">
         <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-tight font-display tracking-tight">
           ড্যাশবোর্ড
         </h1>
+
+        {/* Dynamic Join College Banner */}
+        {!stats.isGuest && !stats.collegeName && (
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-linear-to-r from-rose-500/5 to-amber-500/5 border border-dashed border-rose-200 dark:border-rose-950/40 rounded-3xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs"
+          >
+            <div className="flex items-start sm:items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-500 flex items-center justify-center shrink-0">
+                <GraduationCap className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-rose-500">কলেজ পরিচিতি সংযুক্ত নেই</span>
+                <h2 className="text-sm font-black text-slate-900 dark:text-white leading-tight">আপনার কলেজ বা উচ্চমাধ্যমিক বিদ্যালয় সেট করুন</h2>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400">জাতীয় লিডারবোর্ড ও কলেজের সহপাঠীদের সাথে কানেক্ট করতে কলেজ যুক্ত করুন!</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                window.dispatchEvent(new CustomEvent("open-college-selector"));
+              }}
+              className="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-black text-xs rounded-xl shadow-md shadow-rose-500/10 transition-all self-start sm:self-center shrink-0"
+            >
+              কলেজ সেট করুন →
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* 3. MULTI-COLUMN APP-BAR GRID OF PREMIUM CONCEPTUAL ILLUSTRATED TILES */}
@@ -197,7 +323,7 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
 
           <div className="mt-6">
             <div className="text-2xl sm:text-3xl font-extrabold text-slate-950 dark:text-white leading-none font-display tracking-tight text-amber-600 dark:text-amber-400">
-              #{stats.rank || 64}
+              #{stats.rank}
             </div>
             <div className="text-[10px] sm:text-xs font-semibold text-slate-400 dark:text-slate-500 mt-1.5 flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
@@ -310,28 +436,24 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
 
           {/* Leaderboard Table list */}
           <div className="mt-4 space-y-2.5">
-            {[
-              { rank: 1, name: "prachi barua", xp: 418, status: "active", iconStyle: "bg-linear-to-r from-amber-400 to-amber-500 text-slate-950 shadow-md shadow-amber-500/20" },
-              { rank: 2, name: "Badol Minji", xp: 114, status: "away", iconStyle: "bg-linear-to-r from-slate-200 to-slate-400 dark:from-slate-400 dark:to-slate-500 text-slate-950 shadow-md shadow-slate-400/20" },
-              { rank: 3, name: "Ruzana khan", xp: 73, status: "active", iconStyle: "bg-linear-to-r from-orange-400 to-orange-500 text-white shadow-md shadow-orange-500/20" },
-              { rank: 4, name: "OC Gaming (512)", xp: 69, status: "active", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" },
-              { rank: 5, name: "Tasnia Hoque", xp: 49, status: "away", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" },
-              { rank: 6, name: "Puspita Devi", xp: 47, status: "active", iconStyle: "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450" }
-            ].map((user) => (
+            {topPlayers.map((user) => {
+              const uRank = user.rank;
+              const iconStyle = uRank === 1 ? "bg-linear-to-r from-amber-400 to-amber-500 text-slate-950 shadow-md shadow-amber-500/20" : uRank === 2 ? "bg-linear-to-r from-slate-200 to-slate-400 dark:from-slate-400 dark:to-slate-500 text-slate-950 shadow-md shadow-slate-400/20" : uRank === 3 ? "bg-linear-to-r from-orange-400 to-orange-500 text-white shadow-md shadow-orange-500/20" : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-450";
+              return (
               <div 
-                key={user.rank} 
+                key={user.id} 
                 className="flex items-center justify-between gap-3 p-2.5 sm:p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800/40 hover:border-slate-200 dark:hover:border-slate-800 shadow-[0_2px_12px_rgba(0,0,0,0.005)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.015)] hover:scale-[1.01] transition-all duration-200 min-w-0"
               >
                 <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                   {/* Rank chip */}
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl font-bold font-display flex items-center justify-center shrink-0 text-xs sm:text-sm ${user.iconStyle}`}>
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-xl font-bold font-display flex items-center justify-center shrink-0 text-xs sm:text-sm ${iconStyle}`}>
                     #{user.rank}
                   </div>
                   
                   {/* Profile avatar representation with light glows */}
                   <div className="relative shrink-0 select-none">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center border border-slate-300/10">
-                      {user.name.charAt(0).toUpperCase()}
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center border border-slate-300/10 uppercase">
+                      {user.name.charAt(0)}
                     </div>
                     {/* Active state spot */}
                     <span className={`absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full border-2 border-white dark:border-slate-900 ${user.status === "active" ? "bg-emerald-500" : "bg-amber-400"}`} />
@@ -358,7 +480,7 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
                   </div>
                 </div>
               </div>
-            ))}
+            )})}
           </div>
         </div>
 
@@ -403,22 +525,37 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
               </div>
 
               <h4 className="text-[12.5px] font-extrabold text-slate-850 dark:text-white mb-1 text-center">
-                চলমান কোনো অর্জন ধাপে নেই
+                {nextBadge ? "চলমান অর্জন ধাপ" : "সব অর্জন সম্পন্ন!"}
               </h4>
               <p className="text-[10.5px] font-semibold text-slate-400 dark:text-slate-500 text-center max-w-[280px]">
-                আপনার প্রথম মেডেল <span className="text-violet-600 dark:text-violet-400 font-bold">নিয়মিত যোদ্ধা</span> আনলক হতে আর মাত্র কয়েক কুইজ বাকি।
+                {nextBadge ? (
+                  <>আপনার পরবর্তী মেডেল <span className="text-violet-600 dark:text-violet-400 font-bold">{nextBadge.name}</span> আনলক হতে আর মাত্র {nextBadge.level - stats.points} XP বাকি।</>
+                ) : (
+                  <>অভিনন্দন! আপনি আমাদের সবগুলি মেডেল অর্জন করেছেন!</>
+                )}
               </p>
 
               {/* High precision shiny progress bar */}
-              <div className="w-full max-w-[260px] mt-4 space-y-1">
-                <div className="flex justify-between items-center text-[9.5px] font-extrabold select-none">
-                  <span className="text-slate-400 dark:text-slate-500">চলতি অগ্রগতি</span>
-                  <span className="text-violet-600 dark:text-violet-400">75%</span>
+              {nextBadge ? (
+                <div className="w-full max-w-[260px] mt-4 space-y-1">
+                  <div className="flex justify-between items-center text-[9.5px] font-extrabold select-none">
+                    <span className="text-slate-400 dark:text-slate-500">চলতি অগ্রগতি</span>
+                    <span className="text-violet-600 dark:text-violet-400">{Math.floor((stats.points / nextBadge.level) * 100)}%</span>
+                  </div>
+                  <div className="relative w-full h-2.5 bg-slate-100 dark:bg-slate-850 rounded-full overflow-hidden">
+                    <div 
+                      className="absolute top-0 left-0 h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.3)] transition-all duration-1000"
+                      style={{ width: `${Math.min(100, Math.max(0, (stats.points / nextBadge.level) * 100))}%` }}
+                    />
+                  </div>
                 </div>
-                <div className="relative w-full h-2.5 bg-slate-100 dark:bg-slate-850 rounded-full overflow-hidden">
-                  <div className="absolute top-0 left-0 h-full w-[75%] bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full shadow-[0_0_12px_rgba(139,92,246,0.3)]" />
+              ) : (
+                <div className="w-full max-w-[260px] mt-4 flex items-center justify-center p-2 bg-emerald-50 dark:bg-emerald-950/20 rounded-full border border-emerald-100 dark:border-emerald-800">
+                  <span className="text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest flex items-center gap-1">
+                    <Check className="w-3.5 h-3.5" /> মেডেল এচিভড
+                  </span>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -429,27 +566,25 @@ export default function Dashboard({ stats, setStats, setActiveTab, onQuickExam, 
             </h5>
             
             <div className="grid grid-cols-4 gap-2.5">
-              {[
-                { id: "star", name: "স্মার্ট স্টার", icon: <Star className="w-4 h-4 text-slate-400 group-hover:text-amber-500 transition-colors" />, level: "৫০ XP" },
-                { id: "zap", name: "স্ট্রিক মাস্টার", icon: <Zap className="w-4 h-4 text-slate-400 group-hover:text-amber-400 transition-colors" />, level: "১০০ XP" },
-                { id: "shield", name: "ব্যাটেল উইনার", icon: <Shield className="w-4 h-4 text-slate-400 group-hover:text-violet-500 transition-colors" />, level: "১৫০ XP" },
-                { id: "award", name: "মেধাবী মস্তিষ্ক", icon: <Award className="w-4 h-4 text-slate-400 group-hover:text-emerald-500 transition-colors" />, level: "২০০ XP" }
-              ].map((badge) => (
-                <div 
+              {BADGES.map((badge) => {
+                const isUnlocked = stats.points >= badge.level;
+                return (
+                 <div 
                   key={badge.id}
-                  className="group relative flex flex-col items-center justify-center p-2 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100/80 dark:border-slate-850/40 hover:border-violet-100 dark:hover:border-violet-950 shadow-2xs hover:shadow-md transition-all cursor-pointer text-center min-w-0"
-                >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-850 flex items-center justify-center mb-1.5">
-                    {badge.icon}
+                  className={`group relative flex flex-col items-center justify-center p-2 rounded-2xl border transition-all cursor-pointer text-center min-w-0 ${isUnlocked ? "bg-violet-50 dark:bg-violet-950/20 border-violet-200 dark:border-violet-800 shadow-md" : "bg-white dark:bg-slate-900 border-slate-100/80 dark:border-slate-850/40 hover:border-violet-100 dark:hover:border-violet-950 shadow-2xs hover:shadow-md"}`}
+                 >
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center mb-1.5 ${isUnlocked ? "bg-violet-100 dark:bg-violet-900/50 border-violet-200 dark:border-violet-700/50 text-violet-600 dark:text-violet-400" : "bg-slate-50 dark:bg-slate-950 border-slate-100 dark:border-slate-850 text-slate-400"}`}>
+                    <badge.icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[9px] font-extrabold text-slate-500 dark:text-slate-400 truncate w-full">
+                  <span className={`text-[9px] font-extrabold truncate w-full ${isUnlocked ? "text-violet-700 dark:text-violet-300" : "text-slate-500 dark:text-slate-400"}`}>
                     {badge.name}
                   </span>
                   <span className="text-[7.5px] font-bold text-slate-400 dark:text-slate-500 tracking-tight leading-none mt-0.5">
-                    {badge.level}
+                    {badge.xpText}
                   </span>
+                  {isUnlocked && <span className="absolute -top-1 -right-1 flex h-3 w-3"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border border-white dark:border-slate-800"></span></span>}
                 </div>
-              ))}
+              )})}
             </div>
           </div>
 

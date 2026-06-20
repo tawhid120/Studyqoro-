@@ -75,6 +75,27 @@ export interface StudentStats {
   plan: "Free" | "Pro";
   completedMilestones: string[];
   isGuest?: boolean;
+  collegeId?: string | null;
+  collegeName?: string | null;
+  division?: string | null;
+  district?: string | null;
+  email?: string | null;
+  // Profile settings
+  dob?: string;
+  gender?: string;
+  address?: string;
+  classCode?: string;
+  group?: string;
+  batch?: string;
+  sscRoll?: string;
+  sscReg?: string;
+  board?: string;
+  passingYear?: string;
+  optionalSubjects?: string[];
+  avatar?: string;
+  plannerTasks?: { id: string, text: string, completed: boolean, xp: number }[];
+  purchasedRewards?: string[];
+  mistakes?: Question[];
 }
 
 export interface SubjectReport {
