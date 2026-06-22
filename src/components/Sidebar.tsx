@@ -145,6 +145,15 @@ function BookOpenIcon({ className }: { className?: string }) {
   );
 }
 
+function LineChartIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 3v18h18" />
+      <path d="m19 9-5 5-4-4-3 3" />
+    </svg>
+  );
+}
+
 // ----------------- TEACHER SUB-MODULE SVG ICONS -----------------
 
 function TripleGearsIcon({ className }: { className?: string }) {
@@ -334,6 +343,7 @@ export default function Sidebar({
     { id: "battle", label: "Exam War", icon: WarIcon },
     { id: "materials", label: "স্টাডি ম্যাটেরিয়ালস", icon: BookOpenIcon },
     { id: "simulations", label: "থ্রিডি ও সিমুলেশন", icon: Cube3DIcon },
+    { id: "graphing", label: "গ্রাফিং ক্যালকুলেটর", icon: LineChartIcon },
     { id: "syllabus", label: "সিলেবাস ট্র্যাকার", icon: SyllabusIcon },
     { id: "timer", label: "দ্রুত প্র্যাকটিস", icon: InfinityIcon },
     { id: "mocks", label: "মক পরীক্ষা", icon: EditPaperIcon },

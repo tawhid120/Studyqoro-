@@ -85,6 +85,7 @@ export interface StudentStats {
   gender?: string;
   address?: string;
   classCode?: string;
+  educationLevel?: string;
   group?: string;
   batch?: string;
   sscRoll?: string;

@@ -12,7 +12,7 @@ import {
   FileText, User, SlidersHorizontal, Printer, PlayCircle, ChevronDown, ChevronUp
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
-import { Bangla1stMCQView } from "./Bangla1stMCQView";
+import { ModernQuestionViewer } from "./ModernQuestionViewer";
 
 // ==========================================
 // MOCKED TYPES & DATA (Replaces missing external dependencies)
@@ -127,13 +127,88 @@ export default function App({
   const [activeTab, setActiveTab ] = useState<number>(0); // 0=বিষয় ভিত্তিক, 1=প্রশ্ন ব্যাংক, 2=বোর্ড, 3=কলেজ, 4=মডেল টেস্ট
   const [expandedSubject, setExpandedSubject] = useState<string | null>(null);
   const [expandedPapers, setExpandedPapers] = useState<{ [key: string]: boolean }>({});
-  const [showBangla1stPage, setShowBangla1stPage] = useState<boolean>(false);
-  const [bangla1stSub, setBangla1stSub] = useState<string | undefined>(undefined);
+  const [selectedMappingParam, setSelectedMappingParam] = useState<{ title: string, files: string[] } | null>(null);
+
+  const categoryToFileMap: Record<string, string[]> = {
+    "গদ্য": ["hsc/Bangla1st/mcq/bangla1st_mcq_goddo.json"],
+    "কবিতা": ["hsc/Bangla1st/mcq/bangla1st_mcq_kobita.json"],
+    "বাংলা নাটক": ["hsc/Bangla1st/mcq/bangla1st_mcq_natok.json"],
+    "বাংলা উপন্যাস": ["hsc/Bangla1st/mcq/bangla1st_mcq_ouponnash.json"],
+  
+    "উদ্ভিদবিজ্ঞান অধ্যায় ১": ["hsc/bio1st/mcq/biology_1st_ch1_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ২": ["hsc/bio1st/mcq/biology_1st_ch2_mcq.json", "hsc/bio1st/mcq/biology_1st_ch2_mcq1.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৩": ["hsc/bio1st/mcq/biology_1st_ch3_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৪": ["hsc/bio1st/mcq/biology_1st_ch4_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৫": ["hsc/bio1st/mcq/biology_1st_ch5_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৬": ["hsc/bio1st/mcq/biology_1st_ch6_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৭": ["hsc/bio1st/mcq/biology_1st_ch7_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৮": ["hsc/bio1st/mcq/biology_1st_ch8_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ৯": ["hsc/bio1st/mcq/biology_1st_ch9_mcq.json", "hsc/bio1st/mcq/biology_1st_ch9_mcq (ans_topic).json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ১০": ["hsc/bio1st/mcq/biology_1st_ch10_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ১১": ["hsc/bio1st/mcq/biology_1st_ch11_mcq.json"],
+    "উদ্ভিদবিজ্ঞান অধ্যায় ১২": ["hsc/bio1st/mcq/biology_1st_ch12_mcq.json"],
+  
+    "প্রাণিবিজ্ঞান অধ্যায় ১": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch1.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ২": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch2.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৩": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch3.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৪": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch4.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৫": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch5.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৬": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch6.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৭": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch7.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৮": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch8.json", "hsc/bio2nd/mcq/biology_2nd_mcq_ch8.json(ans+topic).json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ৯": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch9.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ১০": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch10.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ১১": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch11.json"],
+    "প্রাণিবিজ্ঞান অধ্যায় ১২": ["hsc/bio2nd/mcq/biology_2nd_mcq_ch12.json"],
+  
+    "ল্যাবরেটরি নিরাপদ ব্যবহার": ["hsc/che1st/mcq/chemistry_ch1_mcq.json"],
+    "গুণগত রসায়ন": ["hsc/che1st/mcq/chemistry_ch2.json", "hsc/che1st/mcq/chemistry_ch2_mcq.json"],
+    "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন": ["hsc/che1st/mcq/chemistry_ch3.json", "hsc/che1st/mcq/chemistry_ch3_mcq.json"],
+    "রাসায়নিক পরিবর্তন": ["hsc/che1st/mcq/chemistry_ch4_cq.json", "hsc/che1st/mcq/chemistry_ch4_mcq.json"],
+    "কর্মমুখী রসায়ন": ["hsc/che1st/mcq/chemistry_ch5_mcq.json"],
+  
+    "ম্যাট্রিক্স ও নির্ণায়ক": ["hsc/math1st/mcq/Math_1st_mcq_ch1.json"],
+    "ভেক্টর": ["hsc/math1st/mcq/Math_1st_mcq_ch2.json", "hsc/phy1st/mcq/phy_ch2_mcq.json"],
+    "সরলরেখা": ["hsc/math1st/mcq/Math_1st_mcq_ch3.json"],
+    "বৃত্ত": ["hsc/math1st/mcq/Math_1st_mcq_ch4.json", "hsc/math1st/mcq/Math_1st_mcq_ch4 (2).json"],
+    "বিন্যাস ও সমাবেশ": ["hsc/math1st/mcq/Math_1st_mcq_ch5.json"],
+    "ত্রিকোণমিতিক অনুপাত": ["hsc/math1st/mcq/Math_1st_mcq_ch6.json"],
+    "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত": ["hsc/math1st/mcq/Math_1st_mcq_ch7.json"],
+    "ফাংশন ও ফাংশনের লেখচিত্র": ["hsc/math1st/mcq/Math_1st_mcq_ch8.json"],
+    "অন্তরীকরণ": ["hsc/math1st/mcq/Math_1st_mcq_ch9.json"],
+    "যোগজীকরণ": ["hsc/math1st/mcq/Math_1st_mcq_ch10.json"],
+  
+    "ভৌত জগৎ ও পরিমাপ": ["hsc/phy1st/mcq/phy_ch1_mcq.json"],
+    "নিউটনিয়ান বলবিদ্যা": ["hsc/phy1st/mcq/phy_ch4_mcq.json", "hsc/phy1st/mcq/phy_ch4_mcq(2).json"],
+    "কাজ, শক্তি ও ক্ষমতা": ["hsc/phy1st/mcq/phy_ch5_mcq.json"],
+    "মহাকর্ষ ও অভিকর্ষ": ["hsc/phy1st/mcq/phy_ch6_mcq.json"],
+    "পদার্থের গাঠনিক ধর্ম": ["hsc/phy1st/mcq/phy_ch7_mcq.json"],
+    "পর্যাবৃত্ত গতি": ["hsc/phy1st/mcq/phy_ch8_mcq.json"],
+    "তরঙ্গ": ["hsc/phy1st/mcq/phy_ch9_mcq.json"],
+    "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব": ["hsc/phy1st/mcq/phy_ch10_mcq.json"]
+  };
 
   // ==========================================
   // 2. EXISTING CORE LOGIC & STATES
   // ==========================================
-  const dbQuestions = questions && questions.length > 0 ? questions : QUESTION_BANK;
+  // Replace static dbQuestions with API states
+  const [paginatedQuestions, setPaginatedQuestions] = useState<any[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasMoreQuestions, setHasMoreQuestions] = useState(true);
+  const [totalQuestionsCount, setTotalQuestionsCount] = useState(0);
+  const [isLoadingQuestions, setIsLoadingQuestions] = useState(false);
+
+  // Metadata State
+  const [metadata, setMetadata] = useState<Record<string, string[]>>({});
+  
+  useEffect(() => {
+    fetch('/api/db/metadata')
+      .then(res => res.json())
+      .then(data => {
+        setMetadata(data);
+      })
+      .catch(console.error);
+  }, []);
 
   const [bookmarks, setBookmarks] = useState<string[]>(() => {
     try {
@@ -157,10 +232,11 @@ export default function App({
   };
 
   const availableSubjects = useMemo(() => {
-    const list = dbQuestions.map(q => q.subject as string);
-    const unique = Array.from(new Set(list));
+    const list = Object.keys(metadata);
     const enumOrder = Object.values(Subject) as string[];
-    return unique.sort((a, b) => {
+    // Include some fallback subjects if empty
+    if (list.length === 0) return ["পদার্থবিজ্ঞান ১ম পত্র", "বাংলা", "English", "আইসিটি", "সাধারণ জ্ঞান"];
+    return list.sort((a, b) => {
       const idxA = enumOrder.indexOf(a);
       const idxB = enumOrder.indexOf(b);
       if (idxA !== -1 && idxB !== -1) return idxA - idxB;
@@ -168,7 +244,7 @@ export default function App({
       if (idxB !== -1) return 1;
       return a.localeCompare(b);
     });
-  }, [dbQuestions]);
+  }, [metadata]);
 
   const [selectedSubject, setSelectedSubject] = useState<string>("");
   const [selectedChapter, setSelectedChapter] = useState<string>("All");
@@ -189,37 +265,60 @@ export default function App({
   } | null>(null);
 
   const chapters = useMemo(() => {
-    const list = dbQuestions.filter(q => (q.subject as string) === selectedSubject).map(q => q.chapter);
-    return ["All", ...Array.from(new Set(list))];
-  }, [selectedSubject, dbQuestions]);
+    if (!selectedSubject || !metadata[selectedSubject]) return ["All"];
+    return ["All", ...metadata[selectedSubject]];
+  }, [selectedSubject, metadata]);
 
   const sources = useMemo(() => {
-    const list: string[] = [];
-    dbQuestions.filter(q => (q.subject as string) === selectedSubject).forEach((q: any) => {
-      if (q.source && Array.isArray(q.source)) q.source.forEach((s: string) => list.push(s));
-    });
-    return ["All", ...Array.from(new Set(list))];
-  }, [selectedSubject, dbQuestions]);
+    return ["All"];
+  }, []);
+
+  // Handle data fetching
+  const fetchQuestions = async (page: number, append: boolean) => {
+    if (!selectedSubject) return;
+    setIsLoadingQuestions(true);
+    let url = `/api/db/questions?page=${page}&limit=25&subject=${encodeURIComponent(selectedSubject)}`;
+    if (selectedChapter !== "All") url += `&chapter=${encodeURIComponent(selectedChapter)}`;
+    if (searchQuery.trim()) url += `&search=${encodeURIComponent(searchQuery.trim())}`;
+    
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      if (append) {
+        setPaginatedQuestions(prev => {
+          const newIds = new Set(data.questions.map((q: any) => q.id));
+          return [...prev.filter(q => !newIds.has(q.id)), ...data.questions];
+        });
+      } else {
+        setPaginatedQuestions(data.questions || []);
+      }
+      setHasMoreQuestions(data.hasMore);
+      setTotalQuestionsCount(data.count || 0);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsLoadingQuestions(false);
+    }
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+    fetchQuestions(1, false);
+  }, [selectedSubject, selectedChapter, searchQuery]);
+
+  const loadMoreQuestions = () => {
+    if (!hasMoreQuestions || isLoadingQuestions) return;
+    const nextPage = currentPage + 1;
+    setCurrentPage(nextPage);
+    fetchQuestions(nextPage, true);
+  };
 
   const filteredQuestions = useMemo(() => {
-    return dbQuestions.filter(q => {
-      if ((q.subject as string) !== selectedSubject) return false;
-      if (selectedChapter !== "All" && q.chapter !== selectedChapter) return false;
-      if (selectedSource !== "All") {
-        const qSources = (q as any).source || [];
-        if (!qSources.includes(selectedSource)) return false;
-      }
-      if (showOnlyBookmarks && !bookmarks.includes(q.id)) return false;
-      if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase().trim();
-        const mainTextMatch = (q.questionText || "").toLowerCase().includes(query);
-        const explanationMatch = (q.explanation || "").toLowerCase().includes(query);
-        const optionsMatch = Array.isArray(q.options) && q.options.some(opt => (opt || "").toLowerCase().includes(query));
-        if (!mainTextMatch && !explanationMatch && !optionsMatch) return false;
-      }
-      return true;
-    });
-  }, [selectedSubject, selectedChapter, selectedSource, showOnlyBookmarks, bookmarks, searchQuery, dbQuestions]);
+    if (showOnlyBookmarks) {
+      return paginatedQuestions.filter(q => bookmarks.includes(q.id));
+    }
+    return paginatedQuestions;
+  }, [paginatedQuestions, showOnlyBookmarks, bookmarks]);
 
   useEffect(() => {
     if (availableSubjects.length > 0 && !selectedSubject) {
@@ -304,14 +403,30 @@ export default function App({
   };
 
   // Integration Logic for SATT Clone
-  const launchAppFeature = (mode: "practice" | "exam", subject: string = "উচ্চতর গণিত") => {
+  const launchAppFeature = (mode: "practice" | "exam", subject: string = "উচ্চতর গণিত", chapter: string = "All") => {
     setSelectedSubject(subject);
+    setSelectedChapter(chapter);
     setPracticeMode(mode);
     if(mode === 'practice') {
       setExamState("idle");
     } else {
       resetExamMode();
     }
+    
+    if (categoryToFileMap[chapter]) {
+      setSelectedMappingParam({
+        title: `${subject} - ${chapter}`,
+        files: categoryToFileMap[chapter]
+      });
+    } else if (categoryToFileMap[subject]) {
+      setSelectedMappingParam({
+        title: subject,
+        files: categoryToFileMap[subject]
+      });
+    } else {
+      setSelectedMappingParam(null);
+    }
+    
     setActiveDashboardView(false); // Hide SATT UI, Show Original UI
   };
 
@@ -354,110 +469,165 @@ export default function App({
     { title: "ঢাকা বিশ্ববিদ্যালয় ক-ইউনিট গণিত চূড়ান্ত মডেল টেস্ট" }
   ];
 
-  const subjectCards = [
-    { 
-      name: "বাংলা", 
-      mcq: "26.8k", 
-      cq: "3.8k", 
-      board: "76", 
-      model: "897", 
-      hasChapters: true,
-      color: "emerald",
-      gradient: "from-emerald-500 to-teal-600",
-      shading: "bg-emerald-50 text-emerald-800 dark:bg-emerald-950/20 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30",
-      accent: "text-emerald-600 dark:text-emerald-400",
-      border: "border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700/50",
-      chapters: [
-        { label: "বাংলা ১ম পত্র", sub: ["গদ্য", "কবিতা", "বাংলা নাটক", "বাংলা উপন্যাস"] },
-        { label: "বাংলা ২য় পত্র", sub: ["সারাংশ ও সারমর্ম", "সংলাপ", "ব্যাকারণ কাঠামো", "ধ্বনিতত্ত্ব ( Phonology)", "শব্দতত্ত্ব বা রূপতত্ত্ব ( Morphology)", "বাক্যতত্ত্ব বা পদক্রম (Syntax)", "অর্থতত্ত্ব ( Semantics )", "ছন্দ ও অলংকার", "নির্মিতি"] },
-        { label: "বাংলা ১ম পত্র (অ্যাডমিশন)", sub: ["বাংলা সাহিত্যিক ও সাহিত্যকর্ম", "বাংলা সাহিত্যের যুগ বিভাগ", "বাংলা সংবাদপত্র", "বাংলা সাহিত্যের শাখা", "ভাষা আন্দোলনভিত্তিক সাহিত্য", "মুক্তিযুদ্ধভিত্তিক বাংলা সাহিত্য", "বাংলায় উল্লেখযোগ্য গ্রন্থ ও চরিত্র", "সাহিত্যিকদের উপাধি ও ছদ্মনাম", "প্রায় একই নামের গ্রন্থ ও রচয়িতা", "আত্মজীবনী ও স্মৃতিকথা"] }
-      ]
-    },
-    { 
-      name: "English", 
-      mcq: "31.9k", 
-      cq: "1.4k", 
-      board: "88", 
-      model: "995", 
-      hasChapters: true,
-      color: "indigo",
-      gradient: "from-indigo-500 to-blue-600",
-      shading: "bg-indigo-50 text-indigo-850 dark:bg-indigo-950/20 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/30",
-      accent: "text-indigo-600 dark:text-indigo-400",
-      border: "border-indigo-100 dark:border-indigo-900/30 hover:border-indigo-300 dark:hover:border-indigo-700/50",
-      chapters: [
-        { label: "English 1st Paper", sub: ["People or Institutions Making History", "Dreams", "Lifestyle", "Adolescence", "Youthful Achievers", "Relationships", "Human Rights", "Peace and Conflict", "Tours and Travels", "Environment and Nature", "Art and Craft", "Education and Life", "Myths and Literature"] },
-        { label: "English Literature( for Admission)", sub: ["Titles of important writers", "Periods of english literature", "A list of dramatists, poets, novelists, essayists, woman writers and critics", "The old english period (450-1066)", "The middle english period (1066-1500)", "The Renaissance (1500-1660)", "The Neoclassical Period (1660-1798)", "The Romantic Period (1798-1832)", "The Victorian Period (1832-1901)", "The Modern Period (1901-1939)", "The Post Modern Period (1939-Present)", "Famous books of different writers", "Awards in literature (Noble & Booker Prize)", "Nicknames of various writers", "Poet Laureate", "বিভিন্ন দেশের জাতীয় কবি", "Elaboration of the name of some writers", "ইংরেজি সাহিত্যে বিখ্যাত মহাকাব্য (Epics)", "ইংরেজি সাহিত্যে বিখ্যাত শোককাব্য", "ইংরেজি সাহিত্যে বিখ্যাত বিভিন্ন চরিত্র", "ভিন্ন ভিন্ন লেখকের সমজাতীয় সাহিত্য", "সরকার কর্তৃক নিষিদ্ধকৃত গ্রন্থসমূহ", "ইংরেজি গল্পের বাংলা অনুবাদ", "বাংলা গল্পের ইংরেজি অনুবাদ", "Bangladesh writers in english", "Indian writers in english", "Italian writers in english(Translation)", "Russian writers in english", "Irish writers in english", "Scottish writers in english", "American writers in english", "Prominent Greek writers and their works", "Prominent Roman writers and their works", "Literary terms and genres", "Important Quotations from different disciplines", "theme of some important literary pieces", "Ancient Mariner", "Miscellaneous", "Quotations"] },
-        { label: "English 2nd Paper", sub: ["Completing sentence", "Parts of Speech", "Idioms & Phrases", "The Clauses", "Corrections", "Sentences & Transformations", "words", "Tense", "Right Form of Verbs", "Sentence Completion", "Narrations: Direct and Indirect", "Tag Questions", "Inversion", "Modifiers", "Conditional Sentences", "Pin Point Error", "Redundancy", "Analogy", "Translation", "Proverbs", "Embedded Questions", "Pair of Words", "Reading Comprehension", "Parallelism", "Conjugation of verb", "Miscellaneous", "Consonent", "Subjunctive", "Alphabet", "Writting precis", "Writing Paragraph", "Writing Essay", "Making Sentence", "Dangling Modifier", "Identifying Missing Word", "same word uses as different part of speech", "Sequence of Tense", "Latin Adjective"] }
-      ]
-    },
-    { 
-      name: "তথ্য ও যোগাযোগ প্রযুক্তি", 
-      mcq: "20.9k", 
-      cq: "78", 
-      board: "36", 
-      model: "264", 
-      hasChapters: true,
-      color: "purple",
-      gradient: "from-purple-500 to-fuchsia-600",
-      shading: "bg-purple-50 text-purple-800 dark:bg-purple-950/20 dark:text-purple-400 border-purple-100 dark:border-purple-900/30",
-      accent: "text-purple-600 dark:text-purple-400",
-      border: "border-purple-100 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-700/50",
-      chapters: [
-        { label: "তথ্য ও যোগাযোগ প্রযুক্তি", sub: ["বিশ্ব ও বাংলাদেশ প্রেক্ষিত", "কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং", "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", "ওয়েব ডিজাইন পরিচিতি এবং HTML", "প্রোগ্রামিং ভাষা", "ডাটাবেজ ম্যানেজমেন্ট সিস্টেম"] }
-      ]
-    },
-    { 
-      name: "পদার্থবিদ্যা", 
-      mcq: "14.8k", 
-      cq: "207", 
-      board: "73", 
-      model: "469", 
-      hasChapters: true,
-      color: "rose",
-      gradient: "from-rose-500 to-pink-600",
-      shading: "bg-rose-50 text-rose-850 dark:bg-rose-950/20 dark:text-rose-400 border-rose-100 dark:border-rose-900/30",
-      accent: "text-rose-600 dark:text-rose-400",
-      border: "border-rose-100 dark:border-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700/50",
-      chapters: [
-        { label: "পদার্থবিজ্ঞান ১ম পত্র", sub: ["ভৌত জগৎ ও পরিমাপ", "ভেক্টর", "গতিবিদ্যা", "নিউটনিয়ান বলবিদ্যা", "কাজ, শক্তি ও ক্ষমতা", "মহাকর্ষ ও অভিকর্ষ", "পদার্থের গাঠনিক ধর্ম", "পর্যাবৃত্ত গতি", "তরঙ্গ", "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
-        { label: "পদার্থবিজ্ঞান ২য় পত্র", sub: ["তাপগতিবিদ্যা", "স্থির তড়িৎ", "চল তড়িৎ", "জ্যামিতিক আলোকবিজ্ঞান", "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"] }
-      ]
-    },
-    { 
-      name: "সাধারণ জ্ঞান", 
-      mcq: "12k", 
-      cq: "0", 
-      board: "10", 
-      model: "150", 
-      hasChapters: true,
-      color: "blue",
-      gradient: "from-blue-500 to-cyan-600",
-      shading: "bg-blue-50 text-blue-850 dark:bg-blue-950/20 dark:text-blue-400 border-blue-100 dark:border-blue-900/30",
-      accent: "text-blue-600 dark:text-blue-400",
-      border: "border-blue-100 dark:border-blue-900/30 hover:border-blue-300 dark:hover:border-cyan-700/50",
-      chapters: [
-        { label: "বাংলাদেশ বিষয়াবলী", sub: ["ভাষা আন্দোলন ও মুক্তিযুদ্ধ", "ভৌগোলিক অবস্থান ও সীমানা", "বাংলাদেশের ঐতিহ্য ও সংস্কৃতি"] }
-      ]
-    },
-    { 
-      name: "পরিসংখ্যান", 
-      mcq: "5k", 
-      cq: "305", 
-      board: "20", 
-      model: "3", 
-      hasChapters: true,
-      color: "sky",
-      gradient: "from-sky-500 to-indigo-500",
-      shading: "bg-sky-50 text-sky-850 dark:bg-sky-950/20 dark:text-sky-400 border-sky-100 dark:border-sky-900/30",
-      accent: "text-sky-600 dark:text-sky-400",
-      border: "border-sky-100 dark:border-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700/50",
-      chapters: [
-        { label: "পরিসংখ্যান ১ম পত্র", sub: ["পরিসংখ্যান, চলক ও বিভিন্ন প্রতীকের ধারণা", "তথ্য সংগ্রহ, সংক্ষিপ্তকরণ ও উপস্থাপন", "কেন্দ্রীয় প্রবণতা"] },
-        { label: "পরিসংখ্যান ২য় পত্র", sub: ["সম্ভাবনা", "দৈব চলক ও গাণিতিক প্রত্যাশা"] }
-      ]
-    }
-  ];
+  const subjectCards = useMemo(() => {
+    const baseCards = [
+      { 
+        name: "বাংলা", 
+        mcq: "26.8k", 
+        cq: "3.8k", 
+        board: "76", 
+        model: "897", 
+        hasChapters: true,
+        color: "emerald",
+        gradient: "from-emerald-500 to-teal-600",
+        shading: "bg-emerald-50 text-emerald-800 dark:bg-emerald-950/20 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900/30",
+        accent: "text-emerald-600 dark:text-emerald-400",
+        border: "border-emerald-100 dark:border-emerald-900/30 hover:border-emerald-300 dark:hover:border-emerald-700/50",
+        chapters: [
+          { label: "বাংলা ১ম পত্র", sub: ["গদ্য", "কবিতা", "বাংলা নাটক", "বাংলা উপন্যাস"] },
+          { label: "বাংলা ২য় পত্র", sub: ["সারাংশ ও সারমর্ম", "সংলাপ", "ব্যাকারণ কাঠামো", "ধ্বনিতত্ত্ব ( Phonology)", "শব্দতত্ত্ব বা রূপতত্ত্ব ( Morphology)", "বাক্যতত্ত্ব বা পদক্রম (Syntax)", "অর্থতত্ত্ব ( Semantics )", "ছন্দ ও অলংকার", "নির্মিতি"] },
+          { label: "বাংলা ১ম পত্র (অ্যাডমিশন)", sub: ["বাংলা সাহিত্যিক ও সাহিত্যকর্ম", "বাংলা সাহিত্যের যুগ বিভাগ", "বাংলা সংবাদপত্র", "বাংলা সাহিত্যের শাখা", "ভাষা আন্দোলনভিত্তিক সাহিত্য", "মুক্তিযুদ্ধভিত্তিক বাংলা সাহিত্য", "বাংলায় উল্লেখযোগ্য গ্রন্থ ও চরিত্র", "সাহিত্যিকদের উপাধি ও ছদ্মনাম", "প্রায় একই নামের গ্রন্থ ও রচয়িতা", "আত্মজীবনী ও স্মৃতিকথা"] }
+        ]
+      },
+      { 
+        name: "English", 
+        mcq: "31.9k", 
+        cq: "1.4k", 
+        board: "88", 
+        model: "995", 
+        hasChapters: true,
+        color: "indigo",
+        gradient: "from-indigo-500 to-blue-600",
+        shading: "bg-indigo-50 text-indigo-850 dark:bg-indigo-950/20 dark:text-indigo-400 border-indigo-100 dark:border-indigo-900/30",
+        accent: "text-indigo-600 dark:text-indigo-400",
+        border: "border-indigo-100 dark:border-indigo-900/30 hover:border-indigo-300 dark:hover:border-indigo-700/50",
+        chapters: [
+          { label: "English 1st Paper", sub: ["People or Institutions Making History", "Dreams", "Lifestyle", "Adolescence", "Youthful Achievers", "Relationships", "Human Rights", "Peace and Conflict", "Tours and Travels", "Environment and Nature", "Art and Craft", "Education and Life", "Myths and Literature"] },
+          { label: "English Literature( for Admission)", sub: ["Titles of important writers", "Periods of english literature", "A list of dramatists, poets, novelists, essayists, woman writers and critics", "The old english period (450-1066)", "The middle english period (1066-1500)", "The Renaissance (1500-1660)", "The Neoclassical Period (1660-1798)", "The Romantic Period (1798-1832)", "The Victorian Period (1832-1901)", "The Modern Period (1901-1939)", "The Post Modern Period (1939-Present)", "Famous books of different writers", "Awards in literature (Noble & Booker Prize)", "Nicknames of various writers", "Poet Laureate", "বিভিন্ন দেশের জাতীয় কবি", "Elaboration of the name of some writers", "ইংরেজি সাহিত্যে বিখ্যাত মহাকাব্য (Epics)", "ইংরেজি সাহিত্যে বিখ্যাত শোককাব্য", "ইংরেজি সাহিত্যে বিখ্যাত বিভিন্ন চরিত্র", "ভিন্ন ভিন্ন লেখকের সমজাতীয় সাহিত্য", "সরকার কর্তৃক নিষিদ্ধকৃত গ্রন্থসমূহ", "ইংরেজি গল্পের বাংলা অনুবাদ", "বাংলা গল্পের ইংরেজি অনুবাদ", "Bangladesh writers in english", "Indian writers in english", "Italian writers in english(Translation)", "Russian writers in english", "Irish writers in english", "Scottish writers in english", "American writers in english", "Prominent Greek writers and their works", "Prominent Roman writers and their works", "Literary terms and genres", "Important Quotations from different disciplines", "theme of some important literary pieces", "Ancient Mariner", "Miscellaneous", "Quotations"] },
+          { label: "English 2nd Paper", sub: ["Completing sentence", "Parts of Speech", "Idioms & Phrases", "The Clauses", "Corrections", "Sentences & Transformations", "words", "Tense", "Right Form of Verbs", "Sentence Completion", "Narrations: Direct and Indirect", "Tag Questions", "Inversion", "Modifiers", "Conditional Sentences", "Pin Point Error", "Redundancy", "Analogy", "Translation", "Proverbs", "Embedded Questions", "Pair of Words", "Reading Comprehension", "Parallelism", "Conjugation of verb", "Miscellaneous", "Consonent", "Subjunctive", "Alphabet", "Writting precis", "Writing Paragraph", "Writing Essay", "Making Sentence", "Dangling Modifier", "Identifying Missing Word", "same word uses as different part of speech", "Sequence of Tense", "Latin Adjective"] }
+        ]
+      },
+      { 
+        name: "তথ্য ও যোগাযোগ প্রযুক্তি", 
+        mcq: "20.9k", 
+        cq: "78", 
+        board: "36", 
+        model: "264", 
+        hasChapters: true,
+        color: "purple",
+        gradient: "from-purple-500 to-fuchsia-600",
+        shading: "bg-purple-50 text-purple-800 dark:bg-purple-950/20 dark:text-purple-400 border-purple-100 dark:border-purple-900/30",
+        accent: "text-purple-600 dark:text-purple-400",
+        border: "border-purple-100 dark:border-purple-900/30 hover:border-purple-300 dark:hover:border-purple-700/50",
+        chapters: [
+          { label: "তথ্য ও যোগাযোগ প্রযুক্তি", sub: ["বিশ্ব ও বাংলাদেশ প্রেক্ষিত", "কমিউনিকেশন সিস্টেমস ও নেটওয়ার্কিং", "সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", "ওয়েব ডিজাইন পরিচিতি এবং HTML", "প্রোগ্রামিং ভাষা", "ডাটাবেজ ম্যানেজমেন্ট সিস্টেম"] }
+        ]
+      },
+      { 
+        name: "পদার্থবিদ্যা", 
+        mcq: "14.8k", 
+        cq: "207", 
+        board: "73", 
+        model: "469", 
+        hasChapters: true,
+        color: "rose",
+        gradient: "from-rose-500 to-pink-600",
+        shading: "bg-rose-50 text-rose-850 dark:bg-rose-950/20 dark:text-rose-400 border-rose-100 dark:border-rose-900/30",
+        accent: "text-rose-600 dark:text-rose-400",
+        border: "border-rose-100 dark:border-rose-900/30 hover:border-rose-300 dark:hover:border-rose-700/50",
+        chapters: [
+          { label: "পদার্থবিজ্ঞান ১ম পত্র", sub: ["ভৌত জগৎ ও পরিমাপ", "ভেক্টর", "গতিবিদ্যা", "নিউটনিয়ান বলবিদ্যা", "কাজ, শক্তি ও ক্ষমতা", "মহাকর্ষ ও অভিকর্ষ", "পদার্থের গাঠনিক ধর্ম", "পর্যাবৃত্ত গতি", "তরঙ্গ", "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
+          { label: "পদার্থবিজ্ঞান ২য় পত্র", sub: ["তাপগতিবিদ্যা", "স্থির তড়িৎ", "চল তড়িৎ", "জ্যামিতিক আলোকবিজ্ঞান", "সেমিকন্ডাক্টর ও ইলেকট্রনিক্স"] }
+        ]
+      },
+      { 
+        name: "রসায়ন", 
+        mcq: "18.5k", 
+        cq: "150", 
+        board: "65", 
+        model: "340", 
+        hasChapters: true,
+        color: "orange",
+        gradient: "from-orange-500 to-amber-600",
+        shading: "bg-orange-50 text-orange-850 dark:bg-orange-950/20 dark:text-orange-400 border-orange-100 dark:border-orange-900/30",
+        accent: "text-orange-600 dark:text-orange-400",
+        border: "border-orange-100 dark:border-orange-900/30 hover:border-orange-300 dark:hover:border-orange-700/50",
+        chapters: [
+          { label: "রসায়ন ১ম পত্র", sub: ["ল্যাবরেটরি নিরাপদ ব্যবহার", "গুণগত রসায়ন", "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন", "রাসায়নিক পরিবর্তন", "কর্মমুখী রসায়ন"] },
+          { label: "রসায়ন ২য় পত্র", sub: ["পরিবেশ রসায়ন", "জৈব রসায়ন", "পরিমাণগত রসায়ন", "তড়িৎ রসায়ন", "অর্থনৈতিক রসায়ন"] }
+        ]
+      },
+      { 
+        name: "জীববিজ্ঞান", 
+        mcq: "22.3k", 
+        cq: "180", 
+        board: "55", 
+        model: "410", 
+        hasChapters: true,
+        color: "lime",
+        gradient: "from-lime-500 to-green-600",
+        shading: "bg-lime-50 text-lime-850 dark:bg-lime-950/20 dark:text-lime-400 border-lime-100 dark:border-lime-900/30",
+        accent: "text-lime-600 dark:text-lime-400",
+        border: "border-lime-100 dark:border-lime-900/30 hover:border-lime-300 dark:hover:border-lime-700/50",
+        chapters: [
+          { label: "জীববিজ্ঞান ১ম পত্র", sub: ["উদ্ভিদবিজ্ঞান অধ্যায় ১", "উদ্ভিদবিজ্ঞান অধ্যায় ২", "উদ্ভিদবিজ্ঞান অধ্যায় ৩", "উদ্ভিদবিজ্ঞান অধ্যায় ৪", "উদ্ভিদবিজ্ঞান অধ্যায় ৫", "উদ্ভিদবিজ্ঞান অধ্যায় ৬", "উদ্ভিদবিজ্ঞান অধ্যায় ৭", "উদ্ভিদবিজ্ঞান অধ্যায় ৮", "উদ্ভিদবিজ্ঞান অধ্যায় ৯", "উদ্ভিদবিজ্ঞান অধ্যায় ১০", "উদ্ভিদবিজ্ঞান অধ্যায় ১১", "উদ্ভিদবিজ্ঞান অধ্যায় ১২"] },
+          { label: "জীববিজ্ঞান ২য় পত্র", sub: ["প্রাণিবিজ্ঞান অধ্যায় ১", "প্রাণিবিজ্ঞান অধ্যায় ২", "প্রাণিবিজ্ঞান অধ্যায় ৩", "প্রাণিবিজ্ঞান অধ্যায় ৪", "প্রাণিবিজ্ঞান অধ্যায় ৫", "প্রাণিবিজ্ঞান অধ্যায় ৬", "প্রাণিবিজ্ঞান অধ্যায় ৭", "প্রাণিবিজ্ঞান অধ্যায় ৮", "প্রাণিবিজ্ঞান অধ্যায় ৯", "প্রাণিবিজ্ঞান অধ্যায় ১০", "প্রাণিবিজ্ঞান অধ্যায় ১১", "প্রাণিবিজ্ঞান অধ্যায় ১২"] }
+        ]
+      },
+      { 
+        name: "উচ্চতর গণিত", 
+        mcq: "25k", 
+        cq: "300", 
+        board: "80", 
+        model: "500", 
+        hasChapters: true,
+        color: "cyan",
+        gradient: "from-cyan-500 to-blue-500",
+        shading: "bg-cyan-50 text-cyan-850 dark:bg-cyan-950/20 dark:text-cyan-400 border-cyan-100 dark:border-cyan-900/30",
+        accent: "text-cyan-600 dark:text-cyan-400",
+        border: "border-cyan-100 dark:border-cyan-900/30 hover:border-cyan-300 dark:hover:border-cyan-700/50",
+        chapters: [
+          { label: "উচ্চতর গণিত ১ম পত্র", sub: ["ম্যাট্রিক্স ও নির্ণায়ক", "ভেক্টর", "সরলরেখা", "বৃত্ত", "বিন্যাস ও সমাবেশ", "ত্রিকোণমিতিক অনুপাত", "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত", "ফাংশন ও ফাংশনের লেখচিত্র", "অন্তরীকরণ", "যোগজীকরণ"] },
+          { label: "উচ্চতর গণিত ২য় পত্র", sub: ["বাস্তব সংখ্যা ও অসমতা", "যোগাশ্রয়ী প্রোগ্রাম", "জটিল সংখ্যা", "বহুপদী ও বহুপদী সমীকরণ", "দ্বিপদী বিস্তৃতি", "কণিক", "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ", "স্থিতিবিদ্যা", "সমতলে বস্তুকণার গতি", "বিস্তার পরিমাপ ও সম্ভাবনা"] }
+        ]
+      },
+      { 
+        name: "সাধারণ জ্ঞান", 
+        mcq: "12k", 
+        cq: "0", 
+        board: "10", 
+        model: "150", 
+        hasChapters: true,
+        color: "blue",
+        gradient: "from-blue-500 to-cyan-600",
+        shading: "bg-blue-50 text-blue-850 dark:bg-blue-950/20 dark:text-blue-400 border-blue-100 dark:border-blue-900/30",
+        accent: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-100 dark:border-blue-900/30 hover:border-blue-300 dark:hover:border-cyan-700/50",
+        chapters: [
+          { label: "বাংলাদেশ বিষয়াবলী", sub: ["ভাষা আন্দোলন ও মুক্তিযুদ্ধ", "ভৌগোলিক অবস্থান ও সীমানা", "বাংলাদেশের ঐতিহ্য ও সংস্কৃতি"] }
+        ]
+      },
+      { 
+        name: "পরিসংখ্যান", 
+        mcq: "5k", 
+        cq: "305", 
+        board: "20", 
+        model: "3", 
+        hasChapters: true,
+        color: "sky",
+        gradient: "from-sky-500 to-indigo-500",
+        shading: "bg-sky-50 text-sky-850 dark:bg-sky-950/20 dark:text-sky-400 border-sky-100 dark:border-sky-900/30",
+        accent: "text-sky-600 dark:text-sky-400",
+        border: "border-sky-100 dark:border-sky-900/30 hover:border-sky-300 dark:hover:border-sky-700/50",
+        chapters: [
+          { label: "পরিসংখ্যান ১ম পত্র", sub: ["পরিসংখ্যান, চলক ও বিভিন্ন প্রতীকের ধারণা", "তথ্য সংগ্রহ, সংক্ষিপ্তকরণ ও উপস্থাপন", "কেন্দ্রীয় প্রবণতা"] },
+          { label: "পরিসংখ্যান ২য় পত্র", sub: ["সম্ভাবনা", "দৈব চলক ও গাণিতিক প্রত্যাশা"] }
+        ]
+      }
+    ];
+
+    return baseCards;
+  }, []);
 
   const renderSattDashboard = () => {
     return (
@@ -611,16 +781,7 @@ export default function App({
                                         <div 
                                           key={sIdx} 
                                           onClick={() => {
-                                            if (card.name === "বাংলা" && chapGroup.label === "বাংলা ১ম পত্র") {
-                                              let catId = "goddo";
-                                              if (sub === "কবিতা") catId = "kobita";
-                                              if (sub === "বাংলা নাটক") catId = "natok";
-                                              if (sub === "বাংলা উপন্যাস") catId = "ouponnash";
-                                              setBangla1stSub(catId);
-                                              setShowBangla1stPage(true);
-                                            } else {
-                                              launchAppFeature('practice', card.name);
-                                            }
+                                            launchAppFeature('practice', card.name, sub);
                                           }}
                                           className="flex items-start gap-2 text-xs text-zinc-630 dark:text-zinc-350 hover:text-[#0c8a4d] dark:hover:text-green-400 cursor-pointer group/item transition-colors py-0.5"
                                         >
@@ -643,7 +804,7 @@ export default function App({
                             if (card.hasChapters) {
                               setExpandedSubject(isExpanded ? null : card.name);
                             } else {
-                              launchAppFeature('practice', card.name);
+                              launchAppFeature('practice', card.name, 'All');
                             }
                           }}
                           className={`w-full py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 flex items-center justify-center gap-2 border cursor-pointer ${
@@ -871,20 +1032,8 @@ export default function App({
   // ==========================================
   // RENDER APP COMPONENT
   // ==========================================
-  if (showBangla1stPage) {
-    return (
-      <div className="flex h-full w-full bg-[#fcfefe] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 relative rounded-xl overflow-y-auto shadow-sm border border-gray-200/50 dark:border-zinc-800 h-full">
-        <div className="flex-1 w-full h-full">
-          <Bangla1stMCQView 
-            onBack={() => {
-              setShowBangla1stPage(false);
-              setBangla1stSub(undefined);
-            }} 
-            initialCategory={bangla1stSub} 
-          />
-        </div>
-      </div>
-    );
+  if (false) {
+    return null;
   }
 
   return (
@@ -892,6 +1041,12 @@ export default function App({
       {/* MAIN VIEWPORT - Removed the hardcoded duplicate sidebar and top header to fit Chorcha AI layout correctly */}
       {activeDashboardView ? (
         renderSattDashboard()
+      ) : selectedMappingParam ? (
+        <ModernQuestionViewer 
+           title={selectedMappingParam.title}
+           files={selectedMappingParam.files}
+           onBack={() => setActiveDashboardView(true)}
+        />
       ) : (
         <div className="flex-1 w-full bg-slate-50 dark:bg-slate-950 overflow-y-auto relative h-full">
           
@@ -972,12 +1127,17 @@ export default function App({
             <div className="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 p-6 rounded-3xl shadow-sm">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-5">
                 <div className="space-y-1">
-                  <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
-                    <GraduationCap className="w-6 h-6 text-emerald-400" />
-                    <span>{selectedSubject} অনুশীলনী কক্ষ</span>
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-lg font-black text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                      <GraduationCap className="w-6 h-6 text-emerald-400" />
+                      <span>{selectedSubject} অনুশীলনী কক্ষ</span>
+                    </h3>
+                    <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] px-2.5 py-1 rounded-full font-black border border-emerald-500/20 shadow-sm animate-pulse">
+                      মোট প্রশ্ন: {filteredQuestions.length} টি
+                    </span>
+                  </div>
                   <p className="text-xs text-slate-400">
-                    সাবজেক্ট ও চ্যাপ্টার ওয়াইজ হাজারো বোর্ড প্রশ্নের নির্ভুল এআই সমাধান ও কাউন্টডাউন মক টেস্ট!
+                    আইডি বা টপিক লিখে সার্চ করুন। সাবজেক্ট ও চ্যাপ্টার ওয়াইজ হাজারো প্রশ্ন অনুশীলনের সেরা মাধ্যম!
                   </p>
                 </div>
 
@@ -1075,48 +1235,94 @@ export default function App({
                 </div>
               ) : (
                 <div className="space-y-6">
-                  {filteredQuestions.map((q, idx) => {
-                    const userChoice = answeredPracticeList[q.id];
-                    const isAnswered = userChoice !== undefined;
-                    const isBookmarked = bookmarks.includes(q.id);
+                  {Object.entries(
+                    filteredQuestions.reduce((acc, q) => {
+                      const chapter = q.chapter || "Mixed";
+                      if (!acc[chapter]) acc[chapter] = [];
+                      acc[chapter].push(q);
+                      return acc;
+                    }, {} as { [key: string]: typeof filteredQuestions })
+                  ).map(([chapterName, questionsInChapter], topIndex) => (
+                    <div key={chapterName} className="space-y-6 mb-10">
+                      {/* Topic separator if grouping multiple topics */}
+                      {selectedChapter === "All" && (
+                        <div className="flex items-center gap-3 pt-4 pb-2">
+                          <div className="h-0.5 flex-1 bg-gradient-to-r from-transparent to-emerald-500/30"></div>
+                          <span className="bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-sm">
+                            {chapterName}
+                          </span>
+                          <div className="h-0.5 flex-1 bg-gradient-to-l from-transparent to-emerald-500/30"></div>
+                        </div>
+                      )}
+                      {(questionsInChapter as any[]).map((q, idx) => {
+                        const userChoice = answeredPracticeList[q.id];
+                        const isAnswered = userChoice !== undefined;
+                        const isBookmarked = bookmarks.includes(q.id);
+                        // Make continuous indexing across chapters
+                        const globalIndex = filteredQuestions.findIndex(fq => fq.id === q.id);
 
-                    return (
-                      <div key={q.id} className={`bg-white dark:bg-slate-900 border p-6 rounded-3xl transition-all shadow-sm ${isAnswered ? userChoice === q.correctIndex ? "border-emerald-500/50" : "border-red-500/30 shadow-md" : "border-slate-200/90 hover:border-slate-300"}`}>
-                        <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
-                          <div className="flex items-center gap-2">
-                            <span className="bg-slate-50 border border-slate-200 text-[10px] px-2.5 py-1 rounded-full font-black">প্রশ্ন {idx + 1}</span>
-                            <span className="bg-emerald-500/10 text-emerald-600 text-[10px] font-black px-2.5 py-1 rounded-full">{q.chapter}</span>
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <button onClick={() => toggleBookmark(q.id)} className={`p-2 rounded-xl border ${isBookmarked ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-500" : "bg-slate-50 border-slate-200 text-slate-400 hover:text-slate-600"}`}>
-                              <BookMarked className="w-4 h-4" />
-                            </button>
-                            <button onClick={() => triggerAiTutor(q)} className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 text-[11px] font-black hover:brightness-105 flex items-center gap-1">
-                              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> <span>এআই সলভার</span>
-                            </button>
-                          </div>
-                        </div>
-                        <div className="mb-5 space-y-4 font-bold">
-                          <ReactMarkdown>{q.questionText}</ReactMarkdown>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                          {q.options.map((opt, optIdx) => (
-                            <button
-                              key={optIdx}
-                              disabled={isAnswered}
-                              onClick={() => handleSelectOptionPractice(q.id, optIdx, q.correctIndex)}
-                              className={`w-full p-4 rounded-2xl border text-left text-sm font-semibold transition-all flex items-center justify-between gap-3 ${isAnswered ? optIdx === q.correctIndex ? "bg-emerald-500/15 border-emerald-500 text-emerald-800" : userChoice === optIdx ? "bg-red-500/15 border-red-500 text-red-800" : "bg-slate-50 border-slate-100 text-slate-400" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"}`}
-                            >
-                              <div className="flex items-center gap-3">
-                                <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${isAnswered && optIdx === q.correctIndex ? "bg-emerald-500 text-white" : isAnswered && userChoice === optIdx ? "bg-red-500 text-white" : "bg-slate-200 text-slate-500"}`}>{String.fromCharCode(65 + optIdx)}</span>
-                                <ReactMarkdown>{opt}</ReactMarkdown>
+                        return (
+                          <div key={q.id} className={`bg-white dark:bg-slate-900 border p-6 rounded-3xl transition-all shadow-sm ${isAnswered ? userChoice === q.correctIndex ? "border-emerald-500/50" : "border-red-500/30 shadow-md" : "border-slate-200/90 hover:border-slate-300"}`}>
+                            <div className="flex items-center justify-between mb-4 border-b border-slate-100 pb-3">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-[10px] px-2.5 py-1 rounded-full font-black">প্রশ্ন {globalIndex + 1}</span>
+                                {selectedChapter !== "All" && (
+                                   <span className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-black px-2.5 py-1 rounded-full">{q.chapter}</span>
+                                )}
+                                <span className="bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 text-[10px] px-2.5 py-1 rounded-full font-mono tracking-tight font-bold opacity-80">ID: {q.id}</span>
                               </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    );
-                  })}
+                              <div className="flex items-center gap-1.5">
+                                <button onClick={() => toggleBookmark(q.id)} className={`p-2 rounded-xl border ${isBookmarked ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-500" : "bg-slate-50 border-slate-200 text-slate-400 hover:text-slate-600"}`}>
+                                  <BookMarked className="w-4 h-4" />
+                                </button>
+                                <button onClick={() => triggerAiTutor(q)} className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 text-[11px] font-black hover:brightness-105 flex items-center gap-1">
+                                  <Sparkles className="w-3.5 h-3.5 animate-pulse" /> <span>এআই সলভার</span>
+                                </button>
+                              </div>
+                            </div>
+                            <div className="mb-5 space-y-4 font-bold">
+                              <ReactMarkdown>{q.questionText}</ReactMarkdown>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                              {q.options.map((opt, optIdx) => (
+                                <button
+                                  key={optIdx}
+                                  disabled={isAnswered}
+                                  onClick={() => handleSelectOptionPractice(q.id, optIdx, q.correctIndex)}
+                                  className={`w-full p-4 rounded-2xl border text-left text-sm font-semibold transition-all flex items-center justify-between gap-3 ${isAnswered ? optIdx === q.correctIndex ? "bg-emerald-500/15 border-emerald-500 text-emerald-800" : userChoice === optIdx ? "bg-red-500/15 border-red-500 text-red-800" : "bg-slate-50 border-slate-100 text-slate-400" : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100"}`}
+                                >
+                                  <div className="flex items-center gap-3">
+                                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black shrink-0 ${isAnswered && optIdx === q.correctIndex ? "bg-emerald-500 text-white" : isAnswered && userChoice === optIdx ? "bg-red-500 text-white" : "bg-slate-200 text-slate-500"}`}>{String.fromCharCode(65 + optIdx)}</span>
+                                    <ReactMarkdown>{opt}</ReactMarkdown>
+                                  </div>
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ))}
+                  
+                  {hasMoreQuestions && (
+                    <div className="flex justify-center pt-8 pb-4">
+                      <button
+                        onClick={loadMoreQuestions}
+                        disabled={isLoadingQuestions}
+                        className="bg-emerald-50 text-emerald-600 hover:bg-emerald-100 dark:bg-emerald-950/40 dark:text-emerald-400 dark:hover:bg-emerald-900/40 px-6 py-2.5 rounded-full font-bold text-sm transition-all flex items-center gap-2"
+                      >
+                        {isLoadingQuestions ? (
+                          <>
+                            <div className="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+                            <span>লোড হচ্ছে...</span>
+                          </>
+                        ) : (
+                          <>আরো লোড করুন ({totalQuestionsCount - paginatedQuestions.length} বাকি)</>
+                        )}
+                      </button>
+                    </div>
+                  )}
+
                 </div>
               )
             ) : (

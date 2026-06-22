@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { 
   ChevronRight, 
   ChevronLeft, 
@@ -15,7 +16,8 @@ import {
   Filter,
   User,
   Zap,
-  TrendingUp
+  TrendingUp,
+  Link2
 } from "lucide-react";
 import { StudentStats } from "../types";
 
@@ -227,7 +229,8 @@ const SUBJECTS_METADATA = [
       "অধ্যায় ৫: বাক্য তত্ত্ব",
       "অধ্যায় ৬: বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধপ্রয়োগ",
       "অধ্যায় ৭: পারিভাষিক শব্দ ও অনুবাদ",
-      "অধ্যায় ৮: আবেদনপত্র ও প্রতিবেদন লিখন"
+      "অধ্যায় ৮: আবেদনপত্র ও প্রতিবেদন লিখন",
+      "অধ্যায় ৯: প্রবন্ধ রচনা"
     ]
   },
   { 
@@ -356,7 +359,7 @@ const SUBJECTS_METADATA = [
 
 const SEED_TICKS: { [key: string]: boolean } = {};
 
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, collection, query, orderBy, limit, onSnapshot } from "firebase/firestore";
 import { db } from "../lib/firebase";
 
 export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProps) {
@@ -365,7 +368,7 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
   const [selectedSubjectId, setSelectedSubjectId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedChapterIdx, setExpandedChapterIdx] = useState<number | null>(0);
-  const [activeBatch, setActiveBatch] = useState<"2026" | "2027">("2026");
+  const [activeBatch, setActiveBatch] = useState<string>(stats?.batch || "2026");
 
   const storageKey = `studyqoro_syllabus_progress_${stats?.uid || 'guest'}`;
 
@@ -383,6 +386,69 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
   });
 
   const [completedTodayCount, setCompletedTodayCount] = useState<number>(0);
+  const [leaderboardData, setLeaderboardData] = useState<any[]>([]);
+  const [isLoadingLeaderboard, setIsLoadingLeaderboard] = useState(false);
+
+  useEffect(() => {
+    setIsLoadingLeaderboard(true);
+    const q = query(
+      collection(db, "students"),
+      orderBy("syllabusPercentage", "desc"),
+      limit(100)
+    );
+    
+    const unsubscribe = onSnapshot(q, (qs) => {
+      const data = qs.docs
+        .map(doc => ({ id: doc.id, ...doc.data() as any }))
+        .filter(user => user.syllabusPercentage !== undefined && (user.batch || "2026") === activeBatch)
+        .sort((a, b) => b.syllabusPercentage - a.syllabusPercentage);
+      
+      setLeaderboardData(data);
+      setIsLoadingLeaderboard(false);
+    }, (error) => {
+      console.error("Error fetching leaderboard", error);
+      setIsLoadingLeaderboard(false);
+    });
+
+    return () => unsubscribe();
+  }, [activeBatch]);
+
+  // Helper calculation metrics
+  const totalTopics = 1364; // static hardcoded layout matching screenshot
+
+  const getComputedStats = () => {
+    let completedCount = 0;
+    const itemsInProgressMap = new Set<string>();
+
+    SUBJECTS_METADATA.forEach((subj) => {
+      subj.chapters.forEach((_, chapIdx) => {
+        let chapCheckedCount = 0;
+        for (let cpIdx = 0; cpIdx < 11; cpIdx++) {
+          const key = `${subj.id}_${chapIdx}_${cpIdx}`;
+          if (ticks[key]) {
+            completedCount++;
+            chapCheckedCount++;
+          }
+        }
+        if (chapCheckedCount > 0 && chapCheckedCount < 11) {
+          itemsInProgressMap.add(`${subj.id}_${chapIdx}`);
+        }
+      });
+    });
+
+    const inProgressCount = itemsInProgressMap.size;
+    const remainingCount = Math.max(0, totalTopics - completedCount);
+    const overallPercentage = parseFloat(((completedCount / totalTopics) * 100).toFixed(1));
+
+    return {
+      completedCount,
+      inProgressCount,
+      remainingCount,
+      overallPercentage
+    };
+  };
+
+  const computedStats = getComputedStats();
 
   // Sync with Firestore whenever user changes, and write changes softly back to firestore
   useEffect(() => {
@@ -414,6 +480,14 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
         if (stats?.uid && !stats?.isGuest) {
             try {
                 await setDoc(doc(db, "students", stats.uid, "progress", "syllabus"), { ticks }, { merge: true });
+                
+                await setDoc(doc(db, "students", stats.uid), { 
+                  syllabusPercentage: computedStats.overallPercentage,
+                  name: stats.name,
+                  batch: stats.batch || "2026",
+                  board: stats.board || "ঢাকা",
+                  avatar: stats.avatar || null
+                }, { merge: true });
             } catch (err) {
                 console.warn("Failed to persist to firebase", err);
             }
@@ -422,7 +496,7 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
     
     const timeout = setTimeout(saveToFirebase, 1000);
     return () => clearTimeout(timeout);
-  }, [ticks, stats?.uid, storageKey]);
+  }, [ticks, stats?.uid, storageKey, computedStats.overallPercentage, stats]);
 
   // Carousel ref and scroll handling for Subject Progress list
   const carouselRef = useRef<HTMLDivElement>(null);
@@ -433,44 +507,6 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
       carouselRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
-
-  // Helper calculation metrics
-  const totalTopics = 1364; // static hardcoded layout matching screenshot
-
-  const getComputedStats = () => {
-    let completedCount = 0;
-    const itemsInProgressMap = new Set<string>(); // Store unique subjectId_chapterIndex
-
-    // Process every subject and chapter to build precise dynamic stats
-    SUBJECTS_METADATA.forEach((subj) => {
-      subj.chapters.forEach((_, chapIdx) => {
-        let chapCheckedCount = 0;
-        for (let cpIdx = 0; cpIdx < 11; cpIdx++) {
-          const key = `${subj.id}_${chapIdx}_${cpIdx}`;
-          if (ticks[key]) {
-            completedCount++;
-            chapCheckedCount++;
-          }
-        }
-        if (chapCheckedCount > 0 && chapCheckedCount < 11) {
-          itemsInProgressMap.add(`${subj.id}_${chapIdx}`);
-        }
-      });
-    });
-
-    const inProgressCount = itemsInProgressMap.size;
-    const remainingCount = Math.max(0, totalTopics - completedCount);
-    const overallPercentage = parseFloat(((completedCount / totalTopics) * 100).toFixed(1));
-
-    return {
-      completedCount,
-      inProgressCount,
-      remainingCount,
-      overallPercentage
-    };
-  };
-
-  const computedStats = getComputedStats();
 
   // Retrieve subject-specific completion rates
   const getSubjectProgress = (subjectId: string) => {
@@ -650,10 +686,18 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
         
         {/* LEFT COLUMN: ACTIVE VIEW (CHANGES DYNAMICALLY) */}
         <div className="lg:col-span-2 space-y-6">
+          <AnimatePresence mode="wait">
 
           {/* TAB: LEADERBOARD CONTENT VIEW */}
           {activeTab === "leaderboard" && (
-            <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-6">
+            <motion.div 
+              key="leaderboard-view"
+              initial={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-6"
+            >
               
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-100 dark:border-slate-800/80 pb-4">
                 <div>
@@ -667,71 +711,69 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                 </div>
 
                 {/* Batch toggler pills matching screenshot exactly */}
-                <div className="flex bg-slate-100 dark:bg-slate-950 p-1 rounded-xl border border-slate-200/30">
-                  <button
-                    onClick={() => setActiveBatch("2026")}
-                    className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
-                      activeBatch === "2026"
-                        ? "bg-[#059669] text-white shadow-sm"
-                        : "text-slate-500 hover:text-slate-850 dark:text-slate-400"
-                    }`}
-                  >
-                    2026 Batch
-                  </button>
-                  <button
-                    onClick={() => setActiveBatch("2027")}
-                    className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
-                      activeBatch === "2027"
-                        ? "bg-[#059669] text-white shadow-sm"
-                        : "text-slate-500 hover:text-slate-850 dark:text-slate-400"
-                    }`}
-                  >
-                    2027 Batch
-                  </button>
+                <div className="flex bg-slate-100 dark:bg-slate-950 p-1 rounded-xl border border-slate-200/30 overflow-x-auto scrollbar-hide">
+                  {["2024", "2025", "2026", "2027", "2028"].map((batchYear) => (
+                    <button
+                      key={batchYear}
+                      onClick={() => setActiveBatch(batchYear)}
+                      className={`px-3 py-1 text-xs font-bold rounded-lg transition-all whitespace-nowrap ${
+                        activeBatch === batchYear
+                          ? "bg-[#059669] text-white shadow-sm"
+                          : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-300"
+                      }`}
+                    >
+                      {batchYear}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               {/* Real batch rows list display */}
               <div className="space-y-3">
-                {activeBatch === "2026" ? (
-                  <>
-                    {/* Current User showing actual reactive percentage */}
-                    <div className="bg-[#e6f4ea] dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 p-4 rounded-2xl flex items-center justify-between transition-colors">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-[#059669]">১</span>
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center font-black">
-                          {(stats?.name || "U")[0].toUpperCase()}
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{stats?.name || "Unknown User"}</span>
-                            <span className="text-[9px] bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 px-1.5 py-0.2 rounded-full font-bold">You</span>
+                {isLoadingLeaderboard ? (
+                  <div className="text-center py-8 text-slate-400 text-sm font-medium">
+                    <span className="inline-block animate-spin mr-2 border-2 border-emerald-500 border-t-transparent rounded-full w-4 h-4" />
+                    লিডারবোর্ড লোড হচ্ছে...
+                  </div>
+                ) : leaderboardData.length > 0 ? (
+                  leaderboardData.map((user, idx) => {
+                    const isCurrentUser = user.id === stats?.uid;
+                    return (
+                      <div 
+                        key={user.id}
+                        className={`${isCurrentUser ? "bg-[#e6f4ea] dark:bg-emerald-950/20 border-emerald-100/50 dark:border-emerald-900/30" : "bg-slate-50 dark:bg-slate-900 border-slate-100 dark:border-slate-800"} border p-4 rounded-2xl flex items-center justify-between transition-colors`}
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className={`text-sm font-black w-4 text-center ${idx < 3 ? "text-[#059669]" : "text-slate-400"}`}>
+                            {idx + 1}
+                          </span>
+                          <div className={`w-10 h-10 rounded-full text-white flex items-center justify-center font-black ${isCurrentUser ? "bg-gradient-to-tr from-emerald-500 to-teal-500" : "bg-slate-300 dark:bg-slate-700"}`}>
+                            {user.avatar ? (
+                              <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full object-cover" />
+                            ) : (
+                              (user.name || "U")[0].toUpperCase()
+                            )}
                           </div>
-                          <span className="text-[10px] text-slate-400">ঢাকা শিক্ষাবোর্ড</span>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{user.name || "Unknown User"}</span>
+                              {isCurrentUser && (
+                                <span className="text-[9px] bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 px-1.5 py-0.5 rounded-full font-bold">You</span>
+                              )}
+                            </div>
+                            <span className="text-[10px] text-slate-400">{user.board || "ঢাকা"} শিক্ষাবোর্ড</span>
+                          </div>
                         </div>
+                        <span className={`text-sm font-extrabold ${isCurrentUser ? "text-[#059669]" : "text-slate-600 dark:text-slate-300"}`}>
+                          {user.syllabusPercentage}%
+                        </span>
                       </div>
-                      <span className="text-sm font-extrabold text-[#059669]">{computedStats.overallPercentage}%</span>
-                    </div>
-                  </>
+                    );
+                  })
                 ) : (
-                  <>
-                    <div className="bg-[#e6f4ea] dark:bg-emerald-950/20 border border-emerald-100/50 dark:border-emerald-900/30 p-4 rounded-2xl flex items-center justify-between transition-colors">
-                      <div className="flex items-center gap-4">
-                        <span className="text-sm font-black text-[#059669]">১</span>
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-500 text-white flex items-center justify-center font-black">
-                          {(stats?.name || "U")[0].toUpperCase()}
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-xs font-bold text-slate-900 dark:text-slate-100">{stats?.name || "Unknown User"}</span>
-                            <span className="text-[9px] bg-slate-900 dark:bg-emerald-500 text-white dark:text-slate-950 px-1.5 py-0.2 rounded-full font-bold">You</span>
-                          </div>
-                          <span className="text-[10px] text-slate-400">ঢাকা শিক্ষাবোর্ড</span>
-                        </div>
-                      </div>
-                      <span className="text-sm font-extrabold text-[#059669]">{computedStats.overallPercentage}%</span>
-                    </div>
-                  </>
+                  <div className="text-center py-8 text-slate-400 text-sm font-medium bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-dashed border-slate-200 dark:border-slate-800">
+                    এই ব্যাচের কাউকেই পাওয়া যায়নি। তুমিই প্রথম শুরু করো!
+                  </div>
                 )}
               </div>
 
@@ -740,12 +782,19 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                 💡 <strong>লিডারবোর্ডের সিক্রেট:</strong> যখন দেখবে অন্য কেউ তোমার চেয়ে বেশি সিলেবাস শেষ করেছে, তখন স্বাভাবিকভাবেই আরও এগিয়ে যাওয়ার মোটিভেশন তৈরি হবে। প্রতিদিন পড়ার সাথে সাথে সিলেবাস মার্ক করতে ভুলোনা!
               </div>
 
-            </div>
+            </motion.div>
           )}
 
           {/* VIEW: SPECIFIC MODULE/SUBJECT DETAIL CHECKLIST */}
           {selectedSubjectId !== null && (
-            <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-4 sm:p-6 shadow-sm space-y-6">
+            <motion.div 
+              key={`subject-${selectedSubjectId}`}
+              initial={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+              transition={{ duration: 0.3 }}
+              className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-4 sm:p-6 shadow-sm space-y-6"
+            >
               
               {/* Back switcher banner */}
               <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800">
@@ -885,185 +934,231 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                 </button>
               </div>
 
-            </div>
+            </motion.div>
           )}
 
           {/* VIEW: DEFAULT DASHBOARD OVERVIEW PANELS */}
           {activeTab === "dashboard" && selectedSubjectId === null && (
-            <>
+            <motion.div
+              key="dashboard-view"
+              initial={{ opacity: 0, x: -20, filter: "blur(4px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: 20, filter: "blur(4px)" }}
+              transition={{ duration: 0.3 }}
+              className="space-y-6"
+            >
               {/* hero welcome card */}
-              <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-6 rounded-3xl shadow-sm relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-6 rounded-3xl shadow-sm relative overflow-hidden flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+              >
                 
                 {/* Visual back glow */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-full blur-xl" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-tr from-emerald-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
-                <div className="space-y-4 max-w-md">
+                <div className="space-y-4 max-w-md z-10">
                   <div>
-                    <span className="text-[10px] text-[#059669] font-black uppercase tracking-widest bg-emerald-50 dark:bg-emerald-950/20 px-2.5 py-1 rounded-full">
+                    <span className="text-[10px] text-[#059669] font-black uppercase tracking-widest bg-emerald-50 dark:bg-emerald-950/20 px-2.5 py-1 rounded-full inline-block mb-3">
                       Syllabus Tracker
                     </span>
-                    <h2 className="text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-slate-100 mt-2 tracking-tight">
-                      Welcome back, {stats?.name ? stats.name.split(" ")[0] : "User"}
+                    <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">
+                      Welcome back, {stats?.name ? stats.name.split(" ")[0] : "Student"}
                     </h2>
-                    <p className="text-xs text-slate-450 dark:text-slate-400 leading-normal mt-1">
-                      Track your HSC preparation progress and make a clear roadmap to secure ultimate GPA 5.
+                    <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-normal mt-1.5 flex items-center gap-2">
+                       Track your HSC preparation progress
                     </p>
                   </div>
 
                   {/* dynamic pills details representing exact screenshot numbers */}
-                  <div className="flex flex-wrap gap-2 text-[10px] font-bold">
-                    <span className="bg-slate-50 dark:bg-slate-950 border border-slate-200/50 dark:border-slate-850 px-2.5 py-1 md:py-1.5 rounded-full text-slate-650 dark:text-slate-400">
-                      📖 {totalTopics} Total
+                  <div className="flex flex-wrap gap-2.5 font-bold">
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-300 rounded-lg shadow-sm text-[11px]">
+                      <BookOpen className="w-3.5 h-3.5 text-[#059669]" />
+                      <span>{totalTopics} Total</span>
                     </span>
-                    <span className="bg-[#e6f4ea] dark:bg-emerald-950/30 text-[#059669] px-2.5 py-1 md:py-1.5 rounded-full">
-                      ✓ {computedStats.completedCount} Done
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-[#e6f4ea] dark:bg-emerald-950/40 border border-emerald-100/50 dark:border-emerald-900/50 text-[#059669] rounded-lg shadow-sm text-[11px]">
+                      <Check className="w-3.5 h-3.5" />
+                      <span>{computedStats.completedCount} Done</span>
                     </span>
-                    <span className="bg-amber-50 dark:bg-amber-950/20 text-amber-600 px-2.5 py-1 md:py-1.5 rounded-full">
-                      ⚡ {computedStats.inProgressCount} In Progress
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-50 dark:bg-amber-950/20 border border-amber-100/50 dark:border-amber-900/30 text-amber-600 rounded-lg shadow-sm text-[11px]">
+                      <Zap className="w-3.5 h-3.5" />
+                      <span>{computedStats.inProgressCount} In Progress</span>
                     </span>
-                    <span className="bg-slate-50 dark:bg-slate-950 border border-slate-150 dark:border-slate-850 px-2.5 py-1 md:py-1.5 rounded-full text-slate-500">
-                      🕒 {computedStats.remainingCount} Remaining
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-slate-200 text-slate-500 dark:bg-slate-800 dark:border-slate-700 rounded-lg shadow-sm text-[11px]">
+                      <TrendingUp className="w-3.5 h-3.5" />
+                      <span>{computedStats.remainingCount} Remaining</span>
                     </span>
                   </div>
                 </div>
 
                 {/* Big circular Gauge showing exact overall reactive percentage */}
-                <div className="relative shrink-0 flex items-center justify-center self-center md:self-auto">
-                  <svg className="w-28 h-28 transform -rotate-90">
-                    {/* Track */}
-                    <circle 
-                      cx="56" cy="56" r="45" 
-                      className="stroke-slate-100 dark:stroke-slate-800" 
-                      strokeWidth="9" fill="transparent" 
-                    />
-                    {/* Ring */}
-                    <circle 
-                      cx="56" cy="56" r="45" 
-                      className="stroke-emerald-500" 
-                      strokeWidth="9" fill="transparent" 
-                      strokeDasharray={2 * Math.PI * 45}
-                      strokeDashoffset={2 * Math.PI * 45 * (1 - computedStats.overallPercentage / 100)}
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <div className="absolute flex flex-col items-center">
-                    <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white leading-none">
-                      {computedStats.overallPercentage}%
-                    </span>
-                    <span className="text-[8px] font-black tracking-widest text-slate-450 uppercase mt-1">
-                      OVERALL
-                    </span>
+                <div className="relative shrink-0 flex items-center justify-center self-center md:self-auto z-10 pt-4 md:pt-0">
+                  <div className="relative w-32 h-32">
+                    <svg className="w-full h-full transform -rotate-90">
+                      {/* Track */}
+                      <circle 
+                        cx="64" cy="64" r="54" 
+                        className="stroke-slate-100 dark:stroke-slate-800/80" 
+                        strokeWidth="8" fill="transparent" 
+                      />
+                      {/* Ring */}
+                      <motion.circle 
+                        cx="64" cy="64" r="54" 
+                        className="stroke-emerald-500" 
+                        strokeWidth="8" fill="transparent" 
+                        strokeDasharray={2 * Math.PI * 54}
+                        initial={{ strokeDashoffset: 2 * Math.PI * 54 }}
+                        animate={{ strokeDashoffset: 2 * Math.PI * 54 * (1 - computedStats.overallPercentage / 100) }}
+                        transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    <div className="absolute inset-0 flex flex-col justify-center items-center">
+                      <span className="text-3xl font-black text-slate-900 dark:text-white tracking-tighter">
+                        {computedStats.overallPercentage}%
+                      </span>
+                      <span className="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase mt-0.5">
+                        OVERALL
+                      </span>
+                    </div>
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
 
               {/* 3. SUBJECT PROGRESS ROW CAROUSEL */}
-              <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-4">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+                className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-5"
+              >
                 
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-sm font-black text-slate-900 dark:text-slate-100">
+                    <h3 className="text-sm md:text-base font-black text-slate-900 dark:text-slate-100">
                       Subject Progress
                     </h3>
-                    <p className="text-[10px] text-slate-400">বিষয় ভিত্তিক সিলেবাস রিডিং অগ্রগতি এক নজরে</p>
                   </div>
 
                   {/* Carousel sliding navigation button handles */}
-                  <div className="flex gap-1.5">
+                  <div className="flex gap-2">
                     <button 
                       onClick={() => scrollCarousel("left")}
-                      className="p-1.5 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-850 border border-slate-200/50 dark:border-slate-800 rounded-lg text-slate-600 dark:text-slate-400 cursor-pointer"
+                      className="p-1.5 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-850 border border-slate-200/50 dark:border-slate-800 rounded-lg text-slate-600 dark:text-slate-400 transition-colors"
                     >
-                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <ChevronLeft className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => scrollCarousel("right")}
-                      className="p-1.5 bg-[#059669] text-white hover:bg-emerald-600 rounded-lg shadow-sm cursor-pointer"
+                      className="p-1.5 bg-[#059669] text-white hover:bg-emerald-600 rounded-lg shadow-sm transition-colors"
                     >
-                      <ChevronRight className="w-3.5 h-3.5" />
+                      <ChevronRight className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
 
-                {/* Horizontal slider list matching screenshot image 4 */}
+                {/* Horizontal slider list matching screenshot image 6 perfectly */}
                 <div 
                   ref={carouselRef}
-                  className="flex gap-4 overflow-x-auto scrollbar-none pb-2 pt-1 touch-pan-x"
+                  className="flex gap-4 overflow-x-auto scrollbar-none pb-3 pt-1 touch-pan-x snap-x scroll-smooth"
                 >
-                  {SUBJECTS_METADATA.map((subj) => {
+                  {SUBJECTS_METADATA.map((subj, index) => {
                     const progress = getSubjectProgress(subj.id);
                     return (
-                      <div 
+                      <motion.div 
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.05 }}
                         key={subj.id}
                         onClick={() => setSelectedSubjectId(subj.id)}
-                        className={`w-32 sm:w-36 shrink-0 bg-white dark:bg-slate-900 border border-slate-150/60 dark:border-slate-850 p-4 rounded-2xl flex flex-col items-center justify-between gap-3 text-center transition-all hover:scale-103 hover:shadow-xs hover:border-[#059669] cursor-pointer`}
+                        className={`w-[110px] sm:w-[120px] shrink-0 bg-white dark:bg-slate-900 border ${progress > 0 ? "border-[#ecf6f3] shadow-sm shadow-[#059669]/5" : "border-slate-150/80 shadow-slate-200/20"} dark:border-slate-800 dark:shadow-none p-4 rounded-[1.5rem] flex flex-col items-center justify-between gap-4 text-center transition-all hover:-translate-y-1 hover:border-[#059669]/30 cursor-pointer snap-start`}
                       >
-                        {/* Circular progress small item */}
-                        <div className="relative flex items-center justify-center">
-                          <svg className="w-16 h-16 transform -rotate-90">
-                            <circle 
-                              cx="32" cy="32" r="26" 
-                              className="stroke-slate-100 dark:stroke-slate-800" 
-                              strokeWidth="5" fill="transparent" 
-                            />
-                            <circle 
-                              cx="32" cy="32" r="26" 
-                              className={subj.ringColor} 
-                              strokeWidth="5" fill="transparent" 
-                              strokeDasharray={2 * Math.PI * 26}
-                              strokeDashoffset={2 * Math.PI * 26 * (1 - progress / 100)}
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                          <span className="absolute text-[10px] font-extrabold text-slate-850 dark:text-slate-100">
-                            {progress}%
-                          </span>
-                          
-                          {/* Inner small status bullet representation */}
+                        {/* Circular progress with Top Dot */}
+                        <div className="relative flex flex-col items-center justify-center pt-1 w-full">
                           <div 
-                            className="absolute -top-1 w-2.5 h-2.5 rounded-full border border-white dark:border-slate-900"
+                            className="w-[5px] h-[5px] rounded-full mb-1.5 block z-10" 
                             style={{ backgroundColor: subj.bulletColor }}
                           />
+                          <div className="relative w-14 h-14 flex items-center justify-center">
+                            <svg className="w-full h-full transform -rotate-90">
+                              <circle 
+                                cx="28" cy="28" r="24" 
+                                className="stroke-slate-100 dark:stroke-slate-800" 
+                                strokeWidth="4" fill="transparent" 
+                              />
+                              <motion.circle 
+                                cx="28" cy="28" r="24" 
+                                stroke={subj.bulletColor}
+                                strokeWidth="4" fill="transparent"
+                                strokeDasharray={2 * Math.PI * 24}
+                                initial={{ strokeDashoffset: 2 * Math.PI * 24 }}
+                                animate={{ strokeDashoffset: 2 * Math.PI * 24 * (1 - progress/100) }}
+                                transition={{ duration: 1, delay: 0.2 + (index * 0.05) }}
+                                strokeLinecap="round" 
+                              />
+                            </svg>
+                            <span className="absolute text-[11px] font-black text-slate-800 dark:text-white mt-0.5">
+                              {progress > 0 ? `${progress}%` : `0%`}
+                            </span>
+                          </div>
                         </div>
 
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 dark:text-slate-205 line-clamp-1">
-                            {subj.name}
-                          </span>
-                          <span className="text-[8px] sm:text-[9px] text-slate-400 block tracking-tight">
-                            {subj.engName}
-                          </span>
-                        </div>
-
-                      </div>
+                        <span className="text-[10px] md:text-[11px] font-bold text-slate-500 dark:text-slate-400">
+                          {subj.engName}
+                        </span>
+                      </motion.div>
                     );
                   })}
                 </div>
+              </motion.div>
 
-              </div>
+              {/* 4. SPLIT PANELS VIEW */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* 4A. Focus Subject Panel */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                  className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm flex flex-col justify-between"
+                >
+                  <div className="flex items-center gap-2 mb-6">
+                    <AlertCircle className="w-4 h-4 text-amber-500" />
+                    <h3 className="text-sm font-black text-slate-900 dark:text-slate-100">
+                      Focus Subject
+                    </h3>
+                  </div>
 
-              {/* 4. FOCUS ALERT & BATCH MOTIVATOR BOX DEEPLINK */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                {/* Focus Subject alert box, warns what is falling behind */}
-                <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 p-5 rounded-3xl shadow-sm space-y-4 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <span className="text-[10px] text-red-500 font-bold uppercase tracking-wider flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" />
-                      <span>Focus Subject Alert</span>
-                    </span>
-                    
-                    <div className="flex gap-3 items-center pt-1">
-                      <div className="w-12 h-12 rounded-full border-4 border-red-500/10 flex items-center justify-center font-black text-red-500 text-xs shrink-0">
-                        {focusSubjectInfo.percentage}%
-                      </div>
-                      <div>
-                        <h4 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100">
-                          {focusSubjectInfo.subj.name}
-                        </h4>
-                        <span className="text-[9px] text-slate-400">You are falling behind on this subject.</span>
-                      </div>
+                  <div 
+                    onClick={() => {
+                      setSelectedSubjectId(focusSubjectInfo.subj.id);
+                      setExpandedChapterIdx(0);
+                    }}
+                    className="flex bg-[#fbfcfd] dark:bg-slate-950 p-4 border border-slate-100 dark:border-slate-850 rounded-2xl gap-4 items-center mb-5 hover:border-slate-200 transition-colors cursor-pointer group"
+                  >
+                    <div className="w-14 h-14 shrink-0 rounded-full border-[4px] border-slate-100 dark:border-slate-800 flex items-center justify-center relative">
+                      <svg className="absolute inset-0 w-full h-full -rotate-90">
+                        <circle cx="24" cy="24" r="22" fill="transparent" strokeWidth="4" className="stroke-slate-100 dark:stroke-slate-800" />
+                        <motion.circle 
+                          cx="24" cy="24" r="22" 
+                          fill="transparent" strokeWidth="4" stroke={focusSubjectInfo.subj.bulletColor}
+                          strokeDasharray={2 * Math.PI * 22}
+                          initial={{ strokeDashoffset: 2 * Math.PI * 22 }}
+                          animate={{ strokeDashoffset: 2 * Math.PI * 22 * (1 - focusSubjectInfo.percentage/100) }}
+                          strokeLinecap="round" 
+                        />
+                      </svg>
+                      <span className="text-[10px] font-black">{focusSubjectInfo.percentage}%</span>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-800 dark:text-slate-200 leading-snug group-hover:text-[#059669] transition-colors">
+                        {focusSubjectInfo.subj.name}
+                      </h4>
+                      <p className="text-[10px] text-slate-400 mt-1 font-medium">
+                        You are falling behind on this subject.
+                      </p>
                     </div>
                   </div>
 
@@ -1072,56 +1167,203 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                       setSelectedSubjectId(focusSubjectInfo.subj.id);
                       setExpandedChapterIdx(0);
                     }}
-                    className="w-full mt-4 py-2 bg-[#059669] hover:bg-emerald-600 text-white text-[11px] font-black rounded-xl transition-colors cursor-pointer text-center"
+                    className="w-full bg-[#059669] hover:bg-emerald-600 text-white font-bold text-[11px] py-3 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                   >
-                    Study Now
+                    Study Now <ChevronRight className="w-3.5 h-3.5" />
                   </button>
+                </motion.div>
+
+                {/* 4B. Mini Leaderboard Card exactly matching image 3 aesthetic */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden shadow-sm flex flex-col"
+                >
+                  <div className="p-5 flex justify-between items-center bg-[#fbfcfd] dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800/80">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
+                      <div className="flex items-center gap-2">
+                        <Trophy className="w-4 h-4 text-emerald-500 fill-emerald-50" />
+                        <h3 className="text-sm font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                          Leaderboard
+                        </h3>
+                        <span className="bg-[#e6f4ea] text-[#059669] font-black text-[9px] px-2 py-0.5 rounded-full ml-1">{activeBatch} Batch</span>
+                      </div>
+                      <button 
+                        onClick={() => { setActiveTab("leaderboard"); setSelectedSubjectId(null); }}
+                        className="text-[10px] text-slate-400 hover:text-slate-700 font-bold flex items-center gap-1 transition-colors cursor-pointer"
+                      >
+                        সব দেখো <ChevronRight className="w-3 h-3" />
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div className="p-4 space-y-2 flex-1 flex flex-col justify-center">
+                    {isLoadingLeaderboard ? (
+                      <div className="text-center py-4 text-slate-400 text-xs font-medium">
+                        লোড হচ্ছে...
+                      </div>
+                    ) : leaderboardData.length > 0 ? (
+                      leaderboardData.slice(0, 3).map((user, idx) => {
+                        const isCurrentUser = user.id === stats?.uid;
+                        return (
+                          <div key={user.id} className={`flex items-center justify-between p-3 rounded-2xl transition-colors ${isCurrentUser ? "bg-[#f8fdfa] border border-[#e6f4ea] dark:bg-emerald-950/20" : "hover:bg-slate-50 dark:hover:bg-slate-800/50"}`}>
+                            <div className="flex items-center gap-3 w-full">
+                              <span className={`font-black text-[11px] w-2 text-center ${idx === 0 ? "text-amber-500" : isCurrentUser ? "text-emerald-600" : "text-slate-400"}`}>
+                                {idx + 1}
+                              </span>
+                              <div className={`w-8 h-8 rounded-full text-white flex items-center justify-center font-black text-[11px] shrink-0 shadow-sm overflow-hidden ${isCurrentUser ? "bg-[#059669]" : "bg-slate-300 dark:bg-slate-700"}`}>
+                                {user.avatar ? (
+                                  <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                                ) : (
+                                  (user.name || "U")[0].toUpperCase()
+                                )}
+                              </div>
+                              <div className="flex flex-col min-w-0 flex-1">
+                                <div className="flex items-center gap-1.5">
+                                  <span className={`text-xs font-bold truncate ${isCurrentUser ? "text-[#059669] max-w-[100px]" : "text-slate-800 dark:text-slate-200"}`}>
+                                    {user.name ? user.name.split(" ")[0] : "Student"}
+                                  </span>
+                                  {isCurrentUser && (
+                                    <span className="text-[8px] bg-emerald-100 dark:bg-emerald-900 text-[#059669] dark:text-emerald-300 px-1.5 py-0.5 rounded-sm font-bold">(You)</span>
+                                  )}
+                                </div>
+                                <span className="text-[9px] text-slate-400 font-medium">{user.board || "ঢাকা"}</span>
+                              </div>
+                              <div className={`text-sm font-black text-right shrink-0 ${isCurrentUser ? "text-[#059669]" : "text-slate-500"}`}>
+                                {user.syllabusPercentage}%
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })
+                    ) : (
+                      <div className="text-center py-4 text-slate-400 text-xs font-medium">কোনো তথ্য নেই</div>
+                    )}
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* How Syllabus Tracker helps guide - added per user request */}
+              <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4">
+                <div className="flex items-center gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
+                  <span className="text-xl">👍</span>
+                  <h3 className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100">
+                    Syllabus Tracker কীভাবে তোমাকে সাহায্য করবে?
+                  </h3>
                 </div>
 
-                {/* Smart study advisory planner box */}
-                <div className="bg-gradient-to-br from-[#059669]/10 to-teal-500/5 dark:from-emerald-950/15 dark:to-transparent border border-emerald-100/40 dark:border-emerald-900/30 p-5 rounded-3xl flex flex-col justify-between">
-                  <div className="space-y-1.5">
-                    <span className="text-[9px] text-[#059669] font-black uppercase tracking-widest flex items-center gap-1 dark:text-emerald-400">
-                      <TrendingUp className="w-3.5 h-3.5" />
-                      <span>Balanced Study Advisor</span>
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-150">
-                      স্মার্ট অ্যালার্ট সিস্টেম
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      নিজের Syllabus Progress Track
                     </h4>
-                    <p className="text-[10px] text-slate-550 dark:text-slate-400 leading-relaxed">
-                      যারা শুধু প্রিয় সাবজেক্টগুলো বেশি পড়ে, তাদের জন্য এই ট্র্যাকার খুবই উপকারী। ব্যালেন্সড স্টাডি মেইনটেইন করার জন্য স্টাডি নাও বাটনে ক্লিক করো।
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      তোমার মোট syllabus-এর কত শতাংশ complete হয়েছে, তা এক নজরেই দেখতে পারবে।
                     </p>
                   </div>
 
-                  <div className="pt-3 flex gap-2 text-[8px] font-black text-emerald-700 dark:text-emerald-400">
-                    <span className="bg-emerald-500/10 px-2 py-0.5 rounded">#NoMissedTopic</span>
-                    <span className="bg-emerald-500/10 px-2 py-0.5 rounded">#SmartSchedule</span>
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Chapter Complete Roadmap
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      প্রতিটি chapter 100% complete করতে কী কী topic পড়তে হবে, তার সম্পূর্ণ breakdown দেখতে পারবে।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Subject & Chapter Analysis
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      কোন subject বা chapter কতটুকু complete হয়েছে এবং কোনগুলো পিছিয়ে আছে, সব পরিষ্কারভাবে দেখতে পারবে।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Missed Topic Detection
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      অনেক সময় আমরা কিছু topic পড়ে ফেলি, আবার কিছু গুরুত্বপূর্ণ topic বাদ পড়ে যায়। Syllabus Tracker তোমাকে জানিয়ে দেবে কোন topic এখনো বাকি আছে।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Weak Subject & Smart Alert System
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      কোন subject তোমার সবচেয়ে পিছিয়ে আছে, তা সহজেই বুঝতে পারবে। যে chapter-গুলোতে তুমি দুর্বল, সেগুলোর জন্য নিয়মিত alert ও reminder পাবে।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Balanced Study Maintain
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      যারা শুধু Math, Physics বা প্রিয় subject-গুলো বেশি পড়ে, তাদের জন্য এটি বিশেষভাবে উপকারী। Tracker তোমাকে মনে করিয়ে দেবে কোন দুর্বল chapter বা subject-এ এখন focus করা দরকার।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Full Dashboard Overview
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      একটি সুন্দর dashboard থেকে পুরো syllabus-এর অবস্থা একসাথে দেখতে পারবে।
+                    </p>
+                  </div>
+
+                  <div className="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-100/50 dark:border-slate-800/80">
+                    <h4 className="font-bold flex items-center gap-2 mb-1.5 text-slate-800 dark:text-slate-200">
+                      <span className="text-emerald-500">☺️</span>
+                      Batch Comparison & Motivation Boost
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      তোমার batch-এর অন্য শিক্ষার্থীরা syllabus completion-এ তোমার থেকে কতটা এগিয়ে বা পিছিয়ে আছে, তা লিডারবোর্ডের মাধ্যমে দেখতে পারবে। স্বাভাবিকভাবেই আরও এগিয়ে যাওয়ার motivation তৈরি হবে।
+                    </p>
                   </div>
                 </div>
-
               </div>
-            </>
+
+            </motion.div>
           )}
+          </AnimatePresence>
 
         </div>
 
-        {/* RIGHT COLUMN: SUBJECTS TRACK & QUICK STATS (STAYS PERSISTENT AND CONVENIENT FOR EXPLORATION) */}
+        {/* RIGHT COLUMN: SUBJECTS TRACK & QUICK STATS */}
         <div className="space-y-6">
 
-          {/* Subjects Progress List matches image 3 exactly */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-4">
+          {/* Subjects Progress List exact image 1 matching style */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-0"
+          >
             
-            <div className="flex justify-between items-center pb-2 border-b border-slate-100 dark:border-slate-800">
+            <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800/60 mb-2">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-[#059669] dark:text-emerald-400" />
-                <h3 className="text-xs sm:text-sm font-black text-slate-900 dark:text-slate-100">
-                  Subjects ({SUBJECTS_METADATA.length})
+                <Link2 className="w-4 h-4 text-[#059669] dark:text-emerald-400" />
+                <h3 className="text-[14px] font-black text-slate-800 dark:text-slate-100 tracking-tight">
+                  Subjects
                 </h3>
               </div>
             </div>
 
             {/* subjects scroll layout table */}
-            <div className="space-y-3.5 max-h-[360px] overflow-y-auto pr-1">
+            <div className="max-h-[380px] overflow-y-auto pr-1 space-y-1 scroll-smooth">
               {filteredSubjects.map((subj) => {
                 const progress = getSubjectProgress(subj.id);
                 const isActive = selectedSubjectId === subj.id;
@@ -1133,38 +1375,38 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
                       setSelectedSubjectId(subj.id);
                       setExpandedChapterIdx(0);
                     }}
-                    className={`flex items-center justify-between p-2 rounded-xl transition-all cursor-pointer ${
+                    className={`flex items-center justify-between p-3 rounded-2xl transition-all cursor-pointer group select-none ${
                       isActive 
-                        ? "bg-[#ecf6f3] dark:bg-slate-950 border border-emerald-100 dark:border-emerald-950" 
-                        : "hover:bg-slate-50 dark:hover:bg-slate-950"
+                        ? "bg-slate-50 dark:bg-slate-950/50 shadow-sm shadow-[#059669]/5" 
+                        : "hover:bg-slate-50/50 dark:hover:bg-slate-950/30"
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 max-w-[70%]">
-                      {/* color indicator bullet dot */}
+                    <div className="flex items-center gap-3 max-w-[65%]">
+                      {/* color indicator bullet dot exactly like image 1 */}
                       <span 
-                        className="w-2 h-2 rounded-full shrink-0"
+                        className="w-[7px] h-[7px] rounded-full shrink-0 shadow-sm"
                         style={{ backgroundColor: subj.bulletColor }}
                       />
-                      <span className="text-[10px] sm:text-[11px] font-bold text-slate-800 dark:text-slate-200 line-clamp-1 text-left">
+                      <span className={`text-[12px] font-bold line-clamp-1 transition-colors ${isActive ? "text-slate-900 dark:text-white" : "text-slate-600 group-hover:text-slate-900 dark:text-slate-400 dark:group-hover:text-slate-200"}`}>
                         {subj.name}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3 w-28 shrink-0 font-sans text-right justify-end">
+                    <div className="flex items-center gap-3 w-[90px] shrink-0 justify-end">
                       {/* Mini Horizontal Progress bar track */}
-                      <div className="w-12 bg-slate-100 dark:bg-slate-950 h-1 rounded-full overflow-hidden shrink-0">
-                        <div 
+                      <div className="flex-1 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden shrink-0">
+                        <motion.div 
                           className="h-full rounded-full"
-                          style={{ 
-                            width: `${progress}%`,
-                            backgroundColor: subj.bulletColor
-                          }}
+                          initial={{ width: 0 }}
+                          animate={{ width: `${progress}%` }}
+                          transition={{ duration: 0.8, delay: 0.2 }}
+                          style={{ backgroundColor: progress > 0 ? subj.bulletColor : '#94a3b8' }}
                         />
                       </div>
-                      <span className={`text-[10px] font-black w-10 text-right ${
-                        progress > 0 ? "text-[#059669]" : "text-slate-400"
-                      }`}>
-                        {progress}%
+                      <span className={`text-[11px] font-black w-8 text-right ${
+                        progress > 0 ? "" : "text-slate-400"
+                      }`} style={{ color: progress > 0 ? subj.bulletColor : undefined }}>
+                        {progress > 0 ? `${progress}%` : "0%"}
                       </span>
                     </div>
 
@@ -1173,81 +1415,58 @@ export default function SyllabusTracker({ stats, setStats }: SyllabusTrackerProp
               })}
             </div>
 
-          </div>
+          </motion.div>
 
-          {/* Quick Stats sidebar card matching image 1 perfectly */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-4">
+          {/* Quick Stats sidebar matching image 2 bottom right */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-6 shadow-sm space-y-4"
+          >
             
-            <div className="flex items-center gap-2 pb-1">
-              <CheckCircle className="w-4 h-4 text-[#059669] dark:text-emerald-400" />
-              <h3 className="text-xs sm:text-sm font-black text-slate-900 dark:text-slate-100">
+            <div className="flex items-center gap-2 pb-2">
+              <Check className="w-4 h-4 text-[#059669]" />
+              <h3 className="text-sm font-black text-slate-800 dark:text-slate-100 tracking-tight">
                 Quick Stats
               </h3>
             </div>
 
-            <div className="divide-y divide-slate-100/60 dark:divide-slate-800/80 text-xs text-slate-800 dark:text-slate-250 font-semibold space-y-3">
+            <div className="text-xs text-slate-800 dark:text-slate-250 font-medium space-y-4 pb-1">
               
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-slate-450 dark:text-slate-400">Overall Progress</span>
-                <span className="text-[#059669] font-black">{computedStats.overallPercentage}%</span>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500 font-semibold">Overall Progress</span>
+                <span className="text-[#059669] font-black text-sm drop-shadow-xs">{computedStats.overallPercentage}%</span>
               </div>
 
-              <div className="flex justify-between items-center pt-3">
-                <span className="text-slate-450 dark:text-slate-400">Topics Completed</span>
-                <span className="text-slate-900 dark:text-slate-100 font-extrabold">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500 font-semibold">Topics Completed</span>
+                <span className="text-[#059669] font-bold text-[13px]">
                   {computedStats.completedCount}
                 </span>
               </div>
 
-              <div className="flex justify-between items-center pt-3">
-                <span className="text-slate-450 dark:text-slate-400">Topics Remaining</span>
-                <span className="text-amber-550 dark:text-amber-400 font-extrabold">
+              <div className="flex justify-between items-center">
+                <span className="text-slate-500 font-semibold">Topics Remaining</span>
+                <span className="text-amber-500 font-bold text-[13px]">
                   {computedStats.remainingCount}
                 </span>
               </div>
-
-              <div className="flex justify-between items-center pt-3">
-                <span className="text-slate-450 dark:text-slate-400">Completed Today</span>
-                <span className="text-slate-900 dark:text-slate-100 font-extrabold">
+              
+              <div className="flex justify-between items-center border-t border-slate-100 dark:border-slate-800/80 pt-4">
+                <span className="text-slate-500 font-semibold">Completed Today</span>
+                <span className="text-emerald-500 font-bold text-[13px]">
                   {completedTodayCount}
                 </span>
               </div>
-
             </div>
 
-          </div>
-
-          {/* Quick Links panel indicator */}
-          <div className="bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl p-5 shadow-sm space-y-3.5">
-            
-            <div className="flex items-center gap-2">
-              <ExternalLink className="w-4 h-4 text-slate-450" />
-              <h3 className="text-xs sm:text-sm font-black text-slate-905 dark:text-slate-150">
-                Quick Links
-              </h3>
-            </div>
-
-            <div className="space-y-2.5 text-[10px] font-bold">
-              <a 
-                href="http://www.educationboard.gov.bd/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="flex justify-between items-center p-2.5 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-850 rounded-xl transition-all cursor-pointer text-slate-650 dark:text-slate-300"
-              >
-                <span>শিক্ষা বোর্ড অফিশিয়াল ওয়েবসাইট</span>
-                <ExternalLink className="w-3.0 h-3.0 text-slate-400" />
-              </a>
-              <a 
-                href="https://nctb.gov.bd/" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="flex justify-between items-center p-2.5 bg-slate-50 dark:bg-slate-950 hover:bg-slate-100 dark:hover:bg-slate-850 rounded-xl transition-all cursor-pointer text-slate-650 dark:text-slate-300"
-              >
-                <span>NCTB পাঠ্যপুস্তকসমূহ</span>
-                <ExternalLink className="w-3.0 h-3.0 text-slate-400" />
-              </a>
-            </div>
-
+          </motion.div>
+          
+          {/* Quick Links */}
+          <div className="flex items-center gap-2 px-2 opacity-75 hover:opacity-100 transition-opacity cursor-pointer w-max">
+            <Link2 className="w-3.5 h-3.5 text-slate-400" />
+            <span className="text-[11px] font-bold text-slate-500">Quick Links</span>
           </div>
 
         </div>

@@ -38,23 +38,26 @@ export default function MockExam({ stats, setStats, questions }: MockExamProps) 
   const [totalQuestionsCount, setTotalQuestionsCount] = useState<number>(5);
   const [timerMinutes, setTimerMinutes] = useState<number>(5);
 
-  const dbQuestions = questions && questions.length > 0 ? questions : QUESTION_BANK;
-
-  // Extract subjects list dynamically from questions as strings
-  const availableSubjects = useMemo(() => {
-    const list = dbQuestions.map(q => q.subject as string);
-    const unique = Array.from(new Set(list));
-    // Sort according to Subject enum if possible, then any custom ones
-    const enumOrder = Object.values(Subject) as string[];
-    return unique.sort((a, b) => {
-      const idxA = enumOrder.indexOf(a);
-      const idxB = enumOrder.indexOf(b);
-      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-      if (idxA !== -1) return -1;
-      if (idxB !== -1) return 1;
-      return a.localeCompare(b);
-    });
-  }, [dbQuestions]);
+  const [availableSubjects, setAvailableSubjects] = useState<string[]>([]);
+  
+  useEffect(() => {
+    fetch('/api/db/metadata')
+      .then(res => res.json())
+      .then(data => {
+        const list = Object.keys(data);
+        const enumOrder = Object.values(Subject) as string[];
+        const sorted = list.sort((a, b) => {
+          const idxA = enumOrder.indexOf(a);
+          const idxB = enumOrder.indexOf(b);
+          if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+          if (idxA !== -1) return -1;
+          if (idxB !== -1) return 1;
+          return a.localeCompare(b);
+        });
+        setAvailableSubjects(sorted.length > 0 ? sorted : ["পদার্থবিজ্ঞান ১ম পত্র"]);
+      })
+      .catch(console.error);
+  }, []);
 
   // Adjust selectedSubject if it's not in the available lists
   useEffect(() => {
@@ -74,33 +77,39 @@ export default function MockExam({ stats, setStats, questions }: MockExamProps) 
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Set up & shuffle questions
-  const handleStartExam = () => {
-    // Collect possible questions
-    const matchingQuestions = dbQuestions.filter(q => (q.subject as string) === selectedSubject);
-    
-    if (matchingQuestions.length === 0) {
-      alert("দুঃখিত, এই বিষয়ের উপর কাস্টম মক টেস্টের প্রশ্ন এখনো আপলোড করা হচ্ছে।");
-      return;
+  const handleStartExam = async () => {
+    try {
+      const res = await fetch(`/api/db/questions?subject=${encodeURIComponent(selectedSubject)}`);
+      const data = await res.json();
+      const matchingQuestions = data.questions || [];
+      
+      if (matchingQuestions.length === 0) {
+        alert("দুঃখিত, এই বিষয়ের উপর কাস্টম মক টেস্টের প্রশ্ন এখনো আপলোড করা হচ্ছে।");
+        return;
+      }
+  
+      // Shuffle and pick
+      const shuffled = [...matchingQuestions].sort(() => 0.5 - Math.random());
+      const subset = shuffled.slice(0, Math.min(totalQuestionsCount, matchingQuestions.length));
+  
+      const session: ExamSession = {
+        id: "exam-" + Date.now(),
+        subject: selectedSubject as Subject,
+        title: `${selectedSubject} - কাস্টম মডেল টেস্ট`,
+        totalQuestions: subset.length,
+        durationMinutes: timerMinutes,
+        questions: subset
+      };
+  
+      setCurrentExam(session);
+      setUserSelections({});
+      setCurrentQuestionIndex(0);
+      setTimeRemainingSeconds(timerMinutes * 60);
+      setQuizState("active");
+    } catch (e) {
+      console.error(e);
+      alert("নেটওয়ার্ক সমস্যা। আবার চেষ্টা করুন।");
     }
-
-    // Shuffle and pick
-    const shuffled = [...matchingQuestions].sort(() => 0.5 - Math.random());
-    const subset = shuffled.slice(0, Math.min(totalQuestionsCount, matchingQuestions.length));
-
-    const session: ExamSession = {
-      id: "exam-" + Date.now(),
-      subject: selectedSubject as Subject,
-      title: `${selectedSubject} - কাস্টম মডেল টেস্ট`,
-      totalQuestions: subset.length,
-      durationMinutes: timerMinutes,
-      questions: subset
-    };
-
-    setCurrentExam(session);
-    setUserSelections({});
-    setCurrentQuestionIndex(0);
-    setTimeRemainingSeconds(timerMinutes * 60);
-    setQuizState("active");
   };
 
   // Timer countdown hook

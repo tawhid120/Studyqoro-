@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import { StudentStats } from "../types";
 import { auth, db } from "../lib/firebase";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { handleFirestoreError, OperationType } from "../lib/firebase";
 
@@ -40,6 +40,8 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
   const [name, setName] = useState(stats.isGuest ? "" : stats.name);
   const [password, setPassword] = useState("");
   const [institution, setInstitution] = useState("");
+  const [educationLevel, setEducationLevel] = useState("");
+  const [batch, setBatch] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [focusedInput, setFocusedInput] = useState<"email" | "password" | "name" | "institution" | null>(null);
@@ -211,7 +213,10 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
           plan: "Free", 
           completedMilestones: [],
           isGuest: false,
-          collegeName: institution.trim() || null
+          collegeName: institution.trim() || null,
+          educationLevel: educationLevel || undefined,
+          batch: batch || undefined,
+          classCode: educationLevel || undefined,
         };
         try {
             await setDoc(doc(db, "students", userCredential.user.uid), userData);
@@ -283,6 +288,57 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
       setSuccessMessage("");
       setIsForgotPassword(false);
     }, 3000);
+  };
+
+  const handleGoogleSignIn = async () => {
+    setIsSubmitting(true);
+    setSuccessMessage("");
+    try {
+      const provider = new GoogleAuthProvider();
+      const result = await signInWithPopup(auth, provider);
+      
+      let userDoc;
+      try {
+          userDoc = await getDoc(doc(db, "students", result.user.uid));
+      } catch (error) {
+          handleFirestoreError(error, OperationType.GET, "students/" + result.user.uid);
+      }
+      
+      if (!userDoc?.exists()) {
+        const userData: StudentStats = {
+          name: result.user.displayName || "New Student",
+          points: 0, 
+          streak: 0,   
+          level: 1,
+          rank: 0,    
+          examsGiven: 0,
+          totalQuestionsSolved: 0,
+          plan: "Free", 
+          completedMilestones: [],
+          isGuest: false,
+          avatar: result.user.photoURL || undefined
+        };
+        try {
+            await setDoc(doc(db, "students", result.user.uid), userData);
+        } catch (error) {
+            handleFirestoreError(error, OperationType.CREATE, "students/" + result.user.uid);
+        }
+        setStats({ ...userData, uid: result.user.uid });
+      } else {
+        setStats({ ...(userDoc.data() as StudentStats), uid: result.user.uid });
+      }
+      
+      setSuccessMessage("লগইন সম্পন্ন হয়েছে!");
+      setTimeout(() => {
+        setSuccessMessage("");
+        onClose();
+      }, 1000);
+    } catch (error: any) {
+      console.error(error);
+      setSuccessMessage("Google লগইন ব্যর্থ হয়েছে।");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -742,6 +798,53 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
                       </div>
                     )}
 
+                    {/* Education Level and Batch inputs (Sign Up only) */}
+                    {isSignUp && (
+                      <div className="grid grid-cols-2 gap-3 text-left">
+                        <div className="space-y-1.5">
+                          <label className={`text-[10px] font-bold uppercase tracking-wider ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                            শিক্ষাস্তর
+                          </label>
+                          <select 
+                            required
+                            value={educationLevel}
+                            onChange={(e) => setEducationLevel(e.target.value)}
+                            className={`w-full px-3 py-2.5 rounded-xl border text-xs transition-all duration-300 font-medium
+                              ${isDarkMode 
+                                ? "bg-slate-950 border-slate-850 text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" 
+                                : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 shadow-inner"}`}
+                          >
+                            <option value="" disabled>স্তন নির্বাচন...</option>
+                            <option value="HSC">HSC (Higher Secondary)</option>
+                            <option value="SSC">SSC (Secondary)</option>
+                            <option value="Class 10">Class 10</option>
+                            <option value="Class 9">Class 9</option>
+                          </select>
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className={`text-[10px] font-bold uppercase tracking-wider ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
+                            ব্যাচ
+                          </label>
+                          <select 
+                            required
+                            value={batch}
+                            onChange={(e) => setBatch(e.target.value)}
+                            className={`w-full px-3 py-2.5 rounded-xl border text-xs transition-all duration-300 font-medium
+                              ${isDarkMode 
+                                ? "bg-slate-950 border-slate-850 text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500" 
+                                : "bg-slate-50 border-slate-200 text-slate-900 focus:border-indigo-600 focus:bg-white focus:ring-1 focus:ring-indigo-600 shadow-inner"}`}
+                          >
+                            <option value="" disabled>বর্ষ...</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                          </select>
+                        </div>
+                      </div>
+                    )}
+
                     {/* Email address input */}
                     <div className="space-y-1.5 text-left">
                       <label className={`text-[10px] font-bold uppercase tracking-wider ${isDarkMode ? "text-slate-300" : "text-slate-600"}`}>
@@ -884,19 +987,14 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
                     </div>
                     <div className="relative flex justify-center text-[10px] uppercase font-bold tracking-wider">
                       <span className={`px-3 ${isDarkMode ? "bg-slate-900 text-slate-500" : "bg-white text-slate-400"}`}>
-                        অথবা ডেমো একাউন্ট ব্যবহার করো
+                        অথবা গুগল দিয়ে সরাসরি লগইন করো
                       </span>
                     </div>
                   </div>
 
                   <button 
                     type="button" 
-                    onClick={() => {
-                      setEmail("anna@gmail.com");
-                      setPassword("demosecret777");
-                      setName("Anna G. Miller");
-                      setSuccessMessage("ডেমো অ্যাকাউন্ট ক্রেডেনশিয়াল লোড হয়েছে! এবার সরাসরি লগইন বাটনে ক্লিক করো।");
-                    }}
+                    onClick={handleGoogleSignIn}
                     className={`w-full py-2.5 px-4 rounded-xl text-xs font-bold transition-all duration-300 flex items-center justify-center gap-2 border
                       ${isDarkMode 
                         ? "bg-slate-950 border-slate-800 text-slate-300 hover:bg-slate-900 hover:text-white" 
@@ -908,7 +1006,7 @@ export default function AuthModal({ isOpen, onClose, stats, setStats, isForceLog
                       <path fill="#fbbc05" d="M5.27 14.72c-.25-.76-.39-1.57-.39-2.42 0-.85.14-1.66.39-2.42l-3.86-3C.56 8.52 0 10.2 0 12c0 1.8.56 3.48 1.41 5.12l3.86-3z" />
                       <path fill="#34a853" d="M12 23c3.24 0 5.97-1.08 7.96-2.91l-3.7-2.87c-1.1.74-2.5 1.18-4.26 1.18-3.16 0-5.82-2.52-6.78-5.52l-3.86 3C3.39 20.33 7.35 23 12 23z" />
                     </svg>
-                    <span>গুগল ডেমো স্টুডেন্ট মোডে প্রবেশ</span>
+                    <span>গুগল দিয়ে প্রবেশ করুন</span>
                   </button>
                 </div>
 

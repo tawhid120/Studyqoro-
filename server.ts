@@ -21,7 +21,87 @@ function toBengaliDigits(numStr: string): string {
 }
 
 function inferFromPath(filePath: string): { subject: string; chapter: string } {
-  // Normalize path and remove base directory
+  const fileName = path.basename(filePath);
+  
+  // Exact mappings based on user request and provided file tree
+  const fileMap: Record<string, { subject: string, chapter: string }> = {
+    "bangla1st_mcq_goddo.json": { subject: "বাংলা", chapter: "গদ্য" },
+    "bangla1st_mcq_kobita.json": { subject: "বাংলা", chapter: "কবিতা" },
+    "bangla1st_mcq_natok.json": { subject: "বাংলা", chapter: "বাংলা নাটক" },
+    "bangla1st_mcq_ouponnash.json": { subject: "বাংলা", chapter: "বাংলা উপন্যাস" },
+    
+    // Biology 1st Paper (Botany - উদ্ভিদবিজ্ঞান)
+    "biology_1st_ch1_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ১" },
+    "biology_1st_ch2_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ২" },
+    "biology_1st_ch2_mcq1.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ২" },
+    "biology_1st_ch3_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৩" },
+    "biology_1st_ch4_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৪" },
+    "biology_1st_ch5_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৫" },
+    "biology_1st_ch6_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৬" },
+    "biology_1st_ch7_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৭" },
+    "biology_1st_ch8_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৮" },
+    "biology_1st_ch9_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৯" },
+    "biology_1st_ch9_mcq (ans_topic).json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ৯" },
+    "biology_1st_ch10_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ১০" },
+    "biology_1st_ch11_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ১১" },
+    "biology_1st_ch12_mcq.json": { subject: "জীববিজ্ঞান", chapter: "উদ্ভিদবিজ্ঞান অধ্যায় ১২" },
+
+    // Biology 2nd Paper (Zoology - প্রাণিবিজ্ঞান)
+    "biology_2nd_mcq_ch1.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ১" },
+    "biology_2nd_mcq_ch2.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ২" },
+    "biology_2nd_mcq_ch3.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৩" },
+    "biology_2nd_mcq_ch4.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৪" },
+    "biology_2nd_mcq_ch5.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৫" },
+    "biology_2nd_mcq_ch6.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৬" },
+    "biology_2nd_mcq_ch7.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৭" },
+    "biology_2nd_mcq_ch8.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৮" },
+    "biology_2nd_mcq_ch8.json(ans+topic).json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৮" },
+    "biology_2nd_mcq_ch9.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ৯" },
+    "biology_2nd_mcq_ch10.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ১০" },
+    "biology_2nd_mcq_ch11.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ১১" },
+    "biology_2nd_mcq_ch12.json": { subject: "জীববিজ্ঞান", chapter: "প্রাণিবিজ্ঞান অধ্যায় ১২" },
+
+    // Chemistry 1st Paper
+    "chemistry_ch1_mcq.json": { subject: "রসায়ন", chapter: "ল্যাবরেটরি নিরাপদ ব্যবহার" },
+    "chemistry_ch2.json": { subject: "রসায়ন", chapter: "গুণগত রসায়ন" },
+    "chemistry_ch2_mcq.json": { subject: "রসায়ন", chapter: "গুণগত রসায়ন" },
+    "chemistry_ch3.json": { subject: "রসায়ন", chapter: "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন" },
+    "chemistry_ch3_mcq.json": { subject: "রসায়ন", chapter: "মৌলের পর্যায়বৃত্ত ধর্ম ও রাসায়নিক বন্ধন" },
+    "chemistry_ch4_cq.json": { subject: "রসায়ন", chapter: "রাসায়নিক পরিবর্তন" },
+    "chemistry_ch4_mcq.json": { subject: "রসায়ন", chapter: "রাসায়নিক পরিবর্তন" },
+    "chemistry_ch5_mcq.json": { subject: "রসায়ন", chapter: "কর্মমুখী রসায়ন" },
+
+    // Math 1st Paper
+    "Math_1st_mcq_ch1.json": { subject: "উচ্চতর গণিত", chapter: "ম্যাট্রিক্স ও নির্ণায়ক" },
+    "Math_1st_mcq_ch2.json": { subject: "উচ্চতর গণিত", chapter: "ভেক্টর" },
+    "Math_1st_mcq_ch3.json": { subject: "উচ্চতর গণিত", chapter: "সরলরেখা" },
+    "Math_1st_mcq_ch4.json": { subject: "উচ্চতর গণিত", chapter: "বৃত্ত" },
+    "Math_1st_mcq_ch4 (2).json": { subject: "উচ্চতর গণিত", chapter: "বৃত্ত" },
+    "Math_1st_mcq_ch5.json": { subject: "উচ্চতর গণিত", chapter: "বিন্যাস ও সমাবেশ" },
+    "Math_1st_mcq_ch6.json": { subject: "উচ্চতর গণিত", chapter: "ত্রিকোণমিতিক অনুপাত" },
+    "Math_1st_mcq_ch7.json": { subject: "উচ্চতর গণিত", chapter: "সংযুক্ত কোণের ত্রিকোণমিতিক অনুপাত" },
+    "Math_1st_mcq_ch8.json": { subject: "উচ্চতর গণিত", chapter: "ফাংশন ও ফাংশনের লেখচিত্র" },
+    "Math_1st_mcq_ch9.json": { subject: "উচ্চতর গণিত", chapter: "অন্তরীকরণ" },
+    "Math_1st_mcq_ch10.json": { subject: "উচ্চতর গণিত", chapter: "যোগজীকরণ" },
+
+    // Physics 1st Paper
+    "phy_ch1_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "ভৌত জগৎ ও পরিমাপ" },
+    "phy_ch2_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "ভেক্টর" },
+    "phy_ch4_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "নিউটনিয়ান বলবিদ্যা" },
+    "phy_ch4_mcq(2).json": { subject: "পদার্থবিদ্যা", chapter: "নিউটনিয়ান বলবিদ্যা" },
+    "phy_ch5_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "কাজ, শক্তি ও ক্ষমতা" },
+    "phy_ch6_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "মহাকর্ষ ও অভিকর্ষ" },
+    "phy_ch7_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "পদার্থের গাঠনিক ধর্ম" },
+    "phy_ch8_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "পর্যাবৃত্ত গতি" },
+    "phy_ch9_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "তরঙ্গ" },
+    "phy_ch10_mcq.json": { subject: "পদার্থবিদ্যা", chapter: "আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব" }
+  };
+
+  if (fileMap[fileName]) {
+    return fileMap[fileName];
+  }
+
+  // Fallback for unmatched files (legacy logic)
   const relative = path.relative(path.join(process.cwd(), "uploaded_questions"), filePath);
   const parts = relative.split(path.sep).map(p => p.toLowerCase());
   
@@ -31,31 +111,31 @@ function inferFromPath(filePath: string): { subject: string; chapter: string } {
   // Look for subject keywords in path parts
   for (const part of parts) {
     if (part.includes("phy1st") || part.includes("physics1st") || part === "phy1") {
-      mappedSubject = "পদার্থবিজ্ঞান ১ম পত্র";
+      mappedSubject = "পদার্থবিদ্যা"; // previously "পদার্থবিজ্ঞান ১ম পত্র"
     } else if (part.includes("phy2nd") || part.includes("physics2nd") || part === "phy2") {
-      mappedSubject = "পদার্থবিজ্ঞান ২য় পত্র";
+      mappedSubject = "পদার্থবিদ্যা";
     } else if (part === "phy" || part === "physics") {
-      mappedSubject = "পদার্থবিজ্ঞান";
+      mappedSubject = "পদার্থবিদ্যা";
     } else if (part.includes("chem1st") || part.includes("chm1st") || part.includes("chemistry1st") || part === "chem1") {
-      mappedSubject = "রসায়ন ১ম পত্র";
+      mappedSubject = "রসায়ন";
     } else if (part.includes("chem2nd") || part.includes("chm2nd") || part.includes("chemistry2nd") || part === "chem2") {
-      mappedSubject = "রসায়ন ২য় পত্র";
+      mappedSubject = "রসায়ন";
     } else if (part === "chem" || part === "chemistry" || part === "chm") {
       mappedSubject = "রসায়ন";
     } else if (part.includes("math1st") || part.includes("mth1st") || part.includes("highermath1st") || part === "math1") {
-      mappedSubject = "উচ্চতর গণিত ১ম পত্র";
+      mappedSubject = "উচ্চতর গণিত";
     } else if (part.includes("math2nd") || part.includes("mth2nd") || part.includes("highermath2nd") || part === "math2") {
-      mappedSubject = "উচ্চতর গণিত ২য় পত্র";
+      mappedSubject = "উচ্চতর গণিত";
     } else if (part === "math" || part === "highermath" || part === "mth") {
       mappedSubject = "উচ্চতর গণিত";
     } else if (part.includes("bio1st") || part.includes("biology1st") || part === "bio1") {
-      mappedSubject = "জীববিজ্ঞান ১ম পত্র";
+      mappedSubject = "জীববিজ্ঞান";
     } else if (part.includes("bio2nd") || part.includes("biology2nd") || part === "bio2") {
-      mappedSubject = "জীববিজ্ঞান ২য় পত্র";
+      mappedSubject = "জীববিজ্ঞান";
     } else if (part === "bio" || part === "biology") {
       mappedSubject = "জীববিজ্ঞান";
     } else if (part === "ict" || part === "computer") {
-      mappedSubject = "আইসিটি";
+      mappedSubject = "তথ্য ও যোগাযোগ প্রযুক্তি";
     } else if (part === "gk" || part === "general_knowledge" || part.includes("general")) {
       mappedSubject = "সাধারণ জ্ঞান";
     } else if (part === "bng" || part === "bangla" || part.includes("bangla")) {
@@ -64,7 +144,7 @@ function inferFromPath(filePath: string): { subject: string; chapter: string } {
       mappedSubject = "English";
     }
     
-    // Look for chapter keywords (e.g. ch1, ch2, chapter1, etc)
+    // Look for chapter keywords
     const chMatch = part.match(/(?:ch|chapter|chap|part|অধ্যায়|অধ্যায়)\s*(-?\d+)/i);
     if (chMatch) {
       const num = chMatch[1];
@@ -344,7 +424,14 @@ async function startServer() {
     }
   ];
 
+  let cachedFilteredQuestions: any[] = [];
+  let questionsCacheTime = 0;
+
   function loadQuestions() {
+    if (Date.now() - questionsCacheTime < 120000 && cachedFilteredQuestions.length > 0) {
+      return cachedFilteredQuestions;
+    }
+
     let baseQuestions: any[] = [];
     try {
       if (fs.existsSync(QUESTIONS_FILE)) {
@@ -434,16 +521,21 @@ async function startServer() {
         const addQuestionSafely = (q: any) => {
           if (!q || typeof q !== "object") return;
           
-          // Fill in missing properties from file path inferences
-          if (!q.subject && pathInferences.subject) {
+          // Force apply the strict manual mapping if it was inferred from file path matching
+          if (pathInferences.subject) {
             q.subject = pathInferences.subject;
           }
-          if (!q.chapter && pathInferences.chapter) {
+          if (pathInferences.chapter) {
             q.chapter = pathInferences.chapter;
           }
           
+          // Fallback if not inferred
+          if (!q.chapter && q.topic) {
+            q.chapter = q.topic;
+          }
+
           // Fallback to defaults if still missing
-          if (!q.subject) q.subject = "পদার্থবিজ্ঞান";
+          if (!q.subject) q.subject = "পদার্থবিদ্যা";
           if (!q.chapter) q.chapter = "অধ্যায় ১";
 
           // Parse question parts to construct fallback full question text
@@ -477,9 +569,11 @@ async function startServer() {
             q.options = ["অপশন ১", "অপশন ২", "অপশন ৩", "অপশন ৪"];
           }
 
-          // Extract correctIndex from answer text
+          // Extract correctIndex from answer text or ans
           if (typeof q.correctIndex !== "number") {
-            if (q.answer) {
+            if (typeof q.ans === "number") {
+              q.correctIndex = q.ans;
+            } else if (q.answer) {
               q.correctIndex = extractCorrectIndex(q.answer, q.richOptions || []);
             } else {
               q.correctIndex = 0;
@@ -530,12 +624,33 @@ async function startServer() {
       if (q && q.id) mergedMap.set(q.id, q);
     });
 
-    return Array.from(mergedMap.values());
+    const allQs = Array.from(mergedMap.values());
+    
+    // Sort questions: process difficulty sorting so that easier questions appear first
+    allQs.sort((a, b) => {
+      const chapterA = a.chapter || '';
+      const chapterB = b.chapter || '';
+      
+      if (chapterA < chapterB) return -1;
+      if (chapterA > chapterB) return 1;
+      
+      const diffA = typeof a.difficulty === 'number' ? a.difficulty : Number.POSITIVE_INFINITY;
+      const diffB = typeof b.difficulty === 'number' ? b.difficulty : Number.POSITIVE_INFINITY;
+      
+      return diffA - diffB;
+    });
+
+    cachedFilteredQuestions = allQs;
+    questionsCacheTime = Date.now();
+    return allQs;
   }
 
   function writeQuestions(questionsList: any[]) {
     try {
-      fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(questionsList, null, 2), "utf-8");
+      // It's mainly baseQuestions we write back to JSON. We should NOT write the generated 'upl-' ones.
+      const onlyBaseQs = questionsList.filter(q => !String(q.id).startsWith("upl-"));
+      fs.writeFileSync(QUESTIONS_FILE, JSON.stringify(onlyBaseQs, null, 2), "utf-8");
+      questionsCacheTime = 0; // invalidate cache
     } catch (e) {
       console.error("Failed write questions file:", e);
     }
@@ -578,10 +693,200 @@ async function startServer() {
   resetBattles();
 
 
+  // GET: load subjects and chapters metadata
+  app.get("/api/db/metadata", (req, res) => {
+    try {
+      const qDB = loadQuestions();
+      const metadata: Record<string, string[]> = {};
+      
+      qDB.forEach((q: any) => {
+        if (!q.subject) return;
+        if (!metadata[q.subject]) {
+          metadata[q.subject] = [];
+        }
+        if (q.chapter && !metadata[q.subject].includes(q.chapter)) {
+          metadata[q.subject].push(q.chapter);
+        }
+      });
+      res.json(metadata);
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: "Failed to load metadata" });
+    }
+  });
+
+  // GET: load questions manually from specified JSON files with pagination
+  app.get("/api/questions/fetch", (req, res) => {
+    try {
+      const { files, page = 1, limit = 25 } = req.query;
+      if (!files) return res.status(400).json({ error: "No files specified" });
+
+      let filePaths: string[] = [];
+      if (typeof files === "string") {
+        filePaths = files.split(",");
+      } else if (Array.isArray(files)) {
+        filePaths = files as string[];
+      }
+
+      let allQuestions: any[] = [];
+      const uploadedFolder = path.join(process.cwd(), "uploaded_questions");
+
+      // We need local extractCorrectIndex logic to normalize on the fly
+      const extractCorrectIndex = (answerText: any, optsArray: any[]): number => {
+        if (answerText === undefined || answerText === null || answerText === "") return 0;
+        if (typeof answerText === "number") return answerText >= 0 && answerText < 4 ? answerText : 0;
+        const text = String(answerText).toLowerCase().trim();
+        const parsedNum = parseInt(text);
+        if (!isNaN(parsedNum) && parsedNum >= 0 && parsedNum < 4) return parsedNum;
+        if (text.includes("উত্তরঃখ") || text.includes("উত্তর: খ") || text.includes("উত্তর খ") || text.includes("উত্তরঃ খ") || text.includes("হল খ") || text.includes("হল **খ")) return 1;
+        if (text.includes("উত্তরঃখ") || text.includes("উত্তর:খ") || text.includes("উত্তর খ")) return 1;
+        if (text.includes("উত্তরঃগ") || text.includes("উত্তর: গ") || text.includes("উত্তর গ") || text.includes("উত্তরঃ গ") || text.includes("হল গ") || text.includes("হল **গ")) return 2;
+        if (text.includes("উত্তরঃগ") || text.includes("উত্তর:গ") || text.includes("উত্তর গ")) return 2;
+        if (text.includes("উত্তরঃঘ") || text.includes("উত্তর: ঘ") || text.includes("উত্তর ঘ") || text.includes("উত্তরঃ ঘ") || text.includes("হল ঘ") || text.includes("হল **ঘ")) return 3;
+        if (text.includes("উত্তরঃঘ") || text.includes("উত্তর:ঘ") || text.includes("উত্তর ঘ")) return 3;
+        if (text.includes("উত্তরঃক") || text.includes("উত্তর: ক") || text.includes("উত্তর ক") || text.includes("উত্তরঃ ক") || text.includes("হল ক") || text.includes("হল **ক")) return 0;
+        if (text.includes("উত্তরঃক") || text.includes("উত্তর:ক") || text.includes("উত্তর ক")) return 0;
+        if (text.match(/answer[:\s]+b\b/i) || text.match(/correct answer[:\s]b\b/i)) return 1;
+        if (text.match(/answer[:\s]+c\b/i) || text.match(/correct answer[:\s]c\b/i)) return 2;
+        if (text.match(/answer[:\s]+d\b/i) || text.match(/correct answer[:\s]d\b/i)) return 3;
+        if (text.match(/answer[:\s]+a\b/i) || text.match(/correct answer[:\s]a\b/i)) return 0;
+        const boldMatch = text.match(/\*\*(a|b|c|d|ক|খ|গ|ঘ)\b/i);
+        if (boldMatch) {
+          const char = boldMatch[1];
+          if (["a", "ক", "A"].includes(char)) return 0;
+          if (["b", "খ", "B"].includes(char)) return 1;
+          if (["c", "গ", "C"].includes(char)) return 2;
+          if (["d", "ঘ", "D"].includes(char)) return 3;
+        }
+        for (let i = 0; i < optsArray.length; i++) {
+          const lbl = optsArray[i] && optsArray[i].label ? optsArray[i].label.toString().toLowerCase().trim() : "";
+          if (lbl && (text.includes(`উত্তরঃ ${lbl}`) || text.includes(`উত্তর: ${lbl}`) || text.includes(`**${lbl}**`))) return i;
+        }
+        return 0; 
+      };
+
+      for (const relPath of filePaths) {
+        // Construct the full path securely, prevent directory traversal if necessary
+        const safePath = relPath.replace(/\.\./g, "");
+        const filePath = path.join(uploadedFolder, safePath);
+        
+        if (fs.existsSync(filePath)) {
+          try {
+            const raw = fs.readFileSync(filePath, "utf-8");
+            let fileData = JSON.parse(raw);
+            let questions = Array.isArray(fileData) ? fileData : (fileData.questions || []);
+
+            // Normalize questions
+            questions = questions.map((q: any) => {
+               // Extract questionText from question_parts if present
+               if (!q.questionText && q.question_parts && Array.isArray(q.question_parts)) {
+                 const partTexts = q.question_parts
+                    .filter((p: any) => p && p.type === "text" && p.content)
+                    .map((p: any) => p.content);
+                 q.questionText = partTexts.join("\n") || "প্রশ্ন টেক্সট পাওয়া যায়নি";
+               } else if (!q.questionText) {
+                 q.questionText = q.question || "প্রশ্ন টেক্সট পাওয়া যায়নি";
+               }
+
+               // Extract options
+               if (q.options && Array.isArray(q.options)) {
+                  if (q.options.length > 0 && typeof q.options[0] === "object") {
+                    q.richOptions = [...q.options];
+                    q.options = q.options.map((opt: any) => opt.text || opt.image_url || "");
+                  }
+               } else {
+                  q.options = ["অপশন ১", "অপশন ২", "অপশন ৩", "অপশন ৪"];
+               }
+
+               // Extract correctIndex
+               if (typeof q.correctIndex !== "number") {
+                 if (typeof q.ans === "number") q.correctIndex = q.ans;
+                 else if (q.answer) q.correctIndex = extractCorrectIndex(q.answer, q.richOptions || []);
+                 else q.correctIndex = 0;
+               }
+
+               // Cleanup
+               if (!q.id) q.id = `fetch-${Math.floor(Math.random()*10000000)}`;
+
+               return q;
+            });
+            
+            allQuestions = allQuestions.concat(questions);
+          } catch (e) {
+            console.error(`Error reading/parsing file ${filePath}:`, e);
+          }
+        } else {
+             console.log(`File not found: ${filePath}`);
+        }
+      }
+
+      const total = allQuestions.length;
+      const pageNum = parseInt(page as string, 10);
+      const limitNum = parseInt(limit as string, 10);
+      const skip = (pageNum - 1) * limitNum;
+      
+      const paginated = allQuestions.slice(skip, skip + limitNum);
+
+      res.json({
+        questions: paginated,
+        total,
+        page: pageNum,
+        limit: limitNum,
+        hasMore: total > skip + limitNum
+      });
+    } catch (err: any) {
+      console.error(err);
+      res.status(500).json({ error: err.message });
+    }
+  });
+
   // GET: load questions from JSON file database
   app.get("/api/db/questions", (req, res) => {
-    const list = loadQuestions();
-    res.json({ questions: list });
+    try {
+      const qDB = loadQuestions();
+      let filtered = qDB;
+
+      const { subject, chapter, search, limit, page } = req.query;
+
+      if (subject) {
+        filtered = filtered.filter((q: any) => q.subject === subject);
+      }
+      
+      if (chapter && chapter !== "All") {
+        filtered = filtered.filter((q: any) => q.chapter === chapter);
+      }
+
+      if (search) {
+        const query = String(search).toLowerCase().trim();
+        filtered = filtered.filter((q: any) => {
+          if (String(q.id).toLowerCase() === query) return true;
+          const mainTextMatch = (q.questionText || "").toLowerCase().includes(query);
+          const explanationMatch = (q.explanation || "").toLowerCase().includes(query);
+          const optionsMatch = Array.isArray(q.options) && q.options.some((opt: any) => (opt || "").toLowerCase().includes(query));
+          const idMatch = (q.id || "").toLowerCase().includes(query);
+          return mainTextMatch || explanationMatch || optionsMatch || idMatch;
+        });
+      }
+
+      const count = filtered.length;
+      let hasMore = false;
+
+      if (page && limit) {
+        const pageNum = parseInt(page as string, 10);
+        const limitNum = parseInt(limit as string, 10);
+        
+        if (!isNaN(pageNum) && !isNaN(limitNum)) {
+          const skip = (pageNum - 1) * limitNum;
+          filtered = filtered.slice(skip, skip + limitNum);
+          hasMore = count > skip + limitNum;
+        }
+      }
+
+      res.json({ questions: filtered, count, hasMore });
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: "Failed to load" });
+    }
   });
 
   // POST: create & update questions (Admin update system requested)

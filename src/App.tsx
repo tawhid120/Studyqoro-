@@ -21,7 +21,9 @@ import SyllabusTracker from "./components/SyllabusTracker";
 import TeacherCorner from "./components/TeacherCorner";
 import StudyMaterials from "./components/StudyMaterials";
 import SimulationsView from "./components/SimulationsView";
+import GraphingCalculator from "./components/GraphingCalculator";
 import JoinCollegeModal from "./components/JoinCollegeModal";
+import InitialSetupModal from "./components/InitialSetupModal";
 import AdminPanel from "./components/AdminPanel";
 import BlogView from "./components/BlogView";
 import SingleQuestionView from "./components/SingleQuestionView";
@@ -112,11 +114,11 @@ export default function App() {
 
   // Prompt registered users with no college once per session
   useEffect(() => {
-    if (!stats.isGuest && !stats.collegeName && !hasPromptedCollege) {
+    if (!stats.isGuest && stats.uid && stats.educationLevel && stats.batch && !stats.collegeName && !hasPromptedCollege) {
       setShowJoinCollegeModal(true);
       setHasPromptedCollege(true);
     }
-  }, [stats.isGuest, stats.collegeName, hasPromptedCollege]);
+  }, [stats.isGuest, stats.uid, stats.educationLevel, stats.batch, stats.collegeName, hasPromptedCollege]);
 
   const prevStats = useRef(stats);
   useEffect(() => {
@@ -146,6 +148,7 @@ export default function App() {
           dob: stats.dob || null,
           gender: stats.gender || null,
           address: stats.address || null,
+          educationLevel: stats.educationLevel || null,
           classCode: stats.classCode || null,
           group: stats.group || null,
           batch: stats.batch || null,
@@ -299,9 +302,11 @@ export default function App() {
 
   // Dynamic questions loader
   useEffect(() => {
+    // Only fetching initial sample or metadata if needed
+    // QuestionBank manages its own pagination now
     const fetchQ = async () => {
       try {
-        const res = await fetch("/api/db/questions");
+        const res = await fetch("/api/db/questions?limit=50&page=1");
         if (res.ok) {
           const data = await res.json();
           if (data.questions && data.questions.length > 0) {
@@ -462,6 +467,12 @@ export default function App() {
               />
             )}
 
+            {!dynamicRoute.type && activeTab === "graphing" && (
+              <GraphingCalculator 
+                darkMode={darkMode}
+              />
+            )}
+
             {!dynamicRoute.type && activeTab === "leaderboard" && (
               <Leaderboard 
                 stats={stats} 
@@ -583,6 +594,9 @@ export default function App() {
           stats={stats}
           setStats={setStats}
         />
+
+        {/* 6. Initial Setup Modal for missing Batch/Class */}
+        <InitialSetupModal stats={stats} setStats={setStats} />
 
       </div>
     </div>
