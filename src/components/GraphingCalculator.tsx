@@ -1,8 +1,12 @@
 import { useState, useMemo } from "react";
-import { Plus, X, Maximize2, Move, MonitorPlay } from "lucide-react";
-import Plot from "react-plotly.js";
+import { Plus, X, Maximize2, Move, MonitorPlay, ChevronLeft, Hexagon, LineChart, Box, Target, Minus } from "lucide-react";
+import createPlotlyComponent from "react-plotly.js/factory";
+// @ts-ignore
+import Plotly from "plotly.js-dist-min";
+
+const Plot = createPlotlyComponent(Plotly);
 import * as math from "mathjs";
-import { MathEq, COLORS } from "./graphing-utils";
+import { MathEq, COLORS, detectParams, traceImplicitCurve } from "./graphing-utils";
 
 interface GraphingCalculatorProps {
   darkMode: boolean;
@@ -36,12 +40,17 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
     setEquations(equations.map(e => e.id === id ? { ...e, ...updates } : e));
   };
 
+  const updateParam = (id: string, letter: string, value: number) => {
+    setEquations(equations.map(e => e.id === id ? { ...e, params: { ...e.params, [letter]: value } } : e));
+  };
+
   const plotData = useMemo(() => {
     const traces: any[] = [];
     equations.forEach(eq => {
       if (!eq.isVisible || !eq.text.trim()) return;
 
       const cleanText = eq.text.toLowerCase().replace(/\s+/g, '');
+      const paramScope = eq.params || {};
       try {
         let isImplicit = false;
         let expressionStr = cleanText;
@@ -85,7 +94,7 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
                const row = [];
                for (let x = 0; x < xData.length; x++) {
                    try {
-                     row.push(compiled.evaluate({ x: xData[x], y: yData[y] }));
+                     row.push(compiled.evaluate({ x: xData[x], y: yData[y], ...paramScope }));
                    } catch(e) {
                      row.push(null);
                    }
@@ -101,34 +110,43 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
                name: eq.text
             });
           } else if (type === 'implicit') {
+             const segs = traceImplicitCurve(
+                (x, y) => compiled.evaluate({ x, y, ...paramScope }),
+                15, 0.3
+             );
              if (eq.extend3D) {
-                const xGrid = [], yGrid = [], zGrid = [], valGrid = [];
-                for (let z = -10; z <= 10; z += 2) {
-                   for (let y = -10; y <= 10; y += 1) {
-                      for (let x = -10; x <= 10; x += 1) {
-                         try {
-                           const val = compiled.evaluate({x, y});
-                           xGrid.push(x); yGrid.push(y); zGrid.push(z); valGrid.push(val);
-                         } catch(e) { }
-                      }
-                   }
-                }
-                traces.push({
-                   type: 'isosurface',
-                   x: xGrid, y: yGrid, z: zGrid, value: valGrid,
-                   isomin: -0.5, isomax: 0.5,
-                   surface: {show: true, count: 1, fill: 0.5},
-                   colorscale: [[0, eq.color], [1, eq.color]],
-                   showscale: false
+                // Sweep each segment along z to build a smooth surface "wall"
+                segs.forEach(seg => {
+                   const zHeights = [-10, 10];
+                   const xMatrix = [seg.x, seg.x];
+                   const yMatrix = [seg.y, seg.y];
+                   const zMatrix = [
+                      [zHeights[0], zHeights[0]],
+                      [zHeights[1], zHeights[1]]
+                   ];
+                   traces.push({
+                      type: 'surface',
+                      x: xMatrix, y: yMatrix, z: zMatrix,
+                      colorscale: [[0, eq.color], [1, eq.color]],
+                      opacity: 0.55, showscale: false
+                   });
                 });
              } else {
-                // Not supported easily in Plotly out of the box without dense points
+                segs.forEach(seg => {
+                   traces.push({
+                      type: 'scatter3d',
+                      mode: 'lines',
+                      x: seg.x, y: seg.y, z: [0, 0],
+                      line: { color: eq.color, width: 5 },
+                      showlegend: false
+                   });
+                });
              }
           } else if (type === 'y_explicit') {
              const xArr = [], yArr = [], zArr = [];
              for(let x=-10; x<=10; x+=0.2) {
                 try {
-                  const yVal = compiled.evaluate({x, y: 0});
+                  const yVal = compiled.evaluate({x, y: 0, ...paramScope});
                   if(typeof yVal === 'number' && !isNaN(yVal)){
                     xArr.push(x);
                     yArr.push(yVal);
@@ -168,7 +186,7 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
              const xArr = [], yArr = [];
              for(let x=-20; x<=20; x+=0.1) {
                 try {
-                  const yVal = compiled.evaluate({x, y: 0});
+                  const yVal = compiled.evaluate({x, y: 0, ...paramScope});
                   xArr.push(x);
                   yArr.push(yVal);
                 } catch(e) {}
@@ -180,13 +198,35 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
                 line: { color: eq.color, width: 3 },
                 name: eq.text
              });
+
+             if (eq.showDerivative) {
+                try {
+                  const derivExpr = math.derivative(expressionStr, 'x');
+                  const derivCompiled = derivExpr.compile();
+                  const dxArr: number[] = [], dyArr: number[] = [];
+                  for (let x = -20; x <= 20; x += 0.1) {
+                     try {
+                        const dVal = derivCompiled.evaluate({ x, y: 0, ...paramScope });
+                        dxArr.push(x);
+                        dyArr.push(dVal);
+                     } catch (e) {}
+                  }
+                  traces.push({
+                     type: 'scatter',
+                     mode: 'lines',
+                     x: dxArr, y: dyArr,
+                     line: { color: eq.color, width: 2, dash: 'dash' },
+                     name: `f'(x) of ${eq.text}`
+                  });
+                } catch (e) {}
+             }
           } else if (type === 'implicit') {
              const xData = [], yData = [], zData = [];
              for (let i = -15; i <= 15; i += 0.5) { xData.push(i); yData.push(i); }
              for (let y = 0; y < yData.length; y++) {
                 const row = [];
                 for (let x = 0; x < xData.length; x++) {
-                   try { row.push(compiled.evaluate({ x: xData[x], y: yData[y] })); } catch(e) { row.push(null); }
+                   try { row.push(compiled.evaluate({ x: xData[x], y: yData[y], ...paramScope })); } catch(e) { row.push(null); }
                 }
                 zData.push(row);
              }
@@ -211,74 +251,124 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
   };
 
   const keyboardRows = [
-    ['x', 'y', 'z', '^', '^2', '7', '8', '9', '÷'],
-    ['sin', 'cos', 'tan', 'sqrt(', 'pi', '4', '5', '6', '×'],
-    ['(', ')', '=', 'e', 'abs(', '1', '2', '3', '-'],
-    ['<', '>', ',', '!', '.', '0', '+', 'Clear']
+    ['x', 'y', '7', '8', '9', '÷'],
+    ['^', '√', '4', '5', '6', '×'],
+    ['(', ')', '1', '2', '3', '-'],
+    ['π', 'e', '0', '.', '=', '+'],
+    ['sin', 'cos', 'tan', 'ln', 'log', 'abs']
   ];
 
   return (
-    <div className={`flex flex-col lg:flex-row h-full rounded-2xl overflow-hidden border ${darkMode ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-white'}`}>
+    <div className={`flex flex-col lg:flex-row h-full rounded-2xl overflow-hidden ${darkMode ? 'bg-[#0f111a] border-[#1e2028]' : 'bg-slate-50 border-slate-200'} border`}>
        
        {/* Left Panel: Equation Editor */}
-       <div className={`lg:w-1/3 flex flex-col border-r ${darkMode ? 'border-slate-800' : 'border-slate-200'}`}>
+       <div className={`lg:w-[360px] flex flex-col border-r ${darkMode ? 'border-[#1e2028] bg-[#161822]' : 'border-slate-200 bg-white'}`}>
           <div className="p-4 flex justify-between items-center">
-             <span className={`text-xs font-bold tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>SURFACE / EQUATIONS</span>
-             <button onClick={addEquation} className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-500 font-medium text-xs hover:bg-emerald-500/20 transition-colors">
-               <Plus className="w-3.5 h-3.5" /> Add
-             </button>
+             <span className={`text-[12px] font-bold tracking-widest ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>{activeTab === '3D' ? 'SURFACE' : 'EQUATIONS'}</span>
+             <div className="flex gap-2">
+               <button onClick={addEquation} className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-500 font-medium text-xs hover:bg-emerald-500/20 transition-colors">
+                 <Plus className="w-3.5 h-3.5" /> Add
+               </button>
+               <button className={`p-1.5 rounded-lg flex items-center justify-center transition-colors ${darkMode ? 'bg-[#1e2028] text-slate-400 hover:text-slate-200' : 'bg-slate-100 text-slate-500'}`}>
+                 <ChevronLeft className="w-4 h-4" />
+               </button>
+             </div>
           </div>
 
           <div className="flex-1 overflow-y-auto px-4 space-y-3 pb-4">
              {equations.map(eq => (
-                <div key={eq.id} onClick={() => setFocusedEq(eq.id)} className={`p-3 rounded-xl border flex flex-col gap-2 transition-colors cursor-text ${focusedEq === eq.id ? (darkMode ? 'bg-slate-900 border-emerald-500/30 ring-1 ring-emerald-500/20' : 'bg-slate-50 border-emerald-500/40 ring-1 ring-emerald-500/20') : (darkMode ? 'bg-slate-900/50 border-slate-800' : 'bg-white border-slate-200')}`}>
+                <div key={eq.id} onClick={() => setFocusedEq(eq.id)} className={`p-3 rounded-2xl border flex flex-col gap-2 transition-colors cursor-text ${focusedEq === eq.id ? (darkMode ? 'bg-[#1e2028] border-emerald-500/30' : 'bg-slate-50 border-emerald-500/40') : (darkMode ? 'bg-transparent border-[#1e2028]' : 'bg-white border-slate-200')}`}>
                    <div className="flex items-center justify-between gap-3">
                       <div 
                          style={{ backgroundColor: eq.color }}
-                         className="w-4 h-4 rounded mt-1 shrink-0 cursor-pointer shadow-sm"
+                         className={`w-3.5 h-3.5 rounded shrink-0 cursor-pointer shadow-sm ${!eq.isVisible ? 'opacity-30' : ''}`}
                          onClick={(e) => { e.stopPropagation(); updateEq(eq.id, { isVisible: !eq.isVisible }); }}
-                      >
-                         {!eq.isVisible && <div className="w-full h-full bg-black/40 rounded flex items-center justify-center"><X className="w-3 h-3 text-white" /></div>}
-                      </div>
+                      ></div>
                       <input 
                          type="text" 
                          value={eq.text} 
                          onChange={(e) => updateEq(eq.id, { text: e.target.value })}
-                         className={`flex-1 bg-transparent border-none outline-none font-mono text-base w-full ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}
-                         placeholder="e.g. z = sin(x)"
+                         className={`flex-1 bg-transparent border-none outline-none text-[17px] w-full ${darkMode ? 'text-slate-100' : 'text-slate-900'}`}
+                         style={{ fontFamily: '"Cambria Math", "Times New Roman", serif', fontStyle: 'italic' }}
+                         placeholder="z = ..."
                       />
-                      <button onClick={(e) => { e.stopPropagation(); removeEq(eq.id); }} className="text-slate-400 hover:text-red-500 p-1">
-                         <X className="w-4 h-4" />
+                      <button onClick={(e) => { e.stopPropagation(); removeEq(eq.id); }} className="text-slate-600 hover:text-red-500 p-1">
+                         <X className="w-3.5 h-3.5" />
                       </button>
                    </div>
                    
-                   <label className="flex items-center gap-2 text-xs text-slate-500 pl-7 cursor-pointer hover:text-slate-400 transition-colors">
-                      <input type="checkbox" checked={eq.extend3D} onChange={(e) => updateEq(eq.id, { extend3D: e.target.checked })} className="rounded bg-slate-800 border-slate-700 text-emerald-500 focus:ring-emerald-500/20" />
-                      Extend to 3D
-                   </label>
+                   {activeTab === '3D' ? (
+                      <label className="flex items-center gap-2 text-[12px] text-slate-500 pl-6 cursor-pointer hover:text-slate-400 transition-colors">
+                         <div className={`relative flex items-center justify-center w-3.5 h-3.5 rounded-sm border ${darkMode ? 'border-slate-600 bg-[#161822]' : 'border-slate-300 bg-white'}`}>
+                            <input type="checkbox" className="peer sr-only" checked={eq.extend3D} onChange={(e) => updateEq(eq.id, { extend3D: e.target.checked })} />
+                            <div className="absolute inset-0 rounded-sm bg-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            <svg className="w-2.5 h-2.5 text-white absolute opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                         </div>
+                         Extend to 3D
+                      </label>
+                   ) : (
+                      <label className="flex items-center gap-2 text-[12px] text-slate-500 pl-6 cursor-pointer hover:text-slate-400 transition-colors">
+                         <div className={`relative flex items-center justify-center w-3.5 h-3.5 rounded-sm border ${darkMode ? 'border-slate-600 bg-[#161822]' : 'border-slate-300 bg-white'}`}>
+                            <input type="checkbox" className="peer sr-only" checked={!!eq.showDerivative} onChange={(e) => updateEq(eq.id, { showDerivative: e.target.checked })} />
+                            <div className="absolute inset-0 rounded-sm bg-emerald-500 opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+                            <svg className="w-2.5 h-2.5 text-white absolute opacity-0 peer-checked:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                         </div>
+                         Show derivative f'(x)
+                      </label>
+                   )}
+
+                   {detectParams(eq.text).map(letter => (
+                      <div key={letter} className="flex items-center gap-2 pl-7 pr-1" onClick={(e) => e.stopPropagation()}>
+                         <span className="text-xs font-mono text-slate-500 w-16 shrink-0">
+                            {letter} = {(eq.params?.[letter] ?? 1).toFixed(1)}
+                         </span>
+                         <input
+                            type="range"
+                            min={-10}
+                            max={10}
+                            step={0.1}
+                            value={eq.params?.[letter] ?? 1}
+                            onChange={(ev) => updateParam(eq.id, letter, parseFloat(ev.target.value))}
+                            className="flex-1 accent-emerald-500"
+                         />
+                      </div>
+                   ))}
                 </div>
              ))}
           </div>
 
           {/* Educational Note */}
-          <div className={`p-4 text-[11px] leading-relaxed border-t ${darkMode ? 'border-slate-800 bg-slate-900/50 text-slate-400' : 'border-slate-200 bg-slate-50 text-slate-500'}`}>
-             <span className="text-emerald-500 font-mono font-medium">z = f(x,y)</span> দিলে surface আঁকবে; <span className="text-emerald-500 font-mono font-medium">x^2+y^2=1</span> বা <span className="text-emerald-500 font-mono font-medium">y=x^2</span> দিলে মেঝতে (z=0) 2D curve আঁকবে। <strong className={darkMode ? 'text-slate-200' : 'text-slate-800'}>Extend to 3D</strong> দিলে সেটা উপরে টেনে 3D দেয়াল বানাবে। ঘোরাতে drag, scroll-এ zoom.
+          <div className={`p-4 text-[11px] leading-relaxed border-t ${darkMode ? 'border-[#1e2028] bg-transparent text-[#6b7280]' : 'border-slate-200 bg-slate-50 text-slate-500'}`}>
+             {activeTab === '2D' ? (
+                <>
+                  একাধিক equation যোগ করো। যেমন <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">x^2</span>, <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">sin(x)</span>, <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">1/x</span>, <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">2^x</span>, <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">abs(x)</span>। x ছাড়া অন্য letter (যেমন <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">a</span>, <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">k</span>) লিখলে নিচে slider আসবে — যেমন <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">y = a·sin(b·x)</span>। <strong className={darkMode ? 'text-slate-200' : 'text-slate-800'}>derivative f'(x)</strong> চেক করলে ঢালের লেখচিত্র (dashed) দেখাবে। চাকা ঘুরিয়ে zoom, ড্র্যাগ করে pan; <span className="text-emerald-500 bg-emerald-500/10 px-1 rounded">Shift</span>+scroll = শুধু x, <span className="text-emerald-500 bg-emerald-500/10 px-1 rounded">Alt</span>+scroll = শুধু y।
+                </>
+             ) : (
+                <>
+                  <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">z = f(x,y)</span> দিলে surface; <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">x^2+y^2=1</span> বা <span className="text-emerald-500 font-mono font-medium bg-emerald-500/10 px-1 rounded">y=x^2</span> দিলে মেঝেতে (z=0) 2D curve আঁকবে। <strong className={darkMode ? 'text-slate-200' : 'text-slate-800'}>Extend to 3D</strong> দিলে সেটা উপরে টেনে 3D দেয়াল বানাবে। ঘোরাতে drag, scroll-এ zoom।
+                </>
+             )}
           </div>
 
           {/* Custom On-screen Keyboard */}
-          <div className={`p-3 grid grid-cols-9 gap-1.5 border-t ${darkMode ? 'bg-slate-900 border-slate-800' : 'bg-slate-100 border-slate-200'}`}>
+          <div className={`p-3 grid grid-cols-6 gap-1 border-t ${darkMode ? 'bg-transparent border-[#1e2028]' : 'bg-slate-100 border-slate-200'}`}>
              {keyboardRows.map((row, i) => (
                 <div key={i} className="contents">
                    {row.map(btn => (
                       <button 
                          key={btn}
                          onClick={() => {
-                            if (btn === 'Clear') updateEq(focusedEq, { text: '' });
-                            else if (btn === '÷') insertChar('/');
+                            if (btn === '÷') insertChar('/');
                             else if (btn === '×') insertChar('*');
+                            else if (btn === '√') insertChar('sqrt(');
+                            else if (btn === 'ln') insertChar('log(');
+                            else if (btn === 'log') insertChar('log10(');
+                            else if (btn === 'abs') insertChar('abs(');
+                            else if (btn === 'sin' || btn === 'cos' || btn === 'tan') insertChar(`${btn}(`);
+                            else if (btn === 'π') insertChar('pi');
                             else insertChar(btn);
                          }}
-                         className={`py-2.5 px-1 text-[13px] rounded-lg font-mono transition-transform active:scale-95 shadow-sm ${darkMode ? 'bg-slate-800 text-slate-200 hover:bg-slate-700 border-b border-slate-950' : 'bg-white text-slate-700 hover:bg-slate-50 border-b border-slate-200'} ${['x', 'y', 'z', 'sin', 'cos', 'tan', 'pi', 'e'].includes(btn) ? 'text-emerald-600 font-semibold dark:text-emerald-400' : ''} ${btn === 'Clear' ? 'col-span-2 text-red-500 font-medium' : ''}`}
+                         className={`py-3 px-1 text-[13px] rounded-lg font-mono transition-transform active:scale-95 shadow-sm ${darkMode ? 'bg-[#1e2028] text-slate-200 hover:bg-[#252836]' : 'bg-white text-slate-700 hover:bg-slate-50 border-b border-slate-200'} ${['x', 'y', 'z', 'sin', 'cos', 'tan', 'ln', 'log', 'π', 'e'].includes(btn) ? 'text-emerald-600 font-semibold dark:text-emerald-400' : ''}`}
                       >
                          {btn}
                       </button>
@@ -289,45 +379,43 @@ export default function GraphingCalculator({ darkMode }: GraphingCalculatorProps
        </div>
 
        {/* Right Panel: Plot Canvas */}
-       <div className={`lg:w-2/3 h-[60vh] lg:h-auto relative bg-black overflow-hidden flex flex-col`}>
+       <div className={`flex-1 h-[60vh] lg:h-auto relative overflow-hidden flex flex-col ${darkMode ? 'bg-[#0f111a]' : 'bg-slate-50'}`}>
           
           {/* Top Floating Controls */}
-          <div className="absolute top-4 right-4 z-10 flex gap-2">
-             <div className={`flex items-center gap-1 p-1 rounded-xl backdrop-blur border shadow-sm ${darkMode ? 'bg-[#151720]/90 border-slate-800' : 'bg-white/90 border-slate-200'}`}>
+          <div className="absolute top-4 right-4 z-10 flex gap-4">
+             <div className={`flex items-center gap-1 p-1.5 rounded-[14px] shadow-sm border ${darkMode ? 'bg-[#161822] border-[#1e2028]' : 'bg-white border-slate-200'}`}>
                 <button 
                   onClick={() => setActiveTab("2D")}
-                  className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${activeTab === '2D' ? 'bg-emerald-500 text-white shadow-md' : (darkMode ? 'text-slate-400 hover:bg-[#252836] hover:text-slate-200' : 'text-slate-500 hover:bg-slate-100')}`}
+                  className={`px-4 py-1.5 rounded-xl text-[13px] font-bold transition-all flex items-center gap-2 ${activeTab === '2D' ? 'bg-[#10b981] text-slate-950 shadow-md' : (darkMode ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-700')}`}
                 >
-                  <MonitorPlay className="w-4 h-4 inline-block mr-1.5 -mt-0.5" /> 2D
+                  <LineChart className="w-4 h-4" /> 2D
                 </button>
                 <button 
                   onClick={() => setActiveTab("3D")}
-                  className={`px-4 py-1.5 rounded-lg text-sm font-semibold transition-all ${activeTab === '3D' ? 'bg-emerald-500 text-white shadow-md' : (darkMode ? 'text-slate-400 hover:bg-[#252836] hover:text-slate-200' : 'text-slate-500 hover:bg-slate-100')}`}
+                  className={`px-4 py-1.5 rounded-xl text-[13px] font-bold transition-all flex items-center gap-2 ${activeTab === '3D' ? 'bg-[#10b981] text-slate-950 shadow-md' : (darkMode ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-700')}`}
                 >
-                  <Maximize2 className="w-4 h-4 inline-block mr-1.5 -mt-0.5" /> 3D
+                  <Box className="w-4 h-4" /> 3D
                 </button>
              </div>
+             
+             {/* Note: The theme toggle in the screenshot is probably handled by the parent layout, but we can display a dummy or visual one here if it's meant to be in this component. Based on the props `darkMode` is passed down, so we won't toggle it here, just render an empty space or leave it out so parent renders it. But if it's in the canvas area, we should render it. Let's assume it's in the parent header, since 'Examora GRAPHING' is also not here. */}
           </div>
           
-          <div className={`absolute top-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-[12px] font-medium px-4 py-1.5 rounded-full backdrop-blur border flex items-center gap-2 shadow-lg ${darkMode ? 'bg-[#151720]/80 border-slate-700/50 text-slate-300' : 'bg-white/80 border-slate-200 text-slate-600'}`}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={darkMode ? "text-emerald-400" : "text-emerald-600"}><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <div className={`absolute top-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none text-[12px] px-5 py-2 rounded-2xl flex items-center gap-2 shadow-lg border ${darkMode ? 'bg-[#161822] border-[#1e2028] text-slate-400' : 'bg-white border-slate-200 text-slate-600'}`}>
+            <Hexagon className="w-3.5 h-3.5" />
             ঘোরাতে ড্র্যাগ • scroll = zoom • 2D মেঝেতে দেখাবে
           </div>
 
           {/* Bottom Right Controls */}
           <div className="absolute bottom-6 right-6 z-10 flex flex-col gap-2">
-             <button onClick={() => {
-                const plot = document.querySelector('.js-plotly-plot') as any;
-                if (!plot?.layout) return;
-                // Basic zoom logic would go here if we had access to Plotly easily
-             }} className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-sm ${darkMode ? 'bg-[#151720] text-slate-300 hover:bg-[#252836] border border-slate-800' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'}`}>
+             <button className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-sm cursor-pointer border ${darkMode ? 'bg-[#161822] text-slate-300 hover:bg-[#1e2028] border-[#1e2028]' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'}`}>
                 <Plus className="w-5 h-5" />
              </button>
-             <button className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-sm ${darkMode ? 'bg-[#151720] text-slate-300 hover:bg-[#252836] border border-slate-800' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'}`}>
-                <span className="text-xl font-bold -mt-0.5">-</span>
+             <button className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors shadow-sm cursor-pointer border ${darkMode ? 'bg-[#161822] text-slate-300 hover:bg-[#1e2028] border-[#1e2028]' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'}`}>
+                <Minus className="w-5 h-5" />
              </button>
-             <button className={`w-10 h-10 mt-1 rounded-xl flex items-center justify-center transition-colors shadow-sm ${darkMode ? 'bg-[#151720] text-slate-300 hover:bg-[#252836] border border-slate-800' : 'bg-white text-slate-600 hover:bg-slate-50 border border-slate-200'}`}>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+             <button className={`w-10 h-10 mt-1 rounded-xl flex items-center justify-center transition-colors shadow-sm cursor-pointer border ${darkMode ? 'bg-[#161822] text-slate-300 hover:bg-[#1e2028] border-[#1e2028]' : 'bg-white text-slate-600 hover:bg-slate-50 border-slate-200'}`}>
+                <Target className="w-5 h-5" />
              </button>
           </div>
 
