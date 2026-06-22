@@ -382,7 +382,7 @@ export default function App() {
         />
 
         {/* 2. Main content area on the right side */}
-        <div className="flex-1 flex flex-col h-screen overflow-y-auto overflow-x-hidden min-w-0 w-full">
+        <div className={`flex-1 flex flex-col h-screen min-w-0 w-full ${!dynamicRoute.type && activeTab === "graphing" ? "overflow-hidden" : "overflow-y-auto overflow-x-hidden"}`}>
           <Header 
             stats={stats} 
             onQuickExam={handleQuickExamLauncher} 
@@ -395,7 +395,13 @@ export default function App() {
             setIsSidebarOpen={setIsSidebarOpen}
           />
 
-          <main className="flex-grow p-5 sm:p-7 max-w-7xl mx-auto w-full">
+          {!dynamicRoute.type && activeTab === "graphing" && (
+            <div className="flex-1 min-h-0 overflow-hidden">
+              <GraphingCalculator darkMode={darkMode} />
+            </div>
+          )}
+
+          <main className={`flex-grow p-5 sm:p-7 max-w-7xl mx-auto w-full ${!dynamicRoute.type && activeTab === "graphing" ? "hidden" : ""}`}>
             {dynamicRoute.type === "blog" && dynamicRoute.param && (
               <BlogView slug={dynamicRoute.param} onBack={() => handleTabSelection("dashboard")} />
             )}
@@ -467,11 +473,6 @@ export default function App() {
               />
             )}
 
-            {!dynamicRoute.type && activeTab === "graphing" && (
-              <GraphingCalculator 
-                darkMode={darkMode}
-              />
-            )}
 
             {!dynamicRoute.type && activeTab === "leaderboard" && (
               <Leaderboard 
@@ -515,7 +516,7 @@ export default function App() {
           </main>
 
           {/* Dynamic ultra-modern Footer */}
-          <footer className="py-4 border-t border-slate-100 dark:border-slate-800/60 bg-white/70 dark:bg-slate-950 text-slate-400 text-[10px] text-center transition-colors">
+          <footer className={`py-4 border-t border-slate-100 dark:border-slate-800/60 bg-white/70 dark:bg-slate-950 text-slate-400 text-[10px] text-center transition-colors ${!dynamicRoute.type && activeTab === "graphing" ? "hidden" : ""}`}>
             <p>© {new Date().getFullYear()} Study Qoro পোর্টালে তোমার পড়াশোনা সহজ হোক। সমস্ত তথ্যাদি বাংলাদেশ শিক্ষাবোর্ড HSC ও এডমিশন কারিকুলাম অনুসারে সাজানো।</p>
           </footer>
         </div>
